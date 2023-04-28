@@ -1,0 +1,570 @@
+body {
+	width: 80%;
+	height: 100%;
+	margin: 0 auto;
+}
+
+h1 {
+	margin: 0px;
+}
+
+h2 {
+	margin: 0px;
+}
+
+h3 {
+	margin: 0px;
+}
+
+.navbar {
+  display: flex;
+  align-items: center;
+  padding-top: 0px;
+  height: 80px;
+  justify-content: space-between;
+}
+
+.navbar-logo {
+  text-decoration: none;
+}
+
+.navbar-logo h1 {
+  font-family: Nunito;
+  letter-spacing: 1px;
+  font-weight: 500;
+  font-size: 18px;
+  color: #333333;
+}
+
+.navbar-links {
+  list-style-type: none;
+  display: flex;
+  width: 40%;
+  display: flex;
+  justify-content: space-evenly;
+}
+
+.navbar-links h1 {
+  font-family: Nunito;
+  letter-spacing: 1px;
+  font-weight: 500;
+  font-size: 18px;
+  color: #333333;
+}
+
+.navbar-links h2 {
+  font-family: Nunito;
+  letter-spacing: 1px;
+  font-weight: 500;
+  font-size: 16px;
+  color: #333333;
+}
+
+.navbar-links li a {
+  display: block;
+  text-decoration: none;
+  padding: 20px 20px;
+/*  font-weight: 700;*/
+  transition: 0.4s all;
+}
+
+.navbar-links li.navbar-dropdown {
+  position: relative;
+}
+
+.navbar-links li.navbar-dropdown:hover .dropdown {
+  visibility: visible;
+  opacity: 1;
+  transform: translateY(0px);
+}
+
+.navbar-links li.navbar-dropdown .dropdown {
+  visibility: hidden;
+  opacity: 0;
+  position: absolute;
+  padding: 20px 0;
+  top: 100%;
+  transform: translateY(50px);
+  left: 0;
+  width: 225px;
+  background-color: #fff;
+  box-shadow: 0px 5px 5px 3px rgba(214, 214, 214, 0.3);
+  /*border-bottom-left-radius: 3px;
+  border-bottom-right-radius: 3px;*/
+  z-index: 111;
+  transition: 0.4s all;
+}
+.navbar-links li.navbar-dropdown .dropdown a {
+  padding-top: 10px;
+  padding-bottom: 10px;
+  font-weight: 400;
+}
+.navbar-dropdown .dropdown a:hover {
+  padding-left: 30px;
+}
+
+.navbar-links li a:hover {
+  color: #ff3f34;
+}
+
+.navbar-logo h1:hover {
+  color: #DF9AAB;
+}
+
+/*.navbar-logo img:hover {
+  background: #DF9AAB;
+}
+*/
+.navbar-dropdown h1:hover {
+  color: #DF9AAB;
+}
+
+
+.intro-div {
+/*	width: 700px;*/
+	height: 210px;
+	margin-bottom: 80px;
+	margin-top: 50px;	
+}
+
+#name-title {
+	font-family: Avenir Next;
+	font-size: 48px;
+	font-weight: 700;
+	margin-bottom: 20px;
+}
+
+#job-title {
+	font-family: Avenir Next;
+	font-size: 56px;
+	font-weight: 500;
+	margin-bottom: 20px;
+}
+
+#description-title {
+	font-family: Avenir Next;
+	font-size: 20px;
+	font-weight: 300;
+	margin-bottom: 20px;
+}
+
+.yellow-box {
+	height: 100px;
+	width: 300px;
+	background-color: #fffaa3;
+	display: inline;
+}
+
+#work-title {
+	font-family: Avenir Next;
+	font-size: 18px;
+	font-weight: 600;
+/*	color: #8d8d8d;*/
+	color: #DF9AAB;
+	padding-bottom: 20px;
+}
+
+
+.work-master {
+	height: 1350px;
+	width: 100%;
+}
+
+
+.work-individual {
+	width: 100%;
+	height: 400px;
+	margin-bottom: 20px;
+	display: flex;
+	align-items: center;
+	justify-content: space-evenly;
+}
+
+.work-picture-div {
+    height: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 50%;
+}
+
+#GroupM-work {
+	background-color: #BBD6F1;
+}
+
+.overlay {
+  position: absolute;
+/*  top: 0;
+  bottom: 0;
+  left: 0;
+  right: 0;*/
+  height: 400px;
+  width: 80%;
+  opacity: 0;
+  transition: .5s ease;
+  background-color: rgb(113, 154, 195, .9);
+}
+
+#GroupM-work:hover .overlay {
+  opacity: 1;
+}
+
+.overlay-text {
+  color: white;
+  font-family: Nunito;
+  font-weight: 600;
+  font-size: 36px;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  -webkit-transform: translate(-50%, -50%);
+  -ms-transform: translate(-50%, -50%);
+  transform: translate(-50%, -50%);
+  text-align: center;
+}
+
+
+
+#Beckett-work {
+	background-color: #bbf1d6;
+}
+
+#Net-Zero-work {
+	background-color: #f1f1bb;
+}
+
+
+.portfolio-img {
+	height: 55%;
+	position: relative;
+  	overflow: hidden;
+}
+
+.rw-text {
+	width: 50%;
+}
+
+.rw-company-name {
+	font-size: 24px;
+	font-family: Avenir Next;
+	font-weight: 400;
+	margin-bottom: 10px;
+}
+
+.rw-project-name {
+	font-size: 40px;
+	font-family: Avenir Next;
+	margin-bottom: 10px;
+
+}
+
+.rw-project-description {
+	font-size: 20px;
+	font-family: Avenir Next;
+	font-weight: 300;
+	width: 80%;
+}
+
+.portfolio-cs {
+	text-decoration: none;
+	color: inherit;
+}
+
+#fusion-project {
+	color: #1C3B59;
+}
+
+#oil-project {
+	color: #103814;
+}
+
+#brand-rehaul-project {
+	color: #39390c;
+}
+
+.dropdown a:hover {
+	background-color: rgb(223, 154, 171, .3);
+}
+.about-me-info {
+/*	width: 90%;*/
+	height: 800px;
+/*	background-color: seagreen;*/
+	display: flex;
+	margin: 0 auto;
+}
+
+.about-me-text {
+	display: flex;
+	align-items: center;
+}
+
+.about-me-text h1 {
+	width: 85%;
+	font-family: Nunito;
+	font-size: 20px;
+	font-weight: 400;
+	line-height: 2.5;
+}
+
+.about-me-photo {
+	display: flex;
+	align-items: center;
+}
+
+.anita-img {
+	height: 600px;
+}
+
+footer {
+	height: 300px;
+	display: flex;
+	justify-content: center;
+	width: 100%;
+	text-align: center;
+	padding-top: 40px;
+}
+
+.footer-title {
+	font-family: Nunito;
+	font-weight: 800;
+	font-size: 28px;
+    color: #333333;
+}
+
+.footer-description {
+	font-family: Nunito;
+	font-weight: 400;
+	font-size: 20px;
+    color: #333333;
+}
+
+.socials {
+  list-style: none;
+  display: flex;
+  align-items: center;
+  justify-content: space-evenly;
+  font-size: 40px;
+  padding: 0;
+}
+
+
+.socials a {
+  text-decoration: none;
+  color: #DF9AAB;
+  padding: 5px;
+}
+
+
+.socials a:hover i {
+  color: #A02BB4;
+}
+
+.footer-rec {
+	font-family: Nunito;
+	font-size: 12px;
+}
+
+
+@media screen and (max-width: 1284px) {
+.navbar-links {
+	justify-content: space-between;
+	padding: 0;
+}
+}
+
+
+}
+
+
+@media screen and (max-width: 1024px) {
+.navbar-links {
+	width: 70%;
+	justify-content: flex-end;
+}
+}
+
+@media screen and (max-width: 976px) {
+
+.intro-div {
+	margin-bottom: 0px;
+	height: 250px;
+}
+
+
+#name-title {
+	font-size: 40px;
+	margin-bottom: 10px;
+}
+
+#job-title {
+	font-size: 48px;
+	margin-bottom: 15px;
+}
+
+#description-title {
+	font-size: 18px;
+	margin-bottom: 0px;
+}
+}
+
+@media screen and (max-width: 835px) {
+
+.intro-div {
+	margin-bottom: 0px;
+	height: 200px;
+}
+
+
+#name-title {
+	font-size: 32px;
+	margin-bottom: 10px;
+}
+
+#job-title {
+	font-size: 40px;
+	margin-bottom: 15px;
+}
+
+#description-title {
+	font-size: 16px;
+	margin-bottom: 0px;
+}
+}
+
+@media screen and (max-width: 696px) {
+
+.intro-div {
+	margin-bottom: 0px;
+	height: 180px;
+	margin-top: 30px;
+}
+
+
+#name-title {
+	font-size: 28px;
+	margin-bottom: 10px;
+}
+
+#job-title {
+	font-size: 36px;
+	margin-bottom: 15px;
+}
+
+#description-title {
+	font-size: 16px;
+	margin-bottom: 0px;
+}
+}
+
+@media screen and (max-width: 680px) {
+
+body {
+	width: 90%;
+}
+
+.navbar {
+	width: 100%;
+	display: table;
+	padding-top: 20px;
+}
+
+.navbar img {
+	display: table;
+	margin: 0 auto;
+	font-size: 16px;
+}
+
+.navbar-links {
+	display: flex;
+	justify-content: space-evenly;
+	padding: 0px;
+	margin: 0 auto;
+}
+
+.dropdown h2 {
+	font-size: 12px;
+}
+
+.navbar-dropdown h1 {
+		font-size: 16px;
+}
+
+}
+
+@media screen and (max-width: 560px) {
+
+.intro-div {
+	margin-bottom: 0px;
+	height: 170px;
+}
+
+
+#name-title {
+	font-size: 24px;
+	margin-bottom: 15px;
+}
+
+#job-title {
+	font-size: 32px;
+	margin-bottom: 10px;
+}
+
+#description-title {
+	font-size: 14px;
+	margin-bottom: 0px;
+}
+}
+
+@media screen and (max-width: 560px) {
+
+.navbar-dropdown h1 {
+		font-size: 14px;
+}
+}
+
+@media screen and (max-width: 500px) {
+
+.intro-div {
+	margin-bottom: 0px;
+	height: 150px;
+}
+
+
+#name-title {
+	font-size: 20px;
+	margin-bottom: 15px;
+}
+
+#job-title {
+	font-size: 28px;
+	margin-bottom: 10px;
+}
+
+#description-title {
+	font-size: 12px;
+	margin-bottom: 0px;
+}
+}
+
+@media screen and (max-width: 432px) {
+
+.intro-div {
+	margin-bottom: 0px;
+	height: 200px;
+}
+
+#name-title {
+	font-size: 20px;
+	margin-bottom: 10px;
+}
+
+#job-title {
+	font-size: 28px;
+	margin-bottom: 10px;
+}
+
+#description-title {
+	font-size: 14px;
+	margin-bottom: 0px;
+}
+}
