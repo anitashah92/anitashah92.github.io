@@ -1,0 +1,782 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Flow & RFI Builder — A web platform that replaced Excel-and-email chaos with a centralized RFI system for the world's largest brands. Case study by Anita Shah.">
+  <title>Flow & RFI Builder — Anita Shah</title>
+  <link rel="stylesheet" href="../style.css">
+  <style>
+    /* ── Page-level additions (no overrides to style.css) ── */
+
+    /* Divider label */
+    .section-divider {
+      font-size: 11px;
+      font-weight: 500;
+      text-transform: uppercase;
+      letter-spacing: 0.1em;
+      color: var(--tertiary);
+      margin-bottom: 40px;
+      padding-bottom: 12px;
+      border-bottom: 1px solid var(--border);
+    }
+
+    /* Glossary / callout box */
+    .glossary-box {
+      background: var(--fusion-bg);
+      border: 1px solid var(--fusion-tag);
+      border-radius: 10px;
+      padding: 24px 28px;
+      margin: 28px 0;
+    }
+    .glossary-box-label {
+      font-size: 11px;
+      font-weight: 500;
+      text-transform: uppercase;
+      letter-spacing: 0.08em;
+      color: var(--fusion-text);
+      margin-bottom: 14px;
+    }
+    .glossary-item {
+      display: grid;
+      grid-template-columns: 120px 1fr;
+      gap: 12px;
+      padding: 8px 0;
+      border-bottom: 1px solid var(--fusion-tag);
+      font-size: 14px;
+    }
+    .glossary-item:last-child { border-bottom: none; }
+    .glossary-term { font-weight: 500; color: var(--fusion-text); }
+    .glossary-def { color: var(--secondary); line-height: 1.6; }
+
+    /* Compare table (Build vs. Buy) */
+    .compare-wrap {
+      margin: 28px 0;
+      border: 1px solid var(--border);
+      border-radius: 10px;
+      overflow: hidden;
+    }
+    .compare-header {
+      display: grid;
+      grid-template-columns: 1fr 1fr 1fr;
+      background: var(--bg-soft);
+      border-bottom: 1px solid var(--border);
+    }
+    .compare-header span {
+      padding: 12px 20px;
+      font-size: 11px;
+      font-weight: 500;
+      text-transform: uppercase;
+      letter-spacing: 0.07em;
+      color: var(--tertiary);
+      border-right: 1px solid var(--border);
+    }
+    .compare-header span:last-child { border-right: none; }
+    .compare-row {
+      display: grid;
+      grid-template-columns: 1fr 1fr 1fr;
+      border-bottom: 1px solid var(--border);
+      font-size: 14px;
+    }
+    .compare-row:last-child { border-bottom: none; }
+    .compare-row > div {
+      padding: 12px 20px;
+      color: var(--secondary);
+      border-right: 1px solid var(--border);
+      line-height: 1.6;
+    }
+    .compare-row > div:first-child { color: var(--black); font-weight: 500; }
+    .compare-row > div:last-child { border-right: none; }
+    .compare-winner {
+      background: #F0FDF4;
+    }
+    .winner-pill {
+      display: inline-block;
+      font-size: 11px;
+      font-weight: 500;
+      background: #D1FAE5;
+      color: #065F46;
+      border-radius: 20px;
+      padding: 2px 8px;
+      margin-top: 4px;
+    }
+
+    /* Stepper diagram */
+    .stepper-wrap {
+      display: flex;
+      align-items: flex-start;
+      gap: 0;
+      margin: 28px 0;
+      border: 1px solid var(--border);
+      border-radius: 10px;
+      overflow: hidden;
+    }
+    .stepper-step {
+      flex: 1;
+      padding: 20px 18px;
+      border-right: 1px solid var(--border);
+      position: relative;
+    }
+    .stepper-step:last-child { border-right: none; }
+    .step-num {
+      font-size: 11px;
+      font-weight: 500;
+      text-transform: uppercase;
+      letter-spacing: 0.08em;
+      color: var(--tertiary);
+      margin-bottom: 6px;
+    }
+    .step-name {
+      font-size: 14px;
+      font-weight: 500;
+      color: var(--black);
+      margin-bottom: 6px;
+    }
+    .step-desc {
+      font-size: 13px;
+      color: var(--secondary);
+      line-height: 1.55;
+    }
+    .stepper-step.active {
+      background: var(--fusion-bg);
+    }
+    .stepper-step.active .step-num { color: var(--fusion-text); }
+
+    /* Decision callouts */
+    .decision-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 16px;
+      margin: 28px 0;
+    }
+    .decision-card {
+      border: 1px solid var(--border);
+      border-radius: 10px;
+      padding: 24px;
+    }
+    .decision-number {
+      font-size: 11px;
+      font-weight: 500;
+      color: var(--tertiary);
+      text-transform: uppercase;
+      letter-spacing: 0.08em;
+      margin-bottom: 8px;
+    }
+    .decision-card h3 {
+      font-size: 15px;
+      font-weight: 500;
+      margin-bottom: 10px;
+    }
+    .decision-card p {
+      font-size: 14px;
+      color: var(--secondary);
+      line-height: 1.7;
+      margin-bottom: 0 !important;
+    }
+
+    /* Iteration before/after */
+    .iteration-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 16px;
+      margin: 20px 0 28px;
+    }
+    .iteration-card {
+      border: 1px solid var(--border);
+      border-radius: 10px;
+      overflow: hidden;
+    }
+    .iteration-card.chosen {
+      border-color: #A7F3D0;
+    }
+    .iteration-placeholder {
+      background: var(--bg-soft);
+      min-height: 180px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 12px;
+      color: var(--tertiary);
+      border-bottom: 1px solid var(--border);
+    }
+    .iteration-label {
+      padding: 12px 16px;
+    }
+    .iteration-label-title {
+      font-size: 13px;
+      font-weight: 500;
+      margin-bottom: 4px;
+    }
+    .iteration-label p {
+      font-size: 13px;
+      color: var(--secondary);
+      line-height: 1.6;
+      margin-bottom: 0 !important;
+    }
+    .chosen-pill {
+      display: inline-flex;
+      align-items: center;
+      gap: 4px;
+      font-size: 11px;
+      font-weight: 500;
+      color: #065F46;
+      background: #D1FAE5;
+      padding: 2px 8px;
+      border-radius: 20px;
+      margin-top: 6px;
+    }
+
+    /* Outcomes */
+    .outcome-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 16px;
+      margin: 28px 0;
+    }
+    .outcome-card {
+      background: var(--bg-soft);
+      border: 1px solid var(--border);
+      border-radius: 10px;
+      padding: 24px 20px;
+    }
+    .outcome-number {
+      font-size: 30px;
+      font-weight: 500;
+      margin-bottom: 6px;
+      color: var(--black);
+    }
+    .outcome-label {
+      font-size: 14px;
+      color: var(--secondary);
+      line-height: 1.55;
+    }
+
+    /* Quote block */
+    .quote-block {
+      border-left: 3px solid var(--fusion-tag);
+      background: var(--fusion-bg);
+      border-radius: 0 10px 10px 0;
+      padding: 20px 28px;
+      margin: 28px 0;
+    }
+    .quote-block blockquote {
+      font-size: 16px;
+      color: var(--secondary);
+      line-height: 1.7;
+      font-style: italic;
+      margin-bottom: 12px;
+    }
+    .quote-attribution {
+      font-size: 13px;
+      font-weight: 500;
+      color: var(--fusion-text);
+    }
+
+    /* Reflection columns */
+    .reflection-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 32px;
+      margin: 28px 0;
+    }
+    .reflection-block h3 {
+      font-size: 15px;
+      font-weight: 500;
+      margin-bottom: 12px;
+    }
+    .reflection-block p {
+      font-size: 14px;
+      color: var(--secondary);
+      line-height: 1.8;
+      margin-bottom: 12px !important;
+    }
+    .reflection-block p:last-child { margin-bottom: 0 !important; }
+
+    /* Team table */
+    .team-table {
+      margin: 24px 0 0;
+      border: 1px solid var(--border);
+      border-radius: 10px;
+      overflow: hidden;
+    }
+    .team-row {
+      display: grid;
+      grid-template-columns: 200px 1fr;
+      border-bottom: 1px solid var(--border);
+      font-size: 14px;
+    }
+    .team-row:last-child { border-bottom: none; }
+    .team-row > div {
+      padding: 12px 20px;
+      line-height: 1.55;
+    }
+    .team-row > div:first-child {
+      font-weight: 500;
+      background: var(--bg-soft);
+      border-right: 1px solid var(--border);
+    }
+    .team-row > div:last-child { color: var(--secondary); }
+
+    /* Screen placeholder */
+    .screen-placeholder-wrap {
+      margin: 28px 0;
+      border: 1px solid var(--border);
+      border-radius: 12px;
+      overflow: hidden;
+      background: var(--bg-soft);
+      min-height: 400px;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      gap: 10px;
+      color: var(--tertiary);
+    }
+    .screen-placeholder-wrap span { font-size: 13px; }
+
+    /* Inline placeholder for flow images */
+    .img-placeholder {
+      margin: 28px 0;
+      border: 2px dashed var(--border);
+      border-radius: 10px;
+      min-height: 360px;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      gap: 8px;
+      background: var(--bg-soft);
+      color: var(--tertiary);
+      font-size: 13px;
+    }
+    .img-placeholder.tall { min-height: 480px; }
+
+    @media (max-width: 720px) {
+      .decision-grid  { grid-template-columns: 1fr; }
+      .reflection-grid { grid-template-columns: 1fr; }
+      .outcome-grid   { grid-template-columns: 1fr; }
+      .iteration-grid { grid-template-columns: 1fr; }
+      .stepper-wrap   { flex-direction: column; }
+      .stepper-step   { border-right: none; border-bottom: 1px solid var(--border); }
+      .stepper-step:last-child { border-bottom: none; }
+      .glossary-item  { grid-template-columns: 1fr; gap: 4px; }
+      .compare-header, .compare-row { grid-template-columns: 1fr; }
+      .compare-header span, .compare-row > div { border-right: none; border-bottom: 1px solid var(--border); }
+      .compare-header span:last-child, .compare-row > div:last-child { border-bottom: none; }
+      .team-row { grid-template-columns: 1fr; }
+      .team-row > div:first-child { border-right: none; border-bottom: 1px solid var(--border); }
+    }
+  </style>
+</head>
+<body>
+
+<nav>
+  <div class="nav-inner">
+    <a href="../index.html" class="nav-name">Anita Shah</a>
+    <div class="nav-links">
+      <a href="../index.html#work" class="hide-mobile">Work</a>
+      <a href="../about.html" class="hide-mobile">About</a>
+      <a href="../assets/Anita_Shah_Resume.pdf" target="_blank" class="hide-mobile">Resume</a>
+      <a href="mailto:anitashah92@gmail.com" class="nav-cta">Get in touch</a>
+    </div>
+  </div>
+</nav>
+
+<main>
+  <div class="container">
+
+    <!-- ── SECTION 1: HERO ── -->
+    <div class="case-hero">
+      <a href="../index.html" class="back-link">← Back to work</a>
+      <div class="work-tags" style="margin-bottom:16px;">
+        <span class="tag" style="background:var(--fusion-tag); color:var(--fusion-text);">Web Application</span>
+        <span class="tag" style="background:#F3F4F6; color:#374151;">Product Design</span>
+        <span class="tag" style="background:#F3F4F6; color:#374151;">UX Research</span>
+        <span class="tag" style="background:#F3F4F6; color:#374151;">Data &amp; Forms</span>
+      </div>
+      <h1>Flow &amp; RFI Builder</h1>
+      <p class="lead">A web platform that replaced Excel-and-email chaos with a centralized RFI system — turning a multi-week process into a few days for the world's largest brands and their retail partners.</p>
+      <div class="case-meta">
+        <div class="case-meta-item">
+          <div class="case-meta-label">Role</div>
+          <div class="case-meta-value">Senior UX/UI Designer</div>
+        </div>
+        <div class="case-meta-item">
+          <div class="case-meta-label">Team</div>
+          <div class="case-meta-value">PM, Frontend Eng, Backend Eng</div>
+        </div>
+        <div class="case-meta-item">
+          <div class="case-meta-label">Client</div>
+          <div class="case-meta-value">Coca-Cola (MVP)</div>
+        </div>
+        <div class="case-meta-item">
+          <div class="case-meta-label">Timeline</div>
+          <div class="case-meta-value">2023</div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Hero visual -->
+    <div class="case-visual">
+      <!-- Replace with: Flow homepage showing multiple RFI cards with progress bars (1400 × 880px recommended) -->
+      <div class="placeholder-img" style="min-height:480px; background:var(--fusion-bg); border:none;">
+        <svg width="40" height="40" fill="none" stroke="var(--fusion-text)" stroke-width="1.5" viewBox="0 0 24 24"><rect x="3" y="3" width="18" height="18" rx="2"/><path d="M3 9h18M9 21V9"/></svg>
+        <span style="color:var(--fusion-text); font-size:14px;">Add hero mockup here — Flow homepage with multiple RFI cards and progress bars (1400 × 880px)</span>
+      </div>
+    </div>
+
+
+    <!-- ── SECTION 2: THE PROBLEM ── -->
+    <div class="case-section">
+      <div class="section-divider">The problem</div>
+      <h2>An annual evaluation. Over 200 questions. Managed entirely by email.</h2>
+      <p>Every year, The Coca-Cola Company evaluated its retail media partners — Walmart, Amazon, Kroger, Target, Safeway, and dozens more — to decide where to invest its retail advertising budget. The evaluation was rigorous: over 200 weighted questions across nine media channels, from on-property search to programmatic display to connected TV. The data directly shaped Coca-Cola's media plans for the second half of the year.</p>
+      <p>For years, this evaluation lived in an Excel spreadsheet.</p>
+      <p>GroupM's commerce team emailed the workbook to each partner retailer. Retailers filled it out at their own pace. Responses came back over email — sometimes complete, sometimes partial, sometimes lost in someone's inbox. The team manually tracked who had responded, chased the laggards, parsed the data by hand, and stitched together a report for Coca-Cola.</p>
+      <p>For a single client with over 50 retail partners, a complete cycle could stretch into weeks. And Coca-Cola wasn't the only client running these evaluations.</p>
+      <p>GroupM needed a centralized platform that could automate the workflow end-to-end: build an RFI once, send it to the right retailers, track responses in real time, and feed the data directly into Fusion for analysis. That platform became Flow.</p>
+
+      <div class="glossary-box">
+        <div class="glossary-box-label">Key terms</div>
+        <div class="glossary-item">
+          <span class="glossary-term">RFI</span>
+          <span class="glossary-def">Request for Information. A structured questionnaire built around a specific commerce capability or use case. Different clients can use different RFIs depending on their priorities.</span>
+        </div>
+        <div class="glossary-item">
+          <span class="glossary-term">Flow</span>
+          <span class="glossary-def">A specific RFI sent to a group of partner retailers on behalf of a client. Think of an RFI as the template — a Flow is the active campaign that uses it.</span>
+        </div>
+        <div class="glossary-item">
+          <span class="glossary-term">Partner retailers</span>
+          <span class="glossary-def">The retailers a brand sells through (Walmart, Amazon, Kroger, Target, Safeway, etc.) — the audience receiving and filling out the RFI.</span>
+        </div>
+        <div class="glossary-item">
+          <span class="glossary-term">Fusion</span>
+          <span class="glossary-def">GroupM's commerce intelligence platform where RFI response data was published for analysis. Flow fed data into Fusion; the two platforms worked in tandem.</span>
+        </div>
+      </div>
+    </div>
+
+
+    <!-- ── SECTION 3: MY ROLE ── -->
+    <div class="case-section">
+      <div class="section-divider">My role</div>
+      <h2>Sole designer on a four-person product team</h2>
+      <p>I was the sole designer on a small product team — one PM, two engineers, and me — building Flow from scratch. I owned design end-to-end: research, information architecture, wireframes, hi-fi mockups, and the clickable prototype that went into engineering's hands.</p>
+      <p>Working on a four-person team meant design decisions were made in real time alongside engineers. Tradeoffs that would normally take weeks to negotiate across siloed teams happened in the same standup. The constraint kept me close to what we could actually ship in our four-month MVP timeline — and it shaped multiple decisions you'll see below.</p>
+      <div class="team-table">
+        <div class="team-row">
+          <div>Product Manager</div>
+          <div>Stakeholder alignment, requirements, sprint planning</div>
+        </div>
+        <div class="team-row">
+          <div>Backend Engineer</div>
+          <div>Data infrastructure, API, email automation</div>
+        </div>
+        <div class="team-row">
+          <div>Frontend Engineer</div>
+          <div>React implementation</div>
+        </div>
+        <div class="team-row">
+          <div>Senior UX/UI Designer — Me</div>
+          <div>Research, IA, wireframes, UI design, prototype</div>
+        </div>
+      </div>
+      <p style="margin-top:20px;">After Flow's MVP shipped, our team merged into Copilot — a larger 40+ person org within GroupM building adjacent product tooling. The merger was less about org structure and more a signal that what we'd built was strategic enough to be folded into a bigger investment.</p>
+    </div>
+
+
+    <!-- ── SECTION 4: DISCOVERY ── -->
+    <div class="case-section">
+      <div class="section-divider">Discovery — Defining the requirements</div>
+      <h2>What the commerce team actually needed</h2>
+      <p>Before sketching screens, I needed to understand exactly what the commerce team's workflow looked like, what was breaking, and what couldn't change. I spent the early weeks of the project in working sessions with the commerce team — the people who'd been running the Excel-based RFI process for years.</p>
+      <p>A few things came out of those conversations that shaped the entire product:</p>
+
+      <div class="decision-grid">
+        <div class="decision-card">
+          <div class="decision-number">Finding 01</div>
+          <h3>The RFI was complex — and growing</h3>
+          <p>Coca-Cola's Retail Capabilities Evaluation spanned over 200 weighted questions across nine media channels: search, display, social, CTV, audio, OOH, and API access. Whatever we built had to handle that level of structural complexity and accommodate clients adding new channels year over year. A rigid form wouldn't work.</p>
+        </div>
+        <div class="decision-card">
+          <div class="decision-number">Finding 02</div>
+          <h3>Tracking was the real pain point</h3>
+          <p>The single biggest complaint about the Excel process wasn't the form itself — it was the chaos of trying to figure out which of 50+ retailers had responded, which were partial, which were late. Status visibility had to be a first-class feature, not an afterthought.</p>
+        </div>
+        <div class="decision-card">
+          <div class="decision-number">Finding 03</div>
+          <h3>Partner retailers had no system to learn</h3>
+          <p>Whatever the retailer-facing experience looked like, it needed to be self-explanatory on first contact. Retailers weren't going to watch a training video before filling out a Coca-Cola RFI. The experience had to be immediately intuitive.</p>
+        </div>
+      </div>
+    </div>
+
+
+    <!-- ── SECTION 5: BUILD VS. BUY ── -->
+    <div class="case-section">
+      <div class="section-divider">Build vs. buy — The pivotal solution decision</div>
+      <h2>Automate the wrapper, or replace the process entirely?</h2>
+      <p>Two viable approaches emerged for how Flow could replace the Excel workflow.</p>
+
+      <div class="compare-wrap">
+        <div class="compare-header">
+          <span>Approach</span>
+          <span>Option 1 — Automate Excel</span>
+          <span>Option 2 — Web-based RFI</span>
+        </div>
+        <div class="compare-row">
+          <div>What it does</div>
+          <div>Auto-send the existing Excel RFI to retailers, give them a link to upload completed responses, parse data back into Fusion on submission.</div>
+          <div class="compare-winner">Replace Excel entirely. Retailers fill out a structured web form; data lives in the platform from the moment of submission.</div>
+        </div>
+        <div class="compare-row">
+          <div>Design effort</div>
+          <div>Low — preserves existing retailer behavior</div>
+          <div class="compare-winner">High — new interface, new interaction patterns</div>
+        </div>
+        <div class="compare-row">
+          <div>Key risk</div>
+          <div>Parsing inconsistent retailer-uploaded Excel files reliably is its own backend problem — too unpredictable to ship in our window</div>
+          <div class="compare-winner">More upfront work, but unlocks structured data, real-time tracking, and a scalable path forward</div>
+        </div>
+        <div class="compare-row">
+          <div>Decision</div>
+          <div>—</div>
+          <div class="compare-winner"><span class="winner-pill">✓ We chose this</span></div>
+        </div>
+      </div>
+
+      <p>The bet was that the upfront design investment would pay off across every future client and every future RFI. The data parsing problem with Option 1 was too unpredictable to ship reliably in our four-month window — and it wouldn't have given us the real-time tracking the commerce team needed most.</p>
+    </div>
+
+
+    <!-- ── SECTION 6: FLOW CREATION ── -->
+    <div class="case-section">
+      <div class="section-divider">Designing Flow creation</div>
+      <h2>Making complexity feel manageable</h2>
+      <p>Creating a new Flow turned out to be more complex than the Excel process ever was — because we were now letting admins do four things that the spreadsheet workflow had bundled together informally: choose what RFI to use, decide which partner retailers receive it, set who can administer the Flow inside GroupM, and review before sending.</p>
+      <p>An earlier wireframe pass put all four on a single long-form page. It worked technically, but it overwhelmed users — there was no sense of progress and too many decisions visible at once.</p>
+      <p>I broke it into a stepper inside a modal:</p>
+
+      <div class="stepper-wrap">
+        <div class="stepper-step active">
+          <div class="step-num">Step 01</div>
+          <div class="step-name">Select RFI Type</div>
+          <div class="step-desc">Choose an existing RFI template or create a new one from scratch</div>
+        </div>
+        <div class="stepper-step">
+          <div class="step-num">Step 02</div>
+          <div class="step-name">Select Partners</div>
+          <div class="step-desc">Add the partner retailers receiving this Flow and assign admin access</div>
+        </div>
+        <div class="stepper-step">
+          <div class="step-num">Step 03</div>
+          <div class="step-name">RFI Builder</div>
+          <div class="step-desc">Build or review the question structure for this Flow</div>
+        </div>
+        <div class="stepper-step">
+          <div class="step-num">Step 04</div>
+          <div class="step-name">Review &amp; Send</div>
+          <div class="step-desc">Final confirmation before the Flow is sent to all selected partners</div>
+        </div>
+      </div>
+
+      <p>The stepper handled the complexity. The modal handled the focus — when you're creating a Flow, you shouldn't be looking at twelve other dashboard elements at the same time.</p>
+      <p>This pattern became the foundation for every multi-step creation flow in the product. Cloning an RFI, editing partner lists, building a new RFI from scratch — all reused the same component, which kept the experience consistent and saved engineering time on every subsequent feature.</p>
+
+      <!-- Image placeholder: Create Flow stepper -->
+      <div class="img-placeholder">
+        <svg width="32" height="32" fill="none" stroke="currentColor" stroke-width="1.5" viewBox="0 0 24 24"><rect x="3" y="3" width="18" height="18" rx="2"/><path d="M3 9h18M9 21V9"/></svg>
+        <span>Add screenshot here — Create Flow modal, Step 1 (Select RFI Type) or Step 2 (Select Partners)</span>
+      </div>
+    </div>
+
+
+    <!-- ── SECTION 7: RFI BUILDER ── -->
+    <div class="case-section">
+      <div class="section-divider">The RFI Builder</div>
+      <h2>A form-builder that thinks like a spreadsheet</h2>
+      <p>This screen did the most heavy lifting in the entire product. It had to be flexible enough to capture the 200+ weighted questions of Coca-Cola's Retail Capabilities Evaluation, simple enough that a commerce strategist could build a new RFI without engineering help, and structured enough that the captured data could feed directly into Fusion for analysis.</p>
+      <p>I designed it as a table.</p>
+
+      <!-- Image placeholder: RFI Builder -->
+      <div class="img-placeholder">
+        <svg width="32" height="32" fill="none" stroke="currentColor" stroke-width="1.5" viewBox="0 0 24 24"><rect x="3" y="3" width="18" height="18" rx="2"/><path d="M3 9h18M9 21V9"/></svg>
+        <span>Add screenshot here — RFI Builder (Step 3 of Create Flow stepper), showing table with Channel, Category, Question, and Partner Input Type columns</span>
+      </div>
+
+      <p>Each row is a single question. Columns capture the structural metadata the data team needed: Channel (CTV, Audio, Offsite Display, etc.), Category (Buying Model, Measurement, Depth of Offering), the question itself, and the Partner Input Type (Freeform, Single Select, Multi Select). An Add Row / Add Column control lets admins extend it as needed.</p>
+
+      <div class="decision-grid">
+        <div class="decision-card">
+          <div class="decision-number">Decision 01</div>
+          <h3>Treating the form like data, not like a form</h3>
+          <p>Most form-builders mimic the look of the form being built. This one looks like a spreadsheet — because that's the mental model commerce strategists already had from years of doing the work in Excel. Keeping the table metaphor reduced the cognitive cost of learning the new tool, even though the underlying behavior was completely different.</p>
+        </div>
+        <div class="decision-card">
+          <div class="decision-number">Decision 02</div>
+          <h3>Question types as a column, not separate flows</h3>
+          <p>The team's first instinct was to create separate "Add a Single Select Question" and "Add a Multi Select Question" flows. Putting input type as a dropdown column meant any question could be changed at any time without rebuilding it — and kept the table scannable.</p>
+        </div>
+        <div class="decision-card">
+          <div class="decision-number">Decision 03</div>
+          <h3>Inline expansion for type-specific config</h3>
+          <p>When Multi Select is chosen, the row expands inline to reveal a label/option editor with draggable chips. Other types stay collapsed. This kept the default table dense and readable, while still allowing the depth that complex question types required.</p>
+        </div>
+      </div>
+
+      <div class="highlight-box">
+        Post-MVP, Clone Existing RFI became a top-requested feature. Once one Coca-Cola RFI was built well, it could become the starting point for Nestle and Unilever — cutting setup time from hours to minutes.
+      </div>
+    </div>
+
+
+    <!-- ── SECTION 8: THE HOMEPAGE ── -->
+    <div class="case-section">
+      <div class="section-divider">Managing Flows — The homepage</div>
+      <h2>The operational hub for the commerce team</h2>
+      <p>Once Flows existed, admins needed a place to manage them. The Flow homepage became the operational hub where the commerce team tracked everything running in parallel.</p>
+
+      <!-- Image placeholder: Flow Homepage -->
+      <div class="img-placeholder">
+        <svg width="32" height="32" fill="none" stroke="currentColor" stroke-width="1.5" viewBox="0 0 24 24"><rect x="3" y="3" width="18" height="18" rx="2"/><path d="M3 9h18M9 21V9"/></svg>
+        <span>Add screenshot here — Flow homepage showing RFI groups (Retail Media Capabilities, DSP Capabilities) with Flow cards and progress bars</span>
+      </div>
+
+      <div class="decision-grid">
+        <div class="decision-card">
+          <div class="decision-number">IA Decision</div>
+          <h3>Grouped by RFI type, not by client</h3>
+          <p>Early sketches grouped Flows by client — all Coca-Cola Flows together, all Nestle Flows together. User testing flipped that. Commerce admins were more often working across clients on the same capability than across capabilities for one client. Grouping by RFI type mapped to how they actually thought about their week.</p>
+        </div>
+        <div class="decision-card">
+          <div class="decision-number">Card Design</div>
+          <h3>Triage at a glance</h3>
+          <p>Each Flow card surfaces what an admin needs to triage quickly: the Flow name, who created it, when it was last touched, and a progress bar showing how close it is to completion. The progress bar is the single most-used affordance on the screen — more on how it got there in Section 9.</p>
+        </div>
+        <div class="decision-card">
+          <div class="decision-number">Color Coding</div>
+          <h3>Progress bars are color-coded by completion</h3>
+          <p>Orange for low, yellow for mid, green near completion. This came directly from user feedback and carries through consistently to the partner retailer status cards in the tracking dashboard — keeping the visual language coherent across the product.</p>
+        </div>
+      </div>
+    </div>
+
+
+    <!-- ── SECTION 9: TRACKING ── -->
+    <div class="case-section">
+      <div class="section-divider">Tracking responses at scale</div>
+      <h2>One screen replaced a daily status spreadsheet</h2>
+      <p>This is where Flow earned its name. Opening any Flow shows the current status of every partner retailer it's been sent to, in one glance.</p>
+
+      <!-- Image placeholder: Coca-Cola Flow 2023 tracking dashboard -->
+      <div class="img-placeholder tall">
+        <svg width="32" height="32" fill="none" stroke="currentColor" stroke-width="1.5" viewBox="0 0 24 24"><rect x="3" y="3" width="18" height="18" rx="2"/><path d="M3 9h18M9 21V9"/></svg>
+        <span>Add screenshot here — Coca-Cola Flow 2023 tracking dashboard showing partner retailer status cards (Kroger, Kroger + Criteo, 7-Eleven) with 3-step journey</span>
+      </div>
+
+      <p>Each card represents one retailer and shows three steps of their journey through the evaluation:</p>
+      <p><strong>Insight Sent to Partner Admin</strong> — the RFI has been emailed and accessed. <strong>Scoring Complete / Ready for Scoring / Submitted for Review</strong> — the current state of the response. <strong>Approved</strong> — the GroupM admin has signed off and the data is ready to publish.</p>
+      <p>The contextual CTA on each card changes with state. A retailer mid-scoring shows "Score" as the active action. An approved retailer shows "Review." A retailer still in early stages has the action greyed out — there's nothing to do yet.</p>
+      <p>Once every retailer is approved, the Publish Flow button becomes active. That's the moment the cycle officially closes and the data flows back into Fusion for Coca-Cola's media planners.</p>
+      <div class="highlight-box">
+        For the commerce team, this screen replaced a status spreadsheet that had to be manually updated every day. For GroupM admins running multiple Flows in parallel, it was the difference between "I'll get back to you" and "I can tell you exactly where we are."
+      </div>
+    </div>
+
+
+    <!-- ── SECTION 10: ITERATION ── -->
+    <div class="case-section">
+      <div class="section-divider">Iterating from user feedback</div>
+      <h2>Tags → Progress bars: a small change with large impact</h2>
+      <p>The first version of the Flow homepage used tags to indicate status — small pills that read "In Progress," "Awaiting Review," "Complete." It tested well enough to ship in early prototypes.</p>
+      <p>It didn't hold up with real users.</p>
+      <p>Once the commerce team started using the prototype with actual workloads, the feedback was consistent: tags told them <em>what state</em> a Flow was in, but not <em>how close it was to being done</em>. They were used to thinking in proportions — "we've got responses from 30 out of 50 retailers" — and a discrete tag didn't capture that.</p>
+
+      <div class="iteration-grid">
+        <div class="iteration-card">
+          <div class="iteration-placeholder">[ Screenshot: Status tags — "In Progress", "Awaiting Review", "Complete" pills ]</div>
+          <div class="iteration-label">
+            <div class="iteration-label-title">V1 — Status tags</div>
+            <p>Answered "where is this Flow?" — but gave no sense of completion or how much was left to do.</p>
+          </div>
+        </div>
+        <div class="iteration-card chosen">
+          <div class="iteration-placeholder">[ Screenshot: Color-coded progress bars — orange / yellow / green ]</div>
+          <div class="iteration-label">
+            <div class="iteration-label-title">V2 — Progress bars</div>
+            <p>Answered "how far along is this?" — mapped directly to how the commerce team thought about their work.</p>
+            <span class="chosen-pill">✓ Shipped in MVP</span>
+          </div>
+        </div>
+      </div>
+
+      <p>The change was small in design effort and large in user impact. It's also a useful reminder that the right answer from user research isn't always to add features — sometimes it's to swap the affordance you already have for one that maps better to how users think.</p>
+    </div>
+
+
+    <!-- ── SECTION 11: OUTCOMES ── -->
+    <div class="case-section">
+      <div class="section-divider">Outcomes &amp; impact</div>
+      <h2>Flow's MVP shipped on time — and landed on three fronts</h2>
+
+      <div class="outcome-grid">
+        <div class="outcome-card">
+          <div class="outcome-number">Weeks → Days</div>
+          <div class="outcome-label">RFI cycle time reduced. A complete Coca-Cola Retail Capabilities Evaluation — built, sent, collected, scored, approved, and published — went from a multi-week process to a few days.</div>
+        </div>
+        <div class="outcome-card">
+          <div class="outcome-number">1 → Multiple</div>
+          <div class="outcome-label">Brands adopting Flow. Coca-Cola was the launch client. Once the MVP validated the model, additional brands were already in onboarding when our team merged with Copilot.</div>
+        </div>
+        <div class="outcome-card">
+          <div class="outcome-number">4 → 40+</div>
+          <div class="outcome-label">Team members after merger. Our four-person team was folded into Copilot — a 40+ person org — as the platform was recognized as foundational to GroupM's broader commerce product strategy.</div>
+        </div>
+      </div>
+
+      <p>The architecture of Flow + RFIs was deliberately built to be reused. Coca-Cola was the launch client, but once the MVP proved out, expansion to additional brands required no redesign — a direct outcome of the early decision to abstract RFIs as templates and Flows as instances.</p>
+    </div>
+
+
+    <!-- ── SECTION 12: REFLECTIONS ── -->
+    <div class="case-section">
+      <div class="section-divider">Reflections</div>
+      <h2>What this project taught me</h2>
+      <div class="reflection-grid">
+        <div class="reflection-block">
+          <h3>What I learned</h3>
+          <p>The most valuable lesson from Flow was that the right metaphor matters more than the right component library. We had Material UI components available for every part of the product. But the moment that made the RFI Builder work was choosing to treat the form like a spreadsheet — not because spreadsheets are pretty, but because that's the mental model the commerce team already had from years of doing the work in Excel.</p>
+          <p>Designing for the mental model, not the technology, was the through-line of the whole project. Working at the speed of a four-person team also taught me how to make tradeoffs in real time. When there's no buffer between design and engineering, every decision is also a feasibility conversation. I left this project a stronger collaborator with engineers than I went in.</p>
+        </div>
+        <div class="reflection-block">
+          <h3>What I'd do with more time</h3>
+          <p>With more runway I would have invested earlier in the retailer-facing experience. Partner retailers were our second-most-important user, but they got less attention in the MVP than GroupM admins did. A smoother retailer onboarding flow would have reduced the support load that came with each new client cycle.</p>
+          <p>I would also have built in-app analytics for the commerce team showing patterns across Flows — which retailers consistently respond slowest, which questions get the most freeform "Other" responses, where admins spend the most time. Closing that feedback loop would have made every future RFI better than the last.</p>
+        </div>
+      </div>
+    </div>
+
+
+    <!-- ── NAVIGATION ── -->
+    <div style="border-top:1px solid var(--border); padding:40px 0; display:flex; justify-content:space-between; align-items:center; flex-wrap:wrap; gap:16px;">
+      <a href="beckett.html" class="back-link" style="margin-bottom:0;">← Beckett Corporation</a>
+      <a href="../about.html" class="btn-primary">About me →</a>
+    </div>
+
+  </div>
+</main>
+
+<footer>
+  <div class="footer-inner">
+    <span>© 2026 Anita Shah</span>
+    <div style="display:flex; gap:20px;">
+      <a href="mailto:anitashah92@gmail.com" style="color:var(--tertiary);">anitashah92@gmail.com</a>
+      <a href="https://linkedin.com/in/anita-shah" target="_blank" style="color:var(--tertiary);">LinkedIn</a>
+    </div>
+  </div>
+</footer>
+
+</body>
+</html>
