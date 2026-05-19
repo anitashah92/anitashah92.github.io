@@ -19,6 +19,9 @@
   --beckett-bg: #FFF8ED;
   --beckett-tag: #FDE68A;
   --beckett-text: #92400E;
+  --sra-bg: #FAF6EF;
+  --sra-tag: #F0E6CC;
+  --sra-text: #7A2B1E;
 }
 
 html { scroll-behavior: smooth; }
