@@ -3,20 +3,15 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title></title>
+<title>Fusion Design System — Anita Shah</title>
 <link rel="stylesheet" href="../style.css">
 </head>
 <body>
 <div class="page-card">
-  <nav>
+  <nav><div class="inner">
     <a href="../index.html" class="nav-back"><svg width="13" height="13" viewBox="0 0 13 13" fill="none"><path d="M11 6.5H2M6 2.5L2 6.5l4 4" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg> All work</a>
-    <ul class="nav-links">
-      <li><a href="../index.html#work">Work</a></li>
-      <li><a href="../index.html#about">About</a></li>
-      <li><a href="../assets/Anita_Shah_Resume.pdf">Résumé</a></li>
-      <li><a href="mailto:anitashah92@gmail.com">Contact</a></li>
-    </ul>
-  </nav>
+    <ul class="nav-links"><li><a href="../index.html#work">Work</a></li><li><a href="../index.html#about">About</a></li><li><a href="../assets/Anita_Shah_Resume.pdf">Résumé</a></li><li><a href="mailto:anitashah92@gmail.com">Contact</a></li></ul>
+  </div></nav>
   <div class="cs-wrap">
     <aside class="side">
       <p class="side-label">On this page</p>
@@ -41,12 +36,8 @@
           <div class="snap-item"><p class="snap-lbl">Apps powered</p><p class="snap-val">6 applications</p></div>
           <div class="snap-item"><p class="snap-lbl">Timeline</p><p class="snap-val">3 years</p></div>
         </div>
-        <div class="cs-hero-img">
-          <svg width="28" height="28" viewBox="0 0 28 28" fill="none" style="opacity:.3"><rect x="2" y="2" width="24" height="24" rx="4" stroke="currentColor" stroke-width="1.5"/><path d="M2 10h24M10 10v16" stroke="currentColor" stroke-width="1.5"/></svg>
-          <span>Add component library screenshot</span>
-        </div>
+        <div class="cs-hero-img"><svg width="28" height="28" viewBox="0 0 28 28" fill="none" style="opacity:.3"><rect x="2" y="2" width="24" height="24" rx="4" stroke="currentColor" stroke-width="1.5"/><path d="M2 10h24M10 10v16" stroke="currentColor" stroke-width="1.5"/></svg><span>Add component library screenshot</span></div>
       </div>
-
       <div class="cs-sec" id="outcomes">
         <p class="eyebrow">Impact at a glance</p>
         <div class="outcomes">
@@ -55,90 +46,65 @@
           <div><p class="out-val" style="font-size:17px;padding-top:6px">Full migration</p><p class="out-lbl">Sketch → Figma with zero product downtime</p></div>
         </div>
       </div>
-
       <hr>
-
       <div class="cs-sec" id="problem">
         <p class="eyebrow">The problem</p>
         <h2 class="cs-h2">Six apps. No shared language.</h2>
         <div class="body-text">
-          <p>When I joined GroupM, six products were being built by separate teams with no shared component library. Every designer was reinventing buttons, forms, and data tables independently — creating inconsistency across the product suite and slowing down every new feature.</p>
+          <p>When I joined GroupM, six products were being built by separate teams with no shared component library. Every designer was reinventing buttons, forms, and data tables independently — creating inconsistency and slowing down every new feature.</p>
           <p>The system also lived in Sketch, which the team had outgrown. <strong>Getting one person to approve the Figma migration took 6 months of persistent advocacy</strong> — but once it happened, everything else followed.</p>
         </div>
         <div class="callout"><p>"A design system isn't a deliverable — it's an ongoing conversation between design and engineering about what 'correct' looks like."</p></div>
       </div>
-
       <hr>
-
       <div class="cs-sec" id="foundation">
         <p class="eyebrow">Foundation</p>
         <h2 class="cs-h2">Building on MUI, not against it.</h2>
         <div class="body-text">
-          <p>Engineering was already using MUI (Material UI) as their component framework. Rather than design components that would require custom engineering effort, I built the system directly on top of MUI — extending its theming layer for GroupM's brand rather than replacing it.</p>
-          <p>This meant <strong>every component in Figma had a 1:1 counterpart in code</strong> — no translation gap between what was designed and what shipped. Handoffs became faster, and design debt shrank significantly.</p>
+          <p>Engineering was already using MUI as their component framework. Rather than design components that would require custom engineering effort, I built the system directly on top of MUI — extending its theming layer for GroupM's brand rather than replacing it.</p>
+          <p>This meant <strong>every component in Figma had a 1:1 counterpart in code</strong> — no translation gap between what was designed and what shipped. Handoffs became faster and design debt shrank significantly.</p>
         </div>
-        <div class="img-block">
-          <svg width="24" height="24" viewBox="0 0 24 24" fill="none" style="opacity:.3"><rect x="2" y="2" width="20" height="20" rx="3" stroke="currentColor" stroke-width="1.3"/><path d="M2 9h20M9 9v13" stroke="currentColor" stroke-width="1.3"/></svg>
-          Add component overview screenshot
-        </div>
+        <div class="img-block"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" style="opacity:.3"><rect x="2" y="2" width="20" height="20" rx="3" stroke="currentColor" stroke-width="1.3"/><path d="M2 9h20M9 9v13" stroke="currentColor" stroke-width="1.3"/></svg>Add component overview screenshot</div>
       </div>
-
       <hr>
-
       <div class="cs-sec" id="migration">
         <p class="eyebrow">Migration</p>
         <h2 class="cs-h2">Sketch → Figma without breaking anything.</h2>
         <div class="body-text">
           <p>The migration wasn't just a file transfer — it was a rebuild. Every component was recreated using Figma's auto-layout and variants system, making them more flexible and easier to maintain than their Sketch equivalents.</p>
-          <p>I ran the migration in phases: audit existing components, rebuild in Figma, run a parallel period where both files were live, then deprecate Sketch. <strong>No product team lost access to working components at any point in the process.</strong></p>
+          <p>I ran the migration in phases: audit, rebuild, parallel period, then deprecate Sketch. <strong>No product team lost access to working components at any point.</strong></p>
         </div>
       </div>
-
       <hr>
-
       <div class="cs-sec" id="tokens">
         <p class="eyebrow">Tokens & theming</p>
         <h2 class="cs-h2">One system, multiple brand expressions.</h2>
         <div class="body-text">
-          <p>The system was designed to support multiple products with distinct brand identities sharing the same underlying components. Design tokens — for color, typography, spacing, and elevation — were structured so that swapping a theme didn't require rebuilding anything.</p>
-          <p>This became critical when GroupM needed to white-label the platform for client-facing use. <strong>The token layer made that a configuration change, not a redesign.</strong></p>
+          <p>Design tokens — for color, typography, spacing, and elevation — were structured so that swapping a theme didn't require rebuilding anything. This became critical when GroupM needed to white-label the platform for client-facing use. <strong>The token layer made that a configuration change, not a redesign.</strong></p>
         </div>
-        <div class="img-block">
-          <svg width="24" height="24" viewBox="0 0 24 24" fill="none" style="opacity:.3"><rect x="2" y="2" width="20" height="20" rx="3" stroke="currentColor" stroke-width="1.3"/><path d="M2 9h20M9 9v13" stroke="currentColor" stroke-width="1.3"/></svg>
-          Add token structure screenshot
-        </div>
+        <div class="img-block"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" style="opacity:.3"><rect x="2" y="2" width="20" height="20" rx="3" stroke="currentColor" stroke-width="1.3"/><path d="M2 9h20M9 9v13" stroke="currentColor" stroke-width="1.3"/></svg>Add token structure screenshot</div>
       </div>
-
       <hr>
-
       <div class="cs-sec" id="reflections">
         <p class="eyebrow">Reflections</p>
         <h2 class="cs-h2">What I took from this project.</h2>
         <div class="reflect">
-          <div class="ref"><h4>Systems thinking is design thinking</h4><p>Building a design system forced me to think at a level above any individual screen — about how decisions compound, and how consistency is actually maintained over time.</p></div>
-          <div class="ref"><h4>Advocacy is part of the job</h4><p>Six months to get one approval sounds frustrating — but it taught me how to make a case for design investment in business terms, not just design ones.</p></div>
+          <div class="ref"><h4>Systems thinking is design thinking</h4><p>Building a design system forced me to think above any individual screen — about how decisions compound and how consistency is actually maintained over time.</p></div>
+          <div class="ref"><h4>Advocacy is part of the job</h4><p>Six months to get one approval taught me how to make a case for design investment in business terms, not just design ones.</p></div>
           <div class="ref"><h4>Documentation is a product</h4><p>The best component in the world is useless if nobody knows how to use it. Writing clear usage guidelines was as important as the components themselves.</p></div>
           <div class="ref"><h4>What I'd do differently</h4><p>Involve engineering in naming conventions earlier. Several token names had to be renamed after launch because they conflicted with how engineers thought about the same concepts.</p></div>
         </div>
       </div>
-
       <div class="case-nav">
         <a href="flow.html" class="cn"><span class="cn-dir">← Previous</span><span class="cn-title">Flow & RFI Builder</span></a>
         <a href="beckett.html" class="cn" style="align-items:flex-end"><span class="cn-dir">Next →</span><span class="cn-title">Beckett iOS</span></a>
       </div>
     </main>
   </div>
-  <footer>
-    <span class="footer-copy">© 2026 Anita Shah</span>
-    <div class="footer-links">
-      <a href="mailto:anitashah92@gmail.com">anitashah92@gmail.com</a>
-      <a href="https://linkedin.com/in/anita-shah" target="_blank">LinkedIn</a>
-    </div>
-  </footer>
+  <footer><div class="inner"><span class="footer-copy">© 2026 Anita Shah</span><div class="footer-links"><a href="mailto:anitashah92@gmail.com">anitashah92@gmail.com</a><a href="https://linkedin.com/in/anita-shah" target="_blank">LinkedIn</a></div></div></footer>
 </div>
 <script>
-const secs=document.querySelectorAll('.cs-sec[id]');
-const links=document.querySelectorAll('.side-links a');
+const secs=document.querySelectorAll('.cs-sec[id]');const links=document.querySelectorAll('.side-links a');
 const obs=new IntersectionObserver(e=>{e.forEach(x=>{if(x.isIntersecting)links.forEach(l=>l.classList.toggle('active',l.getAttribute('href')==='#'+x.target.id))})},{rootMargin:'-15% 0px -75% 0px'});
 secs.forEach(s=>obs.observe(s));
 </script>

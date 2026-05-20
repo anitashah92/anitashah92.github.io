@@ -3,20 +3,15 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title></title>
+<title>Beckett iOS — Anita Shah</title>
 <link rel="stylesheet" href="../style.css">
 </head>
 <body>
 <div class="page-card">
-  <nav>
+  <nav><div class="inner">
     <a href="../index.html" class="nav-back"><svg width="13" height="13" viewBox="0 0 13 13" fill="none"><path d="M11 6.5H2M6 2.5L2 6.5l4 4" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg> All work</a>
-    <ul class="nav-links">
-      <li><a href="../index.html#work">Work</a></li>
-      <li><a href="../index.html#about">About</a></li>
-      <li><a href="../assets/Anita_Shah_Resume.pdf">Résumé</a></li>
-      <li><a href="mailto:anitashah92@gmail.com">Contact</a></li>
-    </ul>
-  </nav>
+    <ul class="nav-links"><li><a href="../index.html#work">Work</a></li><li><a href="../index.html#about">About</a></li><li><a href="../assets/Anita_Shah_Resume.pdf">Résumé</a></li><li><a href="mailto:anitashah92@gmail.com">Contact</a></li></ul>
+  </div></nav>
   <div class="cs-wrap">
     <aside class="side">
       <p class="side-label">On this page</p>
@@ -41,23 +36,17 @@
           <div class="snap-item"><p class="snap-lbl">Device</p><p class="snap-val">IoT Tank Sensor</p></div>
           <div class="snap-item"><p class="snap-lbl">Users</p><p class="snap-val">Homeowners</p></div>
         </div>
-        <div class="cs-hero-img">
-          <svg width="28" height="28" viewBox="0 0 28 28" fill="none" style="opacity:.3"><rect x="2" y="2" width="24" height="24" rx="4" stroke="currentColor" stroke-width="1.5"/><path d="M2 10h24M10 10v16" stroke="currentColor" stroke-width="1.5"/></svg>
-          <span>Add hero screenshot</span>
-        </div>
+        <div class="cs-hero-img"><svg width="28" height="28" viewBox="0 0 28 28" fill="none" style="opacity:.3"><rect x="2" y="2" width="24" height="24" rx="4" stroke="currentColor" stroke-width="1.5"/><path d="M2 10h24M10 10v16" stroke="currentColor" stroke-width="1.5"/></svg><span>Add hero screenshot</span></div>
       </div>
-
       <div class="cs-sec" id="outcomes">
         <p class="eyebrow">Impact at a glance</p>
         <div class="outcomes">
           <div><p class="out-val">E2E</p><p class="out-lbl">Full prototype from research through validation</p></div>
-          <div><p class="out-val">3</p><p class="out-lbl">Display formats tested — dial, arc, single bar, split bar</p></div>
+          <div><p class="out-val">4</p><p class="out-lbl">Display formats tested — dial, arc, single bar, split bar</p></div>
           <div><p class="out-val" style="font-size:17px;padding-top:6px">Edge cases</p><p class="out-lbl">Low fuel, sensor error, and offline states all designed</p></div>
         </div>
       </div>
-
       <hr>
-
       <div class="cs-sec" id="problem">
         <p class="eyebrow">The problem</p>
         <h2 class="cs-h2">It's January. The house is cold. Nobody knows why.</h2>
@@ -67,88 +56,57 @@
         </div>
         <div class="callout"><p>"IoT design lives or dies on edge cases. A tank reading of 0% could mean empty, or it could mean the sensor is offline. Those states need very different responses."</p></div>
       </div>
-
       <hr>
-
       <div class="cs-sec" id="research">
         <p class="eyebrow">Research</p>
         <h2 class="cs-h2">Understanding the mental model of "fuel."</h2>
         <div class="body-text">
-          <p>User interviews with homeowners surfaced a consistent mental model: fuel is thought of like a gas tank — people want a simple visual gauge, not raw percentages. They also think in terms of <strong>days of fuel remaining</strong>, not gallons or percentages.</p>
-          <p>Research also revealed the high-anxiety moments: unexpected cold snaps, extended absences from home, and the anxiety of not knowing if a delivery arrived correctly. Every design decision was filtered through these scenarios.</p>
+          <p>User interviews surfaced a consistent mental model: fuel is thought of like a car's gas tank — people want a simple visual gauge, not raw percentages. They also think in terms of <strong>days of fuel remaining</strong>, not gallons.</p>
+          <p>Research also revealed the high-anxiety moments: unexpected cold snaps, extended absences from home, and not knowing if a delivery arrived correctly. Every design decision was filtered through these scenarios.</p>
         </div>
       </div>
-
       <hr>
-
       <div class="cs-sec" id="design">
         <p class="eyebrow">Design</p>
         <h2 class="cs-h2">Preference testing the gauge.</h2>
-        <div class="body-text">
-          <p>Four display formats were tested with users to find the most intuitive fuel gauge representation.</p>
-        </div>
+        <div class="body-text"><p>Four display formats were tested to find the most intuitive fuel gauge representation.</p></div>
         <div class="compare">
-          <div class="cmp">
-            <p class="cmp-lbl">Dial gauge</p>
-            <p class="cmp-title">Familiar, but imprecise</p>
-            <p class="cmp-body">Users recognised it immediately from car dashboards. But they found it hard to read exact levels and felt it took up too much space.</p>
-          </div>
-          <div class="cmp win">
-            <p class="cmp-lbl">Vertical bar</p>
-            <p class="cmp-title">Clear and scannable</p>
-            <p class="cmp-body">Simple fill bar with colour shift (green → amber → red) as level drops. Users found it the fastest to read at a glance. Paired with "~14 days remaining" text below.</p>
-            <span class="win-badge">✓ Preferred</span>
-          </div>
+          <div class="cmp"><p class="cmp-lbl">Dial gauge</p><p class="cmp-title">Familiar, but imprecise</p><p class="cmp-body">Users recognised it immediately from car dashboards — but found it hard to read exact levels and felt it took up too much space.</p></div>
+          <div class="cmp win"><p class="cmp-lbl">Vertical bar</p><p class="cmp-title">Clear and scannable</p><p class="cmp-body">Simple fill bar with colour shift green → amber → red as level drops. Fastest to read at a glance. Paired with "~14 days remaining" text below.</p><span class="win-badge">✓ Preferred</span></div>
         </div>
-        <div class="img-block">
-          <svg width="24" height="24" viewBox="0 0 24 24" fill="none" style="opacity:.3"><rect x="2" y="2" width="20" height="20" rx="3" stroke="currentColor" stroke-width="1.3"/></svg>
-          Add gauge preference testing screenshot
-        </div>
+        <div class="img-block"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" style="opacity:.3"><rect x="2" y="2" width="20" height="20" rx="3" stroke="currentColor" stroke-width="1.3"/></svg>Add gauge preference testing screenshot</div>
       </div>
-
       <hr>
-
       <div class="cs-sec" id="testing">
         <p class="eyebrow">Testing</p>
         <h2 class="cs-h2">Where it got hard: the edge cases.</h2>
         <div class="body-text">
-          <p>The core flow was straightforward. The real design work was in the states that happen when things go wrong — and making sure users could tell the difference between a real problem and a false alarm.</p>
-          <p><strong>Low fuel alert</strong> — triggered at 20%, with a direct "Order fuel" CTA linking to the homeowner's preferred supplier. Tested timing of the notification: too early caused alert fatigue, too late caused anxiety.</p>
-          <p><strong>Sensor offline</strong> — distinct visual state making clear the reading may be stale. Users needed to know the app wasn't broken — just the connection. Added a "Last updated X hours ago" timestamp.</p>
-          <p><strong>Post-delivery confirmation</strong> — after an oil delivery, the gauge should update. If it doesn't within 24 hours, prompt the homeowner to verify the delivery happened correctly.</p>
+          <p><strong>Low fuel alert</strong> — triggered at 20%, with a direct "Order fuel" CTA. Tested notification timing: too early caused alert fatigue, too late caused anxiety.</p>
+          <p><strong>Sensor offline</strong> — distinct visual state making clear the reading may be stale. Added a "Last updated X hours ago" timestamp so users could tell the difference between a real problem and a lost connection.</p>
+          <p><strong>Post-delivery confirmation</strong> — if the gauge doesn't update within 24 hours of a delivery, prompt the homeowner to verify the delivery happened correctly.</p>
         </div>
       </div>
-
       <hr>
-
       <div class="cs-sec" id="reflections">
         <p class="eyebrow">Reflections</p>
         <h2 class="cs-h2">What I took from this project.</h2>
         <div class="reflect">
           <div class="ref"><h4>Design for the worst day</h4><p>The happiest state — full tank, sensor connected — needed almost no design. The real work was in low fuel, offline, and error states. That's where trust is made or broken.</p></div>
           <div class="ref"><h4>Preference testing is worth it</h4><p>Four gauge options felt like overkill early on. But the clear preference for the vertical bar — and the reasons behind it — shaped the whole visual language of the app.</p></div>
-          <div class="ref"><h4>Consumer vs. enterprise</h4><p>Coming from enterprise tools, this project was a shift. Consumer users have zero tolerance for confusion and no training budget. Every label and icon had to stand alone.</p></div>
+          <div class="ref"><h4>Consumer vs. enterprise</h4><p>Coming from enterprise tools, this was a shift. Consumer users have zero tolerance for confusion and no training budget. Every label and icon had to stand alone.</p></div>
           <div class="ref"><h4>What I'd add</h4><p>A delivery scheduling integration — so users could reorder directly from the app rather than being sent to a third-party site. The handoff felt abrupt in testing.</p></div>
         </div>
       </div>
-
       <div class="case-nav">
         <a href="design-system.html" class="cn"><span class="cn-dir">← Previous</span><span class="cn-title">Fusion Design System</span></a>
         <a href="sra.html" class="cn" style="align-items:flex-end"><span class="cn-dir">Next →</span><span class="cn-title">SRA Website</span></a>
       </div>
     </main>
   </div>
-  <footer>
-    <span class="footer-copy">© 2026 Anita Shah</span>
-    <div class="footer-links">
-      <a href="mailto:anitashah92@gmail.com">anitashah92@gmail.com</a>
-      <a href="https://linkedin.com/in/anita-shah" target="_blank">LinkedIn</a>
-    </div>
-  </footer>
+  <footer><div class="inner"><span class="footer-copy">© 2026 Anita Shah</span><div class="footer-links"><a href="mailto:anitashah92@gmail.com">anitashah92@gmail.com</a><a href="https://linkedin.com/in/anita-shah" target="_blank">LinkedIn</a></div></div></footer>
 </div>
 <script>
-const secs=document.querySelectorAll('.cs-sec[id]');
-const links=document.querySelectorAll('.side-links a');
+const secs=document.querySelectorAll('.cs-sec[id]');const links=document.querySelectorAll('.side-links a');
 const obs=new IntersectionObserver(e=>{e.forEach(x=>{if(x.isIntersecting)links.forEach(l=>l.classList.toggle('active',l.getAttribute('href')==='#'+x.target.id))})},{rootMargin:'-15% 0px -75% 0px'});
 secs.forEach(s=>obs.observe(s));
 </script>
