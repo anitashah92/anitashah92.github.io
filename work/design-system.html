@@ -1,523 +1,436 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <meta name="description" content="Fusion Design System — Building a design system from scratch on top of MUI to power a 3-year, 6-application commerce intelligence platform. Case study by Anita Shah.">
-  <title>Fusion Design System — Anita Shah</title>
-  <link rel="stylesheet" href="../style.css">
-  <style>
-    /* ── Page-level additions ── */
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Fusion Design System — Anita Shah</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Google+Sans+Flex:wght@300;400;500&family=Inter:wght@300;400;500&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="../style.css">
+<style>
 
-    .section-divider {
-      font-size: 11px;
-      font-weight: 500;
-      text-transform: uppercase;
-      letter-spacing: 0.1em;
-      color: var(--tertiary);
-      margin-bottom: 40px;
-      padding-bottom: 12px;
-      border-bottom: 1px solid var(--border);
-    }
+/* ── LAYOUT — matches Insights ── */
+.cs-wrap {
+  display: grid;
+  grid-template-columns: 200px 1fr;
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 48px;
+  min-height: 100vh;
+  align-items: start;
+}
+.cs-main {
+  padding: 52px 0 96px 56px;
+  max-width: 820px;
+}
+.side {
+  position: sticky;
+  top: 64px;
+  height: calc(100vh - 64px);
+  overflow-y: auto;
+  padding: 48px 32px 48px 0;
+  border-right: 1px solid var(--border);
+}
 
-    /* Timeline */
-    .timeline {
-      margin: 28px 0;
-      border-left: 2px solid var(--border);
-      padding-left: 28px;
-    }
-    .timeline-item {
-      position: relative;
-      margin-bottom: 32px;
-    }
-    .timeline-item:last-child { margin-bottom: 0; }
-    .timeline-item::before {
-      content: '';
-      position: absolute;
-      left: -35px;
-      top: 5px;
-      width: 10px;
-      height: 10px;
-      border-radius: 50%;
-      background: var(--fusion-text);
-      border: 2px solid var(--fusion-bg);
-      outline: 2px solid var(--fusion-text);
-    }
-    .timeline-date {
-      font-size: 11px;
-      font-weight: 500;
-      text-transform: uppercase;
-      letter-spacing: 0.08em;
-      color: var(--fusion-text);
-      margin-bottom: 4px;
-    }
-    .timeline-title {
-      font-size: 15px;
-      font-weight: 500;
-      margin-bottom: 6px;
-    }
-    .timeline-desc {
-      font-size: 14px;
-      color: var(--secondary);
-      line-height: 1.7;
-    }
+/* ── IMAGE PLACEHOLDERS ── */
+.img-placeholder {
+  width: 100%;
+  background: var(--hero-bg);
+  border: 1.5px dashed rgba(45,69,32,.25);
+  border-radius: 12px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: var(--text-soft);
+  font-size: 13px;
+  font-weight: 400;
+  flex-direction: column;
+  gap: 8px;
+  text-align: center;
+  padding: 24px;
+}
+.img-placeholder svg { opacity: .3; }
+.img-placeholder-sm { height: 220px; margin: 16px 0; }
+.img-placeholder-lg { height: 360px; margin: 24px 0; }
+.img-placeholder-label {
+  font-size: 11px;
+  font-weight: 500;
+  letter-spacing: .06em;
+  text-transform: uppercase;
+  color: var(--accent);
+  opacity: .6;
+  margin-top: 4px;
+}
+.img-row {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 12px;
+  margin: 16px 0;
+}
 
-    /* Token grid */
-    .token-grid {
-      display: grid;
-      grid-template-columns: repeat(3, 1fr);
-      gap: 16px;
-      margin: 28px 0;
-    }
-    .token-card {
-      border: 1px solid var(--border);
-      border-radius: 10px;
-      overflow: hidden;
-    }
-    .token-swatch {
-      height: 60px;
-    }
-    .token-body {
-      padding: 14px 16px;
-    }
-    .token-name {
-      font-size: 13px;
-      font-weight: 500;
-      margin-bottom: 4px;
-    }
-    .token-desc {
-      font-size: 12px;
-      color: var(--secondary);
-      line-height: 1.55;
-    }
+/* ── METRICS ── */
+.metrics-strip {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 12px;
+  margin: 24px 0;
+}
+.metric-card { background: var(--accent); border-radius: 12px; padding: 28px 24px; }
+.metric-val { font-family: var(--font-head); font-size: 30px; font-weight: 300; color: #fff; line-height: 1; margin-bottom: 8px; letter-spacing: -0.02em; }
+.metric-lbl { font-size: 13px; color: rgba(255,255,255,.6); line-height: 1.5; }
 
-    /* Decision cards */
-    .decision-grid {
-      display: grid;
-      grid-template-columns: repeat(3, 1fr);
-      gap: 16px;
-      margin: 28px 0;
-    }
-    .decision-card {
-      border: 1px solid var(--border);
-      border-radius: 10px;
-      padding: 24px;
-    }
-    .decision-number {
-      font-size: 11px;
-      font-weight: 500;
-      color: var(--tertiary);
-      text-transform: uppercase;
-      letter-spacing: 0.08em;
-      margin-bottom: 8px;
-    }
-    .decision-card h3 {
-      font-size: 15px;
-      font-weight: 500;
-      margin-bottom: 10px;
-    }
-    .decision-card p {
-      font-size: 14px;
-      color: var(--secondary);
-      line-height: 1.7;
-      margin-bottom: 0 !important;
-    }
+/* ── PHASE STEPS ── */
+.phases { display: flex; flex-direction: column; margin: 24px 0; }
+.phase {
+  display: grid;
+  grid-template-columns: 44px 1fr;
+  gap: 20px;
+  padding: 22px 0;
+  border-bottom: 1px solid var(--border);
+  align-items: start;
+}
+.phase:last-child { border-bottom: none; }
+.phase-num {
+  width: 32px; height: 32px; border-radius: 50%;
+  background: var(--accent-light);
+  border: 1.5px solid var(--accent);
+  display: flex; align-items: center; justify-content: center;
+  font-size: 12px; font-weight: 500; color: var(--accent);
+  flex-shrink: 0;
+}
+.phase-label { font-size: 10px; font-weight: 500; letter-spacing: .08em; text-transform: uppercase; color: var(--text-soft); margin-bottom: 4px; }
+.phase-title { font-family: var(--font-head); font-size: 15px; font-weight: 400; color: var(--text); margin-bottom: 6px; }
+.phase-body { font-size: 14px; color: var(--text-mid); line-height: 1.75; }
 
-    /* Before/after */
-    .compare-cols {
-      display: grid;
-      grid-template-columns: 1fr 1fr;
-      gap: 16px;
-      margin: 28px 0;
-    }
-    .compare-col {
-      border: 1px solid var(--border);
-      border-radius: 10px;
-      overflow: hidden;
-    }
-    .compare-col.after { border-color: var(--fusion-tag); }
-    .compare-col-header {
-      padding: 12px 16px;
-      background: var(--bg-soft);
-      border-bottom: 1px solid var(--border);
-      font-size: 11px;
-      font-weight: 500;
-      text-transform: uppercase;
-      letter-spacing: 0.08em;
-      color: var(--tertiary);
-    }
-    .compare-col.after .compare-col-header {
-      background: var(--fusion-bg);
-      color: var(--fusion-text);
-      border-color: var(--fusion-tag);
-    }
-    .compare-col-body {
-      padding: 16px;
-    }
-    .compare-col-body p {
-      font-size: 14px;
-      color: var(--secondary);
-      line-height: 1.7;
-      margin-bottom: 8px !important;
-    }
-    .compare-col-body p:last-child { margin-bottom: 0 !important; }
+/* ── COMPONENT GRID ── */
+.component-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 10px;
+  margin: 20px 0;
+}
+.component-item {
+  background: var(--white);
+  border: 1px solid var(--border);
+  border-radius: 10px;
+  padding: 16px 18px;
+}
+.component-name { font-family: var(--font-head); font-size: 13px; font-weight: 400; color: var(--text); margin-bottom: 3px; }
+.component-desc { font-size: 12px; color: var(--text-soft); line-height: 1.5; }
 
-    /* Img placeholders */
-    .img-full {
-      margin: 28px 0;
-      border: 1px solid var(--border);
-      border-radius: 12px;
-      overflow: hidden;
-    }
-    .img-full img { width: 100%; display: block; }
-    .img-placeholder {
-      margin: 28px 0;
-      border: 2px dashed var(--border);
-      border-radius: 10px;
-      min-height: 320px;
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-      justify-content: center;
-      gap: 8px;
-      background: var(--bg-soft);
-      color: var(--tertiary);
-      font-size: 13px;
-    }
-    .img-placeholder.short { min-height: 220px; }
-
-    /* Outcome row */
-    .outcome-row {
-      display: grid;
-      grid-template-columns: repeat(4, 1fr);
-      gap: 16px;
-      margin: 28px 0;
-    }
-    .outcome-stat {
-      background: var(--bg-soft);
-      border: 1px solid var(--border);
-      border-radius: 10px;
-      padding: 20px;
-    }
-    .outcome-stat-number {
-      font-size: 26px;
-      font-weight: 500;
-      margin-bottom: 6px;
-    }
-    .outcome-stat-label {
-      font-size: 13px;
-      color: var(--secondary);
-      line-height: 1.55;
-    }
-
-    /* Reflection */
-    .reflection-grid {
-      display: grid;
-      grid-template-columns: 1fr 1fr;
-      gap: 32px;
-      margin: 28px 0;
-    }
-    .reflection-block h3 { font-size: 15px; font-weight: 500; margin-bottom: 12px; }
-    .reflection-block p {
-      font-size: 14px;
-      color: var(--secondary);
-      line-height: 1.8;
-      margin-bottom: 12px !important;
-    }
-    .reflection-block p:last-child { margin-bottom: 0 !important; }
-
-    @media (max-width: 720px) {
-      .token-grid    { grid-template-columns: 1fr 1fr; }
-      .decision-grid { grid-template-columns: 1fr; }
-      .compare-cols  { grid-template-columns: 1fr; }
-      .outcome-row   { grid-template-columns: 1fr 1fr; }
-      .reflection-grid { grid-template-columns: 1fr; }
-    }
-  </style>
+/* ── MOBILE ── */
+.mobile-nav-toggle {
+  display: none;
+  position: fixed; bottom: 24px; right: 24px; z-index: 300;
+  background: var(--accent); color: #fff; border: none;
+  border-radius: 100px; padding: 10px 18px;
+  font-family: var(--font-body); font-size: 12px; font-weight: 500;
+  cursor: pointer; box-shadow: 0 4px 16px rgba(0,0,0,.15);
+  gap: 6px; align-items: center;
+}
+@media (max-width: 900px) {
+  .cs-wrap { grid-template-columns: 1fr; padding: 0 24px; }
+  .side { display: none; }
+  .side.open {
+    display: block; position: fixed;
+    top: 0; left: 0; right: 0; bottom: 0;
+    height: 100vh; z-index: 200; background: var(--bg);
+    padding: 48px 32px 32px; border-right: none; overflow-y: auto;
+  }
+  .mobile-nav-toggle { display: flex; }
+  .cs-main { padding: 40px 0 64px; max-width: 100%; }
+  .metrics-strip, .compare, .reflect, .img-row, .component-grid { grid-template-columns: 1fr; }
+  .snap { grid-template-columns: 1fr 1fr; }
+  .snap-item:nth-child(2) { border-right: none; }
+  .snap-item:nth-child(3), .snap-item:nth-child(4) { border-top: 1px solid var(--border); }
+  .snap-item:nth-child(4) { border-right: none; }
+  .case-nav { flex-direction: column; gap: 20px; }
+}
+</style>
 </head>
 <body>
 
-<nav>
-  <div class="nav-inner">
-    <a href="../index.html" class="nav-name">Anita Shah</a>
-    <div class="nav-links">
-      <a href="../index.html#work" class="hide-mobile">Work</a>
-      <a href="../about.html" class="hide-mobile">About</a>
-      <a href="../assets/Anita_Shah_Resume.pdf" target="_blank" class="hide-mobile">Resume</a>
-      <a href="mailto:anitashah92@gmail.com" class="nav-cta">Get in touch</a>
+  <!-- NAV -->
+  <header class="site-nav">
+    <div class="inner">
+      <a href="../index.html" class="nav-logo" style="text-decoration:none">Logo</a>
+      <ul class="nav-links">
+        <li><a href="../index.html#work">Work</a></li>
+        <li><a href="../index.html#about">About</a></li>
+        <li><a href="../assets/Anita_Shah_Resume.pdf">Resume</a></li>
+        <li><a href="mailto:anitashah92@gmail.com" class="nav-cta">Get in touch</a></li>
+      </ul>
     </div>
-  </div>
-</nav>
+  </header>
 
-<main>
-  <div class="container">
+  <div class="cs-wrap">
 
-    <!-- ── SECTION 1: HERO ── -->
-    <div class="case-hero">
-      <a href="../index.html" class="back-link">← Back to work</a>
-      <div class="work-tags" style="margin-bottom:16px;">
-        <span class="tag" style="background:var(--fusion-tag); color:var(--fusion-text);">Design System</span>
-        <span class="tag" style="background:#E0E7FF; color:#3730A3;">Figma</span>
-        <span class="tag" style="background:#F3F4F6; color:#374151;">Component Library</span>
-        <span class="tag" style="background:#F3F4F6; color:#374151;">Theming</span>
+    <!-- STICKY SIDE NAV -->
+    <aside class="side" id="side-nav">
+      <p class="side-label">On this page</p>
+      <ul class="side-links" id="sidenav">
+        <li><a href="#overview" class="active"><span class="sdot"></span>Overview</a></li>
+        <li><a href="#outcomes"><span class="sdot"></span>Outcomes</a></li>
+        <li><a href="#problem"><span class="sdot"></span>The problem</a></li>
+        <li><a href="#foundation"><span class="sdot"></span>Foundation</a></li>
+        <li><a href="#components"><span class="sdot"></span>Components</a></li>
+        <li><a href="#migration"><span class="sdot"></span>Migration</a></li>
+        <li><a href="#tokens"><span class="sdot"></span>Tokens</a></li>
+        <li><a href="#reflections"><span class="sdot"></span>Reflections</a></li>
+      </ul>
+    </aside>
+
+    <main class="cs-main">
+
+      <!-- OVERVIEW -->
+      <div class="cs-sec" id="overview">
+        <div class="cs-tags">
+          <span class="cs-tag">Design System</span>
+          <span class="cs-tag">Figma</span>
+          <span class="cs-tag">Component Library</span>
+        </div>
+        <h1 class="cs-h1">Fusion Design System</h1>
+        <p class="cs-lead">A Figma component library and token system built from scratch on top of MUI — powering 6 applications over 3 years, including a full Sketch-to-Figma migration and multi-brand theming.</p>
+        <div class="snap">
+          <div class="snap-item"><p class="snap-lbl">Role</p><p class="snap-val">Sole Designer</p></div>
+          <div class="snap-item"><p class="snap-lbl">Stack</p><p class="snap-val">Figma + MUI</p></div>
+          <div class="snap-item"><p class="snap-lbl">Apps powered</p><p class="snap-val">6 applications</p></div>
+          <div class="snap-item"><p class="snap-lbl">Timeline</p><p class="snap-val">3 years</p></div>
+        </div>
+        <!-- HERO SCREENSHOT -->
+        <div class="img-placeholder img-placeholder-lg">
+          <svg width="32" height="32" viewBox="0 0 32 32" fill="none"><rect x="2" y="2" width="28" height="28" rx="5" stroke="currentColor" stroke-width="1.5"/><path d="M2 12h28M12 12v18" stroke="currentColor" stroke-width="1.5"/></svg>
+          <span>Component library overview</span>
+          <span class="img-placeholder-label">design-system-hero.png</span>
+        </div>
       </div>
-      <h1>Fusion Design System</h1>
-      <p class="lead">Building a design system from scratch — on top of MUI — to power a 3-year, 6-application commerce intelligence platform used by Fortune 500 brands.</p>
-      <div class="case-meta">
-        <div class="case-meta-item">
-          <div class="case-meta-label">Role</div>
-          <div class="case-meta-value">Senior UX/UI Designer</div>
-        </div>
-        <div class="case-meta-item">
-          <div class="case-meta-label">Timeline</div>
-          <div class="case-meta-value">April 2021 – 2024</div>
-        </div>
-        <div class="case-meta-item">
-          <div class="case-meta-label">Tools</div>
-          <div class="case-meta-value">Figma, MUI, Nivo Rocks</div>
-        </div>
-        <div class="case-meta-item">
-          <div class="case-meta-label">Scale</div>
-          <div class="case-meta-value">50+ components, 6 apps</div>
-        </div>
-      </div>
-    </div>
 
-    <!-- Hero visual -->
-    <div class="case-visual">
-      <img src="../assets/ds-hero.png" alt="Fusion Design System — color palette and component library overview" onerror="this.parentElement.innerHTML='<div class=\'placeholder-img\' style=\'min-height:480px; background:var(--fusion-bg); border:none;\'><svg width=\'40\' height=\'40\' fill=\'none\' stroke=\'var(--fusion-text)\' stroke-width=\'1.5\' viewBox=\'0 0 24 24\'><circle cx=\'12\' cy=\'12\' r=\'10\'/><path d=\'M12 8v4l3 3\'/></svg><span style=\'color:var(--fusion-text); font-size:14px;\'>Add hero — design system overview screenshot (ds-hero.png)</span></div>'">
-    </div>
-
-
-    <!-- ── SECTION 2: THE PROBLEM ── -->
-    <div class="case-section">
-      <div class="section-divider">The problem</div>
-      <h2>Engineers had MUI. Designers had nothing.</h2>
-      <p>When I joined GroupM's Fusion team, the engineering side was already using Material UI (MUI) as its component framework. But there was no design-side system to match it. No shared color tokens, no documented type scale, no Figma component library — just a collection of individual screens built inconsistently across the platform.</p>
-      <p>The team was also using Sketch, which was creating its own friction. Files weren't easily shareable, components couldn't be linked across documents, and prototyping required separate tooling. Every new screen started from scratch rather than from a reusable foundation.</p>
-      <p>As the sole designer responsible for every screen across the platform — and with six applications planned — the gap between what engineering had and what design had wasn't sustainable. I needed to build the design side of the system from scratch, get the team onto better tooling, and maintain both as the platform grew over three years.</p>
-    </div>
-
-
-    <!-- ── SECTION 3: SKETCH → FIGMA ── -->
-    <div class="case-section">
-      <div class="section-divider">First: fixing the tooling</div>
-      <h2>Six months to convince one person — and why it was worth it</h2>
-      <p>Before I could build a proper design system, I needed to move the team off Sketch. The problem wasn't Sketch itself — it was that the head of product and platform was deeply comfortable in it and skeptical of switching. Changing design tools in the middle of an active product build felt like a risk he didn't want to take.</p>
-      <p>I spent six months building the case. I created a formal proposal comparing Figma and Sketch across the dimensions that mattered most to our team: component linking across files, real-time collaboration with engineers, prototyping built in rather than requiring InVision, version history, and browser-based access that didn't require a license per machine.</p>
-
-      <div class="compare-cols">
-        <div class="compare-col">
-          <div class="compare-col-header">Sketch — before</div>
-          <div class="compare-col-body">
-            <p>Components lived in isolated files with no cross-file linking. Any update to a shared component had to be manually propagated across every file it appeared in.</p>
-            <p>Real-time collaboration didn't exist — engineers couldn't inspect designs without a separate Zeplin handoff workflow.</p>
-            <p>Prototyping required InVision, adding a separate tool and export step to every design review.</p>
-            <p>Mac-only, license-per-seat model created access friction for PM and engineering stakeholders.</p>
+      <!-- OUTCOMES -->
+      <div class="cs-sec" id="outcomes">
+        <p class="eyebrow">Impact at a glance</p>
+        <div class="metrics-strip">
+          <div class="metric-card">
+            <p class="metric-val">50+</p>
+            <p class="metric-lbl">Components powering 6 applications</p>
           </div>
-        </div>
-        <div class="compare-col after">
-          <div class="compare-col-header">Figma — after</div>
-          <div class="compare-col-body">
-            <p>Component libraries published from a single source file. Any update to a component propagates everywhere it's used across the entire platform instantly.</p>
-            <p>Engineers could inspect designs, copy CSS, and leave comments directly in the file — no separate handoff tool needed.</p>
-            <p>Prototyping built into the same canvas. Design reviews happened in Figma, with stakeholders clicking through flows live.</p>
-            <p>Browser-based and cross-platform — anyone on the team could view and comment without a paid seat.</p>
+          <div class="metric-card">
+            <p class="metric-val">3 yrs</p>
+            <p class="metric-lbl">Maintained and scaled as the sole designer</p>
+          </div>
+          <div class="metric-card">
+            <p class="metric-val">0</p>
+            <p class="metric-lbl">Product downtime during the Sketch → Figma migration</p>
           </div>
         </div>
       </div>
 
-      <p>The proposal worked. Once the head of product could see the concrete workflow differences laid out side by side, the case was clear. We migrated to Figma and within weeks the benefits were already visible — engineers were inspecting designs directly, components were linked across files, and design reviews became collaborative rather than sequential.</p>
-      <div class="highlight-box">
-        Moving to Figma wasn't just a tool preference. It was the prerequisite for building a real design system — one where a component change propagates everywhere instead of requiring manual updates across dozens of files.
-      </div>
-    </div>
+      <hr>
 
-
-    <!-- ── SECTION 4: FOUNDATIONS ── -->
-    <div class="case-section">
-      <div class="section-divider">Building the foundations</div>
-      <h2>Tokens first — everything else follows</h2>
-      <p>With Figma established as the team's design tool, I started the system with the foundational layer: color tokens, typography, and spacing. These had to map directly to MUI's token structure so that what engineers implemented matched what design specified — without a translation step in the middle.</p>
-
-      <div class="img-full">
-        <img src="../assets/ds-tokens.png" alt="Fusion Design System color tokens and typography scale" onerror="this.parentElement.innerHTML='<div class=\'img-placeholder\' style=\'margin:0; min-height:360px;\'><span>Add screenshot — color token palette and typography scale (ds-tokens.png)</span></div>'">
-      </div>
-
-      <div class="decision-grid">
-        <div class="decision-card">
-          <div class="decision-number">Colors</div>
-          <h3>Semantic tokens over raw hex values</h3>
-          <p>Rather than documenting individual hex values, I built a semantic token layer — Primary, Secondary, Neutral, Error, Warning, Success — each with a full shade scale. This meant engineers referenced token names in code, and changing a brand color later required updating one value, not hunting through the codebase.</p>
+      <!-- PROBLEM -->
+      <div class="cs-sec" id="problem">
+        <p class="eyebrow">The problem</p>
+        <h2 class="cs-h2">Six apps. No shared language.</h2>
+        <div class="body-text">
+          <p>When I joined GroupM, six products were being built by separate teams with no shared component library. Every designer was reinventing buttons, forms, and data tables independently — creating inconsistency and slowing down every new feature.</p>
+          <p>The system also lived in Sketch, which the team had outgrown. <strong>Getting approval for the Figma migration took 6 months of persistent advocacy</strong> — but once it happened, everything else followed.</p>
         </div>
-        <div class="decision-card">
-          <div class="decision-number">Typography</div>
-          <h3>A type scale mapped to MUI's system</h3>
-          <p>Fusion used MUI's default typography system as its base, which I documented in Figma with the exact MUI naming conventions (h1–h6, body1, body2, caption, overline). This meant designers and engineers were speaking the same language when specifying text styles — no conversion or guesswork required.</p>
-        </div>
-        <div class="decision-card">
-          <div class="decision-number">Spacing</div>
-          <h3>8px grid, documented as a constraint</h3>
-          <p>All spacing values — padding, margins, gaps — were built on an 8px base grid, matching MUI's default spacing system. I documented this as a rule in the system rather than leaving it implicit, which meant new components built by design or engineering stayed consistent without explicit sign-off on every value.</p>
-        </div>
-      </div>
-    </div>
-
-
-    <!-- ── SECTION 5: COMPONENTS ── -->
-    <div class="case-section">
-      <div class="section-divider">Component library</div>
-      <h2>50+ components — built to match MUI, documented to scale</h2>
-      <p>With the token layer in place, I built out the component library in Figma — matching every MUI component the engineering team was using and adding the platform-specific components Fusion needed that MUI didn't cover out of the box.</p>
-      <p>Each component was documented with all its variants, states, and usage guidelines. The goal wasn't just visual fidelity to MUI — it was making sure a designer picking up a new screen could find the right component, understand when to use it, and hand it off to engineering without ambiguity.</p>
-
-      <div class="img-full">
-        <img src="../assets/ds-components.png" alt="Fusion Design System component library showing buttons, inputs, cards, and tables across all variants and states" onerror="this.parentElement.innerHTML='<div class=\'img-placeholder\' style=\'margin:0; min-height:400px;\'><span>Add screenshot — component library overview (buttons, inputs, cards, tables with all variants and states) (ds-components.png)</span></div>'">
-      </div>
-
-      <div class="decision-grid">
-        <div class="decision-card">
-          <div class="decision-number">Principle 01</div>
-          <h3>Every state, documented</h3>
-          <p>Default, hover, focus, disabled, error, loading — every interactive component was documented in all states. This eliminated the most common cause of design-engineering gaps: assumptions about what a button looks like when it's disabled, or how an input behaves in an error state.</p>
-        </div>
-        <div class="decision-card">
-          <div class="decision-number">Principle 02</div>
-          <h3>Variants as properties, not separate frames</h3>
-          <p>Using Figma's component properties system, each component's variants (size, color, state) were exposed as dropdown controls in the properties panel. Designers could configure a button to Primary/Large/Hover without duplicating frames — and without accidentally using an outdated version.</p>
-        </div>
-        <div class="decision-card">
-          <div class="decision-number">Principle 03</div>
-          <h3>Platform-specific additions alongside MUI</h3>
-          <p>Fusion had components MUI didn't: data cards, score tiles, evaluation tables, segment selectors. These were built from MUI primitives (typography, color tokens, spacing) rather than from scratch — so they inherited the system's consistency without requiring separate documentation of their foundations.</p>
-        </div>
-      </div>
-    </div>
-
-
-    <!-- ── SECTION 6: DATA VIZ ── -->
-    <div class="case-section">
-      <div class="section-divider">Extending the system — data visualization</div>
-      <h2>Adding charts to a system that wasn't built for them</h2>
-      <p>As Fusion grew, the platform increasingly needed data visualization — treemaps, radar charts, bubble heatmaps, scatter plots, bar charts. MUI didn't include chart components, so the engineering team used Nivo Rocks as the charting library. That meant extending the design system to cover chart patterns that lived outside its original scope.</p>
-      <p>Rather than treating charts as one-off designs, I documented them as system components: each chart type had a defined color palette drawn from the token layer, a consistent approach to axes and labels, interaction states (hover, tooltip, selected), and usage guidelines for when to use each chart type versus the alternatives.</p>
-
-      <div class="img-full">
-        <img src="../assets/ds-dataviz.png" alt="Fusion Design System data visualization components — treemap, bubble heatmap, radar, and scatter plot documented as system components" onerror="this.parentElement.innerHTML='<div class=\'img-placeholder\' style=\'margin:0; min-height:360px;\'><span>Add screenshot — data viz component documentation (treemap, heatmap, radar, scatter) (ds-dataviz.png)</span></div>'">
-      </div>
-
-      <p>Bringing charts into the system rather than leaving them as bespoke designs paid off every time a new chart was needed. The color palette, label sizing, tooltip behavior, and empty state were already decided — designers and engineers could focus on the data question, not the visual language.</p>
-    </div>
-
-
-    <!-- ── SECTION 7: THEMING ── -->
-    <div class="case-section">
-      <div class="section-divider">Theming &amp; workspaces</div>
-      <h2>One system, multiple identities</h2>
-      <p>Fusion was used across GroupM's different operating companies — Mindshare, Wavemaker, and others — each with their own brand identity. A single visual theme wouldn't work. The system needed to support multiple themes without duplicating components.</p>
-      <p>I built a theming layer on top of the token system. Each Op-Co had its own theme file that overrode the semantic color tokens — primary brand color, accent, surface colors — while inheriting everything else from the base system. The components themselves never changed; only the token values they referenced did.</p>
-
-      <div class="img-full">
-        <img src="../assets/ds-theming.png" alt="Fusion Design System theming — multiple Op-Co themes applied to the same components" onerror="this.parentElement.innerHTML='<div class=\'img-placeholder\' style=\'margin:0; min-height:360px;\'><span>Add screenshot — theming overview showing same components in different Op-Co themes (ds-theming.png)</span></div>'">
-      </div>
-
-      <p>This meant onboarding a new Op-Co didn't require rebuilding any screens. A new theme file plus their brand tokens, and the entire platform instantly reflected their identity. What could have been weeks of work per client became a few hours of configuration.</p>
-    </div>
-
-
-    <!-- ── SECTION 8: MAINTENANCE ── -->
-    <div class="case-section">
-      <div class="section-divider">Maintaining the system over 3 years</div>
-      <h2>A design system is never done</h2>
-      <p>Building the system was the first challenge. Keeping it accurate, useful, and adopted over three years while the platform was actively growing was the harder one.</p>
-
-      <div class="timeline">
-        <div class="timeline-item">
-          <div class="timeline-date">Year 1 — 2021</div>
-          <div class="timeline-title">Foundations + migration</div>
-          <div class="timeline-desc">Sketch → Figma migration, token layer, core component library built to match MUI. System adopted for all new screens from day one.</div>
-        </div>
-        <div class="timeline-item">
-          <div class="timeline-date">Year 2 — 2022</div>
-          <div class="timeline-title">Data viz additions</div>
-          <div class="timeline-desc">Charts brought into the system as Insights was built. Nivo Rocks components documented alongside MUI components. Chart usage guidelines written to prevent misuse.</div>
-        </div>
-        <div class="timeline-item">
-          <div class="timeline-date">Year 3 — 2023</div>
-          <div class="timeline-title">Theming + scale</div>
-          <div class="timeline-desc">Theming layer added for Op-Co workspaces. User panel for Fusion & Copilot maintained at 200+ participants. System extended to cover 6 applications across the platform.</div>
+        <div class="callout">
+          <p>"A design system isn't a deliverable — it's an ongoing conversation between design and engineering about what 'correct' looks like."</p>
         </div>
       </div>
 
-      <p>The most important maintenance decision was treating the system as a living document rather than a deliverable. Every new component built for a specific feature was reviewed for whether it belonged in the shared library. Every inconsistency caught in a design review became a system update rather than a one-off fix. That discipline was what kept the system relevant rather than stale.</p>
-    </div>
+      <hr>
 
-
-    <!-- ── SECTION 9: OUTCOMES ── -->
-    <div class="case-section">
-      <div class="section-divider">Outcomes</div>
-      <h2>Three years of design velocity, powered by one system</h2>
-
-      <div class="outcome-row">
-        <div class="outcome-stat">
-          <div class="outcome-stat-number">50+</div>
-          <div class="outcome-stat-label">Components documented across MUI base and Fusion-specific additions</div>
+      <!-- FOUNDATION -->
+      <div class="cs-sec" id="foundation">
+        <p class="eyebrow">Foundation</p>
+        <h2 class="cs-h2">Building on MUI, not against it.</h2>
+        <div class="body-text">
+          <p>Engineering was already using MUI as their component framework. Rather than design components that would require custom engineering effort, I built the system directly on top of MUI — extending its theming layer for GroupM's brand rather than replacing it.</p>
+          <p>This meant <strong>every component in Figma had a 1:1 counterpart in code</strong> — no translation gap between what was designed and what shipped. Handoffs became faster and design debt shrank significantly.</p>
         </div>
-        <div class="outcome-stat">
-          <div class="outcome-stat-number">6</div>
-          <div class="outcome-stat-label">Applications built on top of the system over 3 years</div>
-        </div>
-        <div class="outcome-stat">
-          <div class="outcome-stat-number">Multi-theme</div>
-          <div class="outcome-stat-label">Op-Co theming layer allowed new client workspaces without rebuilding any screens</div>
-        </div>
-        <div class="outcome-stat">
-          <div class="outcome-stat-number">0 handoff tools</div>
-          <div class="outcome-stat-label">Engineers inspected designs directly in Figma — no Zeplin, no InVision, no separate spec docs</div>
+        <div class="img-placeholder img-placeholder-lg">
+          <svg width="32" height="32" viewBox="0 0 32 32" fill="none"><rect x="2" y="2" width="28" height="28" rx="5" stroke="currentColor" stroke-width="1.5"/><path d="M2 12h28M12 12v18" stroke="currentColor" stroke-width="1.5"/></svg>
+          <span>Figma component library screenshot</span>
+          <span class="img-placeholder-label">design-system-figma.png</span>
         </div>
       </div>
 
-      <p>The system's biggest impact was invisible: it's the work that didn't have to be done. Components that didn't need to be rebuilt for each new feature. Color values that didn't need to be re-specified in each new screen. Themes that didn't require new component designs. The compounding value of a design system only becomes clear over time — and three years of building on top of it made that visible.</p>
-    </div>
+      <hr>
 
-
-    <!-- ── SECTION 10: REFLECTIONS ── -->
-    <div class="case-section">
-      <div class="section-divider">Reflections</div>
-      <h2>What this project taught me</h2>
-      <div class="reflection-grid">
-        <div class="reflection-block">
-          <h3>What I learned</h3>
-          <p>Building a design system as a solo designer taught me that the hardest part isn't the component architecture — it's the communication and adoption work. A system that lives in a Figma file nobody opens isn't a system; it's a library. Making it useful meant making it discoverable, making the naming intuitive, and being the person who consistently pointed back to it when shortcuts emerged in design reviews.</p>
-          <p>The Sketch → Figma migration also taught me how to move an organization through a tool change. The proposal wasn't just a feature comparison — it was a business case. Framing the switch in terms of engineering handoff efficiency and reduced tooling costs landed better than any design argument I could have made.</p>
+      <!-- COMPONENTS -->
+      <div class="cs-sec" id="components">
+        <p class="eyebrow">Components</p>
+        <h2 class="cs-h2">50+ components covering the full product surface.</h2>
+        <div class="body-text">
+          <p>The library was structured into categories so designers could find what they needed quickly and engineers could map directly to their codebase.</p>
         </div>
-        <div class="reflection-block">
-          <h3>What I'd do with more time</h3>
-          <p>With more resources, I would have invested in a documentation site — a living Storybook or Zeroheight instance where component usage, code snippets, and design guidelines lived alongside each other. The Figma file was the source of truth for design, but engineers had to cross-reference it manually. A shared doc site would have closed that loop.</p>
-          <p>I also would have run a formal design system audit annually — measuring component adoption across the platform, flagging components that had drifted from spec, and retiring ones no longer in use. The system stayed accurate through vigilance rather than process, and a more structured audit cycle would have made that more scalable as the team grew.</p>
+        <div class="component-grid">
+          <div class="component-item"><p class="component-name">Buttons</p><p class="component-desc">Primary, secondary, ghost, icon — all states</p></div>
+          <div class="component-item"><p class="component-name">Forms</p><p class="component-desc">Inputs, selects, checkboxes, radio, date pickers</p></div>
+          <div class="component-item"><p class="component-name">Navigation</p><p class="component-desc">Navbars, tabs, breadcrumbs, sidebars</p></div>
+          <div class="component-item"><p class="component-name">Data tables</p><p class="component-desc">Sortable, filterable, paginated, with row actions</p></div>
+          <div class="component-item"><p class="component-name">Cards</p><p class="component-desc">Content, stat, action, and metric card variants</p></div>
+          <div class="component-item"><p class="component-name">Modals & Drawers</p><p class="component-desc">Confirmation, form, and detail panel patterns</p></div>
+          <div class="component-item"><p class="component-name">Badges & Tags</p><p class="component-desc">Status indicators, labels, category chips</p></div>
+          <div class="component-item"><p class="component-name">Charts</p><p class="component-desc">Wrappers for Nivo chart types used across Fusion</p></div>
+          <div class="component-item"><p class="component-name">Empty states</p><p class="component-desc">No data, error, loading, and onboarding patterns</p></div>
+        </div>
+        <!-- COMPONENT SCREENSHOT -->
+        <div class="img-placeholder img-placeholder-sm">
+          <svg width="24" height="24" viewBox="0 0 24 24" fill="none"><rect x="2" y="2" width="20" height="20" rx="3" stroke="currentColor" stroke-width="1.3"/></svg>
+          <span>Component sheet screenshot</span>
+          <span class="img-placeholder-label">design-system-components.png</span>
         </div>
       </div>
-    </div>
 
+      <hr>
 
-    <!-- ── NAVIGATION ── -->
-    <div style="border-top:1px solid var(--border); padding:40px 0; display:flex; justify-content:space-between; align-items:center; flex-wrap:wrap; gap:16px;">
-      <a href="insights.html" class="back-link" style="margin-bottom:0;">← Fusion Insights</a>
-      <a href="beckett.html" class="btn-primary">Next project →</a>
-    </div>
+      <!-- MIGRATION -->
+      <div class="cs-sec" id="migration">
+        <p class="eyebrow">Migration</p>
+        <h2 class="cs-h2">Sketch → Figma without breaking anything.</h2>
+        <div class="body-text">
+          <p>The migration wasn't just a file transfer — it was a full rebuild. Every component was recreated using Figma's auto-layout and variants system, making them more flexible and maintainable than their Sketch equivalents.</p>
+        </div>
+        <div class="phases">
+          <div class="phase">
+            <div class="phase-num">01</div>
+            <div>
+              <p class="phase-label">Audit</p>
+              <p class="phase-title">Inventory every existing component</p>
+              <p class="phase-body">Catalogued all Sketch components in use across six products — documenting variants, states, and usage patterns before touching anything in Figma.</p>
+            </div>
+          </div>
+          <div class="phase">
+            <div class="phase-num">02</div>
+            <div>
+              <p class="phase-label">Rebuild</p>
+              <p class="phase-title">Recreate in Figma with auto-layout and variants</p>
+              <p class="phase-body">Built each component from scratch using Figma's native systems — not a Sketch import. This meant cleaner structure, proper constraints, and components that actually behaved correctly.</p>
+            </div>
+          </div>
+          <div class="phase">
+            <div class="phase-num">03</div>
+            <div>
+              <p class="phase-label">Parallel period</p>
+              <p class="phase-title">Both files live simultaneously</p>
+              <p class="phase-body">Ran both Sketch and Figma libraries in parallel while teams migrated at their own pace. No team was forced off Sketch before they were ready.</p>
+            </div>
+          </div>
+          <div class="phase">
+            <div class="phase-num">04</div>
+            <div>
+              <p class="phase-label">Deprecation</p>
+              <p class="phase-title">Sketch retired — Figma is the source of truth</p>
+              <p class="phase-body">Once all six product teams had migrated, the Sketch library was officially deprecated. Zero product downtime across the entire transition.</p>
+            </div>
+          </div>
+        </div>
+        <div class="img-row">
+          <div class="img-placeholder img-placeholder-sm">
+            <svg width="24" height="24" viewBox="0 0 24 24" fill="none"><rect x="2" y="2" width="20" height="20" rx="3" stroke="currentColor" stroke-width="1.3"/></svg>
+            <span>Before — Sketch library</span>
+            <span class="img-placeholder-label">ds-sketch-before.png</span>
+          </div>
+          <div class="img-placeholder img-placeholder-sm">
+            <svg width="24" height="24" viewBox="0 0 24 24" fill="none"><rect x="2" y="2" width="20" height="20" rx="3" stroke="currentColor" stroke-width="1.3"/></svg>
+            <span>After — Figma library</span>
+            <span class="img-placeholder-label">ds-figma-after.png</span>
+          </div>
+        </div>
+      </div>
 
+      <hr>
+
+      <!-- TOKENS -->
+      <div class="cs-sec" id="tokens">
+        <p class="eyebrow">Tokens & theming</p>
+        <h2 class="cs-h2">One system, multiple brand expressions.</h2>
+        <div class="body-text">
+          <p>Design tokens — for color, typography, spacing, and elevation — were structured so that swapping a theme didn't require rebuilding anything. This became critical when GroupM needed to white-label the platform for client-facing use.</p>
+          <p><strong>The token layer made that a configuration change, not a redesign.</strong> A new client theme could be applied in hours rather than weeks.</p>
+        </div>
+        <div class="img-placeholder img-placeholder-lg">
+          <svg width="32" height="32" viewBox="0 0 32 32" fill="none"><rect x="2" y="2" width="28" height="28" rx="5" stroke="currentColor" stroke-width="1.5"/><path d="M2 12h28M12 12v18" stroke="currentColor" stroke-width="1.5"/></svg>
+          <span>Token structure screenshot</span>
+          <span class="img-placeholder-label">design-system-tokens.png</span>
+        </div>
+      </div>
+
+      <hr>
+
+      <!-- REFLECTIONS -->
+      <div class="cs-sec" id="reflections">
+        <p class="eyebrow">Reflections</p>
+        <h2 class="cs-h2">What I took from this project.</h2>
+        <div class="reflect">
+          <div class="ref">
+            <h4>Systems thinking is design thinking</h4>
+            <p>Building a design system forced me to think above any individual screen — about how decisions compound and how consistency is actually maintained over time.</p>
+          </div>
+          <div class="ref">
+            <h4>Advocacy is part of the job</h4>
+            <p>Six months to get one approval taught me how to make a case for design investment in business terms, not just design ones.</p>
+          </div>
+          <div class="ref">
+            <h4>Documentation is a product</h4>
+            <p>The best component in the world is useless if nobody knows how to use it. Writing clear usage guidelines was as important as building the components.</p>
+          </div>
+          <div class="ref">
+            <h4>What I'd do differently</h4>
+            <p>Involve engineering in naming conventions earlier. Several token names had to be renamed after launch because they conflicted with how engineers thought about the same concepts.</p>
+          </div>
+        </div>
+      </div>
+
+      <!-- CASE NAV -->
+      <div class="case-nav">
+        <a href="insights.html" class="cn">
+          <span class="cn-dir">← Previous</span>
+          <span class="cn-title">Fusion Insights</span>
+        </a>
+        <a href="beckett.html" class="cn" style="align-items:flex-end">
+          <span class="cn-dir">Next →</span>
+          <span class="cn-title">Beckett iOS</span>
+        </a>
+      </div>
+
+    </main>
   </div>
-</main>
 
-<footer>
-  <div class="footer-inner">
-    <span>© 2026 Anita Shah</span>
-    <div style="display:flex; gap:20px;">
-      <a href="mailto:anitashah92@gmail.com" style="color:var(--tertiary);">anitashah92@gmail.com</a>
-      <a href="https://linkedin.com/in/anita-shah" target="_blank" style="color:var(--tertiary);">LinkedIn</a>
+  <!-- FOOTER -->
+  <footer class="site-footer">
+    <div class="inner">
+      <div class="footer-left">
+        <span class="footer-name">Anita Shah</span>
+        <span class="footer-tagline">UX/UI Designer · Sunnyvale, CA</span>
+      </div>
+      <div class="footer-right">
+        <span class="footer-avail"><span class="footer-dot"></span>Open to work</span>
+        <span class="footer-copy">© 2026</span>
+      </div>
     </div>
-  </div>
-</footer>
+  </footer>
 
+  <button class="mobile-nav-toggle" onclick="openSideNav()">
+    <svg width="14" height="14" viewBox="0 0 14 14" fill="none"><path d="M1 3h12M1 7h12M1 11h12" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/></svg>
+    Sections
+  </button>
+
+<script>
+const secs = document.querySelectorAll('.cs-sec[id]');
+const links = document.querySelectorAll('.side-links a');
+const obs = new IntersectionObserver(e => {
+  e.forEach(x => {
+    if (x.isIntersecting) links.forEach(l => l.classList.toggle('active', l.getAttribute('href') === '#' + x.target.id));
+  });
+}, { rootMargin: '-15% 0px -75% 0px' });
+secs.forEach(s => obs.observe(s));
+function openSideNav() { document.getElementById('side-nav').classList.add('open'); }
+function closeSideNav() { document.getElementById('side-nav').classList.remove('open'); }
+links.forEach(l => l.addEventListener('click', closeSideNav));
+</script>
 </body>
 </html>
