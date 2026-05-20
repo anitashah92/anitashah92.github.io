@@ -7,9 +7,8 @@
 
 /* ── TOKENS ── */
 :root {
-  --bg:          #EEECEA;
-  --card:        #F8F8F6;
-  --surface:     #E8E6E2;
+  --bg:          #F8F8F6;
+  --surface:     #EEECEA;
   --text:        #111110;
   --text-mid:    #3A3A35;
   --text-soft:   #6E6E66;
@@ -17,6 +16,8 @@
   --accent-bg:   #EEF0E7;
   --border:      rgba(17,17,16,0.09);
   --border-mid:  rgba(17,17,16,0.18);
+  --max:         1200px;
+  --pad:         56px;
   --font-head:   'STIX Two Text', Georgia, serif;
   --font-body:   'Inter', sans-serif;
 }
@@ -25,7 +26,7 @@
 *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
 html { scroll-behavior: smooth; }
 body {
-  background: var(--card);
+  background: var(--bg);
   color: var(--text);
   font-family: var(--font-body);
   font-size: 15px;
@@ -40,22 +41,26 @@ h1, h2, h3, h4 {
   line-height: 1.15;
 }
 
-/* ── PAGE CARD — full width, no container ── */
-.page-card {
-  background: var(--card);
-  max-width: 100%;
+/* ── PAGE CARD — full width ── */
+.page-card { background: var(--bg); }
+
+/* ── INNER WRAPPER — centers content, consistent padding ── */
+.inner {
+  max-width: var(--max);
+  margin: 0 auto;
+  padding: 0 var(--pad);
 }
 
 /* ── NAV ── */
 nav {
+  border-bottom: 1px solid var(--border);
+  padding: 0;
+}
+nav .inner {
   display: flex;
   align-items: center;
   justify-content: space-between;
-  padding: 28px 56px;
-  border-bottom: 1px solid var(--border);
-  max-width: 1400px;
-  margin: 0 auto;
-  width: 100%;
+  height: 64px;
 }
 .nav-logo {
   font-family: var(--font-head);
@@ -88,7 +93,7 @@ nav {
 }
 .nav-cta:hover {
   background: var(--text) !important;
-  color: var(--card) !important;
+  color: var(--bg) !important;
 }
 .nav-back {
   display: inline-flex;
@@ -104,10 +109,12 @@ nav {
 
 /* ── HOMEPAGE: HERO ── */
 .hero {
-  padding: 80px 56px 88px;
   border-bottom: 1px solid var(--border);
-  max-width: 1400px;
-  margin: 0 auto;
+  padding: 0;
+}
+.hero .inner {
+  padding-top: 88px;
+  padding-bottom: 96px;
 }
 .hero-name {
   font-family: var(--font-head);
@@ -125,7 +132,7 @@ nav {
   line-height: 1.1;
   letter-spacing: -.015em;
   color: var(--text-soft);
-  margin-bottom: 28px;
+  margin-bottom: 32px;
 }
 .hero-desc {
   font-size: 15px;
@@ -134,19 +141,15 @@ nav {
   line-height: 1.8;
   max-width: 520px;
 }
-.hero-desc strong {
-  font-weight: 600;
-  color: var(--text);
-}
+.hero-desc strong { font-weight: 600; color: var(--text); }
 
 /* ── SECTION HEADER ── */
 .sec-header {
   display: flex;
   align-items: baseline;
   justify-content: space-between;
-  padding: 56px 56px 24px;
-  max-width: 1400px;
-  margin: 0 auto;
+  padding-top: 64px;
+  padding-bottom: 28px;
 }
 .sec-title {
   font-family: var(--font-head);
@@ -162,7 +165,7 @@ nav {
 }
 
 /* ── FEATURED CARD ── */
-.feat-wrap { padding: 0 56px 14px; max-width: 1400px; margin: 0 auto; }
+.feat-wrap { padding-bottom: 14px; }
 .feat {
   display: block;
   text-decoration: none;
@@ -177,7 +180,7 @@ nav {
   box-shadow: 0 10px 40px rgba(17,17,16,.09);
 }
 .feat-vis {
-  height: 320px;
+  height: 360px;
   background: #DDE4C8;
   position: relative;
   overflow: hidden;
@@ -197,7 +200,7 @@ nav {
   align-items: center;
   justify-content: space-between;
   gap: 24px;
-  background: var(--card);
+  background: var(--bg);
 }
 .feat-tag {
   font-size: 10px;
@@ -245,12 +248,7 @@ nav {
 }
 
 /* ── WORK LIST ── */
-.list {
-  padding: 0 56px;
-  border-top: 1px solid var(--border);
-  max-width: 1400px;
-  margin: 0 auto;
-}
+.list { border-top: 1px solid var(--border); }
 .row {
   display: grid;
   grid-template-columns: 1fr auto auto auto;
@@ -310,17 +308,16 @@ nav {
 
 /* ── ABOUT ── */
 .about { border-top: 1px solid var(--border); }
-.about-inner {
-  padding: 0 56px 72px;
+.about .inner {
   display: grid;
   grid-template-columns: 1fr 1fr;
-  gap: 48px;
+  gap: 64px;
   align-items: start;
-  max-width: 1400px;
-  margin: 0 auto;
+  padding-top: 0;
+  padding-bottom: 88px;
 }
 .photo {
-  aspect-ratio: 4/3;
+  aspect-ratio: 3/4;
   background: var(--surface);
   border-radius: 12px;
   display: flex;
@@ -332,20 +329,20 @@ nav {
   border: 1px solid var(--border);
 }
 .bio {
-  font-size: 14px;
+  font-size: 15px;
   font-weight: 400;
   color: var(--text-mid);
   line-height: 1.85;
-  margin-bottom: 24px;
+  margin-bottom: 28px;
 }
-.bio p { margin-bottom: 14px; }
+.bio p { margin-bottom: 16px; }
 .bio p:last-child { margin-bottom: 0; }
 .bio strong { font-weight: 600; color: var(--text); }
 .skills {
   display: flex;
   flex-wrap: wrap;
   gap: 7px;
-  margin-bottom: 26px;
+  margin-bottom: 28px;
 }
 .skill {
   font-size: 11px;
@@ -370,14 +367,13 @@ nav {
 .alink:hover { color: var(--accent); border-color: var(--accent); }
 
 /* ── FOOTER ── */
-footer {
-  border-top: 1px solid var(--border);
-  padding: 28px 56px;
+footer { border-top: 1px solid var(--border); }
+footer .inner {
   display: flex;
   align-items: center;
   justify-content: space-between;
-  max-width: 1400px;
-  margin: 0 auto;
+  padding-top: 28px;
+  padding-bottom: 28px;
 }
 .footer-copy { font-size: 12px; color: var(--text-soft); }
 .footer-links { display: flex; gap: 24px; }
@@ -407,20 +403,26 @@ footer {
 }
 @keyframes pulse { 0%,100%{opacity:1} 50%{opacity:.3} }
 
-/* ── CASE STUDY: LAYOUT ── */
+/* ══════════════════════════════════════════
+   CASE STUDY PAGES
+   ══════════════════════════════════════════ */
+
 .cs-wrap {
   display: grid;
-  grid-template-columns: 180px 1fr;
+  grid-template-columns: 220px 1fr;
   min-height: 100vh;
+  max-width: var(--max);
+  margin: 0 auto;
+  padding: 0 var(--pad);
 }
 
-/* ── CASE STUDY: SIDE NAV ── */
+/* ── SIDE NAV ── */
 .side {
   position: sticky;
   top: 0;
   height: 100vh;
   overflow-y: auto;
-  padding: 48px 0 48px 56px;
+  padding: 48px 32px 48px 0;
   border-right: 1px solid var(--border);
 }
 .side-label {
@@ -462,9 +464,13 @@ footer {
   flex-shrink: 0;
 }
 
-/* ── CASE STUDY: MAIN CONTENT ── */
-.cs-main { padding: 48px 56px 80px; max-width: 720px; }
+/* ── CASE STUDY MAIN ── */
+.cs-main {
+  padding: 48px 0 80px 56px;
+  max-width: 680px;
+}
 
+/* HEADER */
 .cs-tags { display: flex; flex-wrap: wrap; gap: 6px; margin-bottom: 18px; }
 .cs-tag {
   font-size: 10px;
@@ -493,7 +499,7 @@ footer {
   margin-bottom: 32px;
 }
 
-/* ── SNAPSHOT BAR ── */
+/* SNAPSHOT */
 .snap {
   display: grid;
   grid-template-columns: repeat(4, 1fr);
@@ -523,7 +529,7 @@ footer {
   line-height: 1.3;
 }
 
-/* ── HERO IMAGE PLACEHOLDER ── */
+/* HERO IMAGE */
 .cs-hero-img {
   width: 100%;
   height: 280px;
@@ -542,7 +548,7 @@ footer {
   text-align: center;
 }
 
-/* ── OUTCOMES ── */
+/* OUTCOMES */
 .outcomes {
   background: var(--text);
   border-radius: 12px;
@@ -568,7 +574,7 @@ footer {
   line-height: 1.55;
 }
 
-/* ── CASE STUDY SECTIONS ── */
+/* SECTIONS */
 .cs-sec { margin-bottom: 48px; scroll-margin-top: 80px; }
 .eyebrow {
   font-size: 10px;
@@ -597,7 +603,7 @@ footer {
 .body-text p:last-child { margin-bottom: 0; }
 .body-text strong { font-weight: 600; color: var(--text); }
 
-/* ── CALLOUT ── */
+/* CALLOUT */
 .callout {
   border-left: 2px solid var(--accent);
   padding: 14px 18px;
@@ -613,13 +619,13 @@ footer {
   line-height: 1.65;
 }
 
-/* ── COMPARE CARDS ── */
+/* COMPARE */
 .compare { display: grid; grid-template-columns: 1fr 1fr; gap: 10px; margin: 20px 0; }
 .cmp {
   border: 1px solid var(--border);
   border-radius: 8px;
   padding: 18px 20px;
-  background: var(--card);
+  background: var(--bg);
 }
 .cmp.win { border-color: var(--accent); background: var(--accent-bg); }
 .cmp-lbl {
@@ -655,7 +661,7 @@ footer {
   margin-top: 10px;
 }
 
-/* ── IMAGE BLOCK PLACEHOLDER ── */
+/* IMAGE PLACEHOLDER */
 .img-block {
   width: 100%;
   background: var(--surface);
@@ -675,7 +681,7 @@ footer {
   gap: 8px;
 }
 
-/* ── REFLECTIONS GRID ── */
+/* REFLECTIONS */
 .reflect { display: grid; grid-template-columns: 1fr 1fr; gap: 10px; }
 .ref {
   background: var(--surface);
@@ -697,10 +703,10 @@ footer {
   line-height: 1.7;
 }
 
-/* ── RULE ── */
+/* RULE */
 hr { border: none; border-top: 1px solid var(--border); margin: 44px 0; }
 
-/* ── CASE NAV ── */
+/* CASE NAV */
 .case-nav {
   display: flex;
   justify-content: space-between;
