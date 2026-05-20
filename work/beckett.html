@@ -1,674 +1,287 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <meta name="description" content="Beckett Corporation — IoT mobile UX case study by Anita Shah. Designing a smart oil tank monitoring app for a heritage heating company.">
-  <title>Beckett Corporation — Anita Shah</title>
-  <link rel="stylesheet" href="../style.css">
-  <style>
-    /* ── Page-level additions (no overrides to style.css) ── */
-
-    /* Divider label */
-    .section-divider {
-      font-size: 11px;
-      font-weight: 500;
-      text-transform: uppercase;
-      letter-spacing: 0.1em;
-      color: var(--tertiary);
-      margin-bottom: 40px;
-      padding-bottom: 12px;
-      border-bottom: 1px solid var(--border);
-    }
-
-    /* Research cards */
-    .research-grid {
-      display: grid;
-      grid-template-columns: repeat(3, 1fr);
-      gap: 16px;
-      margin: 28px 0;
-    }
-    .research-card {
-      background: var(--bg-soft);
-      border: 1px solid var(--border);
-      border-radius: 10px;
-      padding: 24px;
-    }
-    .research-card-label {
-      font-size: 11px;
-      font-weight: 500;
-      text-transform: uppercase;
-      letter-spacing: 0.08em;
-      color: var(--tertiary);
-      margin-bottom: 10px;
-    }
-    .research-card h3 {
-      font-size: 15px;
-      font-weight: 500;
-      margin-bottom: 10px;
-    }
-    .research-card p {
-      font-size: 14px;
-      color: var(--secondary);
-      line-height: 1.7;
-      margin-bottom: 0 !important;
-    }
-
-    /* System diagram wrapper */
-    .diagram-wrap {
-      margin: 28px 0;
-      border: 1px solid var(--border);
-      border-radius: 12px;
-      overflow: hidden;
-      padding: 32px 24px;
-      background: var(--bg-soft);
-    }
-
-    /* User stories table */
-    .stories-wrap {
-      margin: 28px 0;
-      border: 1px solid var(--border);
-      border-radius: 10px;
-      overflow: hidden;
-    }
-    .stories-header {
-      display: grid;
-      grid-template-columns: 1fr 100px;
-      padding: 10px 20px;
-      background: var(--bg-soft);
-      border-bottom: 1px solid var(--border);
-    }
-    .stories-header span {
-      font-size: 11px;
-      font-weight: 500;
-      text-transform: uppercase;
-      letter-spacing: 0.07em;
-      color: var(--tertiary);
-    }
-    .stories-group-label {
-      font-size: 11px;
-      font-weight: 500;
-      text-transform: uppercase;
-      letter-spacing: 0.08em;
-      color: var(--tertiary);
-      padding: 12px 20px 4px;
-      background: var(--bg);
-    }
-    .story-row {
-      display: grid;
-      grid-template-columns: 1fr 100px;
-      align-items: center;
-      padding: 11px 20px;
-      border-bottom: 1px solid var(--border);
-      gap: 16px;
-    }
-    .story-row:last-child { border-bottom: none; }
-    .story-text { font-size: 14px; color: var(--secondary); }
-    .badge {
-      display: inline-block;
-      font-size: 11px;
-      font-weight: 500;
-      padding: 3px 10px;
-      border-radius: 20px;
-    }
-    .badge-high   { background: #FEE2E2; color: #991B1B; }
-    .badge-medium { background: #FEF3C7; color: #92400E; }
-    .badge-low    { background: #F3F4F6; color: #374151; }
-
-    /* Decision callouts */
-    .decision-grid {
-      display: grid;
-      grid-template-columns: repeat(3, 1fr);
-      gap: 16px;
-      margin: 28px 0;
-    }
-    .decision-card {
-      border: 1px solid var(--border);
-      border-radius: 10px;
-      padding: 24px;
-    }
-    .decision-number {
-      font-size: 11px;
-      font-weight: 500;
-      color: var(--tertiary);
-      text-transform: uppercase;
-      letter-spacing: 0.08em;
-      margin-bottom: 8px;
-    }
-    .decision-card h3 {
-      font-size: 15px;
-      font-weight: 500;
-      margin-bottom: 10px;
-    }
-    .decision-card p {
-      font-size: 14px;
-      color: var(--secondary);
-      line-height: 1.7;
-      margin-bottom: 0 !important;
-    }
-
-    /* Reflection columns */
-    .reflection-grid {
-      display: grid;
-      grid-template-columns: 1fr 1fr;
-      gap: 32px;
-      margin: 28px 0;
-    }
-    .reflection-block h3 {
-      font-size: 15px;
-      font-weight: 500;
-      margin-bottom: 12px;
-    }
-    .reflection-block p {
-      font-size: 14px;
-      color: var(--secondary);
-      line-height: 1.8;
-      margin-bottom: 12px !important;
-    }
-    .reflection-block p:last-child { margin-bottom: 0 !important; }
-
-    /* Prototype embed / video placeholder */
-    .proto-wrap {
-      margin: 28px 0;
-      border: 1px solid var(--border);
-      border-radius: 12px;
-      overflow: hidden;
-      background: var(--beckett-bg);
-      min-height: 480px;
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-      justify-content: center;
-      gap: 10px;
-      color: var(--beckett-text);
-    }
-    .proto-wrap svg { opacity: 0.5; }
-    .proto-wrap span { font-size: 13px; }
-
-    /* Screens grid */
-    .screens-grid {
-      display: grid;
-      grid-template-columns: repeat(3, 1fr);
-      gap: 16px;
-      margin: 28px 0;
-    }
-    .screen-card {
-      border: 1px solid var(--border);
-      border-radius: 10px;
-      overflow: hidden;
-    }
-    .screen-placeholder {
-      background: var(--beckett-bg);
-      min-height: 200px;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      font-size: 12px;
-      color: var(--beckett-text);
-      border-bottom: 1px solid var(--border);
-    }
-    .screen-label {
-      padding: 10px 14px;
-      font-size: 13px;
-      color: var(--secondary);
-    }
-
-    /* Preference test pairs */
-    .pref-grid {
-      display: grid;
-      grid-template-columns: 1fr 1fr;
-      gap: 16px;
-      margin: 20px 0 28px;
-    }
-    .pref-card {
-      background: var(--bg-soft);
-      border: 1px solid var(--border);
-      border-radius: 10px;
-      padding: 20px;
-      display: flex;
-      flex-direction: column;
-      gap: 8px;
-    }
-    .pref-label {
-      font-size: 11px;
-      font-weight: 500;
-      text-transform: uppercase;
-      letter-spacing: 0.08em;
-      color: var(--tertiary);
-    }
-    .pref-card p {
-      font-size: 14px;
-      color: var(--secondary);
-      line-height: 1.7;
-      margin-bottom: 0 !important;
-    }
-    .pref-winner {
-      display: inline-flex;
-      align-items: center;
-      gap: 4px;
-      font-size: 12px;
-      font-weight: 500;
-      color: #065F46;
-      background: #D1FAE5;
-      padding: 2px 8px;
-      border-radius: 20px;
-      width: fit-content;
-    }
-
-    @media (max-width: 720px) {
-      .research-grid  { grid-template-columns: 1fr; }
-      .decision-grid  { grid-template-columns: 1fr; }
-      .reflection-grid { grid-template-columns: 1fr; }
-      .screens-grid   { grid-template-columns: 1fr 1fr; }
-      .pref-grid      { grid-template-columns: 1fr; }
-    }
-  </style>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Beckett iOS — Anita Shah</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Google+Sans+Flex:wght@300;400;500&family=Inter:wght@300;400;500&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="../style.css">
+<style>
+.cs-wrap { display: grid; grid-template-columns: 200px 1fr; max-width: 1200px; margin: 0 auto; padding: 0 48px; min-height: 100vh; align-items: start; }
+.cs-main { padding: 52px 0 96px 56px; max-width: 820px; }
+.side { position: sticky; top: 64px; height: calc(100vh - 64px); overflow-y: auto; padding: 48px 32px 48px 0; border-right: 1px solid var(--border); }
+.img-placeholder { width: 100%; background: var(--hero-bg); border: 1.5px dashed rgba(45,69,32,.25); border-radius: 12px; display: flex; align-items: center; justify-content: center; color: var(--text-soft); font-size: 13px; flex-direction: column; gap: 8px; text-align: center; padding: 24px; }
+.img-placeholder svg { opacity: .3; }
+.img-placeholder-sm { height: 220px; margin: 16px 0; }
+.img-placeholder-lg { height: 360px; margin: 24px 0; }
+.img-placeholder-label { font-size: 11px; font-weight: 500; letter-spacing: .06em; text-transform: uppercase; color: var(--accent); opacity: .6; margin-top: 4px; }
+.img-row { display: grid; grid-template-columns: 1fr 1fr; gap: 12px; margin: 16px 0; }
+.img-row-3 { display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 12px; margin: 16px 0; }
+.metrics-strip { display: grid; grid-template-columns: repeat(3, 1fr); gap: 12px; margin: 24px 0; }
+.metric-card { background: var(--accent); border-radius: 12px; padding: 28px 24px; }
+.metric-val { font-family: var(--font-head); font-size: 30px; font-weight: 300; color: #fff; line-height: 1; margin-bottom: 8px; letter-spacing: -0.02em; }
+.metric-lbl { font-size: 13px; color: rgba(255,255,255,.6); line-height: 1.5; }
+.edge-cases { display: flex; flex-direction: column; gap: 0; margin: 20px 0; }
+.edge-case { display: grid; grid-template-columns: 44px 1fr; gap: 20px; padding: 20px 0; border-bottom: 1px solid var(--border); align-items: start; }
+.edge-case:last-child { border-bottom: none; }
+.edge-icon { width: 32px; height: 32px; border-radius: 8px; background: var(--accent-light); border: 1px solid var(--accent); display: flex; align-items: center; justify-content: center; font-size: 14px; flex-shrink: 0; }
+.edge-title { font-family: var(--font-head); font-size: 14px; font-weight: 400; color: var(--text); margin-bottom: 4px; }
+.edge-body { font-size: 13px; color: var(--text-mid); line-height: 1.65; }
+.mobile-nav-toggle { display: none; position: fixed; bottom: 24px; right: 24px; z-index: 300; background: var(--accent); color: #fff; border: none; border-radius: 100px; padding: 10px 18px; font-family: var(--font-body); font-size: 12px; font-weight: 500; cursor: pointer; box-shadow: 0 4px 16px rgba(0,0,0,.15); gap: 6px; align-items: center; }
+@media (max-width: 900px) {
+  .cs-wrap { grid-template-columns: 1fr; padding: 0 24px; }
+  .side { display: none; }
+  .side.open { display: block; position: fixed; top: 0; left: 0; right: 0; bottom: 0; height: 100vh; z-index: 200; background: var(--bg); padding: 48px 32px 32px; border-right: none; overflow-y: auto; }
+  .mobile-nav-toggle { display: flex; }
+  .cs-main { padding: 40px 0 64px; max-width: 100%; }
+  .metrics-strip, .compare, .reflect, .img-row, .img-row-3 { grid-template-columns: 1fr; }
+  .snap { grid-template-columns: 1fr 1fr; }
+  .snap-item:nth-child(2) { border-right: none; }
+  .snap-item:nth-child(3), .snap-item:nth-child(4) { border-top: 1px solid var(--border); }
+  .snap-item:nth-child(4) { border-right: none; }
+  .case-nav { flex-direction: column; gap: 20px; }
+}
+</style>
 </head>
 <body>
-
-<nav>
-  <div class="nav-inner">
-    <a href="../index.html" class="nav-name">Anita Shah</a>
-    <div class="nav-links">
-      <a href="../index.html#work" class="hide-mobile">Work</a>
-      <a href="../about.html" class="hide-mobile">About</a>
-      <a href="../assets/Anita_Shah_Resume.pdf" target="_blank" class="hide-mobile">Resume</a>
-      <a href="mailto:anitashah92@gmail.com" class="nav-cta">Get in touch</a>
+  <header class="site-nav">
+    <div class="inner">
+      <a href="../index.html" class="nav-logo" style="text-decoration:none">Logo</a>
+      <ul class="nav-links">
+        <li><a href="../index.html#work">Work</a></li>
+        <li><a href="../index.html#about">About</a></li>
+        <li><a href="../assets/Anita_Shah_Resume.pdf">Resume</a></li>
+        <li><a href="mailto:anitashah92@gmail.com" class="nav-cta">Get in touch</a></li>
+      </ul>
     </div>
+  </header>
+
+  <div class="cs-wrap">
+    <aside class="side" id="side-nav">
+      <p class="side-label">On this page</p>
+      <ul class="side-links" id="sidenav">
+        <li><a href="#overview" class="active"><span class="sdot"></span>Overview</a></li>
+        <li><a href="#outcomes"><span class="sdot"></span>Outcomes</a></li>
+        <li><a href="#problem"><span class="sdot"></span>The problem</a></li>
+        <li><a href="#research"><span class="sdot"></span>Research</a></li>
+        <li><a href="#design"><span class="sdot"></span>Design</a></li>
+        <li><a href="#edge-cases"><span class="sdot"></span>Edge cases</a></li>
+        <li><a href="#reflections"><span class="sdot"></span>Reflections</a></li>
+      </ul>
+    </aside>
+
+    <main class="cs-main">
+
+      <div class="cs-sec" id="overview">
+        <div class="cs-tags">
+          <span class="cs-tag">iOS</span>
+          <span class="cs-tag">Mobile</span>
+          <span class="cs-tag">IoT</span>
+        </div>
+        <h1 class="cs-h1">Beckett iOS</h1>
+        <p class="cs-lead">An end-to-end iOS prototype for real-time oil tank monitoring — designed for homeowners managing heating fuel through a connected IoT sensor, from first research through edge-case validation.</p>
+        <div class="snap">
+          <div class="snap-item"><p class="snap-lbl">Role</p><p class="snap-val">Lead UX/UI Designer</p></div>
+          <div class="snap-item"><p class="snap-lbl">Platform</p><p class="snap-val">iOS (Prototype)</p></div>
+          <div class="snap-item"><p class="snap-lbl">Device</p><p class="snap-val">IoT Tank Sensor</p></div>
+          <div class="snap-item"><p class="snap-lbl">Users</p><p class="snap-val">Homeowners</p></div>
+        </div>
+        <div class="img-placeholder img-placeholder-lg">
+          <svg width="32" height="32" viewBox="0 0 32 32" fill="none"><rect x="2" y="2" width="28" height="28" rx="5" stroke="currentColor" stroke-width="1.5"/><path d="M2 12h28M12 12v18" stroke="currentColor" stroke-width="1.5"/></svg>
+          <span>App hero screenshot</span>
+          <span class="img-placeholder-label">beckett-hero.png</span>
+        </div>
+      </div>
+
+      <div class="cs-sec" id="outcomes">
+        <p class="eyebrow">Impact at a glance</p>
+        <div class="metrics-strip">
+          <div class="metric-card">
+            <p class="metric-val">E2E</p>
+            <p class="metric-lbl">Full prototype from research through edge-case validation</p>
+          </div>
+          <div class="metric-card">
+            <p class="metric-val">4</p>
+            <p class="metric-lbl">Gauge formats tested to find the most intuitive design</p>
+          </div>
+          <div class="metric-card">
+            <p class="metric-val">3</p>
+            <p class="metric-lbl">Critical edge cases designed — low fuel, offline, post-delivery</p>
+          </div>
+        </div>
+      </div>
+
+      <hr>
+
+      <div class="cs-sec" id="problem">
+        <p class="eyebrow">The problem</p>
+        <h2 class="cs-h2">It's January. The house is cold. Nobody knows why.</h2>
+        <div class="body-text">
+          <p>Homeowners with oil-heated homes had no reliable way to know their fuel level without physically checking the tank — often outside, in winter. Beckett's IoT sensor could transmit real-time tank data, but there was no consumer app to surface it clearly.</p>
+          <p>The design challenge: translate a <strong>single data point — tank fill percentage — into something genuinely useful</strong>. When to order, how urgent it is, and what to do when something goes wrong.</p>
+        </div>
+        <div class="callout">
+          <p>"IoT design lives or dies on edge cases. A tank reading of 0% could mean empty — or it could mean the sensor is offline. Those two states need very different responses."</p>
+        </div>
+      </div>
+
+      <hr>
+
+      <div class="cs-sec" id="research">
+        <p class="eyebrow">Research</p>
+        <h2 class="cs-h2">Understanding the mental model of "fuel."</h2>
+        <div class="body-text">
+          <p>User interviews surfaced a consistent mental model: fuel is thought of like a car's gas tank. People want a simple visual gauge, not raw percentages. They think in terms of <strong>days of fuel remaining</strong>, not gallons.</p>
+          <p>Research revealed the high-anxiety moments: unexpected cold snaps, extended time away from home, and not knowing if a delivery actually arrived. Every design decision was filtered through these three scenarios.</p>
+        </div>
+        <div class="img-placeholder img-placeholder-sm">
+          <svg width="24" height="24" viewBox="0 0 24 24" fill="none"><rect x="2" y="2" width="20" height="20" rx="3" stroke="currentColor" stroke-width="1.3"/></svg>
+          <span>Research notes / user interview themes</span>
+          <span class="img-placeholder-label">beckett-research.png</span>
+        </div>
+      </div>
+
+      <hr>
+
+      <div class="cs-sec" id="design">
+        <p class="eyebrow">Design</p>
+        <h2 class="cs-h2">Preference testing the gauge — four formats, one winner.</h2>
+        <div class="body-text">
+          <p>Four display formats were tested with users to find the most intuitive fuel gauge.</p>
+        </div>
+        <div class="img-row">
+          <div class="img-placeholder img-placeholder-sm">
+            <svg width="24" height="24" viewBox="0 0 24 24" fill="none"><rect x="2" y="2" width="20" height="20" rx="3" stroke="currentColor" stroke-width="1.3"/></svg>
+            <span>Dial gauge — tested</span>
+            <span class="img-placeholder-label">beckett-gauge-dial.png</span>
+          </div>
+          <div class="img-placeholder img-placeholder-sm">
+            <svg width="24" height="24" viewBox="0 0 24 24" fill="none"><rect x="2" y="2" width="20" height="20" rx="3" stroke="currentColor" stroke-width="1.3"/></svg>
+            <span>Arc gauge — tested</span>
+            <span class="img-placeholder-label">beckett-gauge-arc.png</span>
+          </div>
+        </div>
+        <div class="compare">
+          <div class="cmp">
+            <p class="cmp-lbl">Dial gauge</p>
+            <p class="cmp-title">Familiar, but imprecise</p>
+            <p class="cmp-body">Users recognised it from car dashboards — but found it hard to read exact levels and felt it took up too much screen space.</p>
+          </div>
+          <div class="cmp win">
+            <p class="cmp-lbl">Vertical bar</p>
+            <p class="cmp-title">Clear and immediately scannable</p>
+            <p class="cmp-body">Simple fill bar shifting green → amber → red as level drops. Fastest to read at a glance, paired with "~14 days remaining" below.</p>
+            <span class="win-badge">✓ Preferred</span>
+          </div>
+        </div>
+        <div class="img-placeholder img-placeholder-sm">
+          <svg width="24" height="24" viewBox="0 0 24 24" fill="none"><rect x="2" y="2" width="20" height="20" rx="3" stroke="currentColor" stroke-width="1.3"/></svg>
+          <span>Final gauge design — vertical bar</span>
+          <span class="img-placeholder-label">beckett-gauge-final.png</span>
+        </div>
+      </div>
+
+      <hr>
+
+      <div class="cs-sec" id="edge-cases">
+        <p class="eyebrow">Edge cases</p>
+        <h2 class="cs-h2">The real design work — when things go wrong.</h2>
+        <div class="body-text">
+          <p>The happy state — full tank, sensor connected — needed almost no design. The real work was in the states that happen when things don't go to plan.</p>
+        </div>
+        <div class="edge-cases">
+          <div class="edge-case">
+            <div class="edge-icon">🔴</div>
+            <div>
+              <p class="edge-title">Low fuel alert — triggered at 20%</p>
+              <p class="edge-body">Direct "Order fuel" CTA surfaces immediately. Timing was critical — too early caused alert fatigue, too late caused anxiety. Testing found 20% was the sweet spot.</p>
+            </div>
+          </div>
+          <div class="edge-case">
+            <div class="edge-icon">📡</div>
+            <div>
+              <p class="edge-title">Sensor offline — distinct visual state</p>
+              <p class="edge-body">A "Last updated X hours ago" timestamp makes it clear the reading may be stale. Users could distinguish between a real problem and a dropped connection without panicking.</p>
+            </div>
+          </div>
+          <div class="edge-case">
+            <div class="edge-icon">✅</div>
+            <div>
+              <p class="edge-title">Post-delivery confirmation</p>
+              <p class="edge-body">If the gauge doesn't update within 24 hours of a delivery, the app prompts the homeowner to verify the delivery happened correctly — closing the loop on a common anxiety moment.</p>
+            </div>
+          </div>
+        </div>
+        <div class="img-row-3">
+          <div class="img-placeholder img-placeholder-sm">
+            <svg width="24" height="24" viewBox="0 0 24 24" fill="none"><rect x="2" y="2" width="20" height="20" rx="3" stroke="currentColor" stroke-width="1.3"/></svg>
+            <span>Low fuel alert</span>
+            <span class="img-placeholder-label">beckett-low-fuel.png</span>
+          </div>
+          <div class="img-placeholder img-placeholder-sm">
+            <svg width="24" height="24" viewBox="0 0 24 24" fill="none"><rect x="2" y="2" width="20" height="20" rx="3" stroke="currentColor" stroke-width="1.3"/></svg>
+            <span>Sensor offline</span>
+            <span class="img-placeholder-label">beckett-offline.png</span>
+          </div>
+          <div class="img-placeholder img-placeholder-sm">
+            <svg width="24" height="24" viewBox="0 0 24 24" fill="none"><rect x="2" y="2" width="20" height="20" rx="3" stroke="currentColor" stroke-width="1.3"/></svg>
+            <span>Post-delivery</span>
+            <span class="img-placeholder-label">beckett-delivery.png</span>
+          </div>
+        </div>
+      </div>
+
+      <hr>
+
+      <div class="cs-sec" id="reflections">
+        <p class="eyebrow">Reflections</p>
+        <h2 class="cs-h2">What I took from this project.</h2>
+        <div class="reflect">
+          <div class="ref"><h4>Design for the worst day</h4><p>The happy state needed almost no design. The real work was in low fuel, offline, and error states — that's where trust is made or broken.</p></div>
+          <div class="ref"><h4>Preference testing is worth it</h4><p>Four gauge options felt like overkill early on. But the clear preference for the vertical bar — and the reasons behind it — shaped the whole visual language of the app.</p></div>
+          <div class="ref"><h4>Consumer vs. enterprise</h4><p>Coming from enterprise tools, this was a shift. Consumer users have zero tolerance for confusion and no training budget. Every label and icon had to stand alone.</p></div>
+          <div class="ref"><h4>What I'd add</h4><p>A delivery scheduling integration — so users could reorder directly from the app rather than being sent to a third-party site. The handoff felt abrupt in testing.</p></div>
+        </div>
+      </div>
+
+      <div class="case-nav">
+        <a href="design-system.html" class="cn"><span class="cn-dir">← Previous</span><span class="cn-title">Fusion Design System</span></a>
+        <a href="sra.html" class="cn" style="align-items:flex-end"><span class="cn-dir">Next →</span><span class="cn-title">SRA Website</span></a>
+      </div>
+
+    </main>
   </div>
-</nav>
 
-<main>
-  <div class="container">
-
-    <!-- ── SECTION 1: HERO ── -->
-    <div class="case-hero">
-      <a href="../index.html" class="back-link">← Back to work</a>
-      <div class="work-tags" style="margin-bottom:16px;">
-        <span class="tag" style="background:var(--beckett-tag); color:var(--beckett-text);">iOS / Mobile</span>
-        <span class="tag" style="background:#FEE2E2; color:#991B1B;">IoT</span>
-        <span class="tag" style="background:#F3F4F6; color:#374151;">UX Research</span>
-        <span class="tag" style="background:#F3F4F6; color:#374151;">UI Design</span>
+  <footer class="site-footer">
+    <div class="inner">
+      <div class="footer-left">
+        <span class="footer-name">Anita Shah</span>
+        <span class="footer-tagline">UX/UI Designer · Sunnyvale, CA</span>
       </div>
-      <h1>Beckett Corporation</h1>
-      <p class="lead">Helping an 87-year-old heating company give homeowners peace of mind — from anywhere in the world.</p>
-      <div class="case-meta">
-        <div class="case-meta-item">
-          <div class="case-meta-label">Role</div>
-          <div class="case-meta-value">UX Designer &amp; Consultant</div>
-        </div>
-        <div class="case-meta-item">
-          <div class="case-meta-label">Team</div>
-          <div class="case-meta-value">PM, iOS Eng, Cloud Eng</div>
-        </div>
-        <div class="case-meta-item">
-          <div class="case-meta-label">Platform</div>
-          <div class="case-meta-value">iOS Mobile App</div>
-        </div>
-        <div class="case-meta-item">
-          <div class="case-meta-label">Timeline</div>
-          <div class="case-meta-value">May 2019 – Jan 2020</div>
-        </div>
+      <div class="footer-right">
+        <span class="footer-avail"><span class="footer-dot"></span>Open to work</span>
+        <span class="footer-copy">© 2026</span>
       </div>
     </div>
+  </footer>
 
-    <!-- Hero visual -->
-    <div class="case-visual">
-      <!-- Replace this placeholder with your best hi-fi dashboard mockup (1400×880px recommended) -->
-      <div class="placeholder-img" style="min-height:480px; background:var(--beckett-bg); border:none;">
-        <svg width="40" height="40" fill="none" stroke="#F59E0B" stroke-width="1.5" viewBox="0 0 24 24"><rect x="5" y="2" width="14" height="20" rx="2"/><path d="M12 18h.01"/></svg>
-        <span style="color:#F59E0B; font-size:14px;">Add hero mockup here — dashboard with Low Fuel Warning state (1400 × 880px)</span>
-      </div>
-    </div>
+  <button class="mobile-nav-toggle" onclick="openSideNav()">
+    <svg width="14" height="14" viewBox="0 0 14 14" fill="none"><path d="M1 3h12M1 7h12M1 11h12" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/></svg>
+    Sections
+  </button>
 
-    <!-- ── SECTION 2: THE PROBLEM ── -->
-    <div class="case-section">
-      <div class="section-divider">The problem</div>
-      <h2>It's January. The house is cold.</h2>
-      <p>You check the thermostat — it's fine. You head to the basement and find the oil tank sitting empty. Your supplier won't be out until tomorrow.</p>
-      <p>For Beckett Corporation customers, this wasn't a rare edge case. It was a recurring reality.</p>
-      <p>Beckett has been building oil and gas burners since 1937 — reliable, industrial hardware trusted by homeowners and commercial customers alike. But their devices had no way to communicate. Tanks ran dry without warning. Suppliers were called reactively. Customers were left in the cold — literally.</p>
-      <p>Their vision was to change that. By adding IoT sensors and WiFi-enabled hubs to their existing hardware, Beckett wanted to give users real-time visibility into their tanks from anywhere in the world. My job was to design the mobile experience that would make that possible.</p>
-    </div>
-
-    <!-- ── SECTION 3: MY ROLE ── -->
-    <div class="case-section">
-      <div class="section-divider">My role</div>
-      <h2>Sole UX Designer on a cross-functional team</h2>
-      <p>I joined as the sole UX Designer and Consultant on a small cross-functional team. I owned the end-to-end design process — from initial research and user interviews through wireframing, hi-fi mockups, preference testing, and a final clickable prototype.</p>
-      <p>Working directly alongside engineers from day one meant design decisions were constantly pressure-tested against technical feasibility — which shaped the final product in meaningful ways.</p>
-      <div class="case-meta" style="margin-top:24px;">
-        <div class="case-meta-item">
-          <div class="case-meta-label">Project Manager</div>
-          <div class="case-meta-value" style="font-weight:400; font-size:13px; color:var(--secondary);">Stakeholder alignment, sprint planning</div>
-        </div>
-        <div class="case-meta-item">
-          <div class="case-meta-label">Engineer — Cloud</div>
-          <div class="case-meta-value" style="font-weight:400; font-size:13px; color:var(--secondary);">Backend &amp; API infrastructure</div>
-        </div>
-        <div class="case-meta-item">
-          <div class="case-meta-label">Engineer — iOS</div>
-          <div class="case-meta-value" style="font-weight:400; font-size:13px; color:var(--secondary);">Native iOS implementation</div>
-        </div>
-        <div class="case-meta-item">
-          <div class="case-meta-label">UX Designer — Me</div>
-          <div class="case-meta-value" style="font-weight:400; font-size:13px; color:var(--secondary);">Research, IA, wireframes, UI, prototype</div>
-        </div>
-      </div>
-    </div>
-
-    <!-- ── SECTION 4: DISCOVERY & RESEARCH ── -->
-    <div class="case-section">
-      <div class="section-divider">Discovery &amp; research</div>
-      <h2>Three inputs that shaped the entire product</h2>
-      <p>Before sketching a single screen, I needed to understand what users actually cared about — and what they didn't. Research came from three distinct sources.</p>
-      <div class="research-grid">
-        <div class="research-card">
-          <div class="research-card-label">01 — User surveys</div>
-          <h3>What do users actually want to see?</h3>
-          <p>Surveys surfaced three non-negotiable alert states: low tank levels, low transmitter battery, and maximum fuel usage. Crucially, users didn't think in terms of "sensors" — they thought about their <em>tank</em>. We abstracted the sensor layer entirely, surfacing only the physical object the user cared about.</p>
-        </div>
-        <div class="research-card">
-          <div class="research-card-label">02 — User interviews &amp; A/B testing</div>
-          <h3>How should the app behave?</h3>
-          <p>Interviews added texture: users wanted a seamless at-a-glance level view, real-time updates from anywhere, push notifications the moment levels dropped, and per-device notification control — not a one-size-fits-all toggle.</p>
-        </div>
-        <div class="research-card">
-          <div class="research-card-label">03 — Industry specialists</div>
-          <h3>What do users not know to ask for?</h3>
-          <p>Consulting safety engineers at Beckett surfaced a use case users wouldn't have thought to request: freeze alarm alerts. When ambient temperatures drop too low, oil can't be stored safely. Domain expertise filled a gap that user research alone couldn't.</p>
-        </div>
-      </div>
-    </div>
-
-    <!-- ── SECTION 5: DEFINING THE SYSTEM ── -->
-    <div class="case-section">
-      <div class="section-divider">Defining the system</div>
-      <h2>What to hide is as important as what to show</h2>
-      <p>Before jumping into flows or wireframes, I mapped the hardware into three distinct objects — and made a deliberate decision about how much technical complexity to expose to the user.</p>
-      <div class="diagram-wrap">
-        <!-- System diagram SVG -->
-        <svg width="100%" viewBox="0 0 880 280" role="img" xmlns="http://www.w3.org/2000/svg">
-          <title>Beckett IoT system: Sensor → Gateway Hub → Tank, all connected via Cloud to Mobile App</title>
-          <defs>
-            <marker id="arr" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse">
-              <path d="M2 1L8 5L2 9" fill="none" stroke="#999" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
-            </marker>
-          </defs>
-
-          <!-- SENSOR -->
-          <rect x="40" y="60" width="180" height="80" rx="8" fill="#EDFAF4" stroke="#A7F3D0" stroke-width="1"/>
-          <text x="130" y="95" text-anchor="middle" font-family="Inter,system-ui,sans-serif" font-size="14" font-weight="500" fill="#065F46">Sensor</text>
-          <text x="130" y="114" text-anchor="middle" font-family="Inter,system-ui,sans-serif" font-size="12" fill="#6B7280">Bluetooth · inside tank</text>
-          <!-- hidden badge -->
-          <rect x="68" y="152" width="124" height="22" rx="11" fill="#F3F4F6" stroke="#E5E7EB" stroke-width="1"/>
-          <text x="130" y="167" text-anchor="middle" font-family="Inter,system-ui,sans-serif" font-size="11" fill="#9CA3AF">hidden from user</text>
-
-          <!-- GATEWAY HUB -->
-          <rect x="350" y="60" width="180" height="80" rx="8" fill="#EEF2FF" stroke="#C7D2FE" stroke-width="1"/>
-          <text x="440" y="95" text-anchor="middle" font-family="Inter,system-ui,sans-serif" font-size="14" font-weight="500" fill="#3730A3">Gateway hub</text>
-          <text x="440" y="114" text-anchor="middle" font-family="Inter,system-ui,sans-serif" font-size="12" fill="#6B7280">WiFi · bridges cloud</text>
-
-          <!-- TANK -->
-          <rect x="660" y="60" width="180" height="80" rx="8" fill="#FFF8ED" stroke="#FDE68A" stroke-width="1"/>
-          <text x="750" y="95" text-anchor="middle" font-family="Inter,system-ui,sans-serif" font-size="14" font-weight="500" fill="#92400E">Tank</text>
-          <text x="750" y="114" text-anchor="middle" font-family="Inter,system-ui,sans-serif" font-size="12" fill="#6B7280">Physical · user-facing</text>
-          <!-- primary badge -->
-          <rect x="678" y="152" width="144" height="22" rx="11" fill="#FEF3C7" stroke="#FDE68A" stroke-width="1"/>
-          <text x="750" y="167" text-anchor="middle" font-family="Inter,system-ui,sans-serif" font-size="11" fill="#92400E">primary object</text>
-
-          <!-- Sensor → Hub arrow -->
-          <line x1="222" y1="100" x2="348" y2="100" stroke="#D1D5DB" stroke-width="1" marker-end="url(#arr)"/>
-          <text x="285" y="93" text-anchor="middle" font-family="Inter,system-ui,sans-serif" font-size="11" fill="#9CA3AF">BT</text>
-
-          <!-- Hub → Tank arrow -->
-          <line x1="532" y1="100" x2="658" y2="100" stroke="#D1D5DB" stroke-width="1" marker-end="url(#arr)"/>
-          <text x="595" y="93" text-anchor="middle" font-family="Inter,system-ui,sans-serif" font-size="11" fill="#9CA3AF">data</text>
-
-          <!-- Cloud box -->
-          <rect x="380" y="195" width="120" height="44" rx="8" fill="#F9FAFB" stroke="#E5E7EB" stroke-width="1"/>
-          <text x="440" y="222" text-anchor="middle" font-family="Inter,system-ui,sans-serif" font-size="13" font-weight="500" fill="#374151">Cloud</text>
-
-          <!-- Hub → Cloud -->
-          <line x1="440" y1="142" x2="440" y2="193" stroke="#D1D5DB" stroke-width="1" marker-end="url(#arr)"/>
-          <text x="455" y="172" font-family="Inter,system-ui,sans-serif" font-size="11" fill="#9CA3AF">WiFi</text>
-
-          <!-- Cloud → Mobile -->
-          <line x1="440" y1="241" x2="440" y2="261" stroke="#D1D5DB" stroke-width="1" marker-end="url(#arr)"/>
-          <rect x="375" y="263" width="130" height="36" rx="8" fill="#111111"/>
-          <text x="440" y="286" text-anchor="middle" font-family="Inter,system-ui,sans-serif" font-size="13" font-weight="500" fill="#FFFFFF">Mobile app</text>
-        </svg>
-      </div>
-      <p>The key design decision here wasn't visual — it was conceptual. By deciding <em>what to hide</em> as much as <em>what to show</em>, the app stayed approachable for everyday homeowners while still giving power users access to technical details when they needed them.</p>
-    </div>
-
-    <!-- ── SECTION 6: USER STORIES ── -->
-    <div class="case-section">
-      <div class="section-divider">User stories &amp; prioritization</div>
-      <h2>Translating research into a product backlog</h2>
-      <p>With research complete, I translated findings into user stories and prioritized them across three tiers — ensuring the core experience was solid before layering in secondary features.</p>
-      <div class="stories-wrap">
-        <div class="stories-header">
-          <span>User story</span>
-          <span>Priority</span>
-        </div>
-        <div class="stories-group-label">Must have</div>
-        <div class="story-row"><span class="story-text">As a user, I want to link my hub</span><span class="badge badge-high">High</span></div>
-        <div class="story-row"><span class="story-text">As a user, I want to see how much oil is left</span><span class="badge badge-high">High</span></div>
-        <div class="story-row"><span class="story-text">As a user, I want to be notified when my oil is low</span><span class="badge badge-high">High</span></div>
-        <div class="story-row"><span class="story-text">As a user, I want to onboard using my email address</span><span class="badge badge-high">High</span></div>
-        <div class="stories-group-label">Should have</div>
-        <div class="story-row"><span class="story-text">As a user, I want to know how much battery is left on my hub</span><span class="badge badge-medium">Medium</span></div>
-        <div class="story-row"><span class="story-text">As a user, I want to choose which size tank I own</span><span class="badge badge-medium">Medium</span></div>
-        <div class="story-row"><span class="story-text">As a user, I want to choose how oil level is displayed (% or gallons)</span><span class="badge badge-medium">Medium</span></div>
-        <div class="story-row"><span class="story-text">As a user, I want to be notified if it's too cold for my tank</span><span class="badge badge-medium">Medium</span></div>
-        <div class="story-row"><span class="story-text">As a user, I want to see the signal strength of my hub</span><span class="badge badge-medium">Medium</span></div>
-        <div class="stories-group-label">Nice to have</div>
-        <div class="story-row"><span class="story-text">As a user, I want to see my usage history</span><span class="badge badge-low">Low</span></div>
-        <div class="story-row"><span class="story-text">As a user, I want to edit the name of my hub</span><span class="badge badge-low">Low</span></div>
-        <div class="story-row"><span class="story-text">As a user, I want to disconnect my device</span><span class="badge badge-low">Low</span></div>
-        <div class="story-row"><span class="story-text">As a user, I want to see my hub history</span><span class="badge badge-low">Low</span></div>
-        <div class="story-row"><span class="story-text">As a user, I want to see my warranty information</span><span class="badge badge-low">Low</span></div>
-      </div>
-    </div>
-
-    <!-- ── SECTION 7: USER FLOWS ── -->
-    <div class="case-section">
-      <div class="section-divider">User flows</div>
-      <h2>Mapping the journeys before designing the screens</h2>
-      <p>Rather than designing screens in isolation, I mapped the key journeys first — ensuring the architecture made sense before any visual decisions were made. Two flows defined the core experience.</p>
-      <p>The first covers onboarding: a new user lands, signs up with email, and arrives at their dashboard. A returning user follows the same path but with a sign-in shortcut and password recovery fallback.</p>
-      <p>The second — and more complex — flow covers device setup. From the dashboard, a user can add either a hub or a tank sensor. Each path has its own configuration steps: hubs require WiFi setup, tank sensors require shape and size selection. Both resolve back to an updated dashboard with the new device visible.</p>
-      <div class="two-col" style="margin-top:24px;">
-        <div class="placeholder-img" style="min-height:220px; border-radius:8px; background:var(--bg-soft); border:1px solid var(--border);">
-          <span style="font-size:12px; color:var(--tertiary);">Onboarding flow — sign up &amp; sign in</span>
-        </div>
-        <div class="placeholder-img" style="min-height:220px; border-radius:8px; background:var(--bg-soft); border:1px solid var(--border);">
-          <span style="font-size:12px; color:var(--tertiary);">Device setup flow — hub &amp; tank sensor</span>
-        </div>
-      </div>
-    </div>
-
-    <!-- ── SECTION 8: WIREFRAMES ── -->
-    <div class="case-section">
-      <div class="section-divider">Wireframes</div>
-      <h2>Structure before style</h2>
-      <p>Wireframes kept the focus on hierarchy and navigation patterns before any visual decisions were made. Key screens included sign-in, the main dashboard, tank detail view, sensor settings, and hub settings.</p>
-      <p>The progression from lo-fi to hi-fi was intentional: validate the structure first, then layer on the visual language.</p>
-      <div class="two-col" style="margin-top:24px;">
-        <div class="placeholder-img" style="min-height:280px; border-radius:8px; background:var(--bg-soft); border:1px solid var(--border);">
-          <span style="font-size:12px; color:var(--tertiary);">Lo-fi wireframes — sign in, dashboard, tank detail</span>
-        </div>
-        <div class="placeholder-img" style="min-height:280px; border-radius:8px; background:var(--bg-soft); border:1px solid var(--border);">
-          <span style="font-size:12px; color:var(--tertiary);">Lo-fi wireframes — sensor settings, hub settings</span>
-        </div>
-      </div>
-    </div>
-
-    <!-- ── SECTION 9: VISUAL DESIGN ── -->
-    <div class="case-section">
-      <div class="section-divider">Visual design &amp; branding</div>
-      <h2>Making a heritage brand feel at home on iOS</h2>
-      <p>Beckett is a conservative, established brand — and the visual design needed to honor that while still feeling modern and trustworthy on a mobile device. I worked within their existing brand guidelines: bold red as the primary color, black, and white, with Times New Roman for serif contexts and Arial/Helvetica as sans-serif alternatives.</p>
-      <p>The challenge was making a heritage brand feel at home in an iOS app without stripping away its identity. The solution was restraint: red was reserved for the navigation bar, key CTAs, and critical alerts — carrying weight and urgency only where it mattered most. The rest of the UI stayed clean and neutral, letting the data breathe.</p>
-      <div class="highlight-box">
-        Red is a powerful color. Use it everywhere and it loses meaning. Reserve it for moments that actually need it.
-      </div>
-    </div>
-
-    <!-- ── SECTION 10: PREFERENCE TESTING ── -->
-    <div class="case-section">
-      <div class="section-divider">Preference testing &amp; iterations</div>
-      <h2>Design decisions validated with real users</h2>
-      <p>Design decisions weren't made by gut — they were validated with users through preference testing on UsabilityHub. Three key decisions went through this process.</p>
-
-      <h3 style="font-size:15px; font-weight:500; margin:28px 0 8px;">The fuel gauge</h3>
-      <p>I tested a traditional analog dial versus a color-coded arc gauge. Users preferred a hybrid — the familiarity of a dial combined with urgency-coded color. The final design used a circular dial with a red-to-green gradient arc to communicate level at a glance.</p>
-      <div class="pref-grid">
-        <div class="pref-card">
-          <span class="pref-label">Option 1 — Analog dial</span>
-          <p>Traditional needle gauge, E to F. Familiar, like a car's fuel gauge. No color encoding.</p>
-        </div>
-        <div class="pref-card">
-          <span class="pref-label">Option 2 — Color arc</span>
-          <p>Modern color-coded arc from red to green. Visually expressive, immediately communicates urgency.</p>
-          <span class="pref-winner">✓ Informed final design</span>
-        </div>
-      </div>
-
-      <h3 style="font-size:15px; font-weight:500; margin:28px 0 8px;">Hub signal display</h3>
-      <p>A simple icon with percentage label versus a side-by-side bar chart showing gauge and hub signal independently. Users preferred the bar chart — it gave them granular information without feeling cluttered.</p>
-      <div class="pref-grid">
-        <div class="pref-card">
-          <span class="pref-label">Option 1 — Single bar</span>
-          <p>Combined signal strength as one progress bar with percentage. Simple but loses device-level detail.</p>
-        </div>
-        <div class="pref-card">
-          <span class="pref-label">Option 2 — Split bar chart</span>
-          <p>Gauge and Hub signal shown side by side. Users could see which specific device had the issue.</p>
-          <span class="pref-winner">✓ Selected by users</span>
-        </div>
-      </div>
-
-      <h3 style="font-size:15px; font-weight:500; margin:28px 0 8px;">Hub icon</h3>
-      <p>A WiFi funnel icon versus a clean signal bar chart. Users preferred the bar chart — the funnel icon wasn't immediately recognizable as a hub.</p>
-      <div class="pref-grid">
-        <div class="pref-card">
-          <span class="pref-label">Option 1 — Funnel icon</span>
-          <p>WiFi funnel shape with signal bars. Technically accurate but unfamiliar to non-technical users.</p>
-        </div>
-        <div class="pref-card">
-          <span class="pref-label">Option 2 — Signal bars</span>
-          <p>Familiar cellular-style signal bars. Universally understood metaphor for connectivity strength.</p>
-          <span class="pref-winner">✓ Selected by users</span>
-        </div>
-      </div>
-    </div>
-
-    <!-- ── SECTION 11: FINAL DESIGNS ── -->
-    <div class="case-section">
-      <div class="section-divider">Final designs</div>
-      <h2>The finished iOS experience</h2>
-      <p>The final designs brought together everything learned from research, wireframing, and preference testing into a polished iOS experience. Replace the placeholders below with your final hi-fi screens.</p>
-
-      <!-- Prototype video -->
-      <div class="proto-wrap">
-        <svg width="32" height="32" fill="none" stroke="#F59E0B" stroke-width="1.5" viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"/><polygon points="10 8 16 12 10 16 10 8" fill="#F59E0B" stroke="none"/></svg>
-        <span style="color:#92400E; font-size:14px; font-weight:500;">Add prototype walkthrough video here</span>
-        <span style="color:#B45309; font-size:12px;">Embed or link your InVision prototype — autoplay off, controls visible</span>
-      </div>
-
-      <!-- Screens grid -->
-      <div class="screens-grid" style="margin-top:24px;">
-        <div class="screen-card">
-          <div class="screen-placeholder">Sign in screen</div>
-          <div class="screen-label">Sign in — Brand-forward entry point</div>
-        </div>
-        <div class="screen-card">
-          <div class="screen-placeholder">Dashboard</div>
-          <div class="screen-label">Dashboard — At-a-glance status with low fuel warning</div>
-        </div>
-        <div class="screen-card">
-          <div class="screen-placeholder">Tank detail</div>
-          <div class="screen-label">Tank detail — Gauge, signal, battery, fill &amp; usage history</div>
-        </div>
-        <div class="screen-card">
-          <div class="screen-placeholder">Fill history</div>
-          <div class="screen-label">Fill history — Day / Week / Month / Year toggle</div>
-        </div>
-        <div class="screen-card">
-          <div class="screen-placeholder">Tank settings</div>
-          <div class="screen-label">Tank settings — Alert configuration &amp; tank properties</div>
-        </div>
-        <div class="screen-card">
-          <div class="screen-placeholder">Hub detail</div>
-          <div class="screen-label">Hub detail — Online status, signal, warranty &amp; firmware</div>
-        </div>
-      </div>
-    </div>
-
-    <!-- ── SECTION 12: DESIGN DECISIONS ── -->
-    <div class="case-section">
-      <div class="section-divider">Design decisions</div>
-      <h2>Three choices worth calling out</h2>
-      <p>These decisions are worth highlighting because they each show how research directly shaped the UI — not the other way around.</p>
-      <div class="decision-grid">
-        <div class="decision-card">
-          <div class="decision-number">01 — Graphs</div>
-          <h3>Fill history vs. usage history</h3>
-          <p>The tank detail screen surfaces two distinct graphs rather than one combined view. This came directly from user interviews: people wanted to understand both <em>when they refilled</em> and <em>how fast they were burning through oil</em>. Separating them made each dataset easier to read and act on.</p>
-        </div>
-        <div class="decision-card">
-          <div class="decision-number">02 — Alerts</div>
-          <h3>Per-device notification control</h3>
-          <p>Notification settings live at the device level, not as a global toggle. Users with multiple devices in different locations wanted granular control. The freeze alarm toggle on hub settings came specifically from industry specialists — a reminder that domain expertise fills gaps user research alone cannot.</p>
-        </div>
-        <div class="decision-card">
-          <div class="decision-number">03 — Color</div>
-          <h3>Red nav bar vs. grey nav bar</h3>
-          <p>A deliberate decision was made to use dark grey for internal screens and reserve the red bar for top-level branded screens only. This prevented red from feeling repetitive or alarming in non-critical contexts, while preserving its visual weight for moments that actually needed it.</p>
-        </div>
-      </div>
-    </div>
-
-    <!-- ── SECTION 13: REFLECTIONS ── -->
-    <div class="case-section">
-      <div class="section-divider">Reflections</div>
-      <h2>What this project taught me</h2>
-      <div class="reflection-grid">
-        <div class="reflection-block">
-          <h3>What I learned</h3>
-          <p>The most valuable lesson from Beckett was learning to design at the intersection of three competing forces: what users want, what the client is willing to accept, and what the engineering team can actually build.</p>
-          <p>When I originally designed the device setup flow it was a multi-screen step-by-step process — thorough, user-friendly, and expensive to build. Working closely with engineers, I redesigned it to repurpose the existing settings page for setup, cutting the screen count significantly without sacrificing the experience. That kind of pragmatism is only possible when you're embedded in the team from day one.</p>
-          <p>The client's conservative nature was also a real design constraint. Not every research finding made it into the final product — and learning to advocate for users while respecting a client's vision was a skill I built on this project.</p>
-        </div>
-        <div class="reflection-block">
-          <h3>What I'd do with more time</h3>
-          <p>I would have designed a FAQ and in-app help section to reduce support load for Beckett's team.</p>
-          <p>I would have built out screens showing exactly how push notifications appear on the device's lock screen — a gap in the handoff documentation.</p>
-          <p>I would have designed a direct in-app channel for users to reach Beckett's support team, reducing the friction of finding a phone number or email address when something goes wrong.</p>
-        </div>
-      </div>
-    </div>
-
-    <!-- ── NAVIGATION ── -->
-    <div style="border-top:1px solid var(--border); padding:40px 0; display:flex; justify-content:space-between; align-items:center; flex-wrap:wrap; gap:16px;">
-      <a href="srlc.html" class="back-link" style="margin-bottom:0;">← Previous project</a>
-      <a href="sra.html" class="btn-primary">Next project →</a>
-    </div>
-
-  </div>
-</main>
-
-<footer>
-  <div class="footer-inner">
-    <span>© 2026 Anita Shah</span>
-    <div style="display:flex; gap:20px;">
-      <a href="mailto:anitashah92@gmail.com" style="color:var(--tertiary);">anitashah92@gmail.com</a>
-      <a href="https://linkedin.com/in/anita-shah" target="_blank" style="color:var(--tertiary);">LinkedIn</a>
-    </div>
-  </div>
-</footer>
-
+<script>
+const secs = document.querySelectorAll('.cs-sec[id]');
+const links = document.querySelectorAll('.side-links a');
+const obs = new IntersectionObserver(e => {
+  e.forEach(x => { if (x.isIntersecting) links.forEach(l => l.classList.toggle('active', l.getAttribute('href') === '#' + x.target.id)); });
+}, { rootMargin: '-15% 0px -75% 0px' });
+secs.forEach(s => obs.observe(s));
+function openSideNav() { document.getElementById('side-nav').classList.add('open'); }
+function closeSideNav() { document.getElementById('side-nav').classList.remove('open'); }
+links.forEach(l => l.addEventListener('click', closeSideNav));
+</script>
 </body>
 </html>
