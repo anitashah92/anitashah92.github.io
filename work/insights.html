@@ -1,175 +1,601 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Fusion Insights — Anita Shah</title>
-<link rel="stylesheet" href="../style.css">
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Fusion Insights — A commerce intelligence dashboard that replaced PowerPoint reports with real-time, interactive data visualization. Case study by Anita Shah.">
+  <title>Fusion Insights — Anita Shah</title>
+  <link rel="stylesheet" href="../style.css">
+  <style>
+    /* ── Page-level additions ── */
+
+    .section-divider {
+      font-size: 11px;
+      font-weight: 500;
+      text-transform: uppercase;
+      letter-spacing: 0.1em;
+      color: var(--tertiary);
+      margin-bottom: 40px;
+      padding-bottom: 12px;
+      border-bottom: 1px solid var(--border);
+    }
+
+    /* Chart decision cards */
+    .chart-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 16px;
+      margin: 28px 0;
+    }
+    .chart-card {
+      border: 1px solid var(--border);
+      border-radius: 10px;
+      overflow: hidden;
+    }
+    .chart-card.featured {
+      border-color: var(--fusion-tag);
+    }
+    .chart-img {
+      background: var(--bg-soft);
+      min-height: 180px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 12px;
+      color: var(--tertiary);
+      border-bottom: 1px solid var(--border);
+    }
+    .chart-img img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      display: block;
+    }
+    .chart-body {
+      padding: 18px 20px;
+    }
+    .chart-label {
+      font-size: 11px;
+      font-weight: 500;
+      text-transform: uppercase;
+      letter-spacing: 0.08em;
+      color: var(--tertiary);
+      margin-bottom: 6px;
+    }
+    .chart-body h3 {
+      font-size: 15px;
+      font-weight: 500;
+      margin-bottom: 8px;
+    }
+    .chart-body p {
+      font-size: 13px;
+      color: var(--secondary);
+      line-height: 1.65;
+      margin-bottom: 0 !important;
+    }
+    .chart-outcome {
+      display: inline-flex;
+      align-items: center;
+      gap: 4px;
+      font-size: 11px;
+      font-weight: 500;
+      margin-top: 10px;
+      padding: 3px 10px;
+      border-radius: 20px;
+    }
+    .outcome-research { background: #EDE9FE; color: #5B21B6; }
+    .outcome-testing  { background: #D1FAE5; color: #065F46; }
+    .outcome-shipped  { background: var(--fusion-bg); color: var(--fusion-text); }
+
+    /* Decision callout cards */
+    .decision-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 16px;
+      margin: 28px 0;
+    }
+    .decision-card {
+      border: 1px solid var(--border);
+      border-radius: 10px;
+      padding: 24px;
+    }
+    .decision-number {
+      font-size: 11px;
+      font-weight: 500;
+      color: var(--tertiary);
+      text-transform: uppercase;
+      letter-spacing: 0.08em;
+      margin-bottom: 8px;
+    }
+    .decision-card h3 {
+      font-size: 15px;
+      font-weight: 500;
+      margin-bottom: 10px;
+    }
+    .decision-card p {
+      font-size: 14px;
+      color: var(--secondary);
+      line-height: 1.7;
+      margin-bottom: 0 !important;
+    }
+
+    /* Stepper */
+    .stepper-wrap {
+      display: flex;
+      align-items: flex-start;
+      margin: 28px 0;
+      border: 1px solid var(--border);
+      border-radius: 10px;
+      overflow: hidden;
+    }
+    .stepper-step {
+      flex: 1;
+      padding: 20px 18px;
+      border-right: 1px solid var(--border);
+    }
+    .stepper-step:last-child { border-right: none; }
+    .stepper-step.active { background: var(--fusion-bg); }
+    .step-num {
+      font-size: 11px;
+      font-weight: 500;
+      text-transform: uppercase;
+      letter-spacing: 0.08em;
+      color: var(--tertiary);
+      margin-bottom: 6px;
+    }
+    .stepper-step.active .step-num { color: var(--fusion-text); }
+    .step-name { font-size: 14px; font-weight: 500; margin-bottom: 6px; }
+    .step-desc { font-size: 13px; color: var(--secondary); line-height: 1.55; }
+
+    /* Before/after iteration */
+    .iteration-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 16px;
+      margin: 20px 0 28px;
+    }
+    .iteration-card {
+      border: 1px solid var(--border);
+      border-radius: 10px;
+      overflow: hidden;
+    }
+    .iteration-card.chosen { border-color: #A7F3D0; }
+    .iteration-placeholder {
+      background: var(--bg-soft);
+      min-height: 200px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 12px;
+      color: var(--tertiary);
+      border-bottom: 1px solid var(--border);
+    }
+    .iteration-placeholder img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      display: block;
+    }
+    .iteration-label { padding: 14px 16px; }
+    .iteration-label-title { font-size: 13px; font-weight: 500; margin-bottom: 4px; }
+    .iteration-label p {
+      font-size: 13px;
+      color: var(--secondary);
+      line-height: 1.6;
+      margin-bottom: 0 !important;
+    }
+    .chosen-pill {
+      display: inline-flex;
+      align-items: center;
+      gap: 4px;
+      font-size: 11px;
+      font-weight: 500;
+      color: #065F46;
+      background: #D1FAE5;
+      padding: 2px 8px;
+      border-radius: 20px;
+      margin-top: 6px;
+    }
+
+    /* Full-width image */
+    .img-full {
+      margin: 28px 0;
+      border: 1px solid var(--border);
+      border-radius: 12px;
+      overflow: hidden;
+    }
+    .img-full img { width: 100%; display: block; }
+    .img-placeholder {
+      margin: 28px 0;
+      border: 2px dashed var(--border);
+      border-radius: 10px;
+      min-height: 360px;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      gap: 8px;
+      background: var(--bg-soft);
+      color: var(--tertiary);
+      font-size: 13px;
+    }
+
+    /* Reflection */
+    .reflection-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 32px;
+      margin: 28px 0;
+    }
+    .reflection-block h3 { font-size: 15px; font-weight: 500; margin-bottom: 12px; }
+    .reflection-block p {
+      font-size: 14px;
+      color: var(--secondary);
+      line-height: 1.8;
+      margin-bottom: 12px !important;
+    }
+    .reflection-block p:last-child { margin-bottom: 0 !important; }
+
+    /* Outcomes */
+    .outcome-row {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 16px;
+      margin: 28px 0;
+    }
+    .outcome-stat {
+      background: var(--bg-soft);
+      border: 1px solid var(--border);
+      border-radius: 10px;
+      padding: 24px 20px;
+    }
+    .outcome-stat-number {
+      font-size: 28px;
+      font-weight: 500;
+      margin-bottom: 6px;
+    }
+    .outcome-stat-label {
+      font-size: 14px;
+      color: var(--secondary);
+      line-height: 1.55;
+    }
+
+    @media (max-width: 720px) {
+      .chart-grid   { grid-template-columns: 1fr; }
+      .decision-grid { grid-template-columns: 1fr; }
+      .stepper-wrap { flex-direction: column; }
+      .stepper-step { border-right: none; border-bottom: 1px solid var(--border); }
+      .stepper-step:last-child { border-bottom: none; }
+      .iteration-grid { grid-template-columns: 1fr; }
+      .reflection-grid { grid-template-columns: 1fr; }
+      .outcome-row { grid-template-columns: 1fr; }
+    }
+  </style>
 </head>
 <body>
-<div class="page-card">
 
-  <nav>
-    <div class="inner">
-      <a href="../index.html" class="nav-back">
-        <svg width="13" height="13" viewBox="0 0 13 13" fill="none"><path d="M11 6.5H2M6 2.5L2 6.5l4 4" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
-        All work
-      </a>
-      <ul class="nav-links">
-        <li><a href="../index.html#work">Work</a></li>
-        <li><a href="../index.html#about">About</a></li>
-        <li><a href="../assets/Anita_Shah_Resume.pdf">Résumé</a></li>
-        <li><a href="mailto:anitashah92@gmail.com">Contact</a></li>
-      </ul>
+<nav>
+  <div class="nav-inner">
+    <a href="../index.html" class="nav-name">Anita Shah</a>
+    <div class="nav-links">
+      <a href="../index.html#work" class="hide-mobile">Work</a>
+      <a href="../about.html" class="hide-mobile">About</a>
+      <a href="../assets/Anita_Shah_Resume.pdf" target="_blank" class="hide-mobile">Resume</a>
+      <a href="mailto:anitashah92@gmail.com" class="nav-cta">Get in touch</a>
     </div>
-  </nav>
-
-  <div class="cs-wrap">
-    <aside class="side">
-      <p class="side-label">On this page</p>
-      <ul class="side-links" id="sidenav">
-        <li><a href="#overview" class="active"><span class="sdot"></span>Overview</a></li>
-        <li><a href="#outcomes"><span class="sdot"></span>Outcomes</a></li>
-        <li><a href="#problem"><span class="sdot"></span>Problem</a></li>
-        <li><a href="#discovery"><span class="sdot"></span>Discovery</a></li>
-        <li><a href="#dashboard"><span class="sdot"></span>Dashboard</a></li>
-        <li><a href="#testing"><span class="sdot"></span>Testing</a></li>
-        <li><a href="#reflections"><span class="sdot"></span>Reflections</a></li>
-      </ul>
-    </aside>
-
-    <main class="cs-main">
-
-      <div class="cs-sec" id="overview">
-        <div class="cs-tags"><span class="cs-tag">Enterprise SaaS</span><span class="cs-tag">Data Visualization</span><span class="cs-tag">UX Research</span></div>
-        <h1 class="cs-h1">Fusion Insights</h1>
-        <p class="cs-lead">A commerce intelligence dashboard that replaced manual PowerPoint reports — giving Coca-Cola, Nestlé, and Unilever one live place to evaluate and compare retail media partners.</p>
-        <div class="snap">
-          <div class="snap-item"><p class="snap-lbl">Role</p><p class="snap-val">Sole UX/UI Designer</p></div>
-          <div class="snap-item"><p class="snap-lbl">Users</p><p class="snap-val">GroupM Commerce</p></div>
-          <div class="snap-item"><p class="snap-lbl">Clients</p><p class="snap-val">Coca-Cola, Nestlé, Unilever</p></div>
-          <div class="snap-item"><p class="snap-lbl">Platform</p><p class="snap-val">Web App</p></div>
-        </div>
-        <div class="cs-hero-img">
-          <svg width="28" height="28" viewBox="0 0 28 28" fill="none" style="opacity:.3"><rect x="2" y="2" width="24" height="24" rx="4" stroke="currentColor" stroke-width="1.5"/><path d="M2 10h24M10 10v16" stroke="currentColor" stroke-width="1.5"/></svg>
-          <span>Add hero screenshot</span>
-        </div>
-      </div>
-
-      <div class="cs-sec" id="outcomes">
-        <p class="eyebrow">Impact at a glance</p>
-        <div class="outcomes">
-          <div><p class="out-val">4</p><p class="out-lbl">Charts answering distinct analytical questions</p></div>
-          <div><p class="out-val">3→5+</p><p class="out-lbl">Retailers comparable at once after testing pivot</p></div>
-          <div><p class="out-val" style="font-size:17px;padding-top:6px">Pitched live</p><p class="out-lbl">Used directly in Unilever client presentations</p></div>
-        </div>
-      </div>
-
-      <hr>
-
-      <div class="cs-sec" id="problem">
-        <p class="eyebrow">The problem</p>
-        <h2 class="cs-h2">Gigabytes of retail data with no way to compare it.</h2>
-        <div class="body-text">
-          <p>GroupM's commerce team was manually assembling PowerPoint charts for Coca-Cola, Nestlé, and Unilever — pulling data from multiple sources across nine retail media channels for every client presentation. There was no single place it lived.</p>
-          <p>Strategists spent hours on report assembly instead of analysis. Asking <strong>"how does Walmart compare to Kroger across all channels?"</strong> meant building a new deck from scratch. Insights was built to fix that.</p>
-        </div>
-        <div class="callout"><p>"The strongest design decisions aren't the ones that go unchallenged — they're the ones you can defend with evidence after being challenged."</p></div>
-      </div>
-
-      <hr>
-
-      <div class="cs-sec" id="discovery">
-        <p class="eyebrow">Discovery</p>
-        <h2 class="cs-h2">Understand the data before touching a frame.</h2>
-        <div class="body-text">
-          <p><strong>Stakeholder sessions</strong> surfaced two non-negotiables: retailers needed fair comparison groups, and charts had to show both overall and channel-level performance.</p>
-          <p><strong>Data audit</strong> mapped every metric flowing into Insights — overall scores, nine channel weights, monthly traffic, revenue, and growth rate. Chart types had to follow the data questions, not aesthetics.</p>
-          <p><strong>Library alignment</strong> with engineering on Nivo Rocks early meant no designing charts that couldn't ship.</p>
-        </div>
-      </div>
-
-      <hr>
-
-      <div class="cs-sec" id="dashboard">
-        <p class="eyebrow">The dashboard</p>
-        <h2 class="cs-h2">Four charts. Four questions. One page.</h2>
-        <div class="body-text">
-          <p><strong>Treemap</strong> — Which retailers perform best overall? Sized by score, colored green. Engineering almost vetoed it — went back with research and it shipped.</p>
-          <p><strong>Bubble heatmap</strong> — How do retailers compare across nine channels? (Replaced the radar chart after testing — see below.)</p>
-          <p><strong>Bar chart</strong> — How does traffic and revenue trend month over month?</p>
-          <p><strong>Scatter plot</strong> — Where should a brand invest next? Maps performance vs. growth rate. Became the go-to slide in Unilever pitches.</p>
-        </div>
-        <div class="img-block">
-          <svg width="24" height="24" viewBox="0 0 24 24" fill="none" style="opacity:.3"><rect x="2" y="2" width="20" height="20" rx="3" stroke="currentColor" stroke-width="1.3"/><path d="M2 9h20M9 9v13" stroke="currentColor" stroke-width="1.3"/></svg>
-          Add dashboard screenshot
-        </div>
-      </div>
-
-      <hr>
-
-      <div class="cs-sec" id="testing">
-        <p class="eyebrow">User testing</p>
-        <h2 class="cs-h2">The pivot that made it actually useful.</h2>
-        <div class="body-text">
-          <p>Maze testing revealed the core problem: three retailers wasn't enough. Strategists needed five or more simultaneously — where radar chart polygons overlap into unreadable noise.</p>
-        </div>
-        <div class="compare">
-          <div class="cmp">
-            <p class="cmp-lbl">V1 — Radar chart</p>
-            <p class="cmp-title">Works for 3 retailers</p>
-            <p class="cmp-body">Nine axes, each retailer as a polygon. Elegant up to 3 — but strategists needed 5+, where it became unreadable.</p>
-          </div>
-          <div class="cmp win">
-            <p class="cmp-lbl">V2 — Bubble heatmap</p>
-            <p class="cmp-title">Handles 5+ with ease</p>
-            <p class="cmp-body">Retailers as rows, channels as columns. Bubble size and color encode score. Hover highlights the full row and column for focus.</p>
-            <span class="win-badge">✓ Shipped</span>
-          </div>
-        </div>
-        <div class="img-block">
-          <svg width="24" height="24" viewBox="0 0 24 24" fill="none" style="opacity:.3"><rect x="2" y="2" width="20" height="20" rx="3" stroke="currentColor" stroke-width="1.3"/><path d="M2 9h20M9 9v13" stroke="currentColor" stroke-width="1.3"/></svg>
-          Add heatmap screenshot
-        </div>
-      </div>
-
-      <hr>
-
-      <div class="cs-sec" id="reflections">
-        <p class="eyebrow">Reflections</p>
-        <h2 class="cs-h2">What I took from this project.</h2>
-        <div class="reflect">
-          <div class="ref"><h4>Data viz is a research discipline</h4><p>Every chart started with a question — what is the user trying to understand? Working backward from that, not aesthetics, prevented a lot of wrong turns.</p></div>
-          <div class="ref"><h4>Defend decisions with evidence</h4><p>The treemap pushback was real pressure. Going back with research rather than capitulating shaped every design conversation since.</p></div>
-          <div class="ref"><h4>What I'd add with more time</h4><p>AI-assisted callouts above each chart — "Walmart leads 6 of 9 channels, but lags in CTV." LLM integration conversations were promising.</p></div>
-          <div class="ref"><h4>Presentation mode</h4><p>A full-screen, no-chrome mode for client meetings would have made Insights an even stronger pitch asset — a small change, big perceived value.</p></div>
-        </div>
-      </div>
-
-      <div class="case-nav">
-        <a href="flow.html" class="cn"><span class="cn-dir">← Previous</span><span class="cn-title">Flow & RFI Builder</span></a>
-        <a href="design-system.html" class="cn" style="align-items:flex-end"><span class="cn-dir">Next →</span><span class="cn-title">Fusion Design System</span></a>
-      </div>
-
-    </main>
   </div>
+</nav>
 
-  <footer>
-    <div class="inner">
-      <span class="footer-copy">© 2026 Anita Shah</span>
-      <div class="footer-links">
-        <a href="mailto:anitashah92@gmail.com">anitashah92@gmail.com</a>
-        <a href="https://linkedin.com/in/anita-shah" target="_blank">LinkedIn</a>
+<main>
+  <div class="container">
+
+    <!-- ── SECTION 1: HERO ── -->
+    <div class="case-hero">
+      <a href="../index.html" class="back-link">← Back to work</a>
+      <div class="work-tags" style="margin-bottom:16px;">
+        <span class="tag" style="background:var(--fusion-tag); color:var(--fusion-text);">Enterprise SaaS</span>
+        <span class="tag" style="background:#E0E7FF; color:#3730A3;">Data Visualization</span>
+        <span class="tag" style="background:#F3F4F6; color:#374151;">UX Research</span>
+        <span class="tag" style="background:#F3F4F6; color:#374151;">Dashboard Design</span>
+      </div>
+      <h1>Fusion Insights</h1>
+      <p class="lead">A commerce intelligence dashboard that replaced fragmented PowerPoint reports with interactive, real-time data visualization — giving Fortune 500 brands a single place to evaluate and compare their retail media partners.</p>
+      <div class="case-meta">
+        <div class="case-meta-item">
+          <div class="case-meta-label">Role</div>
+          <div class="case-meta-value">Senior UX/UI Designer</div>
+        </div>
+        <div class="case-meta-item">
+          <div class="case-meta-label">Users</div>
+          <div class="case-meta-value">GroupM Commerce Team</div>
+        </div>
+        <div class="case-meta-item">
+          <div class="case-meta-label">Clients</div>
+          <div class="case-meta-value">Coca-Cola, Nestle, Unilever</div>
+        </div>
+        <div class="case-meta-item">
+          <div class="case-meta-label">Platform</div>
+          <div class="case-meta-value">Web Application</div>
+        </div>
       </div>
     </div>
-  </footer>
 
-</div>
-<script>
-const secs=document.querySelectorAll('.cs-sec[id]');
-const links=document.querySelectorAll('.side-links a');
-const obs=new IntersectionObserver(e=>{e.forEach(x=>{if(x.isIntersecting)links.forEach(l=>l.classList.toggle('active',l.getAttribute('href')==='#'+x.target.id))})},{rootMargin:'-15% 0px -75% 0px'});
-secs.forEach(s=>obs.observe(s));
-</script>
+    <!-- Hero visual -->
+    <div class="case-visual">
+      <img src="../assets/insights-hero.png" alt="Fusion Insights dashboard showing the full Retail Media Capabilities view with treemap, heatmap, bar chart, and scatter plot" onerror="this.parentElement.innerHTML='<div class=\'placeholder-img\' style=\'min-height:480px; background:var(--fusion-bg); border:none;\'><svg width=\'40\' height=\'40\' fill=\'none\' stroke=\'var(--fusion-text)\' stroke-width=\'1.5\' viewBox=\'0 0 24 24\'><rect x=\'3\' y=\'3\' width=\'18\' height=\'18\' rx=\'2\'/><path d=\'M3 9h18M9 21V9\'/></svg><span style=\'color:var(--fusion-text); font-size:14px;\'>Add hero — full dashboard screenshot (insights-hero.png)</span></div>'">
+    </div>
+
+
+    <!-- ── SECTION 2: THE PROBLEM ── -->
+    <div class="case-section">
+      <div class="section-divider">The problem</div>
+      <h2>Gigabytes of retail data. Zero way to compare it.</h2>
+      <p>GroupM's commerce team was at the center of a data problem. Every brand they worked with — Coca-Cola, Nestle, Unilever — was generating evaluation data through partner retailers across channels like CTV, search, display, social, and audio. That data arrived from multiple sources: Comscore, SimilarWeb, Criteo, CitrusAd, and more.</p>
+      <p>There was no single place it all lived. The commerce team used older software and PowerPoint to build visualizations — manually assembling charts for each client presentation, unable to compare metrics across brands or retailers in any consistent way.</p>
+      <p>The result: strategists spent hours on report assembly instead of analysis. Clients received static snapshots instead of live data. And there was no way to ask the most important question — <em>how does Walmart compare to Kroger across all our commerce channels?</em> — without building a new slide deck from scratch.</p>
+      <p>Insights was the answer: a dashboard that would consolidate all commerce data from a brand's Flow evaluation into a single, interactive view — with charts built for the specific analytical questions the commerce team needed to answer every day.</p>
+    </div>
+
+
+    <!-- ── SECTION 3: MY ROLE ── -->
+    <div class="case-section">
+      <div class="section-divider">My role</div>
+      <h2>Sole designer on a project I'm most proud of</h2>
+      <p>Insights was the project I pushed hardest for and learned the most from. I was the sole designer throughout — from the first stakeholder session through to user testing and engineering handoff. The project ran under real constraints: a tight timeline, a small team, and data visualization territory that was genuinely new to me.</p>
+      <p>I owned requirements gathering, charting library research, wireframing, hi-fi design, prototype testing via Maze, and cross-functional negotiation with engineers on chart feasibility. The fact that Insights ended up being demoed in client pitches for Unilever — and that the commerce team embraced it — made it the work I'm most proud of from my time at GroupM.</p>
+    </div>
+
+
+    <!-- ── SECTION 4: DISCOVERY ── -->
+    <div class="case-section">
+      <div class="section-divider">Discovery</div>
+      <h2>Understanding the data before designing the charts</h2>
+      <p>Before sketching a single screen, I needed to understand three things: what data the commerce team was working with, what questions they were trying to answer, and what our charting library could actually support.</p>
+
+      <div class="decision-grid">
+        <div class="decision-card">
+          <div class="decision-number">Step 01 — Stakeholders</div>
+          <h3>Requirements from the commerce team</h3>
+          <p>I ran working sessions with key stakeholders from the commerce team and engineers together. Two requirements shaped everything: retailers needed to be segmented into fair comparison groups (pharmacy vs. grocery vs. general), and the dashboard needed charts that could surface both overall performance and channel-level detail.</p>
+        </div>
+        <div class="decision-card">
+          <div class="decision-number">Step 02 — Data audit</div>
+          <h3>Understanding the metrics</h3>
+          <p>I worked with the commerce team to map every data metric that Flow would pipe into Insights: overall retailer scores, per-channel weights (General, On-Property Search, On-Property Display, Off-Property Display, Social, CTV, Audio, Digital OOH, API), monthly traffic, revenue, and growth rate. The chart types had to follow from the data, not the other way around.</p>
+        </div>
+        <div class="decision-card">
+          <div class="decision-number">Step 03 — Charting library</div>
+          <h3>Confirming what engineering could build</h3>
+          <p>I aligned with engineers early on the charting library — Nivo Rocks — because our design system didn't include all the chart types we needed. Knowing the library's constraints and capabilities before wireframing meant I wasn't designing charts that would be impossible to implement. Several chart decisions later depended on this foundation.</p>
+        </div>
+      </div>
+    </div>
+
+
+    <!-- ── SECTION 5: FLOW → INSIGHTS CONNECTION ── -->
+    <div class="case-section">
+      <div class="section-divider">How Insights works</div>
+      <h2>Flow feeds Insights — the two platforms work in tandem</h2>
+      <p>Insights didn't exist in isolation. The data that powered every chart came from Flow — specifically from completed RFI evaluations that had been scored, approved, and published by the commerce team. This meant every Insight was grounded in real retailer response data, not manually entered figures.</p>
+      <p>Setting up a new Insight was a three-step process in Admin Mode:</p>
+
+      <div class="stepper-wrap">
+        <div class="stepper-step active">
+          <div class="step-num">Step 01</div>
+          <div class="step-name">Name</div>
+          <div class="step-desc">Give the Insight a name that maps to the evaluation (e.g. "Coca-Cola USA Retail Media Capabilities")</div>
+        </div>
+        <div class="stepper-step">
+          <div class="step-num">Step 02</div>
+          <div class="step-name">Attach Existing Flow</div>
+          <div class="step-desc">Connect a completed, published Flow — this is the data source that powers the dashboard</div>
+        </div>
+        <div class="stepper-step">
+          <div class="step-num">Step 03</div>
+          <div class="step-name">Weigh Segments</div>
+          <div class="step-desc">Set the channel weights for each retailer segment, determining how scores are calculated across channels</div>
+        </div>
+      </div>
+
+      <!-- Create New Insight screens -->
+      <div class="two-col" style="margin-top: 0;">
+        <div class="img-full" style="margin: 0;">
+          <img src="../assets/insights-create-flow.png" alt="Create New Insight — Step 2: Attach Existing Flow" onerror="this.parentElement.innerHTML='<div class=\'img-placeholder\' style=\'margin:0; border-radius:12px; min-height:280px;\'><span>Add screenshot — Create New Insight, Attach Existing Flow step</span></div>'">
+        </div>
+        <div class="img-full" style="margin: 0;">
+          <img src="../assets/insights-weigh-segments.png" alt="Create New Insight — Step 3: Weigh Segments with Manage Segments modal" onerror="this.parentElement.innerHTML='<div class=\'img-placeholder\' style=\'margin:0; border-radius:12px; min-height:280px;\'><span>Add screenshot — Create New Insight, Weigh Segments step with Manage Segments modal</span></div>'">
+        </div>
+      </div>
+      <p style="margin-top: 16px;">The Weigh Segments step is where the commerce team had real control. Different retailer segments — General, Grocery, Pharmacy, Pure Pay — could have different channel weightings, reflecting the fact that a grocery retailer and a pharmacy retailer shouldn't be scored identically across all nine channels. This made the resulting scores more meaningful and client-defensible.</p>
+    </div>
+
+
+    <!-- ── SECTION 6: HOMEPAGE ── -->
+    <div class="case-section">
+      <div class="section-divider">The Insights homepage</div>
+      <h2>One hub, every brand's evaluations</h2>
+      <p>The Insights homepage gave the commerce team a single place to manage all active evaluations across clients. Projects were organized by brand — Global, Coca-Cola, Nestle — with individual Insight cards showing the evaluation name and scope.</p>
+
+      <div class="img-full">
+        <img src="../assets/insights-homepage.png" alt="Fusion Insights homepage showing Global, Coca-Cola, and Nestle project groups with Insight cards" onerror="this.parentElement.innerHTML='<div class=\'img-placeholder\' style=\'margin:0; min-height:400px;\'><span>Add screenshot — Insights homepage (Welcome To Insights, Global + Coca-Cola + Nestle project groups)</span></div>'">
+      </div>
+
+      <p>Each project had its own access control — admins could manage who had edit access on a per-project basis, keeping Coca-Cola data siloed from Nestle without any manual gatekeeping. This was a direct carry-over from Flow's permissions model and meant the commerce team could confidently share dashboards with brand stakeholders without risking cross-client data exposure.</p>
+    </div>
+
+
+    <!-- ── SECTION 7: THE DASHBOARD ── -->
+    <div class="case-section">
+      <div class="section-divider">The dashboard</div>
+      <h2>Four charts. Four analytical questions. One page.</h2>
+      <p>The Insights dashboard was built around a specific insight about how the commerce team worked: they didn't have one question about their retailers — they had four. Which retailers are performing best overall? How do specific retailers compare across channels? How does traffic and revenue track month over month? And where do retailers sit on a maturity vs. growth curve?</p>
+      <p>Each chart on the dashboard was designed to answer exactly one of those questions — and nothing else.</p>
+
+      <div class="img-full">
+        <img src="../assets/insights-dashboard-full.png" alt="Full Insights dashboard showing all four charts: treemap, heatmap, bar chart, and retailer maturity scatter plot" onerror="this.parentElement.innerHTML='<div class=\'img-placeholder\' style=\'margin:0; min-height:560px;\'><span>Add screenshot — Full dashboard view (all four charts visible)</span></div>'">
+      </div>
+    </div>
+
+
+    <!-- ── SECTION 8: CHART 1 — TREEMAP ── -->
+    <div class="case-section">
+      <div class="section-divider">Chart 01 — Treemap</div>
+      <h2>Which retailers are performing best — at a glance, at scale</h2>
+      <p>The treemap answered the first and most fundamental question: across all partner retailers, who's at the top and who's at the bottom? Each retailer is a tile sized by their overall score, colored on a dark-to-light green scale from highest to lowest performer.</p>
+
+      <div class="img-full">
+        <img src="../assets/insights-treemap.png" alt="Retailer Scores treemap showing Amazon at 76.53% as the largest tile, with 7-Eleven/Speedway at 16% nearly invisible in the corner" onerror="this.parentElement.innerHTML='<div class=\'img-placeholder\' style=\'margin:0; min-height:320px;\'><span>Add screenshot — Treemap (Retailer Scores, full view showing Amazon vs. 7-Eleven/Speedway size contrast)</span></div>'">
+      </div>
+
+      <p>This chart almost didn't ship. During hi-fi design, the engineers pushed back — they were concerned that retailers with very low scores would be rendered nearly invisible, creating a misleading picture of the competitive landscape. It was a valid concern, and one I took seriously.</p>
+      <p>Rather than accepting that framing or abandoning the treemap, I went back to the Nivo Rocks charting library and consulted a UX colleague who worked on Copilot — GroupM's adjacent AI platform. After working through the alternatives together, we both reached the same conclusion: no other chart type communicated ranked distribution across 15+ retailers as clearly as a treemap. The invisibility of low scorers was actually <em>accurate</em> — those retailers genuinely had a smaller footprint in the data. The chart was being honest.</p>
+      <p>I brought that rationale back to the engineers with the research behind it. They agreed. The treemap shipped.</p>
+      <div class="highlight-box">
+        The strongest design decisions aren't always the ones that go unchallenged — they're the ones you can defend with evidence after being challenged.
+      </div>
+    </div>
+
+
+    <!-- ── SECTION 9: CHART 2 — RADAR ── -->
+    <div class="case-section">
+      <div class="section-divider">Chart 02 — Radar</div>
+      <h2>Comparing retailers across nine channels — side by side</h2>
+      <p>The treemap showed overall performance. But the commerce team's next question was always more nuanced: <em>how does Amazon compare to Target across specific channels?</em> A retailer that's strong in CTV but weak in On-Property Search tells a very different story than their overall score suggests.</p>
+      <p>A radar chart was the right tool: nine axes (one per commerce channel), each retailer plotted as a filled polygon. Commerce strategists could select up to three retailers at once and immediately see where their shapes overlap, diverge, and cross.</p>
+
+      <div class="img-full">
+        <img src="../assets/insights-radar.png" alt="Retailer Performance Across Categories radar chart showing Amazon, Instacart, and Target compared across nine commerce channels" onerror="this.parentElement.innerHTML='<div class=\'img-placeholder\' style=\'margin:0; min-height:360px;\'><span>Add screenshot — Radar chart (Amazon, Instacart, Target across nine channels)</span></div>'">
+      </div>
+
+      <p>The max-3 constraint was intentional. Four or five overlapping polygons on a radar chart become unreadable — the shapes obscure each other and the insight collapses. Three was the upper limit where the chart still communicated clearly. But that constraint created a problem that user testing would surface.</p>
+    </div>
+
+
+    <!-- ── SECTION 10: CHART 3 — HEATMAP (PIVOT) ── -->
+    <div class="case-section">
+      <div class="section-divider">Chart 03 — Heatmap</div>
+      <h2>What user testing revealed — and how it changed the chart</h2>
+      <p>During prototype testing with the commerce team via Maze, a consistent piece of feedback emerged: three retailers wasn't enough. Strategists regularly needed to compare five or more retailers simultaneously — running a full competitive set, not just a head-to-head.</p>
+      <p>A radar chart with five retailers was unworkable. The polygons overlapped completely and became impossible to distinguish. So I went back to research and came across a bubble heatmap — a grid where retailers are rows, channels are columns, and each cell is a bubble sized and colored by score intensity.</p>
+
+      <div class="iteration-grid">
+        <div class="iteration-card">
+          <div class="iteration-placeholder">
+            <img src="../assets/insights-radar.png" alt="Radar chart — max 3 retailers" onerror="this.style.display='none'; this.parentElement.innerHTML='[ Radar chart — clear at 3 retailers, unreadable at 5+ ]'">
+          </div>
+          <div class="iteration-label">
+            <div class="iteration-label-title">Radar chart — V1</div>
+            <p>Strong for up to 3 retailers. User testing revealed the commerce team regularly needed to compare 5 or more at once — where the chart became unreadable.</p>
+          </div>
+        </div>
+        <div class="iteration-card chosen">
+          <div class="iteration-placeholder">
+            <img src="../assets/insights-heatmap.png" alt="Bubble heatmap showing 5 retailers across 9 channels with hover state highlighting Target row" onerror="this.style.display='none'; this.parentElement.innerHTML='[ Bubble heatmap — 5 retailers, hover highlights row + column ]'">
+          </div>
+          <div class="iteration-label">
+            <div class="iteration-label-title">Bubble heatmap — V2</div>
+            <p>Handles 5 retailers across 9 channels without visual noise. Bubble size and color encode score at a glance. Hover highlights an entire row and column while greying others.</p>
+            <span class="chosen-pill">✓ Commerce team loved it</span>
+          </div>
+        </div>
+      </div>
+
+      <p>The heatmap solved the comparison problem at scale. Each bubble's size and color intensity encodes the retailer's score for that channel — bigger and darker means stronger performance. The hover interaction was a key detail: hovering any bubble highlights the entire row (retailer) and column (channel) while greying everything else, letting the user focus on one intersection without losing the surrounding context.</p>
+      <p>The commerce team's reaction when they saw it in testing was immediate. It was both more useful and more visually appealing than the radar chart it replaced — a rare case where the user-driven pivot was better on every dimension.</p>
+
+      <div class="img-full">
+        <img src="../assets/insights-heatmap.png" alt="Bubble heatmap showing two states: default view with all 5 retailers active, and hover state with Target row highlighted" onerror="this.parentElement.innerHTML='<div class=\'img-placeholder\' style=\'margin:0; min-height:400px;\'><span>Add screenshot — Heatmap (both states: default and hover with Target row highlighted)</span></div>'">
+      </div>
+    </div>
+
+
+    <!-- ── SECTION 11: CHART 4 — MATURITY CHART ── -->
+    <div class="case-section">
+      <div class="section-divider">Chart 04 — Retailer Maturity</div>
+      <h2>Maturity vs. growth potential — a strategic lens</h2>
+      <p>The fourth chart answered a fundamentally different question than the other three. Rather than evaluating current performance, it asked: <em>where should a brand invest next?</em></p>
+      <p>The Retailer Maturity Chart is a scatter plot mapping two axes — Retailer Score (current commerce maturity) on the Y-axis and Average Growth Rate on the X-axis. Retailers fall into four quadrants that tell a clear strategic story: high score + high growth are priority partners; high growth + lower score are emerging opportunities worth watching; high score + low growth are established but potentially plateauing; low on both axes are deprioritized.</p>
+
+      <div class="img-full">
+        <img src="../assets/insights-maturity.png" alt="Retailer Maturity Chart scatter plot showing Retailer Score vs Average Growth Rate, with Walmart, Target, Shipt, Dollar General, and Go Puff highlighted in orange" onerror="this.parentElement.innerHTML='<div class=\'img-placeholder\' style=\'margin:0; min-height:400px;\'><span>Add screenshot — Retailer Maturity Chart scatter plot (dark background, orange highlighted retailers)</span></div>'">
+      </div>
+
+      <p>The selected retailers from a brand's evaluation are highlighted in orange — so a Coca-Cola commerce strategist could immediately see where their partners fall relative to the full market. Hovering any dot reveals the retailer's name and exact coordinates. The quadrant lines are set at the median, so the clustering is always relative to the current dataset rather than a fixed benchmark.</p>
+      <p>This chart was the one that ended up front and center in client pitches. It translated raw scores into business strategy in a way that a chart showing raw numbers couldn't — and it gave the commerce team a visual they could drop directly into a client conversation.</p>
+    </div>
+
+
+    <!-- ── SECTION 12: USER TESTING ── -->
+    <div class="case-section">
+      <div class="section-divider">User testing</div>
+      <h2>Maze prototype testing with the commerce team</h2>
+      <p>Testing was conducted with the commerce team — the primary users of the platform — using Maze. Sessions covered the full admin flow (creating an Insight, attaching a Flow, configuring segments and weights) as well as the dashboard experience (reading and interacting with each chart).</p>
+      <p>The radar-to-heatmap pivot was the most significant thing testing surfaced, but it wasn't the only one. Testing also validated the segment weighting screen — specifically that commerce strategists needed the ability to create and name their own segments (General, Grocery, Pharmacy, Pure Pay) rather than working with a fixed taxonomy. The Manage Segments modal was a direct result of that feedback, allowing admins to add, rename, and delete segments without engineering involvement.</p>
+      <p>The decision to use Maze meant testing could happen asynchronously — useful for a commerce team spread across time zones. Prototype clicks, completion rates, and qualitative comments gave us a structured way to prioritize what to revisit before handoff.</p>
+    </div>
+
+
+    <!-- ── SECTION 13: OUTCOMES ── -->
+    <div class="case-section">
+      <div class="section-divider">Outcomes &amp; impact</div>
+      <h2>From internal tool to client pitch asset</h2>
+
+      <div class="outcome-row">
+        <div class="outcome-stat">
+          <div class="outcome-stat-number">4 charts</div>
+          <div class="outcome-stat-label">Each designed for a specific analytical question — replacing ad-hoc PowerPoint slides with a reusable, live dashboard</div>
+        </div>
+        <div class="outcome-stat">
+          <div class="outcome-stat-number">3 → 5+</div>
+          <div class="outcome-stat-label">Retailers comparable simultaneously after the radar-to-heatmap pivot — driven directly by user testing feedback</div>
+        </div>
+        <div class="outcome-stat">
+          <div class="outcome-stat-number">Pitched live</div>
+          <div class="outcome-stat-label">Insights was demoed in Unilever client pitches — the Retailer Maturity Chart became a go-to slide for the commerce team's business development conversations</div>
+        </div>
+      </div>
+
+      <p>Insights was also the project that proved the value of the broader Fusion platform. Flow collected the data. Insights made it meaningful. Together, they gave GroupM's commerce team something that hadn't existed before: a single source of truth for retail media partner evaluation, built on real responses from real retailers — not manually assembled spreadsheets.</p>
+    </div>
+
+
+    <!-- ── SECTION 14: REFLECTIONS ── -->
+    <div class="case-section">
+      <div class="section-divider">Reflections</div>
+      <h2>What this project taught me</h2>
+      <div class="reflection-grid">
+        <div class="reflection-block">
+          <h3>What I learned</h3>
+          <p>Insights was where I learned that data visualization is a research discipline, not just a design one. Every chart decision started with a question — what is the user actually trying to understand? — and worked backward from there. Understanding the data before touching a frame saved enormous time and avoided charts that looked good but answered the wrong question.</p>
+          <p>I also learned what it means to advocate for a design decision under real pressure. The treemap pushback from engineering wasn't comfortable, but going back with research and a peer consultation rather than capitulating was the right call. The chart shipped, and it was the right chart. That experience gave me a framework I've used in every design conversation since: if you believe in a decision, do the work to defend it — don't just defer.</p>
+        </div>
+        <div class="reflection-block">
+          <h3>What I'd do with more time</h3>
+          <p>I would have explored AI-assisted summaries on the dashboard — natural language callouts like "Walmart leads across 6 of 9 channels, but lags in CTV" sitting above each chart. We had early discovery conversations about using LLMs to improve the platform's insight generation, and Insights was the obvious place to start. With more runway, that would have been a meaningful upgrade.</p>
+          <p>I would also have invested in a mobile-responsive version of the dashboard. The commerce team frequently presented from laptops in client meetings, and the dashboard wasn't optimized for those contexts. A presentation mode — full-screen, no UI chrome, chart-first — would have made it an even stronger pitch asset than it already was.</p>
+        </div>
+      </div>
+    </div>
+
+
+    <!-- ── NAVIGATION ── -->
+    <div style="border-top:1px solid var(--border); padding:40px 0; display:flex; justify-content:space-between; align-items:center; flex-wrap:wrap; gap:16px;">
+      <a href="flow.html" class="back-link" style="margin-bottom:0;">← Flow &amp; RFI Builder</a>
+      <a href="design-system.html" class="btn-primary">Next project →</a>
+    </div>
+
+  </div>
+</main>
+
+<footer>
+  <div class="footer-inner">
+    <span>© 2026 Anita Shah</span>
+    <div style="display:flex; gap:20px;">
+      <a href="mailto:anitashah92@gmail.com" style="color:var(--tertiary);">anitashah92@gmail.com</a>
+      <a href="https://linkedin.com/in/anita-shah" target="_blank" style="color:var(--tertiary);">LinkedIn</a>
+    </div>
+  </div>
+</footer>
+
 </body>
 </html>

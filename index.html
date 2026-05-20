@@ -1,143 +1,206 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Anita Shah — UX/UI Designer</title>
-<link rel="stylesheet" href="style.css">
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Anita Shah — UX Designer based in Sunnyvale, CA. 5+ years designing enterprise platforms, consumer products, and end-to-end digital experiences.">
+  <title>Anita Shah — UX Designer</title>
+  <link rel="stylesheet" href="style.css">
 </head>
 <body>
-<div class="page-card">
 
-  <nav>
-    <div class="inner">
-      <a href="index.html" class="nav-logo">Anita Shah</a>
-      <ul class="nav-links">
-        <li><a href="#work">Work</a></li>
-        <li><a href="#about">About</a></li>
-        <li><a href="assets/Anita_Shah_Resume.pdf">Résumé</a></li>
-        <li><a href="mailto:anitashah92@gmail.com" class="nav-cta">Contact</a></li>
-      </ul>
+<nav>
+  <div class="nav-inner">
+    <a href="index.html" class="nav-name">Anita Shah</a>
+    <div class="nav-links">
+      <a href="#work" class="hide-mobile">Work</a>
+      <a href="about.html" class="hide-mobile">About</a>
+      <a href="assets/Anita_Shah_Resume.pdf" target="_blank" class="hide-mobile">Resume</a>
+      <a href="mailto:anitashah92@gmail.com" class="nav-cta">Get in touch</a>
     </div>
-  </nav>
+  </div>
+</nav>
 
-  <section class="hero">
-    <div class="inner">
-      <div class="hero-name">Anita Shah</div>
-      <div class="hero-role">UX/UI Designer</div>
-      <p class="hero-desc">I turn complex data into things people actually understand. <strong>5+ years</strong> designing enterprise SaaS dashboards, nonprofit platforms, and iOS apps — with clarity and purpose.</p>
-    </div>
-  </section>
+<main>
+  <div class="container">
 
-  <section id="work">
-    <div class="inner">
-      <div class="sec-header">
-        <h2 class="sec-title">Work</h2>
-        <span class="sec-num">01</span>
+    <!-- HERO -->
+    <section class="hero">
+      <div class="hero-tag">Open to work · UX Designer</div>
+      <h1>Designing experiences<br>people actually understand.</h1>
+      <p>5+ years turning complex data and systems into clear, usable products. From enterprise SaaS dashboards to end-to-end nonprofit platforms — I design with clarity and test with purpose.</p>
+      <div class="hero-actions">
+        <a href="#work" class="btn-primary">View my work</a>
+        <a href="about.html" class="btn-secondary">About me →</a>
       </div>
-      <div class="feat-wrap">
-        <a href="work/insights.html" class="feat">
-          <div class="feat-vis">
-            <div class="tmap">
-              <div class="tc" style="opacity:.72"></div>
-              <div class="tc" style="opacity:.42"></div>
-              <div class="tc" style="opacity:.28;grid-column:1"></div>
-              <div class="tc" style="opacity:.16"></div>
+    </section>
+
+    <!-- WORK -->
+    <section id="work">
+      <p class="section-label">Selected work</p>
+      <div class="work-grid">
+
+        <!-- Fusion -->
+        <a href="work/fusion.html" class="work-card" style="text-decoration:none; color:inherit;">
+          <div class="work-card-visual" style="background: var(--fusion-bg);">
+            <div class="placeholder-img" style="background: var(--fusion-bg); border: 2px dashed #C7D2FE;">
+              <svg width="32" height="32" fill="none" stroke="#818CF8" stroke-width="1.5" viewBox="0 0 24 24"><rect x="3" y="3" width="18" height="18" rx="2"/><path d="M3 9h18M9 21V9"/></svg>
+              <span style="color: #818CF8;">Add Fusion screenshots</span>
             </div>
           </div>
-          <div class="feat-bar">
-            <div class="feat-info">
-              <div class="feat-tag">Enterprise SaaS · Data Visualization</div>
-              <div class="feat-name">Fusion Insights</div>
+          <div class="work-card-body">
+            <div class="work-tags">
+              <span class="tag" style="background:var(--fusion-tag); color:var(--fusion-text);">Enterprise SaaS</span>
+              <span class="tag" style="background:#E0E7FF; color:#3730A3;">Data Visualization</span>
             </div>
-            <div class="feat-right">
-              <span class="metric">Demoed in Unilever pitch</span>
-              <span class="feat-cta">View case study <svg width="12" height="12" viewBox="0 0 12 12" fill="none"><path d="M2 10L10 2M10 2H4.5M10 2V7.5" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg></span>
-              <span class="yr">2024</span>
+            <h2>Fusion — Commerce Intelligence Platform</h2>
+            <p>Designed the end-to-end experience for an enterprise SaaS platform turning gigabytes of streaming retail data into actionable dashboards used by major global brands.</p>
+            <p class="work-metric"><strong>+30% improvement</strong> in dashboard usability · GroupM</p>
+            <span class="work-link">View case study →</span>
+          </div>
+        </a>
+
+        <!-- Insights -->
+        <a href="work/insights.html" class="work-card" style="text-decoration:none; color:inherit;">
+          <div class="work-card-visual" style="background: var(--fusion-bg);">
+            <div class="placeholder-img" style="background: var(--fusion-bg); border: 2px dashed #C7D2FE;">
+              <svg width="32" height="32" fill="none" stroke="#818CF8" stroke-width="1.5" viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"/><path d="M12 8v4l3 3"/></svg>
+              <span style="color: #818CF8;">Add Insights screenshots</span>
+            </div>
+          </div>
+          <div class="work-card-body">
+            <div class="work-tags">
+              <span class="tag" style="background:var(--fusion-tag); color:var(--fusion-text);">Enterprise SaaS</span>
+              <span class="tag" style="background:#E0E7FF; color:#3730A3;">Data Visualization</span>
+            </div>
+            <h2>Fusion Insights</h2>
+            <p>Replaced fragmented PowerPoint reports with an interactive commerce intelligence dashboard — giving Coca-Cola, Nestle, and Unilever a single place to evaluate and compare their retail media partners.</p>
+            <p class="work-metric"><strong>Demoed in Unilever pitch</strong> · GroupM Commerce Team</p>
+            <span class="work-link">View case study →</span>
+          </div>
+        </a>
+
+        <!-- Design System -->
+        <a href="work/design-system.html" class="work-card" style="text-decoration:none; color:inherit; grid-template-columns: 1fr 1fr;">
+          <div class="work-card-body">
+            <div class="work-tags">
+              <span class="tag" style="background:var(--fusion-tag); color:var(--fusion-text);">Design System</span>
+              <span class="tag" style="background:#E0E7FF; color:#3730A3;">Figma</span>
+            </div>
+            <h2>Fusion Design System</h2>
+            <p>Built a Figma component library and token system from scratch on top of MUI — powering 6 applications over 3 years, including a Sketch → Figma migration and multi-theme Op-Co workspaces.</p>
+            <p class="work-metric"><strong>50+ components</strong> · GroupM / Choreograph</p>
+            <span class="work-link">View case study →</span>
+          </div>
+          <div class="work-card-visual" style="background: var(--fusion-bg);">
+            <div class="placeholder-img" style="background: var(--fusion-bg); border: 2px dashed #C7D2FE;">
+              <svg width="32" height="32" fill="none" stroke="#818CF8" stroke-width="1.5" viewBox="0 0 24 24"><rect x="3" y="3" width="7" height="7" rx="1"/><rect x="14" y="3" width="7" height="7" rx="1"/><rect x="3" y="14" width="7" height="7" rx="1"/><rect x="14" y="14" width="7" height="7" rx="1"/></svg>
+              <span style="color: #818CF8;">Add design system screenshots</span>
             </div>
           </div>
         </a>
-      </div>
-      <div class="list">
-        <a href="work/design-system.html" class="row">
-          <div><div class="row-name">Fusion Design System</div><div class="row-type">Design System · Figma</div></div>
-          <span class="metric">50+ components</span>
-          <span class="yr">2023</span>
-          <span class="arr">→</span>
-        </a>
-        <a href="work/flow.html" class="row">
-          <div><div class="row-name">Flow & RFI Builder</div><div class="row-type">Web App · Product Design</div></div>
-          <span class="metric">Weeks → Days</span>
-          <span class="yr">2023</span>
-          <span class="arr">→</span>
-        </a>
-        <a href="work/beckett.html" class="row">
-          <div><div class="row-name">Beckett iOS</div><div class="row-type">iOS · Mobile · IoT</div></div>
-          <span class="metric">End-to-end prototype</span>
-          <span class="yr">2022</span>
-          <span class="arr">→</span>
-        </a>
-        <a href="work/sra.html" class="row">
-          <div><div class="row-name">SRA Website</div><div class="row-type">Web Design · UX Strategy</div></div>
-          <span class="metric">16 pages · In dev</span>
-          <span class="yr">2024</span>
-          <span class="arr">→</span>
-        </a>
-        <div class="row-dis">
-          <div><div class="row-name">SRLC Website</div><div class="row-type">Nonprofit · Web Design · Coming soon</div></div>
-          <span></span><span></span><span></span>
-        </div>
-      </div>
-    </div>
-  </section>
 
-  <section id="about" class="about">
-    <div class="sec-header inner">
-      <h2 class="sec-title">About</h2>
-      <span class="sec-num">02</span>
-    </div>
-    <div class="inner">
-      <div class="about-inner" style="padding:0 0 88px">
-        <div class="photo">Add your photo here</div>
+        <!-- Flow & RFI Builder -->
+        <a href="work/flow.html" class="work-card" style="text-decoration:none; color:inherit; grid-template-columns: 1fr 1fr;">
+          <div class="work-card-body">
+            <div class="work-tags">
+              <span class="tag" style="background:var(--fusion-tag); color:var(--fusion-text);">Web Application</span>
+              <span class="tag" style="background:#E0E7FF; color:#3730A3;">Product Design</span>
+            </div>
+            <h2>Flow &amp; RFI Builder</h2>
+            <p>Replaced an Excel-and-email RFI process with a centralized web platform — cutting multi-week evaluation cycles to a few days for Coca-Cola and its 50+ retail partners.</p>
+            <p class="work-metric"><strong>Weeks → Days</strong> cycle time · GroupM / Coca-Cola</p>
+            <span class="work-link">View case study →</span>
+          </div>
+          <div class="work-card-visual" style="background: var(--fusion-bg);">
+            <div class="placeholder-img" style="background: var(--fusion-bg); border: 2px dashed #C7D2FE;">
+              <svg width="32" height="32" fill="none" stroke="#818CF8" stroke-width="1.5" viewBox="0 0 24 24"><rect x="3" y="3" width="18" height="18" rx="2"/><path d="M3 9h18M9 21V9"/></svg>
+              <span style="color: #818CF8;">Add Flow screenshots</span>
+            </div>
+          </div>
+        </a>
+
+        <!-- SRLC -->
+        <a href="work/srlc.html" class="work-card" style="text-decoration:none; color:inherit; grid-template-columns: 1fr 1fr;">
+          <div class="work-card-body">
+            <div class="work-tags">
+              <span class="tag" style="background:var(--srlc-tag); color:var(--srlc-text);">Web Design</span>
+              <span class="tag" style="background:#D1FAE5; color:#065F46;">Nonprofit</span>
+            </div>
+            <h2>SRLC — Full Website Design</h2>
+            <p>Designed the SRLC website end-to-end from concept to launch — all pages, components, and user flows built from scratch, with ongoing regression testing throughout.</p>
+            <p class="work-metric"><strong>$750K+</strong> in donations driven through redesigned giving experience</p>
+            <span class="work-link">View case study →</span>
+          </div>
+          <div class="work-card-visual" style="background: var(--srlc-bg);">
+            <div class="placeholder-img" style="background: var(--srlc-bg); border: 2px dashed #A7F3D0;">
+              <svg width="32" height="32" fill="none" stroke="#34D399" stroke-width="1.5" viewBox="0 0 24 24"><rect x="2" y="3" width="20" height="14" rx="2"/><path d="M8 21h8M12 17v4"/></svg>
+              <span style="color: #34D399;">Add SRLC screenshots</span>
+            </div>
+          </div>
+        </a>
+
+        <!-- Beckett -->
+        <a href="work/beckett.html" class="work-card" style="text-decoration:none; color:inherit;">
+          <div class="work-card-visual" style="background: var(--beckett-bg);">
+            <div class="placeholder-img" style="background: var(--beckett-bg); border: 2px dashed #FCD34D;">
+              <svg width="32" height="32" fill="none" stroke="#F59E0B" stroke-width="1.5" viewBox="0 0 24 24"><rect x="5" y="2" width="14" height="20" rx="2"/><path d="M12 18h.01"/></svg>
+              <span style="color: #F59E0B;">Add Beckett screenshots</span>
+            </div>
+          </div>
+          <div class="work-card-body">
+            <div class="work-tags">
+              <span class="tag" style="background:var(--beckett-tag); color:var(--beckett-text);">iOS / Mobile</span>
+              <span class="tag" style="background:#FEF3C7; color:#92400E;">IoT</span>
+            </div>
+            <h2>Beckett — iOS Prototype</h2>
+            <p>Designed an iOS prototype for an IoT product visualizing real-time oil tank metrics for field customers, including end-to-end user flows and edge-case design validation.</p>
+            <p class="work-metric">End-to-end prototype · Beckett, San Diego</p>
+            <span class="work-link">View case study →</span>
+          </div>
+        </a>
+
+      </div>
+    </section>
+
+    <!-- ABOUT STRIP -->
+    <section>
+      <div class="about-strip">
         <div>
-          <div class="bio">
-            <p>Hi, I'm Anita — a UX/UI designer with a background in psychology and a passion for creating thoughtful, human-centered digital experiences.</p>
-            <p>I specialize in turning complex ideas into clear, intuitive, and visually engaging products. My work blends strategy, storytelling, content, and design craft — whether I'm redesigning a donation flow, building a content-heavy website, or shaping a product concept from the ground up.</p>
-            <p>With experience across UX, visual design, content strategy, and cross-functional collaboration, I care deeply about creating experiences that are not only beautiful, but <strong>useful, accessible, and emotionally resonant</strong>.</p>
-            <p>At the heart of my work is a simple goal: to bring clarity to complexity and design experiences that feel <strong>meaningful, effortless, and human</strong>.</p>
-          </div>
-          <div class="skills">
-            <span class="skill">UX Research</span>
-            <span class="skill">Interaction Design</span>
-            <span class="skill">Design Systems</span>
-            <span class="skill">Prototyping</span>
-            <span class="skill">Data Visualization</span>
-            <span class="skill">Figma</span>
-            <span class="skill">Usability Testing</span>
-            <span class="skill">HTML / CSS</span>
-            <span class="skill">Agile</span>
-          </div>
-          <div class="links">
-            <a href="assets/Anita_Shah_Resume.pdf" class="alink">Download résumé →</a>
-            <a href="https://linkedin.com/in/anita-shah" target="_blank" class="alink">LinkedIn →</a>
+          <h2>Designing with curiosity,<br>shipping with care.</h2>
+          <p>I'm a cross-functional designer and strategist based in Sunnyvale, CA. I work best at the intersection of research, systems thinking, and clear communication — where design decisions get explained, not just made.</p>
+          <a href="about.html" class="btn-primary" style="display:inline-block; margin-top: 8px;">More about me →</a>
+        </div>
+        <div>
+          <p style="font-size:13px; color:var(--tertiary); text-transform:uppercase; letter-spacing:0.06em; margin-bottom:14px;">Core skills</p>
+          <div class="skills-list">
+            <span class="skill-pill">UX Research</span>
+            <span class="skill-pill">Interaction Design</span>
+            <span class="skill-pill">Prototyping</span>
+            <span class="skill-pill">Design Systems</span>
+            <span class="skill-pill">Usability Testing</span>
+            <span class="skill-pill">Figma</span>
+            <span class="skill-pill">Data Visualization</span>
+            <span class="skill-pill">HTML / CSS</span>
+            <span class="skill-pill">Agile</span>
+            <span class="skill-pill">Stakeholder Comms</span>
           </div>
         </div>
       </div>
-    </div>
-  </section>
+    </section>
 
-  <footer>
-    <div class="inner">
-      <span class="avail"><span class="pulse"></span>Open to work · Sunnyvale, CA</span>
-      <div class="footer-links">
-        <a href="mailto:anitashah92@gmail.com">anitashah92@gmail.com</a>
-        <a href="https://linkedin.com/in/anita-shah" target="_blank">LinkedIn</a>
-        <a href="assets/Anita_Shah_Resume.pdf">Résumé</a>
-      </div>
-      <span class="footer-copy">© 2026 Anita Shah</span>
-    </div>
-  </footer>
+  </div>
+</main>
 
-</div>
+<footer>
+  <div class="footer-inner">
+    <span>© 2026 Anita Shah</span>
+    <div style="display:flex; gap:20px;">
+      <a href="mailto:anitashah92@gmail.com" style="color:var(--tertiary);">anitashah92@gmail.com</a>
+      <a href="https://linkedin.com/in/anita-shah" target="_blank" style="color:var(--tertiary);">LinkedIn</a>
+    </div>
+  </div>
+</footer>
+
 </body>
 </html>
