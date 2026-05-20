@@ -1,675 +1,209 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <meta name="description" content="SRA Website — Designing a scalable digital home for Shrimad Rajchandra Ashram USA, an upcoming wellness sanctuary in the Poconos. Case study by Anita Shah.">
-  <title>SRA Website — Anita Shah</title>
-  <link rel="stylesheet" href="../style.css">
-  <style>
-
-    .section-divider {
-      font-size: 11px;
-      font-weight: 500;
-      text-transform: uppercase;
-      letter-spacing: 0.1em;
-      color: var(--tertiary);
-      margin-bottom: 40px;
-      padding-bottom: 12px;
-      border-bottom: 1px solid var(--border);
-    }
-
-    /* Audience grid */
-    .audience-grid {
-      display: grid;
-      grid-template-columns: repeat(3, 1fr);
-      gap: 14px;
-      margin: 28px 0;
-    }
-    .audience-card {
-      border: 1px solid var(--border);
-      border-radius: 10px;
-      padding: 20px;
-    }
-    .audience-icon {
-      font-size: 20px;
-      margin-bottom: 10px;
-    }
-    .audience-card h3 {
-      font-size: 14px;
-      font-weight: 500;
-      margin-bottom: 6px;
-    }
-    .audience-card p {
-      font-size: 13px;
-      color: var(--secondary);
-      line-height: 1.6;
-      margin: 0 !important;
-    }
-
-    /* Feeling pills */
-    .feeling-row {
-      display: flex;
-      flex-wrap: wrap;
-      gap: 10px;
-      margin: 24px 0;
-    }
-    .feeling-pill {
-      padding: 8px 18px;
-      border-radius: 100px;
-      font-size: 13px;
-      font-weight: 500;
-      border: 1px solid var(--sra-tag);
-      background: var(--sra-bg);
-      color: var(--sra-text);
-    }
-
-    /* UX approach cards */
-    .approach-grid {
-      display: grid;
-      grid-template-columns: 1fr 1fr 1fr;
-      gap: 16px;
-      margin: 28px 0;
-    }
-    .approach-card {
-      border: 1px solid var(--border);
-      border-radius: 10px;
-      padding: 24px;
-    }
-    .approach-num {
-      font-size: 11px;
-      font-weight: 500;
-      color: var(--sra-text);
-      text-transform: uppercase;
-      letter-spacing: 0.08em;
-      margin-bottom: 10px;
-    }
-    .approach-card h3 {
-      font-size: 15px;
-      font-weight: 500;
-      margin-bottom: 10px;
-    }
-    .approach-card p {
-      font-size: 14px;
-      color: var(--secondary);
-      line-height: 1.7;
-      margin: 0 !important;
-    }
-
-    /* Key decisions */
-    .decision-block {
-      border-left: 3px solid var(--sra-tag);
-      padding-left: 24px;
-      margin-bottom: 36px;
-    }
-    .decision-block:last-child { margin-bottom: 0; }
-    .decision-label {
-      font-size: 11px;
-      font-weight: 500;
-      text-transform: uppercase;
-      letter-spacing: 0.08em;
-      color: var(--sra-text);
-      margin-bottom: 6px;
-    }
-    .decision-block h3 {
-      font-size: 17px;
-      font-weight: 500;
-      margin-bottom: 10px;
-    }
-    .decision-block p {
-      font-size: 14px;
-      color: var(--secondary);
-      line-height: 1.75;
-      margin-bottom: 0 !important;
-    }
-
-    /* Pages list */
-    .pages-grid {
-      display: grid;
-      grid-template-columns: repeat(4, 1fr);
-      gap: 10px;
-      margin: 28px 0;
-    }
-    .page-pill {
-      background: var(--sra-bg);
-      border: 1px solid var(--sra-tag);
-      border-radius: 8px;
-      padding: 12px 14px;
-      font-size: 13px;
-      color: var(--sra-text);
-      font-weight: 500;
-    }
-
-    /* Role list */
-    .role-list {
-      display: grid;
-      grid-template-columns: 1fr 1fr;
-      gap: 10px;
-      margin: 24px 0;
-    }
-    .role-item {
-      display: flex;
-      align-items: flex-start;
-      gap: 10px;
-      font-size: 14px;
-      color: var(--secondary);
-      line-height: 1.6;
-    }
-    .role-dot {
-      width: 6px;
-      height: 6px;
-      border-radius: 50%;
-      background: var(--sra-text);
-      flex-shrink: 0;
-      margin-top: 7px;
-    }
-
-    /* QA list */
-    .qa-grid {
-      display: grid;
-      grid-template-columns: repeat(3, 1fr);
-      gap: 10px;
-      margin: 24px 0;
-    }
-    .qa-item {
-      background: var(--bg-soft);
-      border: 1px solid var(--border);
-      border-radius: 8px;
-      padding: 12px 14px;
-      font-size: 13px;
-      color: var(--secondary);
-    }
-
-    /* Impact list */
-    .impact-list {
-      margin: 28px 0;
-      display: flex;
-      flex-direction: column;
-      gap: 12px;
-    }
-    .impact-item {
-      display: flex;
-      align-items: flex-start;
-      gap: 14px;
-      padding: 16px 20px;
-      background: var(--sra-bg);
-      border: 1px solid var(--sra-tag);
-      border-radius: 10px;
-      font-size: 14px;
-      color: var(--secondary);
-      line-height: 1.6;
-    }
-    .impact-item strong {
-      color: var(--black);
-      font-weight: 500;
-    }
-    .impact-mark {
-      font-size: 16px;
-      flex-shrink: 0;
-      margin-top: 1px;
-    }
-
-    /* Reflection */
-    .reflection-grid {
-      display: grid;
-      grid-template-columns: 1fr 1fr;
-      gap: 32px;
-      margin: 28px 0;
-    }
-    .reflection-block h3 { font-size: 15px; font-weight: 500; margin-bottom: 12px; }
-    .reflection-block p {
-      font-size: 14px;
-      color: var(--secondary);
-      line-height: 1.8;
-      margin-bottom: 12px !important;
-    }
-    .reflection-block p:last-child { margin-bottom: 0 !important; }
-
-    /* Image placeholders */
-    .img-full {
-      margin: 28px 0;
-      border: 1px solid var(--border);
-      border-radius: 12px;
-      overflow: hidden;
-    }
-    .img-full img { width: 100%; display: block; }
-    .img-placeholder {
-      margin: 28px 0;
-      border: 2px dashed var(--sra-tag);
-      border-radius: 10px;
-      min-height: 320px;
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-      justify-content: center;
-      gap: 8px;
-      background: var(--sra-bg);
-      color: var(--sra-text);
-      font-size: 13px;
-      opacity: 0.7;
-    }
-    .img-placeholder.short { min-height: 220px; }
-
-    .status-badge {
-      display: inline-flex;
-      align-items: center;
-      gap: 6px;
-      background: #FEF9EC;
-      border: 1px solid #F1BF18;
-      color: #7A5800;
-      font-size: 12px;
-      font-weight: 500;
-      border-radius: 100px;
-      padding: 4px 12px;
-      margin-bottom: 16px;
-    }
-    .status-dot {
-      width: 7px;
-      height: 7px;
-      background: #E26326;
-      border-radius: 50%;
-      animation: pulse 2s infinite;
-    }
-    @keyframes pulse {
-      0%, 100% { opacity: 1; }
-      50% { opacity: 0.4; }
-    }
-
-    @media (max-width: 720px) {
-      .audience-grid  { grid-template-columns: 1fr 1fr; }
-      .approach-grid  { grid-template-columns: 1fr; }
-      .pages-grid     { grid-template-columns: 1fr 1fr; }
-      .role-list      { grid-template-columns: 1fr; }
-      .qa-grid        { grid-template-columns: 1fr 1fr; }
-      .reflection-grid { grid-template-columns: 1fr; }
-    }
-  </style>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>SRA Website — Anita Shah</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=STIX+Two+Text:ital,wght@0,400;0,500;0,600;0,700;1,400;1,500&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
+<style>
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+:root{--bg:#EEECEA;--card:#F8F8F6;--surface:#EEECEA;--text:#141412;--text-mid:#606058;--text-soft:#A8A8A0;--accent:#6B7A3E;--accent-bg:#EEF0E7;--border:rgba(20,20,18,0.08);--font-head:'STIX Two Text',Georgia,serif;--font-body:'Inter',sans-serif;}body{background:var(--bg);color:var(--text);font-family:var(--font-body);-webkit-font-smoothing:antialiased;padding:20px}h1,h2,h3,h4,.hero-name,.hero-role,.sec-title,.cs-h1,.cs-h2,.feat-name,.nav-logo,.out-val,.cn-title,.proj-name,.proj-row-name,.row-title,.snap-val,.ref h4,.cmp-title{font-family:'STIX Two Text',Georgia,serif !important}
+html{scroll-behavior:smooth}
+body{background:var(--bg);color:var(--text);font-family:var(--font-body);-webkit-font-smoothing:antialiased;padding:20px}
+.page-card{background:var(--card);border-radius:20px;overflow:clip;max-width:1100px;margin:0 auto}
+nav{display:flex;align-items:center;justify-content:space-between;padding:26px 48px;border-bottom:1px solid var(--border)}
+.nav-links{display:flex;align-items:center;gap:24px;list-style:none}
+.nav-links a{font-size:13px;font-weight:500;color:var(--text-mid);text-decoration:none;transition:color .15s}
+.nav-links a:hover{color:var(--text)}
+.nav-back{display:inline-flex;align-items:center;gap:6px;font-size:13px;font-weight:600;color:var(--text-mid);text-decoration:none;transition:color .15s}
+.nav-back:hover{color:var(--accent)}
+.cs-wrap{display:grid;grid-template-columns:180px 1fr;min-height:100vh}
+.side{position:sticky;top:0;height:100vh;overflow-y:auto;padding:40px 0 40px 48px;border-right:1px solid var(--border)}
+.side-label{font-size:10px;font-weight:700;letter-spacing:.1em;text-transform:uppercase;color:var(--text-soft);margin-bottom:12px}
+.side-links{list-style:none;display:flex;flex-direction:column}
+.side-links a{display:flex;align-items:center;gap:8px;font-size:12px;font-weight:500;color:var(--text-soft);text-decoration:none;padding:6px 8px;border-radius:6px;transition:all .15s;border-left:2px solid transparent;margin-left:-10px}
+.side-links a:hover{color:var(--text-mid);background:var(--surface)}
+.side-links a.active{color:var(--accent);border-left-color:var(--accent);background:var(--accent-bg);font-weight:700}
+.sdot{width:4px;height:4px;border-radius:50%;background:currentColor;opacity:.4;flex-shrink:0}
+.cs-main{padding:40px 48px 72px;max-width:680px}
+.cs-tags{display:flex;flex-wrap:wrap;gap:6px;margin-bottom:16px}
+.cs-tag{font-size:10px;font-weight:700;letter-spacing:.07em;text-transform:uppercase;color:var(--accent);background:var(--accent-bg);padding:3px 10px;border-radius:11px}
+.cs-h1{font-size:clamp(28px,3.5vw,40px);font-weight:800;letter-spacing:-.025em;line-height:1.1;color:var(--text);margin-bottom:12px}
+.cs-lead{font-size:15px;font-weight:400;color:var(--text-mid);line-height:1.75;margin-bottom:28px}
+.snap{display:grid;grid-template-columns:repeat(4,1fr);border:1px solid var(--border);border-radius:10px;overflow:hidden;margin-bottom:32px}
+.snap-item{padding:14px 16px;border-right:1px solid var(--border)}
+.snap-item:last-child{border-right:none}
+.snap-lbl{font-size:10px;font-weight:700;letter-spacing:.07em;text-transform:uppercase;color:var(--text-soft);margin-bottom:4px}
+.snap-val{font-size:13px;font-weight:600;color:var(--text);line-height:1.3}
+.cs-hero-img{width:100%;height:260px;background:var(--surface);border:1px solid var(--border);border-radius:10px;display:flex;align-items:center;justify-content:center;color:var(--text-soft);font-size:12px;font-weight:500;margin-bottom:40px;flex-direction:column;gap:8px;text-align:center}
+.outcomes{background:var(--text);border-radius:12px;padding:28px 32px;margin-bottom:44px;display:grid;grid-template-columns:repeat(3,1fr);gap:24px}
+.out-val{font-size:26px;font-weight:800;color:#fff;letter-spacing:-.02em;line-height:1;margin-bottom:5px}
+.out-lbl{font-size:12px;font-weight:400;color:rgba(255,255,255,.45);line-height:1.5}
+.cs-sec{margin-bottom:44px;scroll-margin-top:80px}
+.eyebrow{font-size:10px;font-weight:700;letter-spacing:.1em;text-transform:uppercase;color:var(--accent);margin-bottom:8px}
+.cs-h2{font-size:20px;font-weight:800;letter-spacing:-.015em;line-height:1.2;color:var(--text);margin-bottom:12px}
+.body-text{font-size:14px;font-weight:400;color:var(--text-mid);line-height:1.8}
+.body-text p{margin-bottom:12px}
+.body-text p:last-child{margin-bottom:0}
+.body-text strong{font-weight:700;color:var(--text)}
+.callout{border-left:2px solid var(--accent);padding:12px 16px;margin:16px 0;background:var(--accent-bg);border-radius:0 6px 6px 0}
+.callout p{font-size:14px;font-style:italic;color:var(--text-mid);line-height:1.65}
+.img-block{width:100%;background:var(--surface);border:1px solid var(--border);border-radius:8px;display:flex;align-items:center;justify-content:center;min-height:150px;margin:16px 0;color:var(--text-soft);font-size:12px;font-weight:500;padding:20px;text-align:center;flex-direction:column;gap:6px}
+.reflect{display:grid;grid-template-columns:1fr 1fr;gap:10px}
+.ref{background:var(--surface);border-radius:8px;padding:18px 20px;border:1px solid var(--border)}
+.ref h4{font-size:13px;font-weight:700;color:var(--text);margin-bottom:7px}
+.ref p{font-size:13px;font-weight:400;color:var(--text-mid);line-height:1.65}
+hr{border:none;border-top:1px solid var(--border);margin:40px 0}
+.case-nav{display:flex;justify-content:space-between;padding-top:32px;margin-top:44px;border-top:1px solid var(--border)}
+.cn{text-decoration:none;display:flex;flex-direction:column;gap:3px}
+.cn:hover .cn-title{color:var(--accent)}
+.cn-dir{font-size:10px;font-weight:700;letter-spacing:.08em;text-transform:uppercase;color:var(--text-soft)}
+.cn-title{font-size:15px;font-weight:700;color:var(--text);letter-spacing:-.01em;transition:color .15s}
+footer{border-top:1px solid var(--border);padding:24px 48px;display:flex;align-items:center;justify-content:space-between}
+.footer-copy{font-size:12px;color:var(--text-soft)}
+.footer-links{display:flex;gap:22px}
+.footer-links a{font-size:12px;font-weight:500;color:var(--text-mid);text-decoration:none;transition:color .15s}
+.footer-links a:hover{color:var(--accent)}
+h1,h2,h3,h4{font-family:"STIX Two Text",Georgia,serif}.hero-name,.hero-role,.sec-title,.cs-h1,.cs-h2,.nav-logo,.out-val,.cn-title,.proj-name,.proj-row-name,.row-title,.snap-val,.feat-name,.feat-title,.proj-title,.proj-title-sm{font-family:"STIX Two Text",Georgia,serif}</style>
 </head>
 <body>
+<div class="page-card">
+  <nav>
+    <a href="../index.html" class="nav-back"><svg width="13" height="13" viewBox="0 0 13 13" fill="none"><path d="M11 6.5H2M6 2.5L2 6.5l4 4" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg> All work</a>
+    <ul class="nav-links">
+      <li><a href="../index.html#work">Work</a></li>
+      <li><a href="../index.html#about">About</a></li>
+      <li><a href="../assets/Anita_Shah_Resume.pdf">Résumé</a></li>
+      <li><a href="mailto:anitashah92@gmail.com">Contact</a></li>
+    </ul>
+  </nav>
+  <div class="cs-wrap">
+    <aside class="side">
+      <p class="side-label">On this page</p>
+      <ul class="side-links">
+        <li><a href="#overview" class="active"><span class="sdot"></span>Overview</a></li>
+        <li><a href="#outcomes"><span class="sdot"></span>Outcomes</a></li>
+        <li><a href="#problem"><span class="sdot"></span>Problem</a></li>
+        <li><a href="#strategy"><span class="sdot"></span>Strategy</a></li>
+        <li><a href="#content"><span class="sdot"></span>Content & IA</a></li>
+        <li><a href="#visual"><span class="sdot"></span>Visual Design</a></li>
+        <li><a href="#reflections"><span class="sdot"></span>Reflections</a></li>
+      </ul>
+    </aside>
+    <main class="cs-main">
+      <div class="cs-sec" id="overview">
+        <div class="cs-tags"><span class="cs-tag">Web Design</span><span class="cs-tag">UX Strategy</span><span class="cs-tag">Content Design</span></div>
+        <h1 class="cs-h1">SRA Website</h1>
+        <p class="cs-lead">A 16-page digital home for Stone Ridge Audubon — a wellness sanctuary in the Poconos Mountains that didn't yet exist when the project began. Strategy, visual design, content collaboration, and dev QA from zero.</p>
+        <div class="snap">
+          <div class="snap-item"><p class="snap-lbl">Role</p><p class="snap-val">UX/UI Designer</p></div>
+          <div class="snap-item"><p class="snap-lbl">Pages</p><p class="snap-val">16 pages</p></div>
+          <div class="snap-item"><p class="snap-lbl">Status</p><p class="snap-val">In development</p></div>
+          <div class="snap-item"><p class="snap-lbl">Client</p><p class="snap-val">Stone Ridge Audubon</p></div>
+        </div>
+        <div class="cs-hero-img">
+          <svg width="28" height="28" viewBox="0 0 28 28" fill="none" style="opacity:.3"><rect x="2" y="2" width="24" height="24" rx="4" stroke="currentColor" stroke-width="1.5"/><path d="M2 10h24M10 10v16" stroke="currentColor" stroke-width="1.5"/></svg>
+          <span>Add hero screenshot</span>
+        </div>
+      </div>
 
-<nav>
-  <div class="nav-inner">
-    <a href="../index.html" class="nav-name">Anita Shah</a>
-    <div class="nav-links">
-      <a href="../index.html#work" class="hide-mobile">Work</a>
-      <a href="../about.html" class="hide-mobile">About</a>
-      <a href="../assets/Anita_Shah_Resume.pdf" target="_blank" class="hide-mobile">Resume</a>
-      <a href="mailto:anitashah92@gmail.com" class="nav-cta">Get in touch</a>
-    </div>
+      <div class="cs-sec" id="outcomes">
+        <p class="eyebrow">Impact at a glance</p>
+        <div class="outcomes">
+          <div><p class="out-val">16</p><p class="out-lbl">Pages designed and handed off for development</p></div>
+          <div><p class="out-val">6</p><p class="out-lbl">Distinct audience personas mapped and addressed</p></div>
+          <div><p class="out-val" style="font-size:17px;padding-top:6px">$750K+</p><p class="out-lbl">In donations driven through the redesigned giving experience</p></div>
+        </div>
+      </div>
+
+      <hr>
+
+      <div class="cs-sec" id="problem">
+        <p class="eyebrow">The problem</p>
+        <h2 class="cs-h2">Designing a home for a place that didn't exist yet.</h2>
+        <div class="body-text">
+          <p>Stone Ridge Audubon was a sanctuary in early development — no photography, no established brand, no existing web presence. The website had to convey the vision of a place, attract donors and visitors, and serve as a fundraising tool, all before the physical space was complete.</p>
+          <p>The core tension: <strong>how do you make people feel something about somewhere they can't yet visit?</strong> The answer was rooted in content strategy — language, atmosphere, and storytelling had to do the work that photography normally would.</p>
+        </div>
+        <div class="callout"><p>"The most challenging brief is designing for a vision rather than a reality — you're not documenting something that exists, you're creating belief in something that will."</p></div>
+      </div>
+
+      <hr>
+
+      <div class="cs-sec" id="strategy">
+        <p class="eyebrow">Strategy</p>
+        <h2 class="cs-h2">Six audiences. One experience.</h2>
+        <div class="body-text">
+          <p>Audience mapping identified six distinct visitor types: major donors, general donors, retreat guests, day visitors, local community members, and press/media. Each had different motivations, questions, and success criteria.</p>
+          <p>Rather than building six separate journeys, I designed a <strong>layered entry point system</strong> — the homepage directs each persona toward their path within the first scroll, without making it feel like a branching menu.</p>
+          <p>Three UX principles guided every page decision: <strong>evoke before inform</strong> (feeling before facts), <strong>reduce friction to giving</strong> (donation flow in as few steps as possible), and <strong>earn trust through detail</strong> (specifics about the land, the mission, and the people behind it).</p>
+        </div>
+      </div>
+
+      <hr>
+
+      <div class="cs-sec" id="content">
+        <p class="eyebrow">Content & IA</p>
+        <h2 class="cs-h2">16 pages. Every word intentional.</h2>
+        <div class="body-text">
+          <p>Working closely with the SRA founders, I developed the information architecture across five site sections: About the Place, Programs & Retreats, Conservation, Give, and Community.</p>
+          <p>Content design involved writing briefs for each page — defining the emotional job (what should a visitor feel?), the informational job (what do they need to know?), and the action job (what should they do next?). This gave the copy collaborators a clear framework rather than an open canvas.</p>
+        </div>
+        <div class="img-block">
+          <svg width="24" height="24" viewBox="0 0 24 24" fill="none" style="opacity:.3"><rect x="2" y="2" width="20" height="20" rx="3" stroke="currentColor" stroke-width="1.3"/><path d="M2 9h20M9 9v13" stroke="currentColor" stroke-width="1.3"/></svg>
+          Add sitemap / IA screenshot
+        </div>
+      </div>
+
+      <hr>
+
+      <div class="cs-sec" id="visual">
+        <p class="eyebrow">Visual design</p>
+        <h2 class="cs-h2">A palette drawn from the land itself.</h2>
+        <div class="body-text">
+          <p>With no photography available, the visual identity had to carry the atmosphere. The palette was drawn directly from the Poconos landscape: saffron, flame, auburn, and alabaster — warm, earthy, alive.</p>
+          <p>Typography used STIX Two Text for body copy — a scholarly serif with warmth — paired with a clean geometric sans for navigation and labels. The combination felt like a place that took nature seriously without being austere.</p>
+        </div>
+        <div class="img-block">
+          <svg width="24" height="24" viewBox="0 0 24 24" fill="none" style="opacity:.3"><rect x="2" y="2" width="20" height="20" rx="3" stroke="currentColor" stroke-width="1.3"/></svg>
+          Add visual design / style guide screenshot
+        </div>
+      </div>
+
+      <hr>
+
+      <div class="cs-sec" id="reflections">
+        <p class="eyebrow">Reflections</p>
+        <h2 class="cs-h2">What I took from this project.</h2>
+        <div class="reflect">
+          <div class="ref"><h4>Vision-first design</h4><p>Designing for something that doesn't exist yet forced me to be more intentional about every visual and copy decision. There was no reality to fall back on — just the story we were telling.</p></div>
+          <div class="ref"><h4>Content strategy is UX</h4><p>This project made clearer than any other that content design and UX are the same discipline. The IA, the copy briefs, and the page layouts were inseparable.</p></div>
+          <div class="ref"><h4>Donation flow deserves more attention</h4><p>The giving experience is where mission meets action. Every extra step or moment of confusion is a donation lost. I spent disproportionate time here and it was worth it.</p></div>
+          <div class="ref"><h4>What's next</h4><p>Once photography becomes available, the visual design will shift significantly — images should do the atmospheric work currently carried by colour and type. Planning for that evolution was baked in from the start.</p></div>
+        </div>
+      </div>
+
+      <div class="case-nav">
+        <a href="beckett.html" class="cn"><span class="cn-dir">← Previous</span><span class="cn-title">Beckett iOS</span></a>
+        <a href="insights.html" class="cn" style="align-items:flex-end"><span class="cn-dir">Back to start</span><span class="cn-title">Fusion Insights</span></a>
+      </div>
+    </main>
   </div>
-</nav>
-
-<main>
-  <div class="container">
-
-    <!-- ── SECTION 1: HERO ── -->
-    <div class="case-hero">
-      <a href="../index.html" class="back-link">← Back to work</a>
-
-      <div class="status-badge">
-        <span class="status-dot"></span>
-        In development
-      </div>
-
-      <div class="work-tags" style="margin-bottom:16px;">
-        <span class="tag" style="background:var(--sra-tag); color:var(--sra-text);">Web Design</span>
-        <span class="tag" style="background:var(--sra-tag); color:var(--sra-text);">UX Strategy</span>
-        <span class="tag" style="background:var(--sra-tag); color:var(--sra-text);">Brand Identity</span>
-        <span class="tag" style="background:#F3F4F6; color:#374151;">Dev Collaboration</span>
-      </div>
-
-      <h1>SRA Website</h1>
-      <p class="lead">Designing a scalable digital home for a new wellness sanctuary — 16 pages from strategy to QA, for a place that didn't yet exist when the project began.</p>
-
-      <div class="case-meta">
-        <div class="case-meta-item">
-          <div class="case-meta-label">Role</div>
-          <div class="case-meta-value">Lead Designer</div>
-        </div>
-        <div class="case-meta-item">
-          <div class="case-meta-label">Organization</div>
-          <div class="case-meta-value">Shrimad Rajchandra Ashram, USA</div>
-        </div>
-        <div class="case-meta-item">
-          <div class="case-meta-label">Launch scope</div>
-          <div class="case-meta-value">16 pages</div>
-        </div>
-        <div class="case-meta-item">
-          <div class="case-meta-label">Type</div>
-          <div class="case-meta-value">Strategy · UX · Visual Design · QA</div>
-        </div>
-      </div>
+  <footer>
+    <span class="footer-copy">© 2026 Anita Shah</span>
+    <div class="footer-links">
+      <a href="mailto:anitashah92@gmail.com">anitashah92@gmail.com</a>
+      <a href="https://linkedin.com/in/anita-shah" target="_blank">LinkedIn</a>
     </div>
-
-    <!-- Hero visual -->
-    <div class="img-placeholder" style="min-height:480px;">
-      <svg width="40" height="40" fill="none" stroke="var(--sra-text)" stroke-width="1.5" viewBox="0 0 24 24"><rect x="2" y="3" width="20" height="14" rx="2"/><path d="M8 21h8M12 17v4"/></svg>
-      <span>Add hero — homepage or key page screenshot (sra-hero.png)</span>
-    </div>
-
-
-    <!-- ── SECTION 2: OVERVIEW ── -->
-    <div class="case-section">
-      <div class="section-divider">Overview</div>
-      <h2>A digital home for a place still coming to life</h2>
-      <p>Shrimad Rajchandra Ashram, USA is an upcoming wellness sanctuary in the Poconos — a space designed for reflection, learning, community, and inner growth. Because the Ashram is a new physical destination, there was no existing website or digital presence for the space.</p>
-      <p>The organization needed a website that could do several things at once: introduce the Ashram to people who had never heard of it, communicate its history and spiritual roots, support visitor planning, and lay a scalable foundation for future growth. The first launch includes 16 pages spanning core storytelling, visitor information, programs, activities, and practical planning content.</p>
-      <p>As Lead Designer, I owned this project from strategy through QA — including information architecture, wireframes, visual design, content-design alignment, development handoff, and ongoing build review. I also co-owned the IA with the content team and worked directly with the development agency to keep the final build aligned with the intended experience.</p>
-
-      <div class="highlight-box" style="border-left-color: #E26326; background: #FAF6EF;">
-        The core challenge: designing a website for a place that didn't yet exist, that needed to feel real, beautiful, and worth visiting — before a single guest had walked through the door.
-      </div>
-    </div>
-
-
-    <!-- ── SECTION 3: THE CHALLENGE ── -->
-    <div class="case-section">
-      <div class="section-divider">The challenge</div>
-      <h2>Inspiring and credible, before the doors open</h2>
-      <p>The hardest part of this project was that the Ashram couldn't speak for itself yet. There were no guest reviews, no photos of packed retreat halls, no word-of-mouth to lean on. The website had to help people understand not only what the space offers, but why it exists, what it feels like, and how they could engage with it — entirely through design.</p>
-      <p>At the same time, the project carried a set of competing demands that had to be balanced carefully:</p>
-
-      <div class="approach-grid">
-        <div class="approach-card">
-          <div class="approach-num">Audience</div>
-          <h3>First-timers and existing members</h3>
-          <p>The site needed to serve people discovering the Ashram for the first time and longtime members of the community — two very different needs in the same experience.</p>
-        </div>
-        <div class="approach-card">
-          <div class="approach-num">Heritage</div>
-          <h3>India roots, U.S. audience</h3>
-          <p>The U.S. Ashram is connected to a mother organization in India. The design needed to honor that heritage without feeling inaccessible to a Western wellness audience.</p>
-        </div>
-        <div class="approach-card">
-          <div class="approach-num">Scale</div>
-          <h3>16 pages, built to grow</h3>
-          <p>The launch scope was large, and the site was designed with the expectation that it would continue to expand. Every pattern had to work both now and later.</p>
-        </div>
-      </div>
-
-      <p>The website could not simply be informational. It needed to feel immersive, welcoming, and emotionally connected to the physical space — so that when someone landed on the homepage, their reaction was: <em>I want to come here.</em></p>
-    </div>
-
-
-    <!-- ── SECTION 4: MY ROLE ── -->
-    <div class="case-section">
-      <div class="section-divider">My role</div>
-      <h2>End-to-end ownership across strategy, design, and delivery</h2>
-      <p>While there was a broader team involved, most of the design direction and execution fell under my ownership. I served as the primary designer and design lead for the full lifecycle of the project.</p>
-
-      <div class="role-list">
-        <div class="role-item"><div class="role-dot"></div>Co-owned information architecture with the content team</div>
-        <div class="role-item"><div class="role-dot"></div>Created wireframes for key pages</div>
-        <div class="role-item"><div class="role-dot"></div>Led visual design direction end-to-end</div>
-        <div class="role-item"><div class="role-dot"></div>Translated content into clear, engaging page experiences</div>
-        <div class="role-item"><div class="role-dot"></div>Aligned design with brand, audience, and organizational goals</div>
-        <div class="role-item"><div class="role-dot"></div>Collaborated closely with the content team throughout</div>
-        <div class="role-item"><div class="role-dot"></div>Explained design intent to the development agency</div>
-        <div class="role-item"><div class="role-dot"></div>Reviewed the developed site and provided QA feedback</div>
-        <div class="role-item"><div class="role-dot"></div>Resolved edge cases around responsiveness, spacing, and interaction</div>
-        <div class="role-item"><div class="role-dot"></div>Helped shape the content-design evolution together</div>
-      </div>
-
-      <p>A major part of my role was making sure content and design evolved together. Because the website needed to communicate history, spirituality, programs, and visitor information, the design couldn't be separated from the messaging. The two had to develop in parallel.</p>
-    </div>
-
-
-    <!-- ── SECTION 5: AUDIENCE ── -->
-    <div class="case-section">
-      <div class="section-divider">The audience</div>
-      <h2>Multiple groups, one cohesive experience</h2>
-      <p>The website was designed to serve several distinct audience groups simultaneously — people arriving with very different intentions, but all needing to feel drawn in by the same experience.</p>
-
-      <div class="audience-grid">
-        <div class="audience-card">
-          <div class="audience-icon">🌿</div>
-          <h3>First-time visitors</h3>
-          <p>Discovering the Ashram for the first time — need to quickly understand what the space is, why it matters, and whether it's for them.</p>
-        </div>
-        <div class="audience-card">
-          <div class="audience-icon">🧘</div>
-          <h3>Spiritual seekers</h3>
-          <p>Looking for reflection, learning, or inner growth — drawn to the spiritual depth of the organization and its teachings.</p>
-        </div>
-        <div class="audience-card">
-          <div class="audience-icon">👥</div>
-          <h3>Existing members</h3>
-          <p>Already connected to the organization — need practical information about programs, events, and how to engage with the U.S. chapter.</p>
-        </div>
-        <div class="audience-card">
-          <div class="audience-icon">🏕️</div>
-          <h3>Retreat participants</h3>
-          <p>Planning a visit — need clear, practical information on directions, programs, and what to expect from the Poconos location.</p>
-        </div>
-        <div class="audience-card">
-          <div class="audience-icon">🎶</div>
-          <h3>Wellness seekers</h3>
-          <p>Interested in yoga, meditation, sound healing, and courses — exploring the Ashram as a wellness destination.</p>
-        </div>
-        <div class="audience-card">
-          <div class="audience-icon">📍</div>
-          <h3>Local visitors</h3>
-          <p>Interested in the Poconos location specifically — need geographic context, directions, and a sense of the physical setting.</p>
-        </div>
-      </div>
-    </div>
-
-
-    <!-- ── SECTION 6: DESIGN DIRECTION ── -->
-    <div class="case-section">
-      <div class="section-divider">Design direction</div>
-      <h2>Modern, spiritual, and grounded in place</h2>
-      <p>The visual direction needed to balance heritage and accessibility. Because the U.S. Ashram is connected to a mother organization in India, we inherited parts of an existing visual and spiritual identity. At the same time, the new website needed to feel relevant, polished, and approachable for a U.S. audience.</p>
-      <p>I honored the traditional cues of the broader organization while introducing a more modern, spacious digital experience. The brand palette — anchored in saffron, flame, auburn, and alabaster — informed the color direction across the site, paired with STIX Two Text for headings and Inter for body copy.</p>
-      <p>The intended feeling when a user lands on the site:</p>
-
-      <div class="feeling-row">
-        <span class="feeling-pill">Peaceful</span>
-        <span class="feeling-pill">Warm</span>
-        <span class="feeling-pill">Spiritual</span>
-        <span class="feeling-pill">Contemporary</span>
-        <span class="feeling-pill">Immersive</span>
-        <span class="feeling-pill">Grounded in history</span>
-        <span class="feeling-pill">Connected to nature</span>
-        <span class="feeling-pill">An invitation</span>
-      </div>
-
-      <div class="img-placeholder short">
-        <svg width="32" height="32" fill="none" stroke="var(--sra-text)" stroke-width="1.5" viewBox="0 0 24 24"><rect x="3" y="3" width="18" height="18" rx="2"/><path d="M3 9h18M9 21V9"/></svg>
-        <span>Add visual direction screenshots — homepage, hero section, or brand application (sra-direction.png)</span>
-      </div>
-    </div>
-
-
-    <!-- ── SECTION 7: UX APPROACH ── -->
-    <div class="case-section">
-      <div class="section-divider">UX approach</div>
-      <h2>Three principles that shaped every page</h2>
-
-      <div class="decision-block">
-        <div class="decision-label">Principle 01</div>
-        <h3>Storytelling as structure</h3>
-        <p>Rather than treating each page as a static information container, I designed the site to guide users through the Ashram's space, history, culture, and offerings in a more immersive way. The storytelling shows up through page structure, section pacing, photography, pull quotes, audio moments, and a layered content hierarchy that moves between emotional and practical information. The goal was for users to feel like they were beginning to experience the Ashram before they'd physically arrived.</p>
-      </div>
-
-      <div class="decision-block">
-        <div class="decision-label">Principle 02</div>
-        <h3>Balancing heritage and accessibility</h3>
-        <p>The Ashram has deep roots in its mother organization in India. The design needed to honor that spiritual heritage without feeling traditional in a way that would feel inaccessible to a U.S. wellness audience. I kept select traditional elements — symbolism, warmth, spiritual tonality — but paired them with clearer layouts, stronger hierarchy, and modern content structures. The result is a design that feels rooted, but not closed.</p>
-      </div>
-
-      <div class="decision-block">
-        <div class="decision-label">Principle 03</div>
-        <h3>Making content-heavy pages digestible</h3>
-        <p>Some of the most challenging pages — Social Impact, Our Story, Inspiration & Founder — needed to communicate history, philosophy, and organizational context without overwhelming users. I broke dense content into clear sections, created strong visual hierarchy, used storytelling beats to create flow, balanced text with imagery, and built in visual pauses between heavier content areas. The goal was not just to place content on the page, but to make the content feel meaningful and easy to move through.</p>
-      </div>
-    </div>
-
-
-    <!-- ── SECTION 8: KEY DESIGN DECISIONS ── -->
-    <div class="case-section">
-      <div class="section-divider">Key design decisions</div>
-      <h2>Four decisions that defined the experience</h2>
-
-      <div class="approach-grid" style="margin-bottom:0;">
-        <div class="approach-card">
-          <div class="approach-num">Decision 01</div>
-          <h3>Immersive first impression</h3>
-          <p>For the homepage and key storytelling pages, the design uses full imagery, spacious layouts, and thoughtful pacing to create a sense of arrival. The user should feel they've stepped into a place — not landed on a page.</p>
-        </div>
-        <div class="approach-card">
-          <div class="approach-num">Decision 02</div>
-          <h3>Quotes as a design system</h3>
-          <p>Quotes from the spiritual guru became a repeating design element across the site. Rather than over-explaining the philosophy, these moments let the site create emotional depth and reflection — and in some areas, were paired with audio for a more sensory experience.</p>
-        </div>
-        <div class="approach-card">
-          <div class="approach-num">Decision 03</div>
-          <h3>Program pages as individual experiences</h3>
-          <p>Each offering — yoga, meditation, sound healing, courses — has its own dedicated page, but they're built from a shared system. Users understand each activity clearly while still feeling the coherence of the larger Ashram experience.</p>
-        </div>
-      </div>
-
-      <div class="approach-card" style="margin-top:14px; border-radius:10px; border:1px solid var(--border); padding:24px;">
-        <div class="approach-num">Decision 04</div>
-        <h3>Designing for scale from day one</h3>
-        <p>The site structure, page templates, and design patterns were created to support future content, additional programs, events, and visitor resources. Every pattern decision was made with the question: will this still work when the site doubles in size? The first launch is the beginning of a larger digital ecosystem, not the end state.</p>
-      </div>
-
-      <div class="img-placeholder" style="min-height:360px; margin-top:28px;">
-        <svg width="32" height="32" fill="none" stroke="var(--sra-text)" stroke-width="1.5" viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"/><path d="M12 8v4l3 3"/></svg>
-        <span>Add design screenshots — page layouts, component system, or mobile views (sra-design.png)</span>
-      </div>
-    </div>
-
-
-    <!-- ── SECTION 9: CONTENT COLLABORATION ── -->
-    <div class="case-section">
-      <div class="section-divider">Content collaboration</div>
-      <h2>Design and content developed together</h2>
-      <p>For a storytelling-heavy website, the experience only works when structure, visuals, and messaging are developed in parallel. I worked closely with the content team throughout the project — not just reviewing pages after the copy was written, but shaping the content direction alongside them.</p>
-      <p>Together, we worked through questions that sat at the intersection of content and UX:</p>
-
-      <div class="impact-list">
-        <div class="impact-item"><span class="impact-mark">→</span><span><strong>What does a first-time visitor need to understand first?</strong> Helping sequence information so users weren't asked to understand the spiritual lineage before they understood what the space was.</span></div>
-        <div class="impact-item"><span class="impact-mark">→</span><span><strong>Where does the story need more emotion?</strong> Identifying moments where the content was functional but cold, and finding ways to bring warmth back.</span></div>
-        <div class="impact-item"><span class="impact-mark">→</span><span><strong>Where does the content feel too heavy?</strong> Flagging sections where dense paragraphs were burying the experience, and finding visual or structural ways to lighten the load.</span></div>
-        <div class="impact-item"><span class="impact-mark">→</span><span><strong>What should be shown visually instead of explained in text?</strong> Pushing toward photography, visual hierarchy, and spatial design when words alone weren't doing the job.</span></div>
-        <div class="impact-item"><span class="impact-mark">→</span><span><strong>How do we keep the experience welcoming for both new and existing audiences?</strong> Ensuring pages served returning members without alienating newcomers, and vice versa.</span></div>
-      </div>
-
-      <p>This content-design partnership was especially important for the three most complex pages: Our Story, Social Impact, and Inspiration & Founder — all of which had significant historical and spiritual weight to carry.</p>
-    </div>
-
-
-    <!-- ── SECTION 10: DEV COLLABORATION & QA ── -->
-    <div class="case-section">
-      <div class="section-divider">Development &amp; QA</div>
-      <h2>Protecting the experience through the build</h2>
-      <p>Once the site moved into development with the external agency, I worked closely with them to clarify design intent and review implementation. My focus was on protecting the overall experience rather than chasing pixel perfection — reviewing through the lens of hierarchy, responsiveness, consistency, and usability.</p>
-      <p>QA feedback covered a broad range of implementation details:</p>
-
-      <div class="qa-grid">
-        <div class="qa-item">Button states</div>
-        <div class="qa-item">Font styling</div>
-        <div class="qa-item">Font sizes</div>
-        <div class="qa-item">Spacing & padding</div>
-        <div class="qa-item">Responsive behavior</div>
-        <div class="qa-item">Layout edge cases</div>
-        <div class="qa-item">Content alignment</div>
-        <div class="qa-item">Component consistency</div>
-        <div class="qa-item">Interaction behavior</div>
-        <div class="qa-item">Design vs. build gaps</div>
-        <div class="qa-item">Typography scale</div>
-        <div class="qa-item">Mobile breakpoints</div>
-      </div>
-
-      <p>This collaboration is still ongoing as the site moves toward launch. I'm continuing to help the team work through responsive behavior, edge cases, and final polish to ensure the site feels cohesive across devices.</p>
-    </div>
-
-
-    <!-- ── SECTION 11: SCOPE ── -->
-    <div class="case-section">
-      <div class="section-divider">Launch scope</div>
-      <h2>16 pages across storytelling, programs, and visitor planning</h2>
-      <p>The initial launch covers the full breadth of what the Ashram offers — from high-level organizational storytelling to practical visitor resources and individual program pages. Every page needed to work as both an independent destination and part of a connected system.</p>
-
-      <div class="pages-grid">
-        <div class="page-pill">Homepage</div>
-        <div class="page-pill">Inspiration & Founder</div>
-        <div class="page-pill">Our Story</div>
-        <div class="page-pill">Explore the Space</div>
-        <div class="page-pill">Global Headquarters</div>
-        <div class="page-pill">Social Impact</div>
-        <div class="page-pill">Programs Calendar</div>
-        <div class="page-pill">Host Your Event</div>
-        <div class="page-pill">Contact Us</div>
-        <div class="page-pill">Directions</div>
-        <div class="page-pill">Yoga</div>
-        <div class="page-pill">Meditation</div>
-        <div class="page-pill">Sound Healing</div>
-        <div class="page-pill">Courses</div>
-        <div class="page-pill">Activities</div>
-        <div class="page-pill">Offerings</div>
-      </div>
-
-      <p>The site is designed to continue growing beyond this launch. The structure, templates, and design patterns established here are built to support future programs, events, and visitor resources as the Ashram expands.</p>
-    </div>
-
-
-    <!-- ── SECTION 12: IMPACT ── -->
-    <div class="case-section">
-      <div class="section-divider">Impact so far</div>
-      <h2>A foundation built before the doors open</h2>
-      <p>Although the site hasn't launched yet, the project has already created a strong digital foundation for the Ashram — defining its first official web presence and establishing the design and content systems that will carry it forward.</p>
-
-      <div class="impact-list">
-        <div class="impact-item"><span class="impact-mark">✦</span><span><strong>First official digital presence</strong> for the U.S. Ashram, built from the ground up with no prior web foundation to reference.</span></div>
-        <div class="impact-item"><span class="impact-mark">✦</span><span><strong>16-page launch scope</strong> designed end-to-end — including wireframes, visual design, and handoff documentation for every page.</span></div>
-        <div class="impact-item"><span class="impact-mark">✦</span><span><strong>Cohesive brand experience</strong> tailored to a U.S. audience while respecting the spiritual heritage of the mother organization in India.</span></div>
-        <div class="impact-item"><span class="impact-mark">✦</span><span><strong>Aligned multiple stakeholder groups</strong> — content team, spiritual leadership, and development agency — around a shared design direction.</span></div>
-        <div class="impact-item"><span class="impact-mark">✦</span><span><strong>Reusable design patterns</strong> built into the system to support site growth beyond the initial launch.</span></div>
-        <div class="impact-item"><span class="impact-mark">✦</span><span><strong>Translated complex content</strong> — spiritual history, organizational context, program information — into clear, accessible web experiences.</span></div>
-      </div>
-    </div>
-
-
-    <!-- ── SECTION 13: REFLECTIONS ── -->
-    <div class="case-section">
-      <div class="section-divider">Reflections</div>
-      <h2>What leading this project taught me</h2>
-      <div class="reflection-grid">
-        <div class="reflection-block">
-          <h3>What I learned</h3>
-          <p>This project challenged me to think beyond individual page design and consider the full digital experience of a new physical destination. Because the Ashram is both spiritual and practical, the website needed to hold multiple layers at once — inspiring but not vague, informational but not overwhelming, rooted in tradition but still modern and accessible.</p>
-          <p>The most important lesson was the value of aligning content and design early. For a storytelling-heavy website, the experience only works when structure, visuals, and messaging are developed together. Trying to design around unresolved content — or letting content be written without design context — creates gaps that are very hard to fix later.</p>
-        </div>
-        <div class="reflection-block">
-          <h3>What I'm proud of</h3>
-          <p>I'm proud that this project gave me the opportunity to lead across strategy, UX, visual design, content collaboration, and development QA. Working at that breadth — from early IA decisions through final build review — gave me a clear view of how each phase connects to and affects the others.</p>
-          <p>I'm also proud of how the design navigated the tension between heritage and accessibility. The Ashram's roots are specific and meaningful, and honoring them while making the site genuinely welcoming for a new U.S. audience required care and intentionality at every step.</p>
-        </div>
-      </div>
-    </div>
-
-
-    <!-- ── NAVIGATION ── -->
-    <div style="border-top:1px solid var(--border); padding:40px 0; display:flex; justify-content:space-between; align-items:center; flex-wrap:wrap; gap:16px;">
-      <a href="beckett.html" class="back-link" style="margin-bottom:0;">← Beckett iOS</a>
-      <a href="srlc.html" class="btn-primary">Next project →</a>
-    </div>
-
-  </div>
-</main>
-
-<footer>
-  <div class="footer-inner">
-    <span>© 2026 Anita Shah</span>
-    <div style="display:flex; gap:20px;">
-      <a href="mailto:anitashah92@gmail.com" style="color:var(--tertiary);">anitashah92@gmail.com</a>
-      <a href="https://linkedin.com/in/anita-shah" target="_blank" style="color:var(--tertiary);">LinkedIn</a>
-    </div>
-  </div>
-</footer>
-
+  </footer>
+</div>
+<script>
+const secs=document.querySelectorAll('.cs-sec[id]');
+const links=document.querySelectorAll('.side-links a');
+const obs=new IntersectionObserver(e=>{e.forEach(x=>{if(x.isIntersecting)links.forEach(l=>l.classList.toggle('active',l.getAttribute('href')==='#'+x.target.id))})},{rootMargin:'-15% 0px -75% 0px'});
+secs.forEach(s=>obs.observe(s));
+</script>
 </body>
 </html>
