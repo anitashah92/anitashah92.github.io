@@ -9,69 +9,120 @@
 <link href="https://fonts.googleapis.com/css2?family=STIX+Two+Text:ital,wght@0,400;0,500;0,600;0,700;1,400;1,500&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
 <style>
 *,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
-:root{--bg:#EEECEA;--card:#F8F8F6;--surface:#EEECEA;--text:#141412;--text-mid:#606058;--text-soft:#A8A8A0;--accent:#6B7A3E;--accent-bg:#EEF0E7;--border:rgba(20,20,18,0.08);--font-head:'STIX Two Text',Georgia,serif;--font-body:'Inter',sans-serif;}body{background:var(--bg);color:var(--text);font-family:var(--font-body);-webkit-font-smoothing:antialiased;padding:20px}h1,h2,h3,h4,.hero-name,.hero-role,.sec-title,.cs-h1,.cs-h2,.feat-name,.nav-logo,.out-val,.cn-title,.proj-name,.proj-row-name,.row-title,.snap-val,.ref h4,.cmp-title{font-family:'STIX Two Text',Georgia,serif !important}
+:root{
+  --bg:#EEECEA;--card:#F8F8F6;--surface:#EEECEA;
+  --text:#141412;--text-mid:#606058;--text-soft:#A8A8A0;
+  --accent:#6B7A3E;--accent-bg:#EEF0E7;
+  --border:rgba(20,20,18,0.08);
+  --font-head:'STIX Two Text',Georgia,serif;
+  --font-body:'Inter',sans-serif;
+}
 html{scroll-behavior:smooth}
 body{background:var(--bg);color:var(--text);font-family:var(--font-body);-webkit-font-smoothing:antialiased;padding:20px}
 .page-card{background:var(--card);border-radius:20px;overflow:clip;max-width:1100px;margin:0 auto}
+
+/* NAV */
 nav{display:flex;align-items:center;justify-content:space-between;padding:26px 48px;border-bottom:1px solid var(--border)}
+.nav-back{display:inline-flex;align-items:center;gap:6px;font-size:13px;font-weight:600;color:var(--text-mid);text-decoration:none;transition:color .15s}
+.nav-back:hover{color:var(--accent)}
 .nav-links{display:flex;align-items:center;gap:24px;list-style:none}
 .nav-links a{font-size:13px;font-weight:500;color:var(--text-mid);text-decoration:none;transition:color .15s}
 .nav-links a:hover{color:var(--text)}
-.nav-back{display:inline-flex;align-items:center;gap:6px;font-size:13px;font-weight:600;color:var(--text-mid);text-decoration:none;transition:color .15s}
-.nav-back:hover{color:var(--accent)}
+
+/* LAYOUT */
 .cs-wrap{display:grid;grid-template-columns:180px 1fr;min-height:100vh}
 .side{position:sticky;top:0;height:100vh;overflow-y:auto;padding:40px 0 40px 48px;border-right:1px solid var(--border)}
-.side-label{font-size:10px;font-weight:700;letter-spacing:.1em;text-transform:uppercase;color:var(--text-soft);margin-bottom:12px}
+.side-label{font-size:10px;font-weight:700;letter-spacing:.1em;text-transform:uppercase;color:var(--text-soft);margin-bottom:12px;font-family:var(--font-body)}
 .side-links{list-style:none;display:flex;flex-direction:column}
-.side-links a{display:flex;align-items:center;gap:8px;font-size:12px;font-weight:500;color:var(--text-soft);text-decoration:none;padding:6px 8px;border-radius:6px;transition:all .15s;border-left:2px solid transparent;margin-left:-10px}
+.side-links a{display:flex;align-items:center;gap:8px;font-size:12px;font-weight:500;color:var(--text-soft);text-decoration:none;padding:6px 8px;border-radius:6px;transition:all .15s;border-left:2px solid transparent;margin-left:-10px;font-family:var(--font-body)}
 .side-links a:hover{color:var(--text-mid);background:var(--surface)}
-.side-links a.active{color:var(--accent);border-left-color:var(--accent);background:var(--accent-bg);font-weight:700}
+.side-links a.active{color:var(--accent);border-left-color:var(--accent);background:var(--accent-bg);font-weight:600}
 .sdot{width:4px;height:4px;border-radius:50%;background:currentColor;opacity:.4;flex-shrink:0}
+
+/* MAIN */
 .cs-main{padding:40px 48px 72px;max-width:680px}
+
+/* HEADER */
 .cs-tags{display:flex;flex-wrap:wrap;gap:6px;margin-bottom:16px}
-.cs-tag{font-size:10px;font-weight:700;letter-spacing:.07em;text-transform:uppercase;color:var(--accent);background:var(--accent-bg);padding:3px 10px;border-radius:11px}
-.cs-h1{font-size:clamp(28px,3.5vw,40px);font-weight:800;letter-spacing:-.025em;line-height:1.1;color:var(--text);margin-bottom:12px}
+.cs-tag{font-size:10px;font-weight:600;letter-spacing:.07em;text-transform:uppercase;color:var(--accent);background:var(--accent-bg);padding:3px 10px;border-radius:11px;font-family:var(--font-body)}
+.cs-h1{font-size:clamp(28px,3.5vw,40px);font-weight:700;letter-spacing:-.02em;line-height:1.1;color:var(--text);margin-bottom:12px;font-family:var(--font-head)}
 .cs-lead{font-size:15px;font-weight:400;color:var(--text-mid);line-height:1.75;margin-bottom:28px}
+
+/* SNAPSHOT */
 .snap{display:grid;grid-template-columns:repeat(4,1fr);border:1px solid var(--border);border-radius:10px;overflow:hidden;margin-bottom:32px}
 .snap-item{padding:14px 16px;border-right:1px solid var(--border)}
 .snap-item:last-child{border-right:none}
-.snap-lbl{font-size:10px;font-weight:700;letter-spacing:.07em;text-transform:uppercase;color:var(--text-soft);margin-bottom:4px}
-.snap-val{font-size:13px;font-weight:600;color:var(--text);line-height:1.3}
+.snap-lbl{font-size:10px;font-weight:600;letter-spacing:.07em;text-transform:uppercase;color:var(--text-soft);margin-bottom:4px}
+.snap-val{font-size:13px;font-weight:600;color:var(--text);line-height:1.3;font-family:var(--font-head)}
+
+/* HERO IMG */
 .cs-hero-img{width:100%;height:260px;background:var(--surface);border:1px solid var(--border);border-radius:10px;display:flex;align-items:center;justify-content:center;color:var(--text-soft);font-size:12px;font-weight:500;margin-bottom:40px;flex-direction:column;gap:8px;text-align:center}
+
+/* OUTCOMES */
 .outcomes{background:var(--text);border-radius:12px;padding:28px 32px;margin-bottom:44px;display:grid;grid-template-columns:repeat(3,1fr);gap:24px}
-.out-val{font-size:26px;font-weight:800;color:#fff;letter-spacing:-.02em;line-height:1;margin-bottom:5px}
+.out-val{font-size:26px;font-weight:700;color:#fff;letter-spacing:-.02em;line-height:1;margin-bottom:5px;font-family:var(--font-head)}
 .out-lbl{font-size:12px;font-weight:400;color:rgba(255,255,255,.45);line-height:1.5}
+
+/* SECTIONS */
 .cs-sec{margin-bottom:44px;scroll-margin-top:80px}
-.eyebrow{font-size:10px;font-weight:700;letter-spacing:.1em;text-transform:uppercase;color:var(--accent);margin-bottom:8px}
-.cs-h2{font-size:20px;font-weight:800;letter-spacing:-.015em;line-height:1.2;color:var(--text);margin-bottom:12px}
+.eyebrow{font-size:10px;font-weight:600;letter-spacing:.1em;text-transform:uppercase;color:var(--accent);margin-bottom:8px}
+.cs-h2{font-size:20px;font-weight:700;letter-spacing:-.015em;line-height:1.2;color:var(--text);margin-bottom:12px;font-family:var(--font-head)}
 .body-text{font-size:14px;font-weight:400;color:var(--text-mid);line-height:1.8}
 .body-text p{margin-bottom:12px}
 .body-text p:last-child{margin-bottom:0}
-.body-text strong{font-weight:700;color:var(--text)}
+.body-text strong{font-weight:600;color:var(--text)}
+
+/* CALLOUT */
 .callout{border-left:2px solid var(--accent);padding:12px 16px;margin:16px 0;background:var(--accent-bg);border-radius:0 6px 6px 0}
-.callout p{font-size:14px;font-style:italic;color:var(--text-mid);line-height:1.65}
+.callout p{font-size:14px;font-style:italic;color:var(--text-mid);line-height:1.65;font-family:var(--font-head)}
+
+/* PRINCIPLES */
+.principles{display:grid;grid-template-columns:repeat(3,1fr);gap:10px;margin:16px 0}
+.principle{background:var(--surface);border:1px solid var(--border);border-radius:8px;padding:16px 18px}
+.principle-num{font-size:11px;font-weight:600;color:var(--accent);margin-bottom:6px;letter-spacing:.04em}
+.principle-title{font-size:14px;font-weight:700;color:var(--text);margin-bottom:5px;font-family:var(--font-head)}
+.principle-body{font-size:13px;font-weight:400;color:var(--text-mid);line-height:1.6}
+
+/* PAGE LIST */
+.page-list{display:grid;grid-template-columns:1fr 1fr;gap:8px;margin:16px 0}
+.page-item{background:var(--surface);border:1px solid var(--border);border-radius:8px;padding:12px 16px;font-size:13px;font-weight:500;color:var(--text-mid)}
+.page-item.highlight{border-color:var(--accent);background:var(--accent-bg);color:var(--accent);font-weight:600}
+
+/* IMG BLOCK */
 .img-block{width:100%;background:var(--surface);border:1px solid var(--border);border-radius:8px;display:flex;align-items:center;justify-content:center;min-height:150px;margin:16px 0;color:var(--text-soft);font-size:12px;font-weight:500;padding:20px;text-align:center;flex-direction:column;gap:6px}
+
+/* REFLECT */
 .reflect{display:grid;grid-template-columns:1fr 1fr;gap:10px}
 .ref{background:var(--surface);border-radius:8px;padding:18px 20px;border:1px solid var(--border)}
-.ref h4{font-size:13px;font-weight:700;color:var(--text);margin-bottom:7px}
+.ref h4{font-size:13px;font-weight:700;color:var(--text);margin-bottom:7px;font-family:var(--font-head)}
 .ref p{font-size:13px;font-weight:400;color:var(--text-mid);line-height:1.65}
+
+/* RULE */
 hr{border:none;border-top:1px solid var(--border);margin:40px 0}
+
+/* CASE NAV */
 .case-nav{display:flex;justify-content:space-between;padding-top:32px;margin-top:44px;border-top:1px solid var(--border)}
 .cn{text-decoration:none;display:flex;flex-direction:column;gap:3px}
 .cn:hover .cn-title{color:var(--accent)}
-.cn-dir{font-size:10px;font-weight:700;letter-spacing:.08em;text-transform:uppercase;color:var(--text-soft)}
-.cn-title{font-size:15px;font-weight:700;color:var(--text);letter-spacing:-.01em;transition:color .15s}
+.cn-dir{font-size:10px;font-weight:600;letter-spacing:.08em;text-transform:uppercase;color:var(--text-soft)}
+.cn-title{font-size:15px;font-weight:700;color:var(--text);letter-spacing:-.01em;transition:color .15s;font-family:var(--font-head)}
+
+/* FOOTER */
 footer{border-top:1px solid var(--border);padding:24px 48px;display:flex;align-items:center;justify-content:space-between}
 .footer-copy{font-size:12px;color:var(--text-soft)}
 .footer-links{display:flex;gap:22px}
 .footer-links a{font-size:12px;font-weight:500;color:var(--text-mid);text-decoration:none;transition:color .15s}
 .footer-links a:hover{color:var(--accent)}
-h1,h2,h3,h4{font-family:"STIX Two Text",Georgia,serif}.hero-name,.hero-role,.sec-title,.cs-h1,.cs-h2,.nav-logo,.out-val,.cn-title,.proj-name,.proj-row-name,.row-title,.snap-val,.feat-name,.feat-title,.proj-title,.proj-title-sm{font-family:"STIX Two Text",Georgia,serif}</style>
+</style>
 </head>
 <body>
 <div class="page-card">
+
   <nav>
-    <a href="../index.html" class="nav-back"><svg width="13" height="13" viewBox="0 0 13 13" fill="none"><path d="M11 6.5H2M6 2.5L2 6.5l4 4" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg> All work</a>
+    <a href="../index.html" class="nav-back">
+      <svg width="13" height="13" viewBox="0 0 13 13" fill="none"><path d="M11 6.5H2M6 2.5L2 6.5l4 4" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
+      All work
+    </a>
     <ul class="nav-links">
       <li><a href="../index.html#work">Work</a></li>
       <li><a href="../index.html#about">About</a></li>
@@ -79,29 +130,38 @@ h1,h2,h3,h4{font-family:"STIX Two Text",Georgia,serif}.hero-name,.hero-role,.sec
       <li><a href="mailto:anitashah92@gmail.com">Contact</a></li>
     </ul>
   </nav>
+
   <div class="cs-wrap">
     <aside class="side">
       <p class="side-label">On this page</p>
-      <ul class="side-links">
+      <ul class="side-links" id="sidenav">
         <li><a href="#overview" class="active"><span class="sdot"></span>Overview</a></li>
         <li><a href="#outcomes"><span class="sdot"></span>Outcomes</a></li>
-        <li><a href="#problem"><span class="sdot"></span>Problem</a></li>
-        <li><a href="#strategy"><span class="sdot"></span>Strategy</a></li>
-        <li><a href="#content"><span class="sdot"></span>Content & IA</a></li>
-        <li><a href="#visual"><span class="sdot"></span>Visual Design</a></li>
+        <li><a href="#challenge"><span class="sdot"></span>Challenge</a></li>
+        <li><a href="#audience"><span class="sdot"></span>Audience</a></li>
+        <li><a href="#ux"><span class="sdot"></span>UX Approach</a></li>
+        <li><a href="#design"><span class="sdot"></span>Design</a></li>
         <li><a href="#reflections"><span class="sdot"></span>Reflections</a></li>
       </ul>
     </aside>
+
     <main class="cs-main">
+
+      <!-- OVERVIEW -->
       <div class="cs-sec" id="overview">
-        <div class="cs-tags"><span class="cs-tag">Web Design</span><span class="cs-tag">UX Strategy</span><span class="cs-tag">Content Design</span></div>
+        <div class="cs-tags">
+          <span class="cs-tag">Web Design</span>
+          <span class="cs-tag">UX Strategy</span>
+          <span class="cs-tag">Content Design</span>
+          <span class="cs-tag">Dev QA</span>
+        </div>
         <h1 class="cs-h1">SRA Website</h1>
-        <p class="cs-lead">A 16-page digital home for Stone Ridge Audubon — a wellness sanctuary in the Poconos Mountains that didn't yet exist when the project began. Strategy, visual design, content collaboration, and dev QA from zero.</p>
+        <p class="cs-lead">A 16-page website for Shrimad Rajchandra Ashram, USA — an upcoming wellness sanctuary in the Poconos. Designed from scratch as Lead Designer, covering strategy, information architecture, visual design, content collaboration, and ongoing development QA.</p>
         <div class="snap">
-          <div class="snap-item"><p class="snap-lbl">Role</p><p class="snap-val">UX/UI Designer</p></div>
-          <div class="snap-item"><p class="snap-lbl">Pages</p><p class="snap-val">16 pages</p></div>
+          <div class="snap-item"><p class="snap-lbl">Role</p><p class="snap-val">Lead Designer</p></div>
+          <div class="snap-item"><p class="snap-lbl">Scope</p><p class="snap-val">16 pages</p></div>
           <div class="snap-item"><p class="snap-lbl">Status</p><p class="snap-val">In development</p></div>
-          <div class="snap-item"><p class="snap-lbl">Client</p><p class="snap-val">Stone Ridge Audubon</p></div>
+          <div class="snap-item"><p class="snap-lbl">Type</p><p class="snap-val">Wellness / Nonprofit</p></div>
         </div>
         <div class="cs-hero-img">
           <svg width="28" height="28" viewBox="0 0 28 28" fill="none" style="opacity:.3"><rect x="2" y="2" width="24" height="24" rx="4" stroke="currentColor" stroke-width="1.5"/><path d="M2 10h24M10 10v16" stroke="currentColor" stroke-width="1.5"/></svg>
@@ -109,47 +169,77 @@ h1,h2,h3,h4{font-family:"STIX Two Text",Georgia,serif}.hero-name,.hero-role,.sec
         </div>
       </div>
 
+      <!-- OUTCOMES -->
       <div class="cs-sec" id="outcomes">
         <p class="eyebrow">Impact at a glance</p>
         <div class="outcomes">
           <div><p class="out-val">16</p><p class="out-lbl">Pages designed and handed off for development</p></div>
-          <div><p class="out-val">6</p><p class="out-lbl">Distinct audience personas mapped and addressed</p></div>
-          <div><p class="out-val" style="font-size:17px;padding-top:6px">$750K+</p><p class="out-lbl">In donations driven through the redesigned giving experience</p></div>
+          <div><p class="out-val">6</p><p class="out-lbl">Distinct audience types designed for simultaneously</p></div>
+          <div><p class="out-val">$750K+</p><p class="out-lbl">In donations driven through the giving experience</p></div>
         </div>
       </div>
 
       <hr>
 
-      <div class="cs-sec" id="problem">
-        <p class="eyebrow">The problem</p>
+      <!-- CHALLENGE -->
+      <div class="cs-sec" id="challenge">
+        <p class="eyebrow">The challenge</p>
         <h2 class="cs-h2">Designing a home for a place that didn't exist yet.</h2>
         <div class="body-text">
-          <p>Stone Ridge Audubon was a sanctuary in early development — no photography, no established brand, no existing web presence. The website had to convey the vision of a place, attract donors and visitors, and serve as a fundraising tool, all before the physical space was complete.</p>
-          <p>The core tension: <strong>how do you make people feel something about somewhere they can't yet visit?</strong> The answer was rooted in content strategy — language, atmosphere, and storytelling had to do the work that photography normally would.</p>
+          <p>The Ashram is a new physical destination — no photography, no established digital presence, no existing brand for the U.S. audience. The website had to introduce the space, communicate its history and offerings, and support fundraising, all before the sanctuary had opened.</p>
+          <p>The core tension: <strong>how do you make people feel something about a place they can't yet visit?</strong> The answer had to come from content strategy, visual atmosphere, and storytelling — not photography.</p>
+          <p>On top of that, the design had to honor the heritage of the mother Ashram in India while feeling modern and accessible to a U.S. audience, and serve both first-time visitors and existing members at the same time.</p>
         </div>
         <div class="callout"><p>"The most challenging brief is designing for a vision rather than a reality — you're not documenting something that exists, you're creating belief in something that will."</p></div>
       </div>
 
       <hr>
 
-      <div class="cs-sec" id="strategy">
-        <p class="eyebrow">Strategy</p>
-        <h2 class="cs-h2">Six audiences. One experience.</h2>
+      <!-- AUDIENCE -->
+      <div class="cs-sec" id="audience">
+        <p class="eyebrow">Audience</p>
+        <h2 class="cs-h2">Six audiences. One coherent experience.</h2>
         <div class="body-text">
-          <p>Audience mapping identified six distinct visitor types: major donors, general donors, retreat guests, day visitors, local community members, and press/media. Each had different motivations, questions, and success criteria.</p>
-          <p>Rather than building six separate journeys, I designed a <strong>layered entry point system</strong> — the homepage directs each persona toward their path within the first scroll, without making it feel like a branching menu.</p>
-          <p>Three UX principles guided every page decision: <strong>evoke before inform</strong> (feeling before facts), <strong>reduce friction to giving</strong> (donation flow in as few steps as possible), and <strong>earn trust through detail</strong> (specifics about the land, the mission, and the people behind it).</p>
+          <p>Audience mapping surfaced six distinct visitor types — each with different motivations, questions, and success criteria:</p>
+        </div>
+        <div class="page-list" style="margin-top:14px">
+          <div class="page-item highlight">First-time visitors</div>
+          <div class="page-item highlight">Spiritual seekers</div>
+          <div class="page-item">Current members</div>
+          <div class="page-item">Retreat & program participants</div>
+          <div class="page-item">Yoga, meditation & sound healing visitors</div>
+          <div class="page-item">Donors & supporters</div>
+        </div>
+        <div class="body-text" style="margin-top:16px">
+          <p>Rather than building six separate journeys, I designed a <strong>layered entry point system</strong> — the homepage directs each persona toward their path within the first scroll, without feeling like a branching menu. The goal: every visitor lands and immediately feels "I want to come here."</p>
         </div>
       </div>
 
       <hr>
 
-      <div class="cs-sec" id="content">
-        <p class="eyebrow">Content & IA</p>
-        <h2 class="cs-h2">16 pages. Every word intentional.</h2>
-        <div class="body-text">
-          <p>Working closely with the SRA founders, I developed the information architecture across five site sections: About the Place, Programs & Retreats, Conservation, Give, and Community.</p>
-          <p>Content design involved writing briefs for each page — defining the emotional job (what should a visitor feel?), the informational job (what do they need to know?), and the action job (what should they do next?). This gave the copy collaborators a clear framework rather than an open canvas.</p>
+      <!-- UX APPROACH -->
+      <div class="cs-sec" id="ux">
+        <p class="eyebrow">UX approach</p>
+        <h2 class="cs-h2">Three principles that guided every page.</h2>
+        <div class="principles">
+          <div class="principle">
+            <p class="principle-num">01</p>
+            <p class="principle-title">Evoke before inform</p>
+            <p class="principle-body">Feeling before facts. Every page leads with atmosphere and emotion before moving into practical information.</p>
+          </div>
+          <div class="principle">
+            <p class="principle-num">02</p>
+            <p class="principle-title">Reduce friction to giving</p>
+            <p class="principle-body">The donation flow was designed to be as few steps as possible. Every extra click is a donation lost.</p>
+          </div>
+          <div class="principle">
+            <p class="principle-num">03</p>
+            <p class="principle-title">Earn trust through detail</p>
+            <p class="principle-body">Specifics about the land, the mission, and the people behind it build credibility for a place visitors haven't seen yet.</p>
+          </div>
+        </div>
+        <div class="body-text" style="margin-top:16px">
+          <p>Content-heavy pages like Our Story and Social Impact were the hardest to design. Dense history and philosophy had to be shaped into experiences that felt scannable and emotionally engaging — not overwhelming. I used <strong>section pacing, visual pauses, quotes, and layered hierarchy</strong> to make rich content feel like something worth reading.</p>
         </div>
         <div class="img-block">
           <svg width="24" height="24" viewBox="0 0 24 24" fill="none" style="opacity:.3"><rect x="2" y="2" width="20" height="20" rx="3" stroke="currentColor" stroke-width="1.3"/><path d="M2 9h20M9 9v13" stroke="currentColor" stroke-width="1.3"/></svg>
@@ -159,38 +249,65 @@ h1,h2,h3,h4{font-family:"STIX Two Text",Georgia,serif}.hero-name,.hero-role,.sec
 
       <hr>
 
-      <div class="cs-sec" id="visual">
+      <!-- DESIGN -->
+      <div class="cs-sec" id="design">
         <p class="eyebrow">Visual design</p>
         <h2 class="cs-h2">A palette drawn from the land itself.</h2>
         <div class="body-text">
-          <p>With no photography available, the visual identity had to carry the atmosphere. The palette was drawn directly from the Poconos landscape: saffron, flame, auburn, and alabaster — warm, earthy, alive.</p>
-          <p>Typography used STIX Two Text for body copy — a scholarly serif with warmth — paired with a clean geometric sans for navigation and labels. The combination felt like a place that took nature seriously without being austere.</p>
+          <p>With no photography available, the visual identity had to carry the atmosphere on its own. The palette was drawn from the Poconos landscape — <strong>saffron, flame, auburn, and alabaster</strong> — warm, earthy, and alive. The goal was for users to feel the place before seeing it.</p>
+          <p>Typography used STIX Two Text for body — a scholarly serif with warmth — paired with a clean geometric sans for navigation and labels. Traditional enough to honor the Ashram's roots, modern enough to welcome a U.S. audience.</p>
+          <p>Quotes from the spiritual founder became a recurring design element across pages — placed to create emotional depth and reflection without over-explaining the philosophy. In some areas, quotes were paired with audio for a more immersive, sensory moment.</p>
         </div>
         <div class="img-block">
           <svg width="24" height="24" viewBox="0 0 24 24" fill="none" style="opacity:.3"><rect x="2" y="2" width="20" height="20" rx="3" stroke="currentColor" stroke-width="1.3"/></svg>
           Add visual design / style guide screenshot
         </div>
+
+        <div class="body-text" style="margin-top:20px">
+          <p><strong>Launch pages include:</strong> Homepage, Inspiration & Founder, Our Story, Explore the Space, Social Impact, Programs Calendar, Host Your Event, Contact, Directions, Yoga, Meditation, Sound Healing, Courses, and more — all built on a scalable template system designed to grow with the Ashram.</p>
+        </div>
       </div>
 
       <hr>
 
+      <!-- REFLECTIONS -->
       <div class="cs-sec" id="reflections">
         <p class="eyebrow">Reflections</p>
         <h2 class="cs-h2">What I took from this project.</h2>
         <div class="reflect">
-          <div class="ref"><h4>Vision-first design</h4><p>Designing for something that doesn't exist yet forced me to be more intentional about every visual and copy decision. There was no reality to fall back on — just the story we were telling.</p></div>
-          <div class="ref"><h4>Content strategy is UX</h4><p>This project made clearer than any other that content design and UX are the same discipline. The IA, the copy briefs, and the page layouts were inseparable.</p></div>
-          <div class="ref"><h4>Donation flow deserves more attention</h4><p>The giving experience is where mission meets action. Every extra step or moment of confusion is a donation lost. I spent disproportionate time here and it was worth it.</p></div>
-          <div class="ref"><h4>What's next</h4><p>Once photography becomes available, the visual design will shift significantly — images should do the atmospheric work currently carried by colour and type. Planning for that evolution was baked in from the start.</p></div>
+          <div class="ref">
+            <h4>Content design is UX</h4>
+            <p>This project made clearer than any other that content strategy and UX are the same discipline. IA, copy briefs, and page layouts were inseparable — you couldn't design one without the other.</p>
+          </div>
+          <div class="ref">
+            <h4>Vision-first design</h4>
+            <p>Designing for something that doesn't exist yet forced intentionality on every decision. There was no reality to fall back on — just the story we were telling and whether it landed.</p>
+          </div>
+          <div class="ref">
+            <h4>Donation flow deserves disproportionate attention</h4>
+            <p>The giving experience is where mission meets action. Every friction point is a donation lost. I spent more time on this flow than any single page and it was absolutely worth it.</p>
+          </div>
+          <div class="ref">
+            <h4>Design for evolution</h4>
+            <p>The template system was built knowing photography would eventually arrive. Planning for that shift from the start meant it won't require a redesign — just a content update.</p>
+          </div>
         </div>
       </div>
 
       <div class="case-nav">
-        <a href="beckett.html" class="cn"><span class="cn-dir">← Previous</span><span class="cn-title">Beckett iOS</span></a>
-        <a href="insights.html" class="cn" style="align-items:flex-end"><span class="cn-dir">Back to start</span><span class="cn-title">Fusion Insights</span></a>
+        <a href="beckett.html" class="cn">
+          <span class="cn-dir">← Previous</span>
+          <span class="cn-title">Beckett iOS</span>
+        </a>
+        <a href="insights.html" class="cn" style="align-items:flex-end">
+          <span class="cn-dir">Back to start</span>
+          <span class="cn-title">Fusion Insights</span>
+        </a>
       </div>
+
     </main>
   </div>
+
   <footer>
     <span class="footer-copy">© 2026 Anita Shah</span>
     <div class="footer-links">
@@ -198,6 +315,7 @@ h1,h2,h3,h4{font-family:"STIX Two Text",Georgia,serif}.hero-name,.hero-role,.sec
       <a href="https://linkedin.com/in/anita-shah" target="_blank">LinkedIn</a>
     </div>
   </footer>
+
 </div>
 <script>
 const secs=document.querySelectorAll('.cs-sec[id]');
