@@ -25,13 +25,12 @@
 *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
 html { scroll-behavior: smooth; }
 body {
-  background: var(--bg);
+  background: var(--card);
   color: var(--text);
   font-family: var(--font-body);
   font-size: 15px;
   line-height: 1.65;
   -webkit-font-smoothing: antialiased;
-  padding: 20px;
 }
 
 /* ── HEADINGS ── */
@@ -41,13 +40,10 @@ h1, h2, h3, h4 {
   line-height: 1.15;
 }
 
-/* ── PAGE CARD ── */
+/* ── PAGE CARD — full width, no container ── */
 .page-card {
   background: var(--card);
-  border-radius: 20px;
-  overflow: clip;
-  max-width: 1100px;
-  margin: 0 auto;
+  max-width: 100%;
 }
 
 /* ── NAV ── */
@@ -57,6 +53,9 @@ nav {
   justify-content: space-between;
   padding: 28px 56px;
   border-bottom: 1px solid var(--border);
+  max-width: 1400px;
+  margin: 0 auto;
+  width: 100%;
 }
 .nav-logo {
   font-family: var(--font-head);
@@ -107,6 +106,8 @@ nav {
 .hero {
   padding: 80px 56px 88px;
   border-bottom: 1px solid var(--border);
+  max-width: 1400px;
+  margin: 0 auto;
 }
 .hero-name {
   font-family: var(--font-head);
@@ -144,6 +145,8 @@ nav {
   align-items: baseline;
   justify-content: space-between;
   padding: 56px 56px 24px;
+  max-width: 1400px;
+  margin: 0 auto;
 }
 .sec-title {
   font-family: var(--font-head);
@@ -159,7 +162,7 @@ nav {
 }
 
 /* ── FEATURED CARD ── */
-.feat-wrap { padding: 0 56px 14px; }
+.feat-wrap { padding: 0 56px 14px; max-width: 1400px; margin: 0 auto; }
 .feat {
   display: block;
   text-decoration: none;
@@ -245,6 +248,8 @@ nav {
 .list {
   padding: 0 56px;
   border-top: 1px solid var(--border);
+  max-width: 1400px;
+  margin: 0 auto;
 }
 .row {
   display: grid;
@@ -311,6 +316,8 @@ nav {
   grid-template-columns: 1fr 1fr;
   gap: 48px;
   align-items: start;
+  max-width: 1400px;
+  margin: 0 auto;
 }
 .photo {
   aspect-ratio: 4/3;
@@ -369,6 +376,8 @@ footer {
   display: flex;
   align-items: center;
   justify-content: space-between;
+  max-width: 1400px;
+  margin: 0 auto;
 }
 .footer-copy { font-size: 12px; color: var(--text-soft); }
 .footer-links { display: flex; gap: 24px; }
@@ -454,7 +463,7 @@ footer {
 }
 
 /* ── CASE STUDY: MAIN CONTENT ── */
-.cs-main { padding: 48px 56px 80px; max-width: 680px; }
+.cs-main { padding: 48px 56px 80px; max-width: 720px; }
 
 .cs-tags { display: flex; flex-wrap: wrap; gap: 6px; margin-bottom: 18px; }
 .cs-tag {
