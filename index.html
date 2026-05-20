@@ -4,217 +4,199 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Anita Shah — UX/UI Designer</title>
-<link rel="preconnect" href="https://fonts.googleapis.com">
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Nunito:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
-<style>
-*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
-:root{
-  --bg:#EEECEA;
-  --card:#F8F8F6;
-  --surface:#EEECEA;
-  --text:#141412;
-  --text-mid:#606058;
-  --text-soft:#A8A8A0;
-  --accent:#6B7A3E;
-  --accent-bg:#EEF0E7;
-  --border:rgba(20,20,18,0.08);
-  --font:'Nunito',sans-serif;
-}
-html{scroll-behavior:smooth}
-body{background:var(--bg);color:var(--text);font-family:var(--font);-webkit-font-smoothing:antialiased;min-height:100vh;padding:20px}
-
-.page-card{background:var(--card);border-radius:20px;overflow:hidden;max-width:1100px;margin:0 auto}
-
-/* NAV */
-nav{display:flex;align-items:center;justify-content:space-between;padding:26px 48px;border-bottom:1px solid var(--border)}
-.nav-logo{font-size:14px;font-weight:800;color:var(--text);text-decoration:none;letter-spacing:-.01em}
-.nav-links{display:flex;align-items:center;gap:24px;list-style:none}
-.nav-links a{font-size:13px;font-weight:500;color:var(--text-mid);text-decoration:none;transition:color .15s}
-.nav-links a:hover{color:var(--text)}
-.nav-cta{color:var(--text)!important;font-weight:600!important;border:1.5px solid var(--border);padding:5px 14px;border-radius:20px;transition:background .15s,color .15s!important}
-.nav-cta:hover{background:var(--text)!important;color:var(--card)!important}
-
-/* HERO */
-.hero{padding:56px 48px 64px;border-bottom:1px solid var(--border)}
-.hero-name{font-size:clamp(26px,3.5vw,46px);font-weight:800;line-height:1.05;letter-spacing:-.03em;color:var(--text);margin-bottom:2px}
-.hero-role{font-size:clamp(26px,3.5vw,46px);font-weight:800;line-height:1.05;letter-spacing:-.03em;color:var(--text-soft);margin-bottom:20px}
-.hero-desc{font-size:15px;font-weight:400;color:var(--text-mid);line-height:1.75;max-width:500px}
-.hero-desc strong{font-weight:700;color:var(--text)}
-
-/* SECTION HEADER */
-.sec-header{display:flex;align-items:baseline;justify-content:space-between;padding:44px 48px 20px}
-.sec-title{font-size:clamp(28px,4vw,44px);font-weight:800;letter-spacing:-.03em;color:var(--text)}
-.sec-num{font-size:13px;font-weight:500;color:var(--text-soft)}
-
-/* FEATURED CARD */
-.feat-wrap{padding:0 48px 12px}
-.feat{display:block;text-decoration:none;color:var(--text);border-radius:14px;overflow:hidden;border:1px solid var(--border);transition:transform .2s,box-shadow .2s}
-.feat:hover{transform:translateY(-3px);box-shadow:0 10px 40px rgba(20,20,18,.1)}
-.feat-vis{height:320px;background:#DDE4C8;position:relative;overflow:hidden;display:flex;align-items:center;justify-content:center}
-.tmap{position:absolute;inset:36px;display:grid;grid-template-columns:3fr 2fr;grid-template-rows:2fr 1fr;gap:7px}
-.tc{border-radius:8px;background:var(--accent)}
-.feat-bar{padding:22px 26px;display:flex;align-items:center;justify-content:space-between;gap:24px;background:var(--card)}
-.feat-info{}
-.feat-tag{font-size:10px;font-weight:700;letter-spacing:.08em;text-transform:uppercase;color:var(--text-soft);margin-bottom:3px}
-.feat-name{font-size:18px;font-weight:800;letter-spacing:-.015em}
-.feat-right{display:flex;align-items:center;gap:14px;flex-shrink:0}
-.metric{font-size:11px;font-weight:700;color:var(--accent);background:var(--accent-bg);padding:4px 11px;border-radius:11px;white-space:nowrap}
-.feat-cta{font-size:13px;font-weight:600;color:var(--text-mid);display:inline-flex;align-items:center;gap:5px;transition:color .15s,gap .15s;white-space:nowrap}
-.feat:hover .feat-cta{color:var(--text);gap:8px}
-.yr{font-size:12px;color:var(--text-soft)}
-
-/* LIST */
-.list{padding:0 48px;border-top:1px solid var(--border)}
-.row{display:grid;grid-template-columns:1fr auto auto auto;align-items:center;gap:20px;padding:20px 0;border-bottom:1px solid var(--border);text-decoration:none;color:var(--text);position:relative}
-.row:hover .row-name{color:var(--accent)}
-.row:hover .arr{opacity:1;transform:translateX(0)}
-.row-name{font-size:16px;font-weight:700;letter-spacing:-.01em;margin-bottom:2px;transition:color .15s}
-.row-type{font-size:12px;font-weight:500;color:var(--text-soft)}
-.arr{font-size:15px;color:var(--text-soft);opacity:0;transform:translateX(-6px);transition:opacity .15s,transform .15s}
-.row-dis{display:grid;grid-template-columns:1fr auto auto auto;align-items:center;gap:20px;padding:20px 0;border-bottom:1px solid var(--border);opacity:.28;cursor:default}
-.row-dis .row-name{font-size:16px;font-weight:700;letter-spacing:-.01em;margin-bottom:2px}
-.row-dis .row-type{font-size:12px;font-weight:500;color:var(--text-soft)}
-
-/* ABOUT */
-.about{border-top:1px solid var(--border)}
-.about-inner{padding:0 48px 60px;display:grid;grid-template-columns:1fr 1fr;gap:44px;align-items:start}
-.photo{aspect-ratio:4/3;background:var(--surface);border-radius:12px;display:flex;align-items:center;justify-content:center;color:var(--text-soft);font-size:13px;font-weight:500;border:1px solid var(--border)}
-.bio{font-size:14px;font-weight:400;color:var(--text-mid);line-height:1.8;margin-bottom:22px}
-.bio p{margin-bottom:12px}
-.bio p:last-child{margin-bottom:0}
-.bio strong{font-weight:700;color:var(--text)}
-.skills{display:flex;flex-wrap:wrap;gap:6px;margin-bottom:24px}
-.skill{font-size:11px;font-weight:600;color:var(--text-soft);border:1px solid var(--border);padding:4px 11px;border-radius:11px;transition:all .15s}
-.skill:hover{border-color:var(--accent);color:var(--accent)}
-.links{display:flex;gap:18px}
-.alink{font-size:13px;font-weight:600;color:var(--text-mid);text-decoration:none;border-bottom:1.5px solid var(--border);padding-bottom:1px;transition:color .15s,border-color .15s}
-.alink:hover{color:var(--accent);border-color:var(--accent)}
-
-/* FOOTER */
-footer{border-top:1px solid var(--border);padding:24px 48px;display:flex;align-items:center;justify-content:space-between}
-.footer-copy{font-size:12px;color:var(--text-soft)}
-.footer-links{display:flex;gap:22px}
-.footer-links a{font-size:12px;font-weight:500;color:var(--text-mid);text-decoration:none;transition:color .15s}
-.footer-links a:hover{color:var(--accent)}
-.avail{display:inline-flex;align-items:center;gap:6px;font-size:12px;font-weight:600;color:var(--accent)}
-.pulse{width:6px;height:6px;border-radius:50%;background:var(--accent);animation:pulse 2s ease-in-out infinite}
-@keyframes pulse{0%,100%{opacity:1}50%{opacity:.3}}
-</style>
+<link rel="stylesheet" href="style.css">
 </head>
 <body>
-<div class="page-card">
 
-  <nav>
-    <a href="index.html" class="nav-logo">Anita Shah</a>
-    <ul class="nav-links">
-      <li><a href="#work">Work</a></li>
-      <li><a href="#about">About</a></li>
-      <li><a href="assets/Anita_Shah_Resume.pdf">Résumé</a></li>
-      <li><a href="mailto:anitashah92@gmail.com" class="nav-cta">Contact</a></li>
-    </ul>
-  </nav>
+  <!-- NAV -->
+  <header class="site-nav">
+    <div class="inner">
+      <div class="nav-logo">Logo</div>
+      <ul class="nav-links">
+        <li><a href="#work">Work</a></li>
+        <li><a href="#about">About</a></li>
+        <li><a href="assets/Anita_Shah_Resume.pdf">Résumé</a></li>
+        <li><a href="mailto:anitashah92@gmail.com" class="nav-cta">Get in touch</a></li>
+      </ul>
+    </div>
+  </header>
 
+  <!-- HERO -->
   <section class="hero">
-    <div class="hero-name">Anita Shah</div>
-    <div class="hero-role">UX/UI Designer</div>
-    <p class="hero-desc">I turn complex data into things people actually understand. <strong>5+ years</strong> designing enterprise SaaS dashboards, nonprofit platforms, and iOS apps — with clarity and purpose.</p>
+    <div class="inner">
+      <h1 class="hero-name">Anita Shah</h1>
+      <p class="hero-title">UX/UI Designer</p>
+      <div class="hero-avail">
+        <span class="hero-dot"></span>
+        Open to new opportunities
+      </div>
+    </div>
   </section>
 
-  <section id="work">
-    <div class="sec-header">
-      <h2 class="sec-title">Work</h2>
-      <span class="sec-num">01</span>
+  <!-- INTRO -->
+  <section class="intro">
+    <div class="inner">
+      <div>
+        <p class="intro-label">About me</p>
+        <h2 class="intro-heading">I turn complex data into things people actually understand.</h2>
+      </div>
+      <div class="intro-right">
+        <p class="intro-text">UX/UI designer with 5+ years designing enterprise SaaS dashboards, nonprofit platforms, and iOS apps. I work at the intersection of clarity, strategy, and craft — building experiences that feel effortless because every decision was intentional.</p>
+        <div class="intro-actions">
+          <a href="#work" class="btn-dark">View my work</a>
+          <a href="#about" class="btn-ghost">More about me <svg width="12" height="12" viewBox="0 0 12 12" fill="none"><path d="M2 6h8M6 2l4 4-4 4" stroke="currentColor" stroke-width="1.3" stroke-linecap="round" stroke-linejoin="round"/></svg></a>
+        </div>
+      </div>
     </div>
-    <div class="feat-wrap">
-      <a href="work/insights.html" class="feat">
-        <div class="feat-vis">
-          <div class="tmap">
-            <div class="tc" style="opacity:.72"></div>
-            <div class="tc" style="opacity:.42"></div>
-            <div class="tc" style="opacity:.28;grid-column:1"></div>
-            <div class="tc" style="opacity:.16"></div>
+  </section>
+
+  <!-- WORK -->
+  <section class="work" id="work">
+    <div class="inner">
+      <div class="section-header">
+        <h2 class="section-label">Work</h2>
+        <span class="section-count">5 projects</span>
+      </div>
+
+      <!-- Featured -->
+      <a href="work/insights.html" class="feat-card">
+        <div class="feat-visual">
+          <div class="feat-art">
+            <div class="feat-art-cell" style="opacity:.72"></div>
+            <div class="feat-art-cell" style="opacity:.42"></div>
+            <div class="feat-art-cell" style="opacity:.28;grid-column:1"></div>
+            <div class="feat-art-cell" style="opacity:.16"></div>
           </div>
         </div>
-        <div class="feat-bar">
-          <div class="feat-info">
-            <div class="feat-tag">Enterprise SaaS · Data Visualization</div>
-            <div class="feat-name">Fusion Insights</div>
+        <div class="feat-info">
+          <div class="feat-meta">
+            <p class="feat-eyebrow">Enterprise SaaS · Data Visualization</p>
+            <p class="feat-title">Fusion Insights</p>
           </div>
           <div class="feat-right">
-            <span class="metric">Demoed in Unilever pitch</span>
-            <span class="feat-cta">View case study <svg width="12" height="12" viewBox="0 0 12 12" fill="none"><path d="M2 10L10 2M10 2H4.5M10 2V7.5" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg></span>
-            <span class="yr">2024</span>
+            <span class="tag">Demoed in Unilever pitch</span>
+            <span class="feat-arrow">View case study <svg width="12" height="12" viewBox="0 0 12 12" fill="none"><path d="M2 10L10 2M10 2H5M10 2V7" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round"/></svg></span>
+            <span style="font-size:12px;color:var(--text-soft)">2024</span>
           </div>
         </div>
       </a>
-    </div>
-    <div class="list">
-      <a href="work/design-system.html" class="row">
-        <div><div class="row-name">Fusion Design System</div><div class="row-type">Design System · Figma</div></div>
-        <span class="metric">50+ components</span>
-        <span class="yr">2023</span>
-        <span class="arr">→</span>
-      </a>
-      <a href="work/flow.html" class="row">
-        <div><div class="row-name">Flow & RFI Builder</div><div class="row-type">Web App · Product Design</div></div>
-        <span class="metric">Weeks → Days</span>
-        <span class="yr">2023</span>
-        <span class="arr">→</span>
-      </a>
-      <a href="work/beckett.html" class="row">
-        <div><div class="row-name">Beckett iOS</div><div class="row-type">iOS · Mobile · IoT</div></div>
-        <span class="metric">End-to-end prototype</span>
-        <span class="yr">2022</span>
-        <span class="arr">→</span>
-      </a>
-      <a href="work/sra.html" class="row">
-        <div><div class="row-name">SRA Website</div><div class="row-type">Web Design · UX Strategy</div></div>
-        <span class="metric">16 pages · In dev</span>
-        <span class="yr">2024</span>
-        <span class="arr">→</span>
-      </a>
-      <div class="row-dis">
-        <div><div class="row-name">SRLC Website</div><div class="row-type">Nonprofit · Web Design · Coming soon</div></div>
-        <span></span><span></span><span></span>
+
+      <!-- 2-column grid -->
+      <div class="work-grid">
+        <a href="work/design-system.html" class="grid-card">
+          <div class="grid-visual" style="background:#E3E8D8">
+            <div style="display:grid;grid-template-columns:1fr 1fr;gap:8px;padding:20px;width:100%;height:100%">
+              <div style="border-radius:8px;background:var(--accent);opacity:.6"></div>
+              <div style="border-radius:8px;background:var(--accent);opacity:.35"></div>
+              <div style="border-radius:8px;background:var(--accent);opacity:.35"></div>
+              <div style="border-radius:8px;background:var(--accent);opacity:.6"></div>
+            </div>
+          </div>
+          <div class="grid-info">
+            <p class="grid-eyebrow">Design System · Figma</p>
+            <p class="grid-title">Fusion Design System</p>
+            <div class="grid-foot">
+              <span class="tag">50+ components</span>
+              <span class="grid-year">2023</span>
+            </div>
+          </div>
+        </a>
+
+        <a href="work/flow.html" class="grid-card">
+          <div class="grid-visual" style="background:#E0E8D5">
+            <div style="display:flex;align-items:flex-end;gap:6px;padding:20px 24px;width:100%;height:100%">
+              <div style="flex:1;border-radius:4px 4px 0 0;background:var(--accent);height:45%;opacity:.7"></div>
+              <div style="flex:1;border-radius:4px 4px 0 0;background:var(--accent);height:70%;opacity:.55"></div>
+              <div style="flex:1;border-radius:4px 4px 0 0;background:var(--accent);height:90%"></div>
+              <div style="flex:1;border-radius:4px 4px 0 0;background:var(--accent);height:60%;opacity:.65"></div>
+              <div style="flex:1;border-radius:4px 4px 0 0;background:var(--accent);height:80%;opacity:.8"></div>
+            </div>
+          </div>
+          <div class="grid-info">
+            <p class="grid-eyebrow">Web App · Product Design</p>
+            <p class="grid-title">Flow & RFI Builder</p>
+            <div class="grid-foot">
+              <span class="tag">Weeks → Days</span>
+              <span class="grid-year">2023</span>
+            </div>
+          </div>
+        </a>
+      </div>
+
+      <!-- List rows -->
+      <div class="work-rows">
+        <a href="work/beckett.html" class="work-row">
+          <div>
+            <div class="wr-name">Beckett iOS</div>
+            <div class="wr-type">iOS · Mobile · IoT</div>
+          </div>
+          <span class="tag">End-to-end prototype</span>
+          <span class="wr-year">2022</span>
+          <span class="wr-arr">→</span>
+        </a>
+        <a href="work/sra.html" class="work-row">
+          <div>
+            <div class="wr-name">SRA Website</div>
+            <div class="wr-type">Web Design · UX Strategy</div>
+          </div>
+          <span class="tag">16 pages · In dev</span>
+          <span class="wr-year">2024</span>
+          <span class="wr-arr">→</span>
+        </a>
+        <div class="work-row-disabled">
+          <div>
+            <div class="wr-name">SRLC Website</div>
+            <div class="wr-type">Nonprofit · Web Design · Coming soon</div>
+          </div>
+          <span></span>
+          <span></span>
+          <span></span>
+        </div>
       </div>
     </div>
   </section>
 
-  <section id="about" class="about">
-    <div class="sec-header">
-      <h2 class="sec-title">About</h2>
-      <span class="sec-num">02</span>
-    </div>
-    <div class="about-inner">
-      <div class="photo">Add your photo here</div>
-      <div>
-        <div class="bio">
-          <p>Cross-functional UX/UI designer with <strong>5+ years</strong> launching digital platforms across enterprise, nonprofit, and consumer environments.</p>
-          <p>My path started with a <strong>psychology degree from UC San Diego</strong> — the right foundation for understanding how people think, what they expect, and where they get stuck.</p>
-          <p>I'm most at home on teams where <strong>design, engineering, and data actually talk to each other</strong> — where decisions get questioned and handoffs feel like real conversations.</p>
+  <!-- ABOUT -->
+  <section class="about" id="about">
+    <div class="inner">
+      <div class="about-photo">Add your photo here</div>
+      <div class="about-content">
+        <p class="about-label">About me</p>
+        <h2 class="about-heading">Hi, I'm Anita — a UX/UI designer with a background in psychology.</h2>
+        <div class="about-bio">
+          <p>I specialize in turning complex ideas into clear, intuitive, and visually engaging products. My work blends strategy, storytelling, content, and design craft — whether I'm redesigning a donation flow, building a content-heavy website, or shaping a product concept from the ground up.</p>
+          <p>With experience across UX, visual design, content strategy, and cross-functional collaboration, I care deeply about creating experiences that are not only beautiful, but useful, accessible, and emotionally resonant.</p>
         </div>
         <div class="skills">
-          <span class="skill">UX Research</span><span class="skill">Interaction Design</span><span class="skill">Design Systems</span><span class="skill">Prototyping</span><span class="skill">Data Visualization</span><span class="skill">Figma</span><span class="skill">Usability Testing</span><span class="skill">HTML / CSS</span><span class="skill">Agile</span>
+          <span class="skill">UX Research</span>
+          <span class="skill">Interaction Design</span>
+          <span class="skill">Design Systems</span>
+          <span class="skill">Prototyping</span>
+          <span class="skill">Data Visualization</span>
+          <span class="skill">Figma</span>
+          <span class="skill">Usability Testing</span>
+          <span class="skill">HTML / CSS</span>
         </div>
-        <div class="links">
-          <a href="assets/Anita_Shah_Resume.pdf" class="alink">Download résumé →</a>
-          <a href="https://linkedin.com/in/anita-shah" target="_blank" class="alink">LinkedIn →</a>
+        <div class="about-links">
+          <a href="assets/Anita_Shah_Resume.pdf" class="about-link">Download résumé →</a>
+          <a href="https://linkedin.com/in/anita-shah" target="_blank" class="about-link">LinkedIn →</a>
         </div>
       </div>
     </div>
   </section>
 
-  <footer>
-    <span class="avail"><span class="pulse"></span>Open to work · Sunnyvale, CA</span>
-    <div class="footer-links">
-      <a href="mailto:anitashah92@gmail.com">anitashah92@gmail.com</a>
-      <a href="https://linkedin.com/in/anita-shah" target="_blank">LinkedIn</a>
-      <a href="assets/Anita_Shah_Resume.pdf">Résumé</a>
+  <!-- FOOTER -->
+  <footer class="site-footer">
+    <div class="inner">
+      <span class="footer-name">Anita Shah</span>
+      <div class="footer-links">
+        <a href="mailto:anitashah92@gmail.com">Email</a>
+        <a href="https://linkedin.com/in/anita-shah" target="_blank">LinkedIn</a>
+        <a href="assets/Anita_Shah_Resume.pdf">Résumé</a>
+      </div>
+      <span class="footer-copy">© 2026</span>
     </div>
-    <span class="footer-copy">© 2026 Anita Shah</span>
   </footer>
 
-</div>
 </body>
 </html>
