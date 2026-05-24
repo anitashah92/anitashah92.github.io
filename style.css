@@ -423,12 +423,12 @@ img { display: block; max-width: 100%; }
 .about-photo {
   width: 100%;
   aspect-ratio: 4/5;
-  background: var(--hero-bg);
   border-radius: 14px;
   display: block;
   object-fit: cover;
   object-position: 30% top;
   border: 1px solid var(--border);
+  background: var(--hero-bg);
 }
 .about-content {}
 .about-heading {
