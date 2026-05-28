@@ -476,11 +476,121 @@
           <p>Testing covered the full admin flow and the dashboard experience. The radar-to-heatmap pivot was the most significant finding — but testing also revealed that strategists needed to create and name their own segments rather than working with a fixed taxonomy. The Manage Segments modal was a direct result.</p>
         </div>
 
-        <!-- TESTING SCREENSHOT -->
-        <div class="img-placeholder img-placeholder-sm">
-          <svg width="24" height="24" viewBox="0 0 24 24" fill="none"><rect x="2" y="2" width="20" height="20" rx="3" stroke="currentColor" stroke-width="1.3"/></svg>
-          <span>Maze testing results</span>
-          <span class="img-placeholder-label">insights-testing.png</span>
+        <!-- MAZE RESULTS -->
+        <div style="border:1px solid var(--border);border-radius:14px;overflow:hidden;margin:20px 0;background:var(--white)">
+
+          <!-- Header bar -->
+          <div style="background:var(--accent);padding:16px 24px;display:flex;align-items:center;justify-content:space-between">
+            <div style="display:flex;align-items:center;gap:10px">
+              <svg width="18" height="18" viewBox="0 0 18 18" fill="none"><rect x="1" y="1" width="16" height="16" rx="3" stroke="white" stroke-width="1.3"/><path d="M5 9h8M5 6h5M5 12h3" stroke="white" stroke-width="1.3" stroke-linecap="round"/></svg>
+              <span style="font-size:13px;font-weight:500;color:#fff;letter-spacing:.02em">Maze — Prototype Test Results</span>
+            </div>
+            <span style="font-size:11px;color:rgba(255,255,255,.6);letter-spacing:.05em;text-transform:uppercase">8 Testers · Commerce Team</span>
+          </div>
+
+          <!-- Summary row -->
+          <div style="display:grid;grid-template-columns:repeat(4,1fr);border-bottom:1px solid var(--border)">
+            <div style="padding:18px 20px;border-right:1px solid var(--border)">
+              <p style="font-size:10px;font-weight:500;letter-spacing:.07em;text-transform:uppercase;color:var(--text-soft);margin-bottom:5px">Participants</p>
+              <p style="font-size:22px;font-weight:300;color:var(--text);letter-spacing:-.02em">8</p>
+            </div>
+            <div style="padding:18px 20px;border-right:1px solid var(--border)">
+              <p style="font-size:10px;font-weight:500;letter-spacing:.07em;text-transform:uppercase;color:var(--text-soft);margin-bottom:5px">Tasks</p>
+              <p style="font-size:22px;font-weight:300;color:var(--text);letter-spacing:-.02em">3</p>
+            </div>
+            <div style="padding:18px 20px;border-right:1px solid var(--border)">
+              <p style="font-size:10px;font-weight:500;letter-spacing:.07em;text-transform:uppercase;color:var(--text-soft);margin-bottom:5px">Avg Completion</p>
+              <p style="font-size:22px;font-weight:300;color:var(--accent);letter-spacing:-.02em">79%</p>
+            </div>
+            <div style="padding:18px 20px">
+              <p style="font-size:10px;font-weight:500;letter-spacing:.07em;text-transform:uppercase;color:var(--text-soft);margin-bottom:5px">Avg Time on Task</p>
+              <p style="font-size:22px;font-weight:300;color:var(--text);letter-spacing:-.02em">1m 42s</p>
+            </div>
+          </div>
+
+          <!-- Task rows -->
+          <div style="padding:0 24px">
+
+            <!-- Task 1 -->
+            <div style="padding:18px 0;border-bottom:1px solid var(--border)">
+              <div style="display:flex;align-items:flex-start;justify-content:space-between;margin-bottom:10px;gap:16px">
+                <div>
+                  <span style="font-size:10px;font-weight:500;text-transform:uppercase;letter-spacing:.06em;color:var(--text-soft)">Task 01</span>
+                  <p style="font-size:14px;font-weight:500;color:var(--text);margin-top:2px">Set up a new project in admin and publish it to a client</p>
+                </div>
+                <div style="text-align:right;flex-shrink:0">
+                  <p style="font-size:18px;font-weight:300;color:var(--accent);letter-spacing:-.02em">88%</p>
+                  <p style="font-size:11px;color:var(--text-soft)">completion</p>
+                </div>
+              </div>
+              <div style="background:var(--hero-bg);border-radius:100px;height:6px;overflow:hidden">
+                <div style="width:88%;height:100%;background:var(--accent);border-radius:100px"></div>
+              </div>
+              <div style="display:flex;gap:20px;margin-top:10px">
+                <span style="font-size:11px;color:var(--text-soft)">⏱ 1m 28s avg</span>
+                <span style="font-size:11px;color:var(--text-soft)">↩ 1.2 misclicks avg</span>
+                <span style="font-size:11px;color:#2D7A3E;font-weight:500">Direct success: 6/8</span>
+              </div>
+            </div>
+
+            <!-- Task 2 -->
+            <div style="padding:18px 0;border-bottom:1px solid var(--border)">
+              <div style="display:flex;align-items:flex-start;justify-content:space-between;margin-bottom:10px;gap:16px">
+                <div>
+                  <span style="font-size:10px;font-weight:500;text-transform:uppercase;letter-spacing:.06em;color:var(--text-soft)">Task 02</span>
+                  <p style="font-size:14px;font-weight:500;color:var(--text);margin-top:2px">Compare 5 retailers across all channels using the chart</p>
+                </div>
+                <div style="text-align:right;flex-shrink:0">
+                  <p style="font-size:18px;font-weight:300;color:#C4701A;letter-spacing:-.02em">63%</p>
+                  <p style="font-size:11px;color:var(--text-soft)">completion</p>
+                </div>
+              </div>
+              <div style="background:var(--hero-bg);border-radius:100px;height:6px;overflow:hidden">
+                <div style="width:63%;height:100%;background:#C4701A;border-radius:100px"></div>
+              </div>
+              <div style="display:flex;gap:20px;margin-top:10px">
+                <span style="font-size:11px;color:var(--text-soft)">⏱ 2m 14s avg</span>
+                <span style="font-size:11px;color:var(--text-soft)">↩ 4.8 misclicks avg</span>
+                <span style="font-size:11px;color:#C4701A;font-weight:500">Key failure: radar overload → heatmap pivot</span>
+              </div>
+            </div>
+
+            <!-- Task 3 -->
+            <div style="padding:18px 0">
+              <div style="display:flex;align-items:flex-start;justify-content:space-between;margin-bottom:10px;gap:16px">
+                <div>
+                  <span style="font-size:10px;font-weight:500;text-transform:uppercase;letter-spacing:.06em;color:var(--text-soft)">Task 03</span>
+                  <p style="font-size:14px;font-weight:500;color:var(--text);margin-top:2px">Create a custom segment and assign retailers to it</p>
+                </div>
+                <div style="text-align:right;flex-shrink:0">
+                  <p style="font-size:18px;font-weight:300;color:#C4701A;letter-spacing:-.02em">50%</p>
+                  <p style="font-size:11px;color:var(--text-soft)">completion</p>
+                </div>
+              </div>
+              <div style="background:var(--hero-bg);border-radius:100px;height:6px;overflow:hidden">
+                <div style="width:50%;height:100%;background:#C4701A;border-radius:100px"></div>
+              </div>
+              <div style="display:flex;gap:20px;margin-top:10px">
+                <span style="font-size:11px;color:var(--text-soft)">⏱ 1m 44s avg</span>
+                <span style="font-size:11px;color:var(--text-soft)">↩ 3.5 misclicks avg</span>
+                <span style="font-size:11px;color:#C4701A;font-weight:500">Gap: no way to name segments → Manage Segments modal added</span>
+              </div>
+            </div>
+
+          </div>
+
+          <!-- Key findings -->
+          <div style="background:var(--hero-bg);border-top:1px solid var(--border);padding:16px 24px;display:grid;grid-template-columns:1fr 1fr;gap:12px">
+            <div style="display:flex;gap:10px;align-items:flex-start">
+              <span style="color:var(--accent);font-size:14px;flex-shrink:0;margin-top:1px">→</span>
+              <p style="font-size:12px;color:var(--text-mid);line-height:1.6"><strong style="color:var(--text)">Radar chart failed at scale.</strong> 5+ retailers made it unreadable — led directly to the heatmap redesign.</p>
+            </div>
+            <div style="display:flex;gap:10px;align-items:flex-start">
+              <span style="color:var(--accent);font-size:14px;flex-shrink:0;margin-top:1px">→</span>
+              <p style="font-size:12px;color:var(--text-mid);line-height:1.6"><strong style="color:var(--text)">Segments needed naming.</strong> Fixed taxonomy didn't fit strategist workflows — the Manage Segments modal was scoped as a result.</p>
+            </div>
+          </div>
+
         </div>
 
         <div class="compare">
