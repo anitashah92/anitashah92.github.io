@@ -84,7 +84,9 @@
         <li><a href="#outcomes"><span class="sdot"></span>Outcomes</a></li>
         <li><a href="#problem"><span class="sdot"></span>The problem</a></li>
         <li><a href="#research"><span class="sdot"></span>Research</a></li>
+        <li><a href="#requirements"><span class="sdot"></span>Requirements</a></li>
         <li><a href="#design"><span class="sdot"></span>Design</a></li>
+        <li><a href="#iteration"><span class="sdot"></span>Iteration</a></li>
         <li><a href="#edge-cases"><span class="sdot"></span>Edge cases</a></li>
         <li><a href="#reflections"><span class="sdot"></span>Reflections</a></li>
       </ul>
@@ -99,12 +101,12 @@
           <span class="cs-tag">IoT</span>
         </div>
         <h1 class="cs-h1">Beckett iOS</h1>
-        <p class="cs-lead">An end-to-end iOS prototype for real-time oil tank monitoring — designed for homeowners managing heating fuel through a connected IoT sensor, from first research through edge-case validation.</p>
+        <p class="cs-lead">Beckett Corporation, founded in 1937, builds gas and oil burners for residential and commercial heating. Their push to modernize meant attaching IoT sensors to tanks and building a consumer app so homeowners could monitor their heating fuel remotely. I was brought in to design it end to end, from research through a hi-fi prototype.</p>
         <div class="snap">
           <div class="snap-item"><p class="snap-lbl">Role</p><p class="snap-val">Lead UX/UI Designer</p></div>
           <div class="snap-item"><p class="snap-lbl">Platform</p><p class="snap-val">iOS (Prototype)</p></div>
-          <div class="snap-item"><p class="snap-lbl">Device</p><p class="snap-val">IoT Tank Sensor</p></div>
-          <div class="snap-item"><p class="snap-lbl">Users</p><p class="snap-val">Homeowners</p></div>
+          <div class="snap-item"><p class="snap-lbl">Process</p><p class="snap-val">Agile, 2-week sprints</p></div>
+          <div class="snap-item"><p class="snap-lbl">Users</p><p class="snap-val">Residential homeowners</p></div>
         </div>
         <div class="img-placeholder img-placeholder-lg">
           <svg width="32" height="32" viewBox="0 0 32 32" fill="none"><rect x="2" y="2" width="28" height="28" rx="5" stroke="currentColor" stroke-width="1.5"/><path d="M2 12h28M12 12v18" stroke="currentColor" stroke-width="1.5"/></svg>
@@ -114,19 +116,19 @@
       </div>
 
       <div class="cs-sec" id="outcomes">
-        <p class="eyebrow">Impact at a glance</p>
+        <p class="eyebrow">At a glance</p>
         <div class="metrics-strip">
           <div class="metric-card">
             <p class="metric-val">E2E</p>
-            <p class="metric-lbl">Full prototype from research through edge-case validation</p>
+            <p class="metric-lbl">Research, wireframes, preference testing, and hi-fi prototype delivered across agile sprints</p>
           </div>
           <div class="metric-card">
             <p class="metric-val">4</p>
-            <p class="metric-lbl">Gauge formats tested to find the most intuitive design</p>
+            <p class="metric-lbl">Edge states designed: low fuel, sensor offline, freeze alarm, and post-delivery confirmation</p>
           </div>
           <div class="metric-card">
-            <p class="metric-val">3</p>
-            <p class="metric-lbl">Critical edge cases designed — low fuel, offline, post-delivery</p>
+            <p class="metric-val">4+</p>
+            <p class="metric-lbl">Rounds of preference testing across gauge formats, graph styles, and notification placement</p>
           </div>
         </div>
       </div>
@@ -137,11 +139,12 @@
         <p class="eyebrow">The problem</p>
         <h2 class="cs-h2">It's January. The house is cold. Nobody knows why.</h2>
         <div class="body-text">
-          <p>Homeowners with oil-heated homes had no reliable way to know their fuel level without physically checking the tank — often outside, in winter. Beckett's IoT sensor could transmit real-time tank data, but there was no consumer app to surface it clearly.</p>
-          <p>The design challenge: translate a <strong>single data point — tank fill percentage — into something genuinely useful</strong>. When to order, how urgent it is, and what to do when something goes wrong.</p>
+          <p>Homeowners with oil-heated homes had no reliable way to know their fuel level without physically checking the tank, often outside, in winter. Beckett's IoT sensor could transmit real-time tank data to the cloud, but there was no consumer app to surface it clearly.</p>
+          <p>The surface challenge was turning a single number, tank fill percentage, into something actionable: when to order, how urgent it is, what to do when something goes wrong.</p>
+          <p>The hidden challenge was more technical. To show meaningful information, the app had to <strong>calculate the actual volume of oil remaining based on each tank's physical dimensions.</strong> Tanks come in six different shapes and sizes, each requiring a different calculation. Getting the math right was a prerequisite for everything else.</p>
         </div>
         <div class="callout">
-          <p>"IoT design lives or dies on edge cases. A tank reading of 0% could mean empty — or it could mean the sensor is offline. Those two states need very different responses."</p>
+          <p>"IoT design lives or dies on edge cases. A tank reading of 0% could mean empty, or it could mean the sensor is offline. Those two states need very different responses."</p>
         </div>
       </div>
 
@@ -149,15 +152,72 @@
 
       <div class="cs-sec" id="research">
         <p class="eyebrow">Research</p>
-        <h2 class="cs-h2">Understanding the mental model of "fuel."</h2>
+        <h2 class="cs-h2">Three methods, one consistent finding: simplicity over data.</h2>
         <div class="body-text">
-          <p>User interviews surfaced a consistent mental model: fuel is thought of like a car's gas tank. People want a simple visual gauge, not raw percentages. They think in terms of <strong>days of fuel remaining</strong>, not gallons.</p>
-          <p>Research revealed the high-anxiety moments: unexpected cold snaps, extended time away from home, and not knowing if a delivery actually arrived. Every design decision was filtered through these three scenarios.</p>
+          <p>I distributed surveys to current Beckett users, ran user interviews with A/B testing on notification behavior, and consulted safety engineers inside Beckett. Each method answered a different question.</p>
         </div>
-        <div class="img-placeholder img-placeholder-sm">
+
+        <div class="edge-cases" style="margin-top:20px">
+          <div class="edge-case">
+            <div class="edge-icon" style="font-size:16px">📋</div>
+            <div>
+              <p class="edge-title">User surveys: what information do people actually need?</p>
+              <p class="edge-body">Key finding: users didn't think about "sensors" at all. They cared about the physical tank. So we abstracted the sensor layer away entirely and built the interface around the tank as the primary object. Surveys also confirmed three alert states users expected: low tank level, low transmitter battery, and maximum fuel usage.</p>
+            </div>
+          </div>
+          <div class="edge-case">
+            <div class="edge-icon" style="font-size:16px">🔔</div>
+            <div>
+              <p class="edge-title">User interviews + A/B testing: where should notification controls live?</p>
+              <p class="edge-body">The question wasn't just "do you want push notifications" but where users expected to control them. One global settings page, or per device? Testing found that users surprisingly wanted <strong>per-device control</strong>, managing each tank's alerts from that tank's own settings page rather than a central hub.</p>
+            </div>
+          </div>
+          <div class="edge-case">
+            <div class="edge-icon" style="font-size:16px">🏭</div>
+            <div>
+              <p class="edge-title">Industry specialists: a use case user research missed</p>
+              <p class="edge-body">Safety engineers at Beckett flagged a critical scenario that hadn't surfaced in user interviews: freeze alarm. When temperatures drop too low, oil can't be stored safely or efficiently. This became the fourth edge state in the app.</p>
+            </div>
+          </div>
+        </div>
+
+        <div class="img-placeholder img-placeholder-sm" style="margin-top:20px">
           <svg width="24" height="24" viewBox="0 0 24 24" fill="none"><rect x="2" y="2" width="20" height="20" rx="3" stroke="currentColor" stroke-width="1.3"/></svg>
-          <span>Research notes / user interview themes</span>
+          <span>Research notes and user interview themes</span>
           <span class="img-placeholder-label">beckett-research.png</span>
+        </div>
+      </div>
+
+      <hr>
+
+      <div class="cs-sec" id="requirements">
+        <p class="eyebrow">Requirements</p>
+        <h2 class="cs-h2">Mapping the system before designing a single screen.</h2>
+        <div class="body-text">
+          <p>Before wireframing, I mapped the IoT system into three objects users would need to monitor. This became the foundation for the information architecture and determined what data each screen had to surface.</p>
+        </div>
+        <div class="edge-cases" style="margin-top:20px">
+          <div class="edge-case">
+            <div class="edge-icon" style="background:var(--accent);color:#fff;font-size:11px;font-weight:600;border-radius:50%;width:32px;height:32px;display:flex;align-items:center;justify-content:center;flex-shrink:0">1</div>
+            <div>
+              <p class="edge-title">The Tank</p>
+              <p class="edge-body">The physical object users cared about. Needed to show: current oil level, usage and fill history, tank dimensions (for volume calculation), notification thresholds, and installation date.</p>
+            </div>
+          </div>
+          <div class="edge-case">
+            <div class="edge-icon" style="background:var(--accent);color:#fff;font-size:11px;font-weight:600;border-radius:50%;width:32px;height:32px;display:flex;align-items:center;justify-content:center;flex-shrink:0">2</div>
+            <div>
+              <p class="edge-title">The Gateway Hub</p>
+              <p class="edge-body">The WiFi-enabled device connecting local sensors to the cloud. Needed: device ID and name, installation date, warranty information, and an option to disconnect from the account.</p>
+            </div>
+          </div>
+          <div class="edge-case">
+            <div class="edge-icon" style="background:var(--accent);color:#fff;font-size:11px;font-weight:600;border-radius:50%;width:32px;height:32px;display:flex;align-items:center;justify-content:center;flex-shrink:0">3</div>
+            <div>
+              <p class="edge-title">The Sensors</p>
+              <p class="edge-body">Bluetooth devices installed inside each tank. Needed to surface: current tank level, battery level, signal strength, and last message received (to detect stale data).</p>
+            </div>
+          </div>
         </div>
       </div>
 
@@ -165,39 +225,87 @@
 
       <div class="cs-sec" id="design">
         <p class="eyebrow">Design</p>
-        <h2 class="cs-h2">Preference testing the gauge — four formats, one winner.</h2>
+        <h2 class="cs-h2">Solving the tank problem before solving the gauge problem.</h2>
         <div class="body-text">
-          <p>Four display formats were tested with users to find the most intuitive fuel gauge.</p>
+          <p>Before I could design the main dashboard, I had to figure out how users would tell the app what kind of tank they had. The volume calculation depended on it.</p>
+          <p>After researching, I found six common tank shape and size categories. I landed on <strong>five presets covering the most common configurations</strong>, plus a custom input for anything else. Volume would be calculated on the fly from the dimensions. This removed a significant point of friction: users pick their tank shape from a visual selector rather than entering raw numbers.</p>
+          <p>With that solved, I moved to the gauge. Beckett had an existing style guide I worked within: red for setup and onboarding screens to keep the brand prominent, grey for everyday-use screens to keep the interface calm.</p>
         </div>
-        <div class="img-row">
+
+        <div class="img-row" style="margin-top:20px">
           <div class="img-placeholder img-placeholder-sm">
             <svg width="24" height="24" viewBox="0 0 24 24" fill="none"><rect x="2" y="2" width="20" height="20" rx="3" stroke="currentColor" stroke-width="1.3"/></svg>
-            <span>Dial gauge — tested</span>
+            <span>Tank shape selector</span>
             <span class="img-placeholder-label">beckett-gauge-dial.png</span>
           </div>
           <div class="img-placeholder img-placeholder-sm">
             <svg width="24" height="24" viewBox="0 0 24 24" fill="none"><rect x="2" y="2" width="20" height="20" rx="3" stroke="currentColor" stroke-width="1.3"/></svg>
-            <span>Arc gauge — tested</span>
+            <span>Main dashboard, hi-fi</span>
             <span class="img-placeholder-label">beckett-gauge-arc.png</span>
           </div>
         </div>
-        <div class="compare">
+
+        <h3 style="font-family:var(--font-head);font-size:17px;font-weight:400;color:var(--text);margin:32px 0 12px;letter-spacing:-0.01em">Preference testing the gauge</h3>
+        <div class="body-text">
+          <p>Beckett liked an odometer-style numerical readout. I felt users would also need something more visual to scan quickly. I ran a preference test across multiple formats. The results were nearly even between the odometer and a color-fill bar, so I combined both: a vertical fill bar that shifts green to amber to red as level drops, with a numerical readout and "approximately X days remaining" below.</p>
+        </div>
+        <div class="compare" style="margin-top:16px">
           <div class="cmp">
-            <p class="cmp-lbl">Dial gauge</p>
-            <p class="cmp-title">Familiar, but imprecise</p>
-            <p class="cmp-body">Users recognised it from car dashboards — but found it hard to read exact levels and felt it took up too much screen space.</p>
+            <p class="cmp-lbl">Odometer only</p>
+            <p class="cmp-title">Precise, but slow to scan</p>
+            <p class="cmp-body">Beckett preferred this. Users found the number useful but missed the at-a-glance urgency of a visual fill level.</p>
           </div>
           <div class="cmp win">
-            <p class="cmp-lbl">Vertical bar</p>
-            <p class="cmp-title">Clear and immediately scannable</p>
-            <p class="cmp-body">Simple fill bar shifting green → amber → red as level drops. Fastest to read at a glance, paired with "~14 days remaining" below.</p>
-            <span class="win-badge">✓ Preferred</span>
+            <p class="cmp-lbl">Combined: fill bar + readout</p>
+            <p class="cmp-title">Visual urgency and precision together</p>
+            <p class="cmp-body">Color fill for immediate status, numerical readout for precision, days remaining for context. Addressed what both sides of the test preferred.</p>
+            <span class="win-badge">✓ Final design</span>
           </div>
         </div>
-        <div class="img-placeholder img-placeholder-sm">
+        <div class="img-placeholder img-placeholder-sm" style="margin-top:20px">
           <svg width="24" height="24" viewBox="0 0 24 24" fill="none"><rect x="2" y="2" width="20" height="20" rx="3" stroke="currentColor" stroke-width="1.3"/></svg>
-          <span>Final gauge design — vertical bar</span>
+          <span>Final gauge design</span>
           <span class="img-placeholder-label">beckett-gauge-final.png</span>
+        </div>
+      </div>
+
+      <hr>
+
+      <div class="cs-sec" id="iteration">
+        <p class="eyebrow">Iteration</p>
+        <h2 class="cs-h2">Client feedback, user feedback, and one engineering constraint.</h2>
+        <div class="body-text">
+          <p>After initial hi-fi mockups, I gathered feedback from both Beckett and users. Most of it aligned. Some of it didn't.</p>
+        </div>
+        <div class="edge-cases" style="margin-top:16px">
+          <div class="edge-case">
+            <div class="edge-icon" style="font-size:16px">📈</div>
+            <div>
+              <p class="edge-title">Bar graph changed to line graph</p>
+              <p class="edge-body">I had used a bar graph for fuel history. Beckett pointed out that fuel level is continuous, not discrete, so the data was better represented as a line graph with days of the week on the x-axis and an option to see extended history.</p>
+            </div>
+          </div>
+          <div class="edge-case">
+            <div class="edge-icon" style="font-size:16px">🔢</div>
+            <div>
+              <p class="edge-title">Users wanted gallons AND percentage</p>
+              <p class="edge-body">Initial designs showed only one unit. Users wanted to toggle between gallons and percentage for both the display and alert thresholds, depending on how they personally thought about their fuel.</p>
+            </div>
+          </div>
+          <div class="edge-case">
+            <div class="edge-icon" style="font-size:16px">☰</div>
+            <div>
+              <p class="edge-title">Convincing the client on the hamburger menu</p>
+              <p class="edge-body">Beckett pushed back on the hamburger menu pattern. They weren't familiar with it and weren't sure users would understand it. I explained the convention, walked through how it would behave, and showed how it gave us more screen space for the content that actually mattered. They approved it.</p>
+            </div>
+          </div>
+          <div class="edge-case">
+            <div class="edge-icon" style="font-size:16px">⚙️</div>
+            <div>
+              <p class="edge-title">Simplified device setup to reduce dev cost</p>
+              <p class="edge-body">I had designed a full step-by-step "Add a new device" flow as a standalone section. The development team flagged it would take significantly longer to build. I repurposed the existing tank settings page for setup instead, fewer total screens and the same functional outcome.</p>
+            </div>
+          </div>
         </div>
       </div>
 
@@ -205,30 +313,37 @@
 
       <div class="cs-sec" id="edge-cases">
         <p class="eyebrow">Edge cases</p>
-        <h2 class="cs-h2">The real design work — when things go wrong.</h2>
+        <h2 class="cs-h2">The happy state needed almost no design. These four did.</h2>
         <div class="body-text">
-          <p>The happy state — full tank, sensor connected — needed almost no design. The real work was in the states that happen when things don't go to plan.</p>
+          <p>A full tank with a connected sensor is the easy state. The design work was in what happens when things don't go to plan, and making sure users could tell the difference between a real emergency and a routine alert.</p>
         </div>
         <div class="edge-cases">
           <div class="edge-case">
             <div class="edge-icon">🔴</div>
             <div>
-              <p class="edge-title">Low fuel alert — triggered at 20%</p>
-              <p class="edge-body">Direct "Order fuel" CTA surfaces immediately. Timing was critical — too early caused alert fatigue, too late caused anxiety. Testing found 20% was the sweet spot.</p>
+              <p class="edge-title">Low fuel alert, triggered at 20%</p>
+              <p class="edge-body">A direct "Order fuel" CTA surfaces on the main dashboard. Timing was critical: too early caused alert fatigue, too late caused anxiety. Testing found 20% was the right threshold, giving homeowners enough time to schedule a delivery without the sense of emergency.</p>
             </div>
           </div>
           <div class="edge-case">
             <div class="edge-icon">📡</div>
             <div>
-              <p class="edge-title">Sensor offline — distinct visual state</p>
-              <p class="edge-body">A "Last updated X hours ago" timestamp makes it clear the reading may be stale. Users could distinguish between a real problem and a dropped connection without panicking.</p>
+              <p class="edge-title">Sensor offline, stale data state</p>
+              <p class="edge-body">A "Last updated X hours ago" timestamp makes clear that the reading may not reflect current levels. This distinction mattered: a 0% reading from a working sensor means empty, a 0% reading from an offline sensor means unknown. Users needed to tell the difference without panicking.</p>
+            </div>
+          </div>
+          <div class="edge-case">
+            <div class="edge-icon">🌡️</div>
+            <div>
+              <p class="edge-title">Freeze alarm, surfaced by safety engineers</p>
+              <p class="edge-body">When temperatures drop below a safe threshold, oil can degrade and sensors can fail. This use case came from Beckett's internal safety engineers rather than user research, which is why it would have been missed without the specialist consultation. A distinct warning state prompts users to check on their tank.</p>
             </div>
           </div>
           <div class="edge-case">
             <div class="edge-icon">✅</div>
             <div>
               <p class="edge-title">Post-delivery confirmation</p>
-              <p class="edge-body">If the gauge doesn't update within 24 hours of a delivery, the app prompts the homeowner to verify the delivery happened correctly — closing the loop on a common anxiety moment.</p>
+              <p class="edge-body">If the gauge doesn't update within 24 hours of a scheduled delivery, the app prompts the homeowner to verify the delivery happened correctly. This closed the loop on a common anxiety moment: "Did the truck actually come? Did the gauge update?"</p>
             </div>
           </div>
         </div>
@@ -257,10 +372,11 @@
         <p class="eyebrow">Reflections</p>
         <h2 class="cs-h2">What I took from this project.</h2>
         <div class="reflect">
-          <div class="ref"><h4>Design for the worst day</h4><p>The happy state needed almost no design. The real work was in low fuel, offline, and error states — that's where trust is made or broken.</p></div>
-          <div class="ref"><h4>Preference testing is worth it</h4><p>Four gauge options felt like overkill early on. But the clear preference for the vertical bar — and the reasons behind it — shaped the whole visual language of the app.</p></div>
-          <div class="ref"><h4>Consumer vs. enterprise</h4><p>Coming from enterprise tools, this was a shift. Consumer users have zero tolerance for confusion and no training budget. Every label and icon had to stand alone.</p></div>
-          <div class="ref"><h4>What I'd add</h4><p>A delivery scheduling integration — so users could reorder directly from the app rather than being sent to a third-party site. The handoff felt abrupt in testing.</p></div>
+          <div class="ref"><h4>Solve the math before solving the design</h4><p>The gauge was the visible challenge, but the tank volume calculation was the prerequisite. Understanding the problem fully before opening Sketch saved a significant amount of rework.</p></div>
+          <div class="ref"><h4>Where you put controls matters as much as what they do</h4><p>The A/B test on notification placement was the most surprising research finding. Global settings vs. per-device felt like an implementation detail, but users had a strong and consistent intuition about it.</p></div>
+          <div class="ref"><h4>Specialists catch what users miss</h4><p>The freeze alarm state came entirely from an internal Beckett engineer. User interviews would never have surfaced it. Building time for specialist consultation into the research phase was worth it.</p></div>
+          <div class="ref"><h4>Balance client and user, but know when to push</h4><p>Beckett wasn't always aligned with user feedback and wasn't always familiar with current design patterns. Advocating for things like the hamburger menu required explaining the reasoning, not just asserting it was the right call.</p></div>
+          <div class="ref"><h4>What I'd still add</h4><p>A direct reorder integration so users could schedule a fuel delivery from within the app. In testing, being redirected to a third-party site felt abrupt. I'd also add a FAQ and in-app support path for first-time setup.</p></div>
         </div>
       </div>
 
