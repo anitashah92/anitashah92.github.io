@@ -37,7 +37,7 @@
   </section>
 
   <!-- INTRO -->
-  <section class="intro">
+  <section class="intro reveal">
     <div class="inner">
       <div>
         <h2 class="intro-heading">I turn complex data into things people actually understand.</h2>
@@ -50,7 +50,7 @@
   </section>
 
   <!-- WORK -->
-  <section class="work" id="work">
+  <section class="work reveal" id="work">
     <div class="inner">
       <div class="section-header">
         <h2 class="section-label">Work</h2>
@@ -125,7 +125,7 @@
   </section>
 
   <!-- ABOUT -->
-  <section class="about" id="about">
+  <section class="about reveal" id="about">
     <div class="inner">
       <img src="assets/about_anita.png" alt="Anita Shah" class="about-photo">
       <div class="about-content">
@@ -163,5 +163,19 @@
     </div>
   </footer>
 
+<script>
+  // Nav scroll shadow
+  const nav = document.querySelector('.site-nav');
+  window.addEventListener('scroll', () => {
+    nav.classList.toggle('is-scrolled', window.scrollY > 10);
+  }, { passive: true });
+
+  // Scroll-in animations
+  const revealEls = document.querySelectorAll('.reveal');
+  const revealObs = new IntersectionObserver((entries) => {
+    entries.forEach(e => { if (e.isIntersecting) { e.target.classList.add('visible'); revealObs.unobserve(e.target); } });
+  }, { threshold: 0.12 });
+  revealEls.forEach(el => revealObs.observe(el));
+</script>
 </body>
 </html>
