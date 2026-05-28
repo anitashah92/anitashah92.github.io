@@ -69,6 +69,50 @@
   margin: 16px 0;
 }
 
+/* ── BEFORE / AFTER ── */
+.ba-wrap {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 20px;
+  margin: 24px 0;
+  align-items: start;
+}
+.ba-panel { display: flex; flex-direction: column; gap: 10px; }
+.ba-label {
+  display: inline-block;
+  font-size: 10px;
+  font-weight: 500;
+  letter-spacing: .1em;
+  text-transform: uppercase;
+  padding: 4px 12px;
+  border-radius: 100px;
+  width: fit-content;
+}
+.ba-label.before {
+  color: var(--text-soft);
+  background: var(--surface);
+  border: 1px solid var(--border-mid);
+}
+.ba-label.after {
+  color: var(--accent);
+  background: var(--accent-light);
+  border: 1px solid var(--accent-mid);
+}
+.ba-img {
+  width: 100%;
+  border-radius: 10px;
+  border: 1px solid var(--border);
+  display: block;
+  cursor: zoom-in;
+  transition: transform .55s ease;
+}
+.ba-img:hover { transform: scale(1.01); }
+.ba-caption {
+  font-size: 12px;
+  color: var(--text-soft);
+  line-height: 1.65;
+}
+
 /* ── METRICS ── */
 .metrics-strip {
   display: grid;
@@ -140,7 +184,7 @@
   }
   .mobile-nav-toggle { display: flex; }
   .cs-main { padding: 40px 0 64px; max-width: 100%; }
-  .metrics-strip, .compare, .reflect, .img-row, .component-grid { grid-template-columns: 1fr; }
+  .metrics-strip, .compare, .reflect, .img-row, .component-grid, .ba-wrap { grid-template-columns: 1fr; }
   .snap { grid-template-columns: 1fr 1fr; }
   .snap-item:nth-child(2) { border-right: none; }
   .snap-item:nth-child(3), .snap-item:nth-child(4) { border-top: 1px solid var(--border); }
@@ -316,11 +360,17 @@
             </div>
           </div>
         </div>
-        <div class="img-row">
-          <img src="../assets/ds-sketch-before.png" alt="Before — Sketch component library" style="width:100%;border-radius:8px;border:1px solid var(--border);display:block">
-          <p style="font-size:11px;font-weight:500;color:var(--text-soft);text-align:center;margin-top:8px;letter-spacing:.04em;text-transform:uppercase">Before — Sketch</p>
-          <img src="../assets/ds-figma-after.png" alt="After — Figma component library" style="width:100%;border-radius:8px;border:1px solid var(--border);display:block">
-          <p style="font-size:11px;font-weight:500;color:var(--text-soft);text-align:center;margin-top:8px;letter-spacing:.04em;text-transform:uppercase">After — Figma</p>
+        <div class="ba-wrap">
+          <div class="ba-panel">
+            <span class="ba-label before">Before — Sketch</span>
+            <img src="../assets/ds-sketch-before.png" alt="Before — Sketch component library" class="ba-img">
+            <p class="ba-caption">Symbol-based components with overrides — harder to maintain, inconsistent across files, and difficult to document reliably.</p>
+          </div>
+          <div class="ba-panel">
+            <span class="ba-label after">After — Figma</span>
+            <img src="../assets/ds-figma-after.png" alt="After — Figma component library" class="ba-img">
+            <p class="ba-caption">Rebuilt natively with auto-layout and variants — flexible, well-documented, and handoff-ready across all six product teams.</p>
+          </div>
         </div>
       </div>
 
