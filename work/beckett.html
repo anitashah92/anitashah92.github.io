@@ -46,6 +46,11 @@
 .edge-title { font-family: var(--font-head); font-size: 14px; font-weight: 400; color: var(--text); margin-bottom: 4px; }
 .edge-body { font-size: 13px; color: var(--text-mid); line-height: 1.65; }
 .mobile-nav-toggle { display: none; position: fixed; bottom: 24px; right: 24px; z-index: 300; background: var(--accent); color: #fff; border: none; border-radius: 100px; padding: 10px 18px; font-family: var(--font-body); font-size: 12px; font-weight: 500; cursor: pointer; box-shadow: 0 4px 16px rgba(0,0,0,.15); gap: 6px; align-items: center; }
+/* 3×2 snap layout for this page */
+.snap { grid-template-columns: repeat(3, 1fr); }
+.snap-item:nth-child(3n) { border-right: none; }
+.snap-item:nth-child(n+4) { border-top: 1px solid var(--border); }
+
 @media (max-width: 900px) {
   .cs-wrap { grid-template-columns: 1fr; padding: 0 24px; }
   .side { display: none; }
@@ -54,9 +59,9 @@
   .cs-main { padding: 40px 0 100px; max-width: 100%; }
   .metrics-strip, .compare, .reflect, .img-row, .img-row-3 { grid-template-columns: 1fr; }
   .snap { grid-template-columns: 1fr 1fr; }
-  .snap-item:nth-child(2) { border-right: none; }
-  .snap-item:nth-child(3), .snap-item:nth-child(4) { border-top: 1px solid var(--border); }
-  .snap-item:nth-child(4) { border-right: none; }
+  .snap-item:nth-child(3n) { border-right: 1px solid var(--border); }
+  .snap-item:nth-child(2n) { border-right: none; }
+  .snap-item:nth-child(n+3) { border-top: 1px solid var(--border); }
   .case-nav { flex-direction: column; gap: 20px; }
 }
 </style>
@@ -101,12 +106,14 @@
           <span class="cs-tag">IoT</span>
         </div>
         <h1 class="cs-h1">Beckett iOS</h1>
-        <p class="cs-lead">Beckett Corporation, founded in 1937, builds gas and oil burners for residential and commercial heating. Their push to modernize meant attaching IoT sensors to tanks and building a consumer app so homeowners could monitor their heating fuel remotely. I was brought in to design it end to end, from research through a hi-fi prototype.</p>
+        <p class="cs-lead">Beckett Corporation, founded in 1937, makes gas and oil burners for residential and commercial heating. They brought me in specifically to build something new: a consumer iOS app that would let homeowners monitor their heating fuel using IoT sensors attached to their tanks. The previous team had left an outdated style guide, and Beckett wanted a fresh start. What made this project interesting from day one was that Beckett had never worked with a UX designer before. They weren't sure what the role meant or why it mattered. That context would come up a lot.</p>
         <div class="snap">
           <div class="snap-item"><p class="snap-lbl">Role</p><p class="snap-val">Lead UX/UI Designer</p></div>
           <div class="snap-item"><p class="snap-lbl">Platform</p><p class="snap-val">iOS (Prototype)</p></div>
+          <div class="snap-item"><p class="snap-lbl">Year</p><p class="snap-val">2019</p></div>
           <div class="snap-item"><p class="snap-lbl">Process</p><p class="snap-val">Agile, 2-week sprints</p></div>
           <div class="snap-item"><p class="snap-lbl">Users</p><p class="snap-val">Residential homeowners</p></div>
+          <div class="snap-item"><p class="snap-lbl">Tools</p><p class="snap-val">Sketch, Photoshop, SurveyMonkey, UsabilityHub, InVision</p></div>
         </div>
         <div class="img-placeholder img-placeholder-lg">
           <svg width="32" height="32" viewBox="0 0 32 32" fill="none"><rect x="2" y="2" width="28" height="28" rx="5" stroke="currentColor" stroke-width="1.5"/><path d="M2 12h28M12 12v18" stroke="currentColor" stroke-width="1.5"/></svg>
@@ -228,7 +235,7 @@
         <h2 class="cs-h2">Solving the tank problem before solving the gauge problem.</h2>
         <div class="body-text">
           <p>Before I could design the main dashboard, I had to figure out how users would tell the app what kind of tank they had. The volume calculation depended on it.</p>
-          <p>After researching, I found six common tank shape and size categories. I landed on <strong>five presets covering the most common configurations</strong>, plus a custom input for anything else. Volume would be calculated on the fly from the dimensions. This removed a significant point of friction: users pick their tank shape from a visual selector rather than entering raw numbers.</p>
+          <p>My first instinct was to auto-detect the dimensions. It wasn't feasible. There are hundreds of tanks on the market, all different shapes and sizes, each holding different volumes. No clean way to handle that automatically. So I proposed a hybrid: research the most common configurations, build <strong>five presets that cover the majority of residential installs</strong>, and give users a custom input field for anything else. Volume gets calculated on the fly from whatever dimensions they enter. It was the balance between usability and what engineering could actually build.</p>
           <p>With that solved, I moved to the gauge. Beckett had an existing style guide I worked within: red for setup and onboarding screens to keep the brand prominent, grey for everyday-use screens to keep the interface calm.</p>
         </div>
 
@@ -247,7 +254,7 @@
 
         <h3 style="font-family:var(--font-head);font-size:17px;font-weight:400;color:var(--text);margin:32px 0 12px;letter-spacing:-0.01em">Preference testing the gauge</h3>
         <div class="body-text">
-          <p>Beckett liked an odometer-style numerical readout. I felt users would also need something more visual to scan quickly. I ran a preference test across multiple formats. The results were nearly even between the odometer and a color-fill bar, so I combined both: a vertical fill bar that shifts green to amber to red as level drops, with a numerical readout and "approximately X days remaining" below.</p>
+          <p>Beckett liked an odometer-style numerical readout. I felt users would also need something more visual to scan quickly. I ran a preference test across multiple formats. The results came back nearly split between the odometer and a color-fill bar. I was a little surprised, but also relieved: both were clearly viable, which meant I wasn't wrong on either end. It also pushed me toward something I hadn't considered before: combine them. A vertical fill bar that shifts green to amber to red as level drops, with a numerical readout and "approximately X days remaining" below.</p>
         </div>
         <div class="compare" style="margin-top:16px">
           <div class="cmp">
@@ -296,7 +303,7 @@
             <div class="edge-icon" style="font-size:16px">☰</div>
             <div>
               <p class="edge-title">Convincing the client on the hamburger menu</p>
-              <p class="edge-body">Beckett pushed back on the hamburger menu pattern. They weren't familiar with it and weren't sure users would understand it. I explained the convention, walked through how it would behave, and showed how it gave us more screen space for the content that actually mattered. They approved it.</p>
+              <p class="edge-body">Beckett didn't like the hamburger menu and wanted to just display everything at the top of the screen. I had to explain why that wasn't possible. The app had too much to surface for a flat top bar to handle cleanly. I walked them through how the pattern works and what we'd be giving up without it. They came around. That conversation was pretty typical of working with Beckett: they'd never been through a design process before, so conventions the industry takes as given needed to be explained from first principles.</p>
             </div>
           </div>
           <div class="edge-case">
@@ -375,7 +382,8 @@
           <div class="ref"><h4>Solve the math before solving the design</h4><p>The gauge was the visible challenge, but the tank volume calculation was the prerequisite. Understanding the problem fully before opening Sketch saved a significant amount of rework.</p></div>
           <div class="ref"><h4>Where you put controls matters as much as what they do</h4><p>The A/B test on notification placement was the most surprising research finding. Global settings vs. per-device felt like an implementation detail, but users had a strong and consistent intuition about it.</p></div>
           <div class="ref"><h4>Specialists catch what users miss</h4><p>The freeze alarm state came entirely from an internal Beckett engineer. User interviews would never have surfaced it. Building time for specialist consultation into the research phase was worth it.</p></div>
-          <div class="ref"><h4>Balance client and user, but know when to push</h4><p>Beckett wasn't always aligned with user feedback and wasn't always familiar with current design patterns. Advocating for things like the hamburger menu required explaining the reasoning, not just asserting it was the right call.</p></div>
+          <div class="ref"><h4>Teaching UX while doing UX is its own skill</h4><p>Beckett had never worked with a designer before. They didn't know what UX meant or why it was needed. By the end of the project, making the case for a design decision had become as natural as the design work itself.</p></div>
+          <div class="ref"><h4>This project was a lot of firsts</h4><p>First time working directly with engineers. First full agile process from kickoff to handoff. First IoT product. The problems were genuinely complex and the constraints were real. And I think that's exactly why the lessons stuck. You learn differently when the stakes are high from the start.</p></div>
           <div class="ref"><h4>What I'd still add</h4><p>A direct reorder integration so users could schedule a fuel delivery from within the app. In testing, being redirected to a third-party site felt abrupt. I'd also add a FAQ and in-app support path for first-time setup.</p></div>
         </div>
       </div>
