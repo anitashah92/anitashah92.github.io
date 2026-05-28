@@ -88,6 +88,59 @@
 .principle-title { font-family: var(--font-head); font-size: 14px; font-weight: 400; color: var(--text); margin-bottom: 6px; }
 .principle-body { font-size: 13px; color: var(--text-mid); line-height: 1.65; }
 
+/* ── DESIGN EVOLUTION COMPONENT ── */
+.evolution-track {
+  display: grid;
+  grid-template-columns: 1fr auto 1fr auto 1fr;
+  align-items: start;
+  margin: 24px 0 4px;
+}
+.evo-arrow {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 0 14px;
+  padding-top: 104px;
+  color: var(--border-mid);
+  font-size: 18px;
+}
+.evo-label {
+  font-size: 10px;
+  font-weight: 500;
+  letter-spacing: .1em;
+  text-transform: uppercase;
+  color: var(--accent);
+  background: var(--accent-light);
+  border: 1px solid var(--accent-mid);
+  padding: 4px 11px;
+  border-radius: 100px;
+  display: inline-block;
+  margin-bottom: 10px;
+}
+.evo-img-wrap {
+  border-radius: 10px;
+  overflow: hidden;
+  border: 1px solid var(--border);
+  margin-bottom: 12px;
+  height: 200px;
+  background: var(--surface);
+  cursor: zoom-in;
+}
+.evo-img-wrap img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: top;
+  display: block;
+  transition: transform .55s ease;
+}
+.evo-img-wrap:hover img { transform: scale(1.05); }
+.evo-caption {
+  font-size: 12px;
+  color: var(--text-soft);
+  line-height: 1.65;
+}
+
 /* Design decisions */
 .decisions { display: flex; flex-direction: column; margin: 20px 0; }
 .decision {
@@ -144,6 +197,8 @@
   .mobile-nav-toggle { display: flex; }
   .cs-main { padding: 40px 0 64px; max-width: 100%; }
   .metrics-strip, .reflect, .img-row, .audience-grid, .principles, .page-list { grid-template-columns: 1fr; }
+  .evolution-track { grid-template-columns: 1fr; }
+  .evo-arrow { display: none; }
   .snap { grid-template-columns: 1fr 1fr; }
   .snap-item:nth-child(2) { border-right: none; }
   .snap-item:nth-child(3), .snap-item:nth-child(4) { border-top: 1px solid var(--border); }
@@ -177,6 +232,7 @@
         <li><a href="#audience"><span class="sdot"></span>Audience</a></li>
         <li><a href="#ux"><span class="sdot"></span>UX approach</a></li>
         <li><a href="#decisions"><span class="sdot"></span>Design decisions</a></li>
+        <li><a href="#evolution"><span class="sdot"></span>Design evolution</a></li>
         <li><a href="#collaboration"><span class="sdot"></span>Collaboration</a></li>
         <li><a href="#reflections"><span class="sdot"></span>Reflections</a></li>
       </ul>
@@ -361,6 +417,48 @@
         </div>
 
         <img src="../assets/sra-activities.png" alt="SRA Activities page" style="width:100%;border-radius:10px;border:1px solid var(--border);margin:16px 0;display:block">
+      </div>
+
+      <hr>
+
+      <!-- DESIGN EVOLUTION -->
+      <div class="cs-sec" id="evolution">
+        <p class="eyebrow">Design evolution</p>
+        <h2 class="cs-h2">Homepage: from structure to final.</h2>
+        <div class="body-text">
+          <p>The homepage went through three meaningful stages. The wireframe established content hierarchy and section order without committing to any visual style. V1 explored a darker, typographic-led direction — clean and contemporary, but it read more like a boutique hotel than a spiritual sanctuary. The final shifted to a warmer, photography-forward experience built around immersion and arrival.</p>
+          <p><strong>The key decision moment:</strong> V1 had strong structure but felt emotionally cold. The shift to warm tones, aerial photography, and a floating Guruji portrait was what made the homepage feel like an invitation rather than an introduction.</p>
+        </div>
+
+        <div class="evolution-track">
+          <div class="evo-stage">
+            <span class="evo-label">Wireframe</span>
+            <div class="evo-img-wrap">
+              <img src="../assets/sra-process-wf.png" alt="SRA Homepage wireframe">
+            </div>
+            <p class="evo-caption">Structure and content hierarchy first. Section order, navigation pattern, and key messaging blocks established before any visual direction was decided.</p>
+          </div>
+
+          <div class="evo-arrow">→</div>
+
+          <div class="evo-stage">
+            <span class="evo-label">V1</span>
+            <div class="evo-img-wrap">
+              <img src="../assets/sra-process-v1.png" alt="SRA Homepage V1">
+            </div>
+            <p class="evo-caption">First full visual direction — dark, minimal, typographic-led. The layout logic was right, but the emotional tone was off. It felt corporate, not contemplative.</p>
+          </div>
+
+          <div class="evo-arrow">→</div>
+
+          <div class="evo-stage">
+            <span class="evo-label">Final</span>
+            <div class="evo-img-wrap">
+              <img src="../assets/sra-hero.png" alt="SRA Homepage final design">
+            </div>
+            <p class="evo-caption">Warm, photography-forward, immersive. Aerial imagery, the Guruji portrait, lake panorama, and measured section pacing create a sense of arrival before the user steps foot on site.</p>
+          </div>
+        </div>
       </div>
 
       <hr>
