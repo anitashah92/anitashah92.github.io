@@ -343,7 +343,7 @@ img { display: block; max-width: 100%; }
 .grid-foot {
   display: flex;
   align-items: center;
-  justify-content: flex-end;
+  justify-content: space-between;
   margin-top: 8px;
 }
 
@@ -1213,3 +1213,11 @@ a:focus-visible, button:focus-visible {
 .reveal-delay-1 { transition-delay: .1s; }
 .reveal-delay-2 { transition-delay: .2s; }
 .reveal-delay-3 { transition-delay: .3s; }
+
+/* Grid cards — image zoom on hover */
+.grid-visual { overflow: hidden; }
+.grid-visual img { transition: transform .55s ease; }
+.grid-card:hover .grid-visual img { transform: scale(1.04); }
+
+/* Grid cards — arrow animation on hover */
+.grid-card:hover .feat-arrow { gap: 10px; color: var(--accent); }
