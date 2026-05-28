@@ -394,7 +394,7 @@ img { display: block; max-width: 100%; }
   box-shadow: 0 12px 36px rgba(26,26,24,.07);
 }
 .grid-visual {
-  height: 220px;
+  aspect-ratio: 16 / 10;
   position: relative;
   overflow: hidden;
 }
