@@ -3,111 +3,357 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <meta name="description" content="About Anita Shah — UX Designer based in Sunnyvale, CA.">
+  <meta name="description" content="About Anita Shah — UX/UI Designer based in Sunnyvale, CA.">
   <title>About — Anita Shah</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Google+Sans+Flex:wght@300;400;500&family=Inter:wght@300;400;500&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="style.css">
+  <style>
+
+  /* ── HERO ── */
+  .about-hero {
+    background: var(--hero-bg);
+    padding: 96px 0 88px;
+    border-bottom: 1px solid var(--border);
+  }
+  .about-hero .inner {
+    display: grid;
+    grid-template-columns: 1fr 340px;
+    gap: 72px;
+    align-items: center;
+  }
+  .about-h1 {
+    font-family: var(--font-head);
+    font-size: clamp(38px, 5vw, 62px);
+    font-weight: 300;
+    line-height: 1.08;
+    letter-spacing: -0.03em;
+    color: #4a5b1d;
+    margin-bottom: 20px;
+  }
+  .about-lead {
+    font-size: 16px;
+    color: var(--text-mid);
+    line-height: 1.8;
+    max-width: 520px;
+    margin-bottom: 28px;
+  }
+  .about-hero-photo {
+    width: 100%;
+    aspect-ratio: 4/5;
+    border-radius: 14px;
+    object-fit: cover;
+    object-position: 30% top;
+    border: 1px solid var(--border);
+    background: var(--surface);
+    display: block;
+  }
+
+  /* ── BIO ── */
+  .bio-section {
+    background: var(--white);
+    padding: 80px 0;
+    border-bottom: 1px solid var(--border);
+  }
+  .bio-section .inner { max-width: 720px; }
+  .sec-eyebrow {
+    font-size: 11px;
+    font-weight: 500;
+    letter-spacing: .1em;
+    text-transform: uppercase;
+    color: var(--accent);
+    margin-bottom: 12px;
+  }
+  .sec-h2 {
+    font-family: var(--font-head);
+    font-size: clamp(22px, 2.5vw, 28px);
+    font-weight: 400;
+    letter-spacing: -0.02em;
+    color: var(--text);
+    margin-bottom: 22px;
+    line-height: 1.25;
+  }
+  .sec-body {
+    font-size: 15px;
+    color: var(--text-mid);
+    line-height: 1.9;
+  }
+  .sec-body p { margin-bottom: 16px; }
+  .sec-body p:last-child { margin-bottom: 0; }
+  .sec-body strong { font-weight: 500; color: var(--text); }
+
+  /* ── EXPERIENCE + TOOLS ── */
+  .exp-section {
+    background: var(--bg);
+    padding: 80px 0;
+    border-bottom: 1px solid var(--border);
+  }
+  .exp-section .inner {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 72px;
+    align-items: start;
+  }
+  .exp-col-label {
+    font-size: 11px;
+    font-weight: 500;
+    letter-spacing: .1em;
+    text-transform: uppercase;
+    color: var(--accent);
+    margin-bottom: 28px;
+  }
+  .exp-entry {
+    padding: 22px 0;
+    border-bottom: 1px solid var(--border);
+  }
+  .exp-entry:last-child { border-bottom: none; }
+  .exp-date {
+    font-size: 11px;
+    font-weight: 500;
+    letter-spacing: .04em;
+    color: var(--text-soft);
+    margin-bottom: 5px;
+  }
+  .exp-title {
+    font-family: var(--font-head);
+    font-size: 16px;
+    font-weight: 400;
+    color: var(--text);
+    margin-bottom: 3px;
+  }
+  .exp-company {
+    font-size: 13px;
+    color: var(--text-mid);
+    margin-bottom: 8px;
+  }
+  .exp-desc {
+    font-size: 13px;
+    color: var(--text-soft);
+    line-height: 1.65;
+  }
+  .tools-block { margin-top: 52px; }
+  .tools-pills {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 8px;
+    margin-top: 16px;
+  }
+
+  /* ── CTA ── */
+  .about-cta {
+    background: var(--text);
+    padding: 72px 0;
+  }
+  .about-cta .inner {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 40px;
+  }
+  .cta-h2 {
+    font-family: var(--font-head);
+    font-size: clamp(22px, 2.8vw, 32px);
+    font-weight: 300;
+    color: #fff;
+    letter-spacing: -0.02em;
+    line-height: 1.25;
+    margin-bottom: 8px;
+  }
+  .cta-sub {
+    font-size: 14px;
+    color: rgba(255,255,255,.45);
+    line-height: 1.65;
+  }
+  .cta-btns {
+    display: flex;
+    gap: 10px;
+    flex-shrink: 0;
+  }
+  .cta-btn-solid {
+    display: inline-flex;
+    align-items: center;
+    gap: 7px;
+    background: #fff;
+    color: var(--text);
+    font-size: 13px;
+    font-weight: 500;
+    padding: 11px 22px;
+    border-radius: 100px;
+    transition: background .15s, transform .15s;
+    white-space: nowrap;
+    font-family: var(--font-body);
+  }
+  .cta-btn-solid:hover { background: var(--hero-bg); transform: translateY(-1px); }
+  .cta-btn-outline {
+    display: inline-flex;
+    align-items: center;
+    gap: 7px;
+    background: transparent;
+    color: rgba(255,255,255,.8);
+    font-size: 13px;
+    font-weight: 400;
+    padding: 11px 22px;
+    border-radius: 100px;
+    border: 1px solid rgba(255,255,255,.2);
+    transition: background .15s, transform .15s;
+    white-space: nowrap;
+    font-family: var(--font-body);
+  }
+  .cta-btn-outline:hover { background: rgba(255,255,255,.08); transform: translateY(-1px); }
+
+  /* ── MOBILE ── */
+  @media (max-width: 768px) {
+    .about-hero .inner { grid-template-columns: 1fr; gap: 36px; flex-direction: column-reverse; }
+    .about-hero-photo { max-width: 240px; aspect-ratio: 1/1; }
+    .exp-section .inner { grid-template-columns: 1fr; gap: 48px; }
+    .about-cta .inner { flex-direction: column; align-items: flex-start; }
+    .cta-btns { flex-direction: column; }
+  }
+
+  </style>
 </head>
 <body>
 
-<nav>
-  <div class="nav-inner">
-    <a href="index.html" class="nav-name">Anita Shah</a>
-    <div class="nav-links">
-      <a href="index.html#work" class="hide-mobile">Work</a>
-      <a href="about.html" class="hide-mobile" style="color:var(--black);">About</a>
-      <a href="assets/Anita_Shah_Resume.pdf" target="_blank" class="hide-mobile">Resume</a>
-      <a href="mailto:anitashah92@gmail.com" class="nav-cta">Get in touch</a>
+  <header class="site-nav">
+    <div class="inner">
+      <a href="index.html" class="nav-logo">
+        <img src="assets/logo-nav.png" alt="Anita Shah" style="height:32px;width:auto">
+      </a>
+      <ul class="nav-links">
+        <li><a href="index.html#work">Work</a></li>
+        <li><a href="about.html" style="color:var(--accent);font-weight:500">About</a></li>
+        <li><a href="assets/Anita_Shah_Resume.pdf" target="_blank">Resume</a></li>
+        <li><a href="mailto:anitashah92@gmail.com" class="nav-cta">Get in touch</a></li>
+      </ul>
     </div>
-  </div>
-</nav>
+  </header>
 
-<main>
-  <div class="container">
-
-    <div class="about-hero">
-      <h1>Designer, strategist,<br>details person.</h1>
-      <p>Cross-functional UX designer with 5+ years of experience launching digital platforms and delivering user-centered solutions across enterprise, nonprofit, and consumer environments. Based in Sunnyvale, CA.</p>
-    </div>
-
-    <div class="about-grid">
+  <!-- HERO -->
+  <section class="about-hero">
+    <div class="inner">
       <div>
-        <h2>Background</h2>
-        <p>My path into UX started with a psychology degree from UC San Diego — which turned out to be exactly the right foundation. Understanding how people think, what they expect, and where they get stuck is what design is really about.</p>
-        <p>I've spent the last five years doing that work across very different contexts: an enterprise SaaS platform used by major global brands, a nonprofit platform that needed to move fast and convert, and mobile IoT products where clarity isn't optional.</p>
-        <p>I'm most at home on teams where design, engineering, and data science actually talk to each other — where decisions get questioned and handoffs are real conversations, not file transfers.</p>
-        <h2 style="margin-top:40px;">Education</h2>
-        <div class="experience-item" style="margin-top:16px;">
-          <div class="exp-title">BS Psychology</div>
-          <div class="exp-company">University of California, San Diego (UCSD)</div>
+        <h1 class="about-h1">Designer, strategist,<br>details person.</h1>
+        <p class="about-lead">Cross-functional UX/UI designer with 5+ years building digital products across enterprise SaaS, nonprofit, and consumer environments. I work at the intersection of clarity, craft, and strategy.</p>
+        <a href="assets/Anita_Shah_Resume.pdf" target="_blank" class="btn-learn">
+          View résumé
+          <svg width="12" height="12" viewBox="0 0 12 12" fill="none"><path d="M2 10L10 2M10 2H5M10 2V7" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round"/></svg>
+        </a>
+      </div>
+      <img src="assets/about_anita.png" alt="Anita Shah" class="about-hero-photo">
+    </div>
+  </section>
+
+  <!-- BACKGROUND -->
+  <section class="bio-section">
+    <div class="inner">
+      <p class="sec-eyebrow">Background</p>
+      <h2 class="sec-h2">My path into UX started with psychology — and it shows.</h2>
+      <div class="sec-body">
+        <p>I studied psychology at UC San Diego, which turned out to be the perfect foundation for design. Understanding how people think, what they expect, and where they get stuck is what design is really about — and having that framing from the start shaped how I approach every problem.</p>
+        <p>I've spent the last five years applying that thinking across very different contexts: an enterprise SaaS platform used by Coca-Cola, Nestlé, and Unilever; a wellness sanctuary website built entirely from scratch; and mobile IoT products where clarity isn't optional.</p>
+        <p>I'm most at home on teams where <strong>design, engineering, and data science actually talk to each other</strong> — where decisions get questioned and handoffs are real conversations, not file transfers.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- EXPERIENCE + TOOLS -->
+  <section class="exp-section">
+    <div class="inner">
+
+      <div>
+        <p class="exp-col-label">Experience</p>
+        <div class="exp-entry">
+          <p class="exp-date">May 2024 – Present</p>
+          <p class="exp-title">Design Strategist</p>
+          <p class="exp-company">SRLC / Shrimad Rajchandra Ashram · Remote</p>
+          <p class="exp-desc">Lead designer for a 16-page website built from scratch — covering IA, visual design, content strategy, and dev QA for an upcoming wellness sanctuary in the Poconos.</p>
+        </div>
+        <div class="exp-entry">
+          <p class="exp-date">Apr 2021 – May 2024</p>
+          <p class="exp-title">Senior UI/UX Designer</p>
+          <p class="exp-company">GroupM · Remote</p>
+          <p class="exp-desc">Sole designer on the Fusion platform — a commerce intelligence suite used by Coca-Cola, Nestlé, and Unilever. Owned the design system, data visualization, and end-to-end product design across 3 years.</p>
+        </div>
+        <div class="exp-entry">
+          <p class="exp-date">May 2019 – Jan 2020</p>
+          <p class="exp-title">UI/UX Designer</p>
+          <p class="exp-company">Beckett · San Diego</p>
+          <p class="exp-desc">Designed an end-to-end iOS prototype for real-time IoT oil tank monitoring, from first research through edge-case validation.</p>
+        </div>
+        <div class="exp-entry">
+          <p class="exp-date">Oct 2014 – May 2019</p>
+          <p class="exp-title">Operations Manager</p>
+          <p class="exp-company">Raj & Associates · San Diego</p>
+          <p class="exp-desc">Managed operations and client relationships, building the organizational and communication skills that now inform how I lead design conversations.</p>
         </div>
       </div>
 
       <div>
-        <h2>Experience</h2>
-        <div style="margin-top:16px;">
-          <div class="experience-item">
-            <div class="exp-title">Design Strategist</div>
-            <div class="exp-company">SRLC / SRA (Remote)</div>
-            <div class="exp-date">May 2024 – Present</div>
-          </div>
-          <div class="experience-item">
-            <div class="exp-title">Senior UI/UX Designer</div>
-            <div class="exp-company">GroupM (Remote)</div>
-            <div class="exp-date">Apr 2021 – May 2024</div>
-          </div>
-          <div class="experience-item">
-            <div class="exp-title">UI/UX Designer</div>
-            <div class="exp-company">Beckett (San Diego)</div>
-            <div class="exp-date">May 2019 – Jan 2020</div>
-          </div>
-          <div class="experience-item">
-            <div class="exp-title">Operations Manager</div>
-            <div class="exp-company">Raj & Associates (San Diego)</div>
-            <div class="exp-date">Oct 2014 – May 2019</div>
-          </div>
+        <p class="exp-col-label">Education</p>
+        <div class="exp-entry">
+          <p class="exp-date">Graduated 2014</p>
+          <p class="exp-title">BS Psychology</p>
+          <p class="exp-company">University of California, San Diego (UCSD)</p>
         </div>
 
-        <h2 style="margin-top:40px;">Skills</h2>
-        <div class="skills-list" style="margin-top:14px;">
-          <span class="skill-pill">UX Research</span>
-          <span class="skill-pill">Interaction Design</span>
-          <span class="skill-pill">Wireframing</span>
-          <span class="skill-pill">Prototyping</span>
-          <span class="skill-pill">Usability Testing</span>
-          <span class="skill-pill">Design Systems</span>
-          <span class="skill-pill">Data Visualization</span>
-          <span class="skill-pill">Figma</span>
-          <span class="skill-pill">Sketch</span>
-          <span class="skill-pill">Adobe Creative Suite</span>
-          <span class="skill-pill">HTML / CSS</span>
-          <span class="skill-pill">JavaScript</span>
-          <span class="skill-pill">Agile / Scrum</span>
-          <span class="skill-pill">Stakeholder Comms</span>
-          <span class="skill-pill">A/B Testing</span>
-          <span class="skill-pill">Linux Command Line</span>
-        </div>
-
-        <div style="margin-top:36px; padding:24px; background:var(--bg-soft); border-radius:10px;">
-          <p style="font-size:14px; color:var(--secondary); margin-bottom:14px;">Want to work together?</p>
-          <a href="mailto:anitashah92@gmail.com" class="btn-primary" style="display:inline-block; margin-bottom:10px;">anitashah92@gmail.com</a>
-          <br>
-          <a href="assets/Anita_Shah_Resume.pdf" target="_blank" class="btn-secondary" style="font-size:13px;">Download resume →</a>
+        <div class="tools-block">
+          <p class="exp-col-label">What I work with</p>
+          <div class="tools-pills">
+            <span class="skill">Figma</span>
+            <span class="skill">Sketch</span>
+            <span class="skill">Adobe Suite</span>
+            <span class="skill">Maze</span>
+            <span class="skill">HTML / CSS</span>
+            <span class="skill">JavaScript</span>
+            <span class="skill">UX Research</span>
+            <span class="skill">Interaction Design</span>
+            <span class="skill">Wireframing</span>
+            <span class="skill">Prototyping</span>
+            <span class="skill">Usability Testing</span>
+            <span class="skill">Design Systems</span>
+            <span class="skill">Data Visualization</span>
+            <span class="skill">Agile / Scrum</span>
+            <span class="skill">A/B Testing</span>
+            <span class="skill">Stakeholder Comms</span>
+          </div>
         </div>
       </div>
-    </div>
 
-  </div>
-</main>
-
-<footer>
-  <div class="footer-inner">
-    <span>© 2026 Anita Shah</span>
-    <div style="display:flex; gap:20px;">
-      <a href="mailto:anitashah92@gmail.com" style="color:var(--tertiary);">anitashah92@gmail.com</a>
-      <a href="https://linkedin.com/in/anita-shah" target="_blank" style="color:var(--tertiary);">LinkedIn</a>
     </div>
-  </div>
-</footer>
+  </section>
+
+  <!-- CTA -->
+  <section class="about-cta">
+    <div class="inner">
+      <div>
+        <h2 class="cta-h2">Open to new opportunities.</h2>
+        <p class="cta-sub">Currently based in Sunnyvale, CA. Open to full-time UX/UI roles.</p>
+      </div>
+      <div class="cta-btns">
+        <a href="mailto:anitashah92@gmail.com" class="cta-btn-solid">
+          <svg width="13" height="13" viewBox="0 0 13 13" fill="none"><rect x="1" y="3" width="11" height="8" rx="1.5" stroke="currentColor" stroke-width="1.2"/><path d="M1 4l5.5 3.5L12 4" stroke="currentColor" stroke-width="1.2" stroke-linecap="round"/></svg>
+          anitashah92@gmail.com
+        </a>
+        <a href="https://linkedin.com/in/anita-shah" target="_blank" class="cta-btn-outline">
+          LinkedIn →
+        </a>
+      </div>
+    </div>
+  </section>
+
+  <footer class="site-footer">
+    <div class="inner">
+      <div class="footer-left">
+        <span class="footer-name">Anita Shah</span>
+        <span class="footer-tagline">UX/UI Designer · Sunnyvale, CA</span>
+      </div>
+      <div class="footer-right">
+        <span class="footer-avail"><span class="footer-dot"></span>Open to work</span>
+        <span class="footer-copy">© 2026</span>
+      </div>
+    </div>
+  </footer>
 
 </body>
 </html>
