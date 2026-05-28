@@ -3,6 +3,22 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="description" content="Case study: Fusion Design System — building a scalable component library for an enterprise commerce intelligence platform used by Coca-Cola, Nestlé, and Unilever.">
+
+<!-- Open Graph -->
+<meta property="og:type" content="website">
+<meta property="og:url" content="https://anitashahdesign.com/work/design-system.html">
+<meta property="og:site_name" content="Anita Shah">
+<meta property="og:title" content="Fusion Design System — Anita Shah">
+<meta property="og:description" content="How I built a scalable design system for an enterprise commerce intelligence platform — from Sketch migration to a full Figma component library.">
+<meta property="og:image" content="https://anitashahdesign.com/assets/design-system-hero.png">
+
+<!-- Twitter Card -->
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="Fusion Design System — Anita Shah">
+<meta name="twitter:description" content="How I built a scalable design system for an enterprise commerce intelligence platform — from Sketch migration to a full Figma component library.">
+<meta name="twitter:image" content="https://anitashahdesign.com/assets/design-system-hero.png">
+
 <title>Fusion Design System — Anita Shah</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -196,6 +212,8 @@
 </head>
 <body>
 
+  <a href="#main-content" class="skip-link">Skip to main content</a>
+
   <!-- NAV -->
   <header class="site-nav">
     <div class="inner">
@@ -226,7 +244,7 @@
       </ul>
     </aside>
 
-    <main class="cs-main">
+    <main id="main-content" class="cs-main">
 
       <!-- OVERVIEW -->
       <div class="cs-sec" id="overview">
@@ -291,7 +309,7 @@
           <p>Engineering was already using MUI as their component framework. Rather than design components that would require custom engineering effort, I built the system directly on top of MUI — extending its theming layer for GroupM's brand rather than replacing it.</p>
           <p>This meant <strong>every component in Figma had a 1:1 counterpart in code</strong> — no translation gap between what was designed and what shipped. Handoffs became faster and design debt shrank significantly.</p>
         </div>
-<img src="../assets/design-system-figma.png" alt="Fusion Design System — Figma component library panel" style="width:100%;border-radius:12px;border:1px solid var(--border);margin:24px 0;display:block">
+<img src="../assets/design-system-figma.png" alt="Fusion Design System — Figma component library panel" style="width:100%;border-radius:12px;border:1px solid var(--border);margin:24px 0;display:block" loading="lazy">
       </div>
 
       <hr>
@@ -315,7 +333,7 @@
           <div class="component-item"><p class="component-name">Empty states</p><p class="component-desc">No data, error, loading, and onboarding patterns</p></div>
         </div>
         <!-- COMPONENT SCREENSHOT -->
-<img src="../assets/design-system-components.png" alt="Fusion Design System — component sheet" style="width:100%;border-radius:12px;border:1px solid var(--border);margin:16px 0;display:block">
+<img src="../assets/design-system-components.png" alt="Fusion Design System — component sheet" style="width:100%;border-radius:12px;border:1px solid var(--border);margin:16px 0;display:block" loading="lazy">
       </div>
 
       <hr>
@@ -364,12 +382,12 @@
         <div class="ba-wrap">
           <div class="ba-panel">
             <span class="ba-label before">Before — Sketch</span>
-            <img src="../assets/ds-sketch-before.png" alt="Before — Sketch component library" class="ba-img">
+            <img src="../assets/ds-sketch-before.png" alt="Before — Sketch component library" class="ba-img" loading="lazy">
             <p class="ba-caption">Symbol-based components with overrides — harder to maintain, inconsistent across files, and difficult to document reliably.</p>
           </div>
           <div class="ba-panel">
             <span class="ba-label after">After — Figma</span>
-            <img src="../assets/ds-figma-after.png" alt="After — Figma component library" class="ba-img">
+            <img src="../assets/ds-figma-after.png" alt="After — Figma component library" class="ba-img" loading="lazy">
             <p class="ba-caption">Rebuilt natively with auto-layout and variants — flexible, well-documented, and handoff-ready across all six product teams.</p>
           </div>
         </div>
@@ -385,7 +403,7 @@
           <p>Design tokens — for color, typography, spacing, and elevation — were structured so that swapping a theme didn't require rebuilding anything. This became critical when GroupM needed to white-label the platform for client-facing use.</p>
           <p><strong>The token layer made that a configuration change, not a redesign.</strong> A new client theme could be applied in hours rather than weeks.</p>
         </div>
-        <img src="../assets/design-system-tokens.png" alt="Fusion Design System — UI color tokens" style="width:100%;border-radius:12px;border:1px solid var(--border);margin:24px 0;display:block;object-fit:cover">
+        <img src="../assets/design-system-tokens.png" alt="Fusion Design System — UI color tokens" style="width:100%;border-radius:12px;border:1px solid var(--border);margin:24px 0;display:block;object-fit:cover" loading="lazy">
       </div>
 
       <hr>
