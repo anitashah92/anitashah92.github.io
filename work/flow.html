@@ -355,6 +355,22 @@ const obs = new IntersectionObserver(e => {
 }, { rootMargin: '-15% 0px -75% 0px' });
 secs.forEach(s => obs.observe(s));
   window.addEventListener('scroll', () => { document.querySelector('.site-nav').classList.toggle('is-scrolled', window.scrollY > 10); }, { passive: true });
+    // Lightbox
+  (function(){
+    var o=document.createElement('div');o.id='lb';
+    o.innerHTML='<div id="lb-bg"></div><button id="lb-close" aria-label="Close">&#215;</button><img id="lb-img">';
+    document.body.appendChild(o);
+    var img=document.getElementById('lb-img');
+    function show(src,alt){img.src=src;img.alt=alt||'';o.classList.add('open');document.body.style.overflow='hidden';}
+    function hide(){o.classList.remove('open');document.body.style.overflow='';}
+    document.getElementById('lb-bg').addEventListener('click',hide);
+    document.getElementById('lb-close').addEventListener('click',hide);
+    document.addEventListener('keydown',function(e){if(e.key==='Escape')hide();});
+    document.querySelectorAll('.cs-main img, .about-hero-photo').forEach(function(el){
+      el.style.cursor='zoom-in';
+      el.addEventListener('click',function(){show(this.src,this.alt);});
+    });
+  })();
   function openSideNav() { document.getElementById('side-nav').classList.add('open'); }
 function closeSideNav() { document.getElementById('side-nav').classList.remove('open'); }
 links.forEach(l => l.addEventListener('click', closeSideNav));

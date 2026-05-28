@@ -359,6 +359,22 @@
   window.addEventListener('scroll', () => {
     document.querySelector('.site-nav').classList.toggle('is-scrolled', window.scrollY > 10);
   }, { passive: true });
+  // Lightbox for about photo
+  (function(){
+    var o=document.createElement('div');o.id='lb';
+    o.innerHTML='<div id="lb-bg"></div><button id="lb-close" aria-label="Close">&#215;</button><img id="lb-img">';
+    document.body.appendChild(o);
+    var img=document.getElementById('lb-img');
+    function show(src,alt){img.src=src;img.alt=alt||'';o.classList.add('open');document.body.style.overflow='hidden';}
+    function hide(){o.classList.remove('open');document.body.style.overflow='';}
+    document.getElementById('lb-bg').addEventListener('click',hide);
+    document.getElementById('lb-close').addEventListener('click',hide);
+    document.addEventListener('keydown',function(e){if(e.key==='Escape')hide();});
+    document.querySelectorAll('.about-hero-photo').forEach(function(el){
+      el.style.cursor='zoom-in';
+      el.addEventListener('click',function(){show(this.src,this.alt);});
+    });
+  })();
 </script>
 </body>
 </html>
