@@ -355,5 +355,10 @@
     </div>
   </footer>
 
+<script>
+  window.addEventListener('scroll', () => {
+    document.querySelector('.site-nav').classList.toggle('is-scrolled', window.scrollY > 10);
+  }, { passive: true });
+</script>
 </body>
 </html>

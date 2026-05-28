@@ -214,7 +214,7 @@
       <a href="../index.html" class="nav-logo"><img src="../assets/logo-nav.png" alt="Anita Shah" style="height:32px;width:auto"></a>
       <ul class="nav-links">
         <li><a href="../index.html#work">Work</a></li>
-        <li><a href="../index.html#about">About</a></li>
+        <li><a href="../about.html">About</a></li>
         <li><a href="../assets/Anita_Shah_Resume.pdf">Resume</a></li>
         <li><a href="mailto:anitashah92@gmail.com" class="nav-cta">Get in touch</a></li>
       </ul>
@@ -253,7 +253,7 @@
         <div class="snap">
           <div class="snap-item"><p class="snap-lbl">Role</p><p class="snap-val">Lead Designer</p></div>
           <div class="snap-item"><p class="snap-lbl">Scope</p><p class="snap-val">16 pages</p></div>
-          <div class="snap-item"><p class="snap-lbl">Status</p><p class="snap-val">In development</p></div>
+          <div class="snap-item"><p class="snap-lbl">Status</p><p class="snap-val">Launching 2026</p></div>
           <div class="snap-item"><p class="snap-lbl">Year</p><p class="snap-val">2026</p></div>
         </div>
         <img src="../assets/sra-hero.png" alt="SRA Website homepage hero" style="width:100%;border-radius:12px;border:1px solid var(--border);margin:24px 0;display:block">
@@ -537,7 +537,8 @@ const obs = new IntersectionObserver(e => {
   e.forEach(x => { if (x.isIntersecting) links.forEach(l => l.classList.toggle('active', l.getAttribute('href') === '#' + x.target.id)); });
 }, { rootMargin: '-15% 0px -75% 0px' });
 secs.forEach(s => obs.observe(s));
-function openSideNav() { document.getElementById('side-nav').classList.add('open'); }
+  window.addEventListener('scroll', () => { document.querySelector('.site-nav').classList.toggle('is-scrolled', window.scrollY > 10); }, { passive: true });
+  function openSideNav() { document.getElementById('side-nav').classList.add('open'); }
 function closeSideNav() { document.getElementById('side-nav').classList.remove('open'); }
 links.forEach(l => l.addEventListener('click', closeSideNav));
 </script>
