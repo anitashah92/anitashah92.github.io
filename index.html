@@ -107,22 +107,41 @@
         <!-- Flow & RFI Builder -->
         <a href="work/flow.html" class="grid-card">
           <div class="grid-visual" style="background:var(--hero-bg);position:relative;overflow:hidden">
-            <div style="position:absolute;inset:32px;display:flex;flex-direction:column;justify-content:center">
-              <div style="display:flex;gap:6px;align-items:center;margin-bottom:14px">
-                <div style="width:20px;height:20px;border-radius:50%;background:var(--accent);display:flex;align-items:center;justify-content:center;font-size:9px;color:#fff;font-weight:500;flex-shrink:0">1</div>
-                <div style="flex:1;height:1.5px;background:rgba(45,69,32,.2)"></div>
-                <div style="width:20px;height:20px;border-radius:50%;background:rgba(45,69,32,.18);flex-shrink:0"></div>
-                <div style="flex:1;height:1.5px;background:rgba(45,69,32,.1)"></div>
-                <div style="width:20px;height:20px;border-radius:50%;background:rgba(45,69,32,.1);flex-shrink:0"></div>
+            <div style="position:absolute;inset:28px;display:flex;flex-direction:column;justify-content:center">
+              <!-- Stepper header -->
+              <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:12px;padding:0 2px">
+                <div style="font-size:9px;font-weight:500;letter-spacing:.08em;text-transform:uppercase;color:var(--accent)">Step 1 of 3</div>
+                <div style="font-size:9px;color:rgba(45,69,32,.55)">RFI Setup</div>
               </div>
-              <div style="background:rgba(255,255,255,.8);border-radius:10px;padding:14px;border:1px solid rgba(45,69,32,.1)">
-                <div style="height:7px;border-radius:4px;background:rgba(45,69,32,.14);width:46%;margin-bottom:11px"></div>
-                <div style="height:28px;border-radius:6px;background:rgba(45,69,32,.07);border:1px solid rgba(45,69,32,.1);margin-bottom:9px"></div>
-                <div style="height:7px;border-radius:4px;background:rgba(45,69,32,.1);width:60%;margin-bottom:11px"></div>
-                <div style="height:28px;border-radius:6px;background:rgba(45,69,32,.07);border:1px solid rgba(45,69,32,.1);margin-bottom:13px"></div>
-                <div style="display:flex;justify-content:flex-end;gap:8px">
-                  <div style="height:26px;border-radius:100px;background:rgba(45,69,32,.1);width:54px"></div>
-                  <div style="height:26px;border-radius:100px;background:var(--accent);width:68px"></div>
+              <!-- Progress stepper -->
+              <div style="display:flex;gap:7px;align-items:center;margin-bottom:18px">
+                <div style="width:22px;height:22px;border-radius:50%;background:var(--accent);display:flex;align-items:center;justify-content:center;font-size:10px;color:#fff;font-weight:500;flex-shrink:0;box-shadow:0 2px 6px rgba(45,69,32,.25)">1</div>
+                <div style="flex:1;height:2px;border-radius:1px;background:linear-gradient(to right, var(--accent) 30%, rgba(45,69,32,.18) 30%)"></div>
+                <div style="width:22px;height:22px;border-radius:50%;background:#fff;border:1.5px solid rgba(45,69,32,.25);display:flex;align-items:center;justify-content:center;font-size:10px;color:rgba(45,69,32,.5);font-weight:500;flex-shrink:0">2</div>
+                <div style="flex:1;height:2px;border-radius:1px;background:rgba(45,69,32,.12)"></div>
+                <div style="width:22px;height:22px;border-radius:50%;background:#fff;border:1.5px solid rgba(45,69,32,.18);display:flex;align-items:center;justify-content:center;font-size:10px;color:rgba(45,69,32,.4);font-weight:500;flex-shrink:0">3</div>
+              </div>
+              <!-- Form card -->
+              <div style="background:#fff;border-radius:12px;padding:18px;border:1px solid rgba(45,69,32,.08);box-shadow:0 8px 24px rgba(26,26,24,.04)">
+                <!-- Field 1 -->
+                <div style="margin-bottom:14px">
+                  <div style="height:6px;border-radius:3px;background:rgba(45,69,32,.35);width:38%;margin-bottom:8px"></div>
+                  <div style="height:30px;border-radius:7px;background:#F7F8F4;border:1px solid rgba(45,69,32,.12);display:flex;align-items:center;padding:0 11px;gap:6px">
+                    <div style="height:5px;border-radius:3px;background:rgba(45,69,32,.22);width:62%"></div>
+                  </div>
+                </div>
+                <!-- Field 2 (with dropdown indicator) -->
+                <div style="margin-bottom:16px">
+                  <div style="height:6px;border-radius:3px;background:rgba(45,69,32,.35);width:48%;margin-bottom:8px"></div>
+                  <div style="height:30px;border-radius:7px;background:#F7F8F4;border:1px solid rgba(45,69,32,.12);display:flex;align-items:center;justify-content:space-between;padding:0 11px">
+                    <div style="height:5px;border-radius:3px;background:rgba(45,69,32,.22);width:40%"></div>
+                    <div style="width:8px;height:8px;border-right:1.5px solid rgba(45,69,32,.4);border-bottom:1.5px solid rgba(45,69,32,.4);transform:rotate(45deg);margin-top:-4px"></div>
+                  </div>
+                </div>
+                <!-- Buttons -->
+                <div style="display:flex;justify-content:flex-end;gap:9px">
+                  <div style="height:28px;border-radius:100px;background:transparent;border:1px solid rgba(45,69,32,.18);display:flex;align-items:center;padding:0 14px"><div style="height:5px;width:24px;border-radius:3px;background:rgba(45,69,32,.4)"></div></div>
+                  <div style="height:28px;border-radius:100px;background:var(--accent);display:flex;align-items:center;padding:0 16px;box-shadow:0 4px 10px rgba(45,69,32,.2)"><div style="height:5px;width:30px;border-radius:3px;background:rgba(255,255,255,.9)"></div></div>
                 </div>
               </div>
             </div>
@@ -163,21 +182,37 @@
         <!-- Beckett iOS -->
         <a href="work/beckett.html" class="grid-card">
           <div class="grid-visual" style="background:#18221A;position:relative;overflow:hidden">
-            <div style="position:absolute;inset:20px;display:flex;gap:11px">
-              <div style="flex:1.2;background:rgba(255,255,255,.05);border-radius:12px;padding:14px;display:flex;flex-direction:column;align-items:center">
-                <div style="width:56px;height:56px;border-radius:50%;border:5px solid rgba(255,255,255,.08);border-top-color:rgba(168,212,108,.75);border-right-color:rgba(168,212,108,.5);margin-bottom:11px;transform:rotate(-45deg)"></div>
-                <div style="height:6px;border-radius:3px;background:rgba(255,255,255,.1);width:100%;margin-bottom:6px"></div>
-                <div style="height:6px;border-radius:3px;background:rgba(255,255,255,.06);width:70%"></div>
-              </div>
-              <div style="flex:1;display:flex;flex-direction:column;gap:8px">
-                <div style="background:rgba(255,255,255,.05);border-radius:10px;padding:12px;flex:1">
-                  <div style="height:5px;border-radius:3px;background:rgba(168,212,108,.5);width:55%;margin-bottom:8px"></div>
-                  <div style="height:5px;border-radius:3px;background:rgba(255,255,255,.09);margin-bottom:6px"></div>
-                  <div style="height:5px;border-radius:3px;background:rgba(255,255,255,.06);width:78%"></div>
+            <!-- iOS status header -->
+            <div style="position:absolute;top:14px;left:20px;right:20px;display:flex;justify-content:space-between;align-items:center;font-size:9px;color:rgba(255,255,255,.45);letter-spacing:.05em">
+              <span>9:41</span>
+              <div style="display:flex;gap:4px;align-items:center"><div style="width:14px;height:7px;border:1px solid rgba(255,255,255,.45);border-radius:2px;padding:1px"><div style="width:80%;height:100%;background:rgba(168,212,108,.7);border-radius:1px"></div></div></div>
+            </div>
+            <div style="position:absolute;inset:36px 22px 22px;display:flex;gap:12px">
+              <!-- Gauge panel -->
+              <div style="flex:1.15;background:rgba(255,255,255,.04);border:1px solid rgba(255,255,255,.06);border-radius:14px;padding:14px;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:10px">
+                <div style="font-size:8px;letter-spacing:.12em;text-transform:uppercase;color:rgba(255,255,255,.45);font-weight:500">Tank Level</div>
+                <div style="position:relative;width:78px;height:78px">
+                  <div style="position:absolute;inset:0;border-radius:50%;border:6px solid rgba(255,255,255,.08)"></div>
+                  <div style="position:absolute;inset:0;border-radius:50%;border:6px solid transparent;border-top-color:rgba(168,212,108,.85);border-right-color:rgba(168,212,108,.65);transform:rotate(45deg)"></div>
+                  <div style="position:absolute;inset:0;display:flex;align-items:center;justify-content:center;flex-direction:column"><span style="font-size:18px;font-weight:300;color:#fff;letter-spacing:-.02em">67<span style="font-size:9px;color:rgba(255,255,255,.55);margin-left:1px">%</span></span></div>
                 </div>
-                <div style="background:rgba(196,112,26,.15);border-radius:10px;padding:12px;border:1px solid rgba(196,112,26,.25)">
-                  <div style="height:5px;border-radius:3px;background:rgba(196,112,26,.65);width:38%;margin-bottom:8px"></div>
-                  <div style="height:5px;border-radius:3px;background:rgba(196,112,26,.3);width:66%"></div>
+                <div style="display:flex;gap:5px;align-items:center"><div style="width:5px;height:5px;border-radius:50%;background:rgba(168,212,108,.85)"></div><div style="font-size:8.5px;color:rgba(168,212,108,.85);font-weight:500">Healthy</div></div>
+              </div>
+              <!-- Right column -->
+              <div style="flex:1;display:flex;flex-direction:column;gap:9px">
+                <!-- Days remaining card -->
+                <div style="background:rgba(255,255,255,.04);border:1px solid rgba(255,255,255,.06);border-radius:12px;padding:11px 12px;flex:1">
+                  <div style="font-size:8px;color:rgba(255,255,255,.45);letter-spacing:.08em;text-transform:uppercase;margin-bottom:6px">Est. days left</div>
+                  <div style="font-size:20px;font-weight:300;color:#fff;line-height:1;letter-spacing:-.02em;margin-bottom:5px">24</div>
+                  <div style="height:3px;border-radius:2px;background:rgba(255,255,255,.08);overflow:hidden"><div style="height:100%;width:65%;background:rgba(168,212,108,.7);border-radius:2px"></div></div>
+                </div>
+                <!-- Alert card -->
+                <div style="background:rgba(196,112,26,.12);border:1px solid rgba(196,112,26,.3);border-radius:12px;padding:10px 12px;display:flex;align-items:center;gap:8px">
+                  <div style="width:18px;height:18px;border-radius:50%;background:rgba(196,112,26,.5);display:flex;align-items:center;justify-content:center;color:#fff;font-size:11px;font-weight:600;flex-shrink:0">!</div>
+                  <div style="flex:1">
+                    <div style="height:4px;border-radius:2px;background:rgba(196,112,26,.7);width:55%;margin-bottom:4px"></div>
+                    <div style="height:4px;border-radius:2px;background:rgba(196,112,26,.35);width:78%"></div>
+                  </div>
                 </div>
               </div>
             </div>
