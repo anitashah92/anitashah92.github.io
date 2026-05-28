@@ -363,12 +363,11 @@ secs.forEach(s => obs.observe(s));
     var img=document.getElementById('lb-img');
     function show(src,alt){img.src=src;img.alt=alt||'';o.classList.add('open');document.body.style.overflow='hidden';}
     function hide(){o.classList.remove('open');document.body.style.overflow='';}
-    document.getElementById('lb-bg').addEventListener('click',hide);
-    document.getElementById('lb-close').addEventListener('click',hide);
+    o.addEventListener('click',hide);
     document.addEventListener('keydown',function(e){if(e.key==='Escape')hide();});
     document.querySelectorAll('.cs-main img, .about-hero-photo').forEach(function(el){
       el.style.cursor='zoom-in';
-      el.addEventListener('click',function(){show(this.src,this.alt);});
+      el.addEventListener('click',function(e){e.stopPropagation();show(this.src,this.alt);});
     });
   })();
   function openSideNav() { document.getElementById('side-nav').classList.add('open'); }
