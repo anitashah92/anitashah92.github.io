@@ -77,6 +77,8 @@
 .user-title { font-family: var(--font-head); font-size: 14px; font-weight: 400; color: var(--text); margin-bottom: 8px; }
 .user-needs { font-size: 13px; color: var(--text-mid); line-height: 1.65; }
 .user-needs li { margin-left: 16px; margin-bottom: 4px; }
+/* 5-col snap for this page */
+.snap { grid-template-columns: repeat(5, 1fr); }
 .mobile-nav-toggle { display: none; position: fixed; bottom: 24px; right: 24px; z-index: 300; background: var(--accent); color: #fff; border: none; border-radius: 100px; padding: 10px 18px; font-family: var(--font-body); font-size: 12px; font-weight: 500; cursor: pointer; box-shadow: 0 4px 16px rgba(0,0,0,.15); gap: 6px; align-items: center; }
 @media (max-width: 900px) {
   .cs-wrap { grid-template-columns: 1fr; padding: 0 24px; }
@@ -89,6 +91,7 @@
   .snap-item:nth-child(2) { border-right: none; }
   .snap-item:nth-child(3), .snap-item:nth-child(4) { border-top: 1px solid var(--border); }
   .snap-item:nth-child(4) { border-right: none; }
+  .snap-item:nth-child(5) { border-top: 1px solid var(--border); border-right: none; }
   .case-nav { flex-direction: column; gap: 20px; }
 }
 </style>
@@ -146,6 +149,7 @@
           <div class="snap-item"><p class="snap-lbl">Users</p><p class="snap-val">Commerce + Retail teams</p></div>
           <div class="snap-item"><p class="snap-lbl">Partners</p><p class="snap-val">50+ retailers</p></div>
           <div class="snap-item"><p class="snap-lbl">Platform</p><p class="snap-val">Web App</p></div>
+          <div class="snap-item"><p class="snap-lbl">Year</p><p class="snap-val">2023</p></div>
         </div>
         <div class="img-placeholder img-placeholder-lg">
           <svg width="32" height="32" viewBox="0 0 32 32" fill="none"><rect x="2" y="2" width="28" height="28" rx="5" stroke="currentColor" stroke-width="1.5"/><path d="M2 12h28M12 12v18" stroke="currentColor" stroke-width="1.5"/></svg>
@@ -178,8 +182,8 @@
         <p class="eyebrow">The problem</p>
         <h2 class="cs-h2">Excel and email — for enterprise-scale decisions.</h2>
         <div class="body-text">
-          <p>GroupM's commerce team ran their entire RFI process through spreadsheets and email threads. Coca-Cola and 50+ retail partners were exchanging documents manually — no shared workspace, no version control, no visibility into where any evaluation stood.</p>
-          <p>Cycles that should take days stretched to weeks. Information got lost in inboxes. <strong>Leadership couldn't see pipeline status without chasing someone down.</strong></p>
+          <p>GroupM's commerce team ran their entire RFI process through spreadsheets and email threads. Coca-Cola and 50+ retail partners were exchanging documents manually — no shared workspace, no version control, no visibility into where any evaluation stood. This was 2023.</p>
+          <p>Cycles that should take days stretched to weeks. There was no centralized way to know which retailers had completed and returned an RFI, or whether their data had even been ingested. <strong>Leadership couldn't see pipeline status without chasing someone down.</strong></p>
         </div>
         <div class="callout">
           <p>"Designing for two very different users — the brands sending RFIs and the retailers receiving them — meant every screen had to serve two mental models at once."</p>
