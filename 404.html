@@ -1,0 +1,150 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="icon" type="image/svg+xml" href="assets/favicon.svg">
+  <link rel="icon" type="image/png" href="assets/logo-nav.png">
+<meta name="robots" content="noindex">
+<title>Page not found — Anita Shah</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Google+Sans+Flex:wght@300;400;500&family=Inter:wght@300;400;500&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="style.css">
+<style>
+.not-found {
+  min-height: calc(100vh - 64px);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 80px 24px;
+}
+.not-found-inner {
+  max-width: 480px;
+  text-align: center;
+}
+.not-found-code {
+  font-family: var(--font-head);
+  font-size: clamp(80px, 18vw, 140px);
+  font-weight: 300;
+  color: var(--accent);
+  line-height: 1;
+  letter-spacing: -0.04em;
+  opacity: 0.18;
+  margin-bottom: -12px;
+  display: block;
+}
+.not-found-h1 {
+  font-family: var(--font-head);
+  font-size: clamp(24px, 4vw, 34px);
+  font-weight: 300;
+  color: var(--text);
+  letter-spacing: -0.025em;
+  margin-bottom: 14px;
+  line-height: 1.2;
+}
+.not-found-p {
+  font-size: 15px;
+  color: var(--text-mid);
+  line-height: 1.75;
+  margin-bottom: 36px;
+}
+.not-found-links {
+  display: flex;
+  gap: 12px;
+  justify-content: center;
+  flex-wrap: wrap;
+}
+.nf-btn-primary {
+  display: inline-flex;
+  align-items: center;
+  gap: 7px;
+  background: var(--accent);
+  color: #fff;
+  font-size: 13px;
+  font-weight: 500;
+  padding: 11px 22px;
+  border-radius: 100px;
+  transition: opacity .15s, transform .15s;
+  font-family: var(--font-body);
+}
+.nf-btn-primary:hover { opacity: .88; transform: translateY(-1px); }
+.nf-btn-ghost {
+  display: inline-flex;
+  align-items: center;
+  gap: 7px;
+  background: transparent;
+  color: var(--text-mid);
+  font-size: 13px;
+  font-weight: 400;
+  padding: 11px 22px;
+  border-radius: 100px;
+  border: 1px solid var(--border);
+  transition: background .15s, transform .15s;
+  font-family: var(--font-body);
+}
+.nf-btn-ghost:hover { background: var(--surface); transform: translateY(-1px); }
+</style>
+
+<!-- Google Analytics 4 — replace G-XXXXXXXXXX with your Measurement ID -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-XXXXXXXXXX"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+  gtag('config', 'G-XXXXXXXXXX');
+</script>
+</head>
+<body>
+
+  <a href="#main-content" class="skip-link">Skip to main content</a>
+
+  <header class="site-nav">
+    <div class="inner">
+      <a href="index.html" class="nav-logo">
+        <img src="assets/logo-nav.png" alt="Anita Shah" style="height:32px;width:auto">
+      </a>
+      <ul class="nav-links">
+        <li><a href="index.html#work">Work</a></li>
+        <li><a href="about.html">About</a></li>
+        <li><a href="assets/Anita_Shah_Resume.pdf" target="_blank">Resume</a></li>
+        <li><a href="mailto:anitashah92@gmail.com" class="nav-cta">Get in touch</a></li>
+      </ul>
+    </div>
+  </header>
+
+  <main id="main-content" class="not-found">
+    <div class="not-found-inner">
+      <span class="not-found-code">404</span>
+      <h1 class="not-found-h1">Nothing here.</h1>
+      <p class="not-found-p">That page doesn't exist or may have moved.<br>Here's where you probably want to go.</p>
+      <div class="not-found-links">
+        <a href="index.html#work" class="nf-btn-primary">
+          View work
+          <svg width="11" height="11" viewBox="0 0 12 12" fill="none"><path d="M2 10L10 2M10 2H5M10 2V7" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round"/></svg>
+        </a>
+        <a href="about.html" class="nf-btn-ghost">About me</a>
+      </div>
+    </div>
+  </main>
+
+  <footer class="site-footer">
+    <div class="inner">
+      <div class="footer-left">
+        <span class="footer-name">Anita Shah</span>
+        <span class="footer-tagline">UX/UI Designer · Sunnyvale, CA</span>
+      </div>
+      <div class="footer-right">
+        <span class="footer-avail"><span class="footer-dot"></span>Open to work</span>
+        <span class="footer-copy">© 2026</span>
+      </div>
+    </div>
+  </footer>
+
+<script>
+  window.addEventListener('scroll', () => {
+    document.querySelector('.site-nav').classList.toggle('is-scrolled', window.scrollY > 10);
+  }, { passive: true });
+</script>
+</body>
+</html>
