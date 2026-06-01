@@ -154,11 +154,7 @@
           <div class="snap-item"><p class="snap-lbl">Year</p><p class="snap-val">2023</p></div>
           <div class="snap-item"><p class="snap-lbl">Timeline</p><p class="snap-val">4-month MVP</p></div>
         </div>
-        <div class="img-placeholder img-placeholder-lg">
-          <svg width="32" height="32" viewBox="0 0 32 32" fill="none"><rect x="2" y="2" width="28" height="28" rx="5" stroke="currentColor" stroke-width="1.5"/><path d="M2 12h28M12 12v18" stroke="currentColor" stroke-width="1.5"/></svg>
-          <span>Hero screenshot</span>
-          <span class="img-placeholder-label">flow-hero.png</span>
-        </div>
+        <img src="../assets/flow-hero.png" alt="Flow homepage showing active RFIs with progress bars" loading="lazy" style="width:100%;border-radius:12px;display:block;border:1px solid var(--border);margin-top:32px">
       </div>
 
       <div class="cs-sec" id="outcomes">
@@ -260,19 +256,15 @@
           <p><strong>RFI Builder</strong> — a step-by-step guided flow for brand teams. Section-by-section structure, deadline setting, and retailer assignment in one place. The builder itself is table-based: admins add rows and columns and configure each question type inline. RFIs contain a mix of short answer, long answer, single select, and multi-select questions, so the builder needed to handle all of them without requiring a custom question editor. Following the WPP Design System kept the implementation within scope for the 4-month timeline.</p>
           <p><strong>Clone RFI</strong> was a must-have. Many clients share the same retailers and commerce capabilities across evaluation cycles. Rebuilding from scratch each time would have eliminated most of the efficiency gain. One click to duplicate and adjust.</p>
           <p><strong>Admin permissions</strong> — not everyone on the commerce team needed access to every Flow. Designing the role assignment step (who gets admin access to which Flow and at what level) was a separate design problem built into the creation stepper, not a separate settings page. Keeping it in context meant it rarely got skipped.</p>
-          <p><strong>Retailer response view</strong> — stripped back and task-focused. Retailers see exactly what is being asked, respond inline, save drafts, and submit with a clear confirmation state.</p>
+          <p><strong>Retailer response view</strong> — stripped back and task-focused. Retailers receive a link, see exactly what is being asked, respond inline, save drafts, and submit with a clear confirmation state. No training required.</p>
           <p><strong>Status dashboard</strong> — live view of every active RFI, response rates per retailer, and overdue flags. Leadership visibility without needing to ask anyone.</p>
         </div>
         <div class="img-row">
-          <div class="img-placeholder img-placeholder-sm">
-            <svg width="24" height="24" viewBox="0 0 24 24" fill="none"><rect x="2" y="2" width="20" height="20" rx="3" stroke="currentColor" stroke-width="1.3"/></svg>
-            <span>RFI Builder — brand view</span>
-            <span class="img-placeholder-label">flow-builder.png</span>
+          <div style="border-radius:12px;overflow:hidden;border:1px solid var(--border);background:var(--surface);aspect-ratio:4/3;display:flex;align-items:center;justify-content:center">
+            <img src="../assets/flow-builder.png" alt="RFI Builder — table format with channel, category and question columns" loading="lazy" style="width:100%;height:100%;object-fit:contain;display:block">
           </div>
-          <div class="img-placeholder img-placeholder-sm">
-            <svg width="24" height="24" viewBox="0 0 24 24" fill="none"><rect x="2" y="2" width="20" height="20" rx="3" stroke="currentColor" stroke-width="1.3"/></svg>
-            <span>Response view — retailer</span>
-            <span class="img-placeholder-label">flow-response.png</span>
+          <div style="border-radius:12px;overflow:hidden;border:1px solid var(--border);background:var(--surface);aspect-ratio:4/3;display:flex;align-items:center;justify-content:center">
+            <img src="../assets/flow-response.png" alt="Creating a flow — stepper modal with RFI selection, admins and partner assignment" loading="lazy" style="width:100%;height:100%;object-fit:contain;display:block">
           </div>
         </div>
         <div class="img-placeholder img-placeholder-sm">
